@@ -17,6 +17,7 @@ mainEntry:
   %n = alloca i32, align 4
   %temp = alloca i32, align 4
   %mult1 = alloca [20 x i32], align 4
+  store [20 x i32] zeroinitializer, [20 x i32]* %mult1, align 4
   %__tmp0 = getelementptr inbounds [20 x i32], [20 x i32]* %mult1, i64 0, i64 0
   store i32 1, i32* %__tmp0, align 4
   %__tmp1 = getelementptr inbounds [20 x i32], [20 x i32]* %mult1, i64 0, i64 1
@@ -58,6 +59,7 @@ mainEntry:
   %__tmp19 = getelementptr inbounds [20 x i32], [20 x i32]* %mult1, i64 0, i64 19
   store i32 0, i32* %__tmp19, align 4
   %mult2 = alloca [20 x i32], align 4
+  store [20 x i32] zeroinitializer, [20 x i32]* %mult2, align 4
   %__tmp20 = getelementptr inbounds [20 x i32], [20 x i32]* %mult2, i64 0, i64 0
   store i32 2, i32* %__tmp20, align 4
   %__tmp21 = getelementptr inbounds [20 x i32], [20 x i32]* %mult2, i64 0, i64 1

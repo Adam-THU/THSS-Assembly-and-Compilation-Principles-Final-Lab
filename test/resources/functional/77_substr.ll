@@ -216,6 +216,7 @@ bb2:
 define i32 @main() {
 mainEntry:
   %A = alloca [15 x i32], align 4
+  store [15 x i32] zeroinitializer, [15 x i32]* %A, align 4
   %__tmp0 = getelementptr inbounds [15 x i32], [15 x i32]* %A, i64 0, i64 0
   store i32 8, i32* %__tmp0, align 4
   %__tmp1 = getelementptr inbounds [15 x i32], [15 x i32]* %A, i64 0, i64 1
@@ -247,6 +248,7 @@ mainEntry:
   %__tmp14 = getelementptr inbounds [15 x i32], [15 x i32]* %A, i64 0, i64 14
   store i32 0, i32* %__tmp14, align 4
   %B = alloca [13 x i32], align 4
+  store [13 x i32] zeroinitializer, [13 x i32]* %B, align 4
   %__tmp15 = getelementptr inbounds [13 x i32], [13 x i32]* %B, i64 0, i64 0
   store i32 3, i32* %__tmp15, align 4
   %__tmp16 = getelementptr inbounds [13 x i32], [13 x i32]* %B, i64 0, i64 1

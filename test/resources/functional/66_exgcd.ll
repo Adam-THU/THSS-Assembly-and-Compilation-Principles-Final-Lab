@@ -76,9 +76,11 @@ mainEntry:
   %b = alloca i32, align 4
   store i32 15, i32* %b, align 4
   %x = alloca [1 x i32], align 4
+  store [1 x i32] zeroinitializer, [1 x i32]* %x, align 4
   %__tmp0 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
   store i32 1, i32* %__tmp0, align 4
   %y = alloca [1 x i32], align 4
+  store [1 x i32] zeroinitializer, [1 x i32]* %y, align 4
   %__tmp1 = getelementptr inbounds [1 x i32], [1 x i32]* %y, i64 0, i64 0
   store i32 1, i32* %__tmp1, align 4
   %__tmp2 = load i32, i32* %a, align 4

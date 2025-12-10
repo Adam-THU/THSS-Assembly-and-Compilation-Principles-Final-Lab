@@ -207,36 +207,38 @@ public:
         return nullptr;
     }
     
-    // 辅助函数：初始化数组
+    // 辅助函数：初始化数组（支持正确的 C 语言嵌套初始化语义）
     void initializeArray(const std::string& arrayName, SysYParser::InitValContext* initVal, 
                         std::shared_ptr<Type> arrayType, const std::vector<int>& dims) {
-        // 收集所有初始化值（平坦化）
-        std::vector<IRValue> flatValues;
-        flattenInitializer(initVal, flatValues);
-        
-        // 如果初始化列表为空，使用 zeroinitializer
-        if (flatValues.empty()) {
-            std::string typeStr = arrayType->toString();
-            currentBB->addInstruction("store " + typeStr + " zeroinitializer, " + typeStr + "* %" + arrayName + ", align 4");
-            return;
-        }
-        
         // 计算数组总大小
         int totalSize = 1;
         for (int dim : dims) {
             totalSize *= dim;
         }
         
-        // 如果初始化值不足，先清零整个数组
-        if ((int)flatValues.size() < totalSize) {
-            std::string typeStr = arrayType->toString();
-            currentBB->addInstruction("store " + typeStr + " zeroinitializer, " + typeStr + "* %" + arrayName + ", align 4");
-        }
+        // 先清零整个数组
+        std::string typeStr = arrayType->toString();
+        currentBB->addInstruction("store " + typeStr + " zeroinitializer, " + typeStr + "* %" + arrayName + ", align 4");
         
-        // 逐个存储初始化值
-        for (size_t i = 0; i < flatValues.size() && i < (size_t)totalSize; ++i) {
+        // 使用正确的 C 语言初始化语义填充数组
+        int currentIndex = 0;
+        fillArrayWithInit(arrayName, initVal, arrayType, dims, currentIndex, 0);
+    }
+    
+    // 递归填充数组元素，正确处理嵌套初始化列表
+    void fillArrayWithInit(const std::string& arrayName, SysYParser::InitValContext* initVal,
+                          std::shared_ptr<Type> arrayType, const std::vector<int>& dims,
+                          int& currentIndex, int depth) {
+        if (!initVal) return;
+        
+        // 如果是单个表达式（叶子节点）
+        if (initVal->exp()) {
+            // 存储单个值到当前索引位置
+            IRValue val = getIRValue(visit(initVal->exp()));
+            val = ensureInt32(val);
+            
             // 计算多维索引
-            std::vector<int> indices = calculateIndices(i, dims);
+            std::vector<int> indices = calculateIndices(currentIndex, dims);
             
             // 生成 GEP 指令获取元素地址
             std::string addr = "%" + arrayName;
@@ -252,16 +254,57 @@ public:
             }
             
             // 存储值
-            IRValue val = flatValues[i];
-            val = ensureInt32(val);
             if (val.isConst) {
                 currentBB->addInstruction("store i32 " + std::to_string(val.constValue) + ", i32* " + addr + ", align 4");
             } else {
                 currentBB->addInstruction("store i32 %" + val.name + ", i32* " + addr + ", align 4");
             }
+            
+            currentIndex++;
+            return;
         }
         
-        // 如果初始化值不足，剩余部分保持未初始化（或在开始时可以先清零）
+        // 嵌套初始化列表 {...}
+        auto subInits = initVal->initVal();
+        if (subInits.empty()) return;
+        
+        // 计算当前深度的子数组大小
+        // 对于 int[4][2]，depth=0 时子数组大小是 2（一个 int[2]）
+        // 对于 int[4][2]，depth=1 时子数组大小是 1（一个 int）
+        int subArraySize = 1;
+        if (depth < dims.size()) {
+            for (size_t i = depth + 1; i < dims.size(); ++i) {
+                subArraySize *= dims[i];
+            }
+        }
+        
+        // 处理子初始化列表中的每个元素
+        for (auto subInit : subInits) {
+            // 检查 subInit 是否是嵌套的 {}
+            bool isNestedBrace = (subInit->initVal().size() > 0 || 
+                                 (subInit->initVal().size() == 0 && !subInit->exp()));
+            
+            if (isNestedBrace && depth < dims.size()) {
+                // 对齐到子数组边界
+                if (subArraySize > 0 && currentIndex % subArraySize != 0) {
+                    currentIndex = ((currentIndex / subArraySize) + 1) * subArraySize;
+                }
+                
+                // 记录子数组起始位置
+                int subArrayStart = currentIndex;
+                
+                // 递归处理嵌套初始化
+                fillArrayWithInit(arrayName, subInit, arrayType, dims, currentIndex, depth + 1);
+                
+                // 完成子数组后，确保移动到下一个子数组边界
+                if (subArraySize > 0 && currentIndex < subArrayStart + subArraySize) {
+                    currentIndex = subArrayStart + subArraySize;
+                }
+            } else {
+                // 处理单个表达式
+                fillArrayWithInit(arrayName, subInit, arrayType, dims, currentIndex, depth + 1);
+            }
+        }
     }
     
     // 辅助函数：平坦化初始化器（递归处理嵌套）
@@ -286,6 +329,64 @@ public:
         } else {
             for (auto subInit : initVal->constInitVal()) {
                 flattenConstInitializer(subInit, values);
+            }
+        }
+    }
+    
+    // 使用C语言语义填充常量数组值
+    void fillConstArrayWithCSemantics(SysYParser::ConstInitValContext* initVal,
+                                       const std::vector<int>& dims,
+                                       std::vector<int>& values,
+                                       int& currentIndex,
+                                       int depth) {
+        if (!initVal) return;
+        
+        // 如果是单个表达式（叶子节点）
+        if (initVal->constExp()) {
+            if (currentIndex < (int)values.size()) {
+                values[currentIndex] = evalConstExp(initVal->constExp());
+            }
+            currentIndex++;
+            return;
+        }
+        
+        // 嵌套初始化列表 {...}
+        auto subInits = initVal->constInitVal();
+        if (subInits.empty()) return;
+        
+        // 计算当前深度的子数组大小
+        int subArraySize = 1;
+        if (depth < (int)dims.size()) {
+            for (size_t i = depth + 1; i < dims.size(); ++i) {
+                subArraySize *= dims[i];
+            }
+        }
+        
+        // 处理子初始化列表中的每个元素
+        for (auto subInit : subInits) {
+            // 检查 subInit 是否是嵌套的 {}
+            bool isNestedBrace = (subInit->constInitVal().size() > 0 || 
+                                 (subInit->constInitVal().size() == 0 && !subInit->constExp()));
+            
+            if (isNestedBrace && depth < (int)dims.size()) {
+                // 对齐到子数组边界
+                if (subArraySize > 0 && currentIndex % subArraySize != 0) {
+                    currentIndex = ((currentIndex / subArraySize) + 1) * subArraySize;
+                }
+                
+                // 记录子数组起始位置
+                int subArrayStart = currentIndex;
+                
+                // 递归处理嵌套初始化
+                fillConstArrayWithCSemantics(subInit, dims, values, currentIndex, depth + 1);
+                
+                // 完成子数组后，确保移动到下一个子数组边界
+                if (subArraySize > 0 && currentIndex < subArrayStart + subArraySize) {
+                    currentIndex = subArrayStart + subArraySize;
+                }
+            } else {
+                // 处理单个表达式
+                fillConstArrayWithCSemantics(subInit, dims, values, currentIndex, depth + 1);
             }
         }
     }
@@ -369,14 +470,14 @@ public:
             return getTypeLLVMString(std::make_shared<ArrayType>(i32Type(), dims)) + " zeroinitializer";
         }
 
-        std::vector<int> values;
-        flattenConstInitializer(initCtx, values);
-
+        // 计算总大小并初始化为0
         int totalSize = 1;
         for (int d : dims) totalSize *= d;
-        while ((int)values.size() < totalSize) {
-            values.push_back(0);
-        }
+        std::vector<int> values(totalSize, 0);
+        
+        // 使用C语言语义填充
+        int currentIndex = 0;
+        fillConstArrayWithCSemantics(initCtx, dims, values, currentIndex, 0);
 
         return buildConstArrayLiteral(dims, values);
     }

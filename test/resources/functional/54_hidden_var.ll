@@ -58,11 +58,11 @@ bb2:
   %__tmp19 = getelementptr inbounds [2 x [8 x i32]], [2 x [8 x i32]]* %c, i64 0, i64 0
   %__tmp20 = getelementptr inbounds [8 x i32], [8 x i32]* %__tmp19, i64 0, i64 1
   store i32 9, i32* %__tmp20, align 4
-  %__tmp21 = getelementptr inbounds [2 x [8 x i32]], [2 x [8 x i32]]* %c, i64 0, i64 0
-  %__tmp22 = getelementptr inbounds [8 x i32], [8 x i32]* %__tmp21, i64 0, i64 2
+  %__tmp21 = getelementptr inbounds [2 x [8 x i32]], [2 x [8 x i32]]* %c, i64 0, i64 1
+  %__tmp22 = getelementptr inbounds [8 x i32], [8 x i32]* %__tmp21, i64 0, i64 0
   store i32 8, i32* %__tmp22, align 4
-  %__tmp23 = getelementptr inbounds [2 x [8 x i32]], [2 x [8 x i32]]* %c, i64 0, i64 0
-  %__tmp24 = getelementptr inbounds [8 x i32], [8 x i32]* %__tmp23, i64 0, i64 3
+  %__tmp23 = getelementptr inbounds [2 x [8 x i32]], [2 x [8 x i32]]* %c, i64 0, i64 1
+  %__tmp24 = getelementptr inbounds [8 x i32], [8 x i32]* %__tmp23, i64 0, i64 1
   store i32 3, i32* %__tmp24, align 4
   %b = alloca i32, align 4
   store i32 2, i32* %b, align 4
@@ -73,15 +73,15 @@ bb2:
 bb6:
   %c.1 = alloca [7 x [1 x [5 x i32]]], align 4
   store [7 x [1 x [5 x i32]]] zeroinitializer, [7 x [1 x [5 x i32]]]* %c.1, align 4
-  %__tmp28 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 0
+  %__tmp28 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 2
   %__tmp29 = getelementptr inbounds [1 x [5 x i32]], [1 x [5 x i32]]* %__tmp28, i64 0, i64 0
   %__tmp30 = getelementptr inbounds [5 x i32], [5 x i32]* %__tmp29, i64 0, i64 0
   store i32 2, i32* %__tmp30, align 4
-  %__tmp31 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 0
+  %__tmp31 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 2
   %__tmp32 = getelementptr inbounds [1 x [5 x i32]], [1 x [5 x i32]]* %__tmp31, i64 0, i64 0
   %__tmp33 = getelementptr inbounds [5 x i32], [5 x i32]* %__tmp32, i64 0, i64 1
   store i32 1, i32* %__tmp33, align 4
-  %__tmp34 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 0
+  %__tmp34 = getelementptr inbounds [7 x [1 x [5 x i32]]], [7 x [1 x [5 x i32]]]* %c.1, i64 0, i64 2
   %__tmp35 = getelementptr inbounds [1 x [5 x i32]], [1 x [5 x i32]]* %__tmp34, i64 0, i64 0
   %__tmp36 = getelementptr inbounds [5 x i32], [5 x i32]* %__tmp35, i64 0, i64 2
   store i32 8, i32* %__tmp36, align 4

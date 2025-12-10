@@ -626,54 +626,55 @@ param16Entry:
   %a16_arg = alloca i32, align 4
   store i32 %a16, i32* %a16_arg, align 4
   %arr = alloca [16 x i32], align 4
+  store [16 x i32] zeroinitializer, [16 x i32]* %arr, align 4
   %__tmp0 = load i32, i32* %a1_arg, align 4
-  %__tmp1 = load i32, i32* %a2_arg, align 4
-  %__tmp2 = load i32, i32* %a3_arg, align 4
-  %__tmp3 = load i32, i32* %a4_arg, align 4
-  %__tmp4 = load i32, i32* %a5_arg, align 4
-  %__tmp5 = load i32, i32* %a6_arg, align 4
-  %__tmp6 = load i32, i32* %a7_arg, align 4
-  %__tmp7 = load i32, i32* %a8_arg, align 4
-  %__tmp8 = load i32, i32* %a9_arg, align 4
-  %__tmp9 = load i32, i32* %a10_arg, align 4
-  %__tmp10 = load i32, i32* %a11_arg, align 4
-  %__tmp11 = load i32, i32* %a12_arg, align 4
-  %__tmp12 = load i32, i32* %a13_arg, align 4
-  %__tmp13 = load i32, i32* %a14_arg, align 4
-  %__tmp14 = load i32, i32* %a15_arg, align 4
-  %__tmp15 = load i32, i32* %a16_arg, align 4
-  %__tmp16 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 0
-  store i32 %__tmp0, i32* %__tmp16, align 4
-  %__tmp17 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 1
-  store i32 %__tmp1, i32* %__tmp17, align 4
-  %__tmp18 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 2
-  store i32 %__tmp2, i32* %__tmp18, align 4
-  %__tmp19 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 3
-  store i32 %__tmp3, i32* %__tmp19, align 4
-  %__tmp20 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 4
-  store i32 %__tmp4, i32* %__tmp20, align 4
-  %__tmp21 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 5
-  store i32 %__tmp5, i32* %__tmp21, align 4
-  %__tmp22 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 6
-  store i32 %__tmp6, i32* %__tmp22, align 4
-  %__tmp23 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 7
-  store i32 %__tmp7, i32* %__tmp23, align 4
-  %__tmp24 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 8
-  store i32 %__tmp8, i32* %__tmp24, align 4
-  %__tmp25 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 9
-  store i32 %__tmp9, i32* %__tmp25, align 4
-  %__tmp26 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 10
-  store i32 %__tmp10, i32* %__tmp26, align 4
-  %__tmp27 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 11
-  store i32 %__tmp11, i32* %__tmp27, align 4
-  %__tmp28 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 12
-  store i32 %__tmp12, i32* %__tmp28, align 4
-  %__tmp29 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 13
-  store i32 %__tmp13, i32* %__tmp29, align 4
-  %__tmp30 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 14
-  store i32 %__tmp14, i32* %__tmp30, align 4
+  %__tmp1 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 0
+  store i32 %__tmp0, i32* %__tmp1, align 4
+  %__tmp2 = load i32, i32* %a2_arg, align 4
+  %__tmp3 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 1
+  store i32 %__tmp2, i32* %__tmp3, align 4
+  %__tmp4 = load i32, i32* %a3_arg, align 4
+  %__tmp5 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 2
+  store i32 %__tmp4, i32* %__tmp5, align 4
+  %__tmp6 = load i32, i32* %a4_arg, align 4
+  %__tmp7 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 3
+  store i32 %__tmp6, i32* %__tmp7, align 4
+  %__tmp8 = load i32, i32* %a5_arg, align 4
+  %__tmp9 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 4
+  store i32 %__tmp8, i32* %__tmp9, align 4
+  %__tmp10 = load i32, i32* %a6_arg, align 4
+  %__tmp11 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 5
+  store i32 %__tmp10, i32* %__tmp11, align 4
+  %__tmp12 = load i32, i32* %a7_arg, align 4
+  %__tmp13 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 6
+  store i32 %__tmp12, i32* %__tmp13, align 4
+  %__tmp14 = load i32, i32* %a8_arg, align 4
+  %__tmp15 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 7
+  store i32 %__tmp14, i32* %__tmp15, align 4
+  %__tmp16 = load i32, i32* %a9_arg, align 4
+  %__tmp17 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 8
+  store i32 %__tmp16, i32* %__tmp17, align 4
+  %__tmp18 = load i32, i32* %a10_arg, align 4
+  %__tmp19 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 9
+  store i32 %__tmp18, i32* %__tmp19, align 4
+  %__tmp20 = load i32, i32* %a11_arg, align 4
+  %__tmp21 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 10
+  store i32 %__tmp20, i32* %__tmp21, align 4
+  %__tmp22 = load i32, i32* %a12_arg, align 4
+  %__tmp23 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 11
+  store i32 %__tmp22, i32* %__tmp23, align 4
+  %__tmp24 = load i32, i32* %a13_arg, align 4
+  %__tmp25 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 12
+  store i32 %__tmp24, i32* %__tmp25, align 4
+  %__tmp26 = load i32, i32* %a14_arg, align 4
+  %__tmp27 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 13
+  store i32 %__tmp26, i32* %__tmp27, align 4
+  %__tmp28 = load i32, i32* %a15_arg, align 4
+  %__tmp29 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 14
+  store i32 %__tmp28, i32* %__tmp29, align 4
+  %__tmp30 = load i32, i32* %a16_arg, align 4
   %__tmp31 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 15
-  store i32 %__tmp15, i32* %__tmp31, align 4
+  store i32 %__tmp30, i32* %__tmp31, align 4
   %__tmp32 = call i32 @sort([16 x i32]* %arr, i32 16)
   %__tmp33 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 0
   %__tmp34 = load i32, i32* %__tmp33, align 4
@@ -730,6 +731,7 @@ param16Entry:
 define i32 @main() {
 mainEntry:
   %arr = alloca [32 x [2 x i32]], align 4
+  store [32 x [2 x i32]] zeroinitializer, [32 x [2 x i32]]* %arr, align 4
   %__tmp0 = call i32 @getint()
   %__tmp1 = call i32 @getint()
   %__tmp2 = call i32 @getint()
@@ -747,7 +749,6 @@ mainEntry:
   %__tmp14 = call i32 @getint()
   %__tmp15 = call i32 @getint()
   %__tmp16 = call i32 @param16(i32 %__tmp0, i32 %__tmp1, i32 %__tmp2, i32 %__tmp3, i32 %__tmp4, i32 %__tmp5, i32 %__tmp6, i32 %__tmp7, i32 %__tmp8, i32 %__tmp9, i32 %__tmp10, i32 %__tmp11, i32 %__tmp12, i32 %__tmp13, i32 %__tmp14, i32 %__tmp15)
-  store [32 x [2 x i32]] zeroinitializer, [32 x [2 x i32]]* %arr, align 4
   %__tmp17 = getelementptr inbounds [32 x [2 x i32]], [32 x [2 x i32]]* %arr, i64 0, i64 0
   %__tmp18 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp17, i64 0, i64 0
   store i32 %__tmp16, i32* %__tmp18, align 4

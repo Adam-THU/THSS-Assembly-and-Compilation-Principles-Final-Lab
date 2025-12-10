@@ -13,6 +13,7 @@ mainEntry:
   %a = alloca [4 x [2 x i32]], align 4
   store [4 x [2 x i32]] zeroinitializer, [4 x [2 x i32]]* %a, align 4
   %b = alloca [4 x [2 x i32]], align 4
+  store [4 x [2 x i32]] zeroinitializer, [4 x [2 x i32]]* %b, align 4
   %__tmp0 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %b, i64 0, i64 0
   %__tmp1 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp0, i64 0, i64 0
   store i32 1, i32* %__tmp1, align 4
@@ -38,6 +39,7 @@ mainEntry:
   %__tmp15 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp14, i64 0, i64 1
   store i32 8, i32* %__tmp15, align 4
   %c = alloca [4 x [2 x i32]], align 4
+  store [4 x [2 x i32]] zeroinitializer, [4 x [2 x i32]]* %c, align 4
   %__tmp16 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %c, i64 0, i64 0
   %__tmp17 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp16, i64 0, i64 0
   store i32 1, i32* %__tmp17, align 4
@@ -73,28 +75,29 @@ mainEntry:
   %__tmp36 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 1
   %__tmp37 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp36, i64 0, i64 0
   store i32 3, i32* %__tmp37, align 4
-  %__tmp38 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 1
-  %__tmp39 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp38, i64 0, i64 1
+  %__tmp38 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 2
+  %__tmp39 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp38, i64 0, i64 0
   store i32 5, i32* %__tmp39, align 4
-  %__tmp40 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 2
+  %__tmp40 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 3
   %__tmp41 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp40, i64 0, i64 0
   store i32 7, i32* %__tmp41, align 4
-  %__tmp42 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 2
+  %__tmp42 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 3
   %__tmp43 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp42, i64 0, i64 1
   store i32 8, i32* %__tmp43, align 4
   %e = alloca [4 x [2 x i32]], align 4
+  store [4 x [2 x i32]] zeroinitializer, [4 x [2 x i32]]* %e, align 4
   %__tmp44 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %d, i64 0, i64 2
   %__tmp45 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp44, i64 0, i64 1
   %__tmp46 = load i32, i32* %__tmp45, align 4
-  %__tmp47 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %c, i64 0, i64 2
-  %__tmp48 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp47, i64 0, i64 1
-  %__tmp49 = load i32, i32* %__tmp48, align 4
-  %__tmp50 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %e, i64 0, i64 0
-  %__tmp51 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp50, i64 0, i64 0
-  store i32 %__tmp46, i32* %__tmp51, align 4
+  %__tmp47 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %e, i64 0, i64 0
+  %__tmp48 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp47, i64 0, i64 0
+  store i32 %__tmp46, i32* %__tmp48, align 4
+  %__tmp49 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %c, i64 0, i64 2
+  %__tmp50 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp49, i64 0, i64 1
+  %__tmp51 = load i32, i32* %__tmp50, align 4
   %__tmp52 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %e, i64 0, i64 0
   %__tmp53 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp52, i64 0, i64 1
-  store i32 %__tmp49, i32* %__tmp53, align 4
+  store i32 %__tmp51, i32* %__tmp53, align 4
   %__tmp54 = getelementptr inbounds [4 x [2 x i32]], [4 x [2 x i32]]* %e, i64 0, i64 1
   %__tmp55 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp54, i64 0, i64 0
   store i32 3, i32* %__tmp55, align 4

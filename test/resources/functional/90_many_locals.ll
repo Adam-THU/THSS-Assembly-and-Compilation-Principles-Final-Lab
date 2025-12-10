@@ -11,6 +11,7 @@ declare void @putarray(i32, i32*)
 define i32 @foo() {
 fooEntry:
   %arr = alloca [16 x i32], align 4
+  store [16 x i32] zeroinitializer, [16 x i32]* %arr, align 4
   %__tmp0 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 0
   store i32 0, i32* %__tmp0, align 4
   %__tmp1 = getelementptr inbounds [16 x i32], [16 x i32]* %arr, i64 0, i64 1
