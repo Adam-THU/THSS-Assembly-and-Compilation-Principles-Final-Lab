@@ -134,13 +134,13 @@ bb1:
   %__tmp18 = load i32, i32* %__tmp17, align 4
   store i32 %__tmp18, i32* %tmp, align 4
   %__tmp19 = load i32, i32* %tmp, align 4
-  %__tmp20 = call i32 @putint(i32 %__tmp19)
+  call void @putint(i32 %__tmp19)
   store i32 10, i32* %tmp, align 4
-  %__tmp21 = load i32, i32* %tmp, align 4
-  %__tmp22 = call i32 @putch(i32 %__tmp21)
-  %__tmp23 = load i32, i32* %i, align 4
-  %__tmp24 = add i32 %__tmp23, 1
-  store i32 %__tmp24, i32* %i, align 4
+  %__tmp20 = load i32, i32* %tmp, align 4
+  call void @putch(i32 %__tmp20)
+  %__tmp21 = load i32, i32* %i, align 4
+  %__tmp22 = add i32 %__tmp21, 1
+  store i32 %__tmp22, i32* %i, align 4
   br label %bb0
 bb2:
   ret i32 0

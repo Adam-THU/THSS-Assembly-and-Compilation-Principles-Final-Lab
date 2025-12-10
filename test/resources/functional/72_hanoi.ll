@@ -15,12 +15,12 @@ moveEntry:
   %y_arg = alloca i32, align 4
   store i32 %y, i32* %y_arg, align 4
   %__tmp0 = load i32, i32* %x_arg, align 4
-  %__tmp1 = call i32 @putint(i32 %__tmp0)
-  %__tmp2 = call i32 @putch(i32 32)
-  %__tmp3 = load i32, i32* %y_arg, align 4
-  %__tmp4 = call i32 @putint(i32 %__tmp3)
-  %__tmp5 = call i32 @putch(i32 44)
-  %__tmp6 = call i32 @putch(i32 32)
+  call void @putint(i32 %__tmp0)
+  call void @putch(i32 32)
+  %__tmp1 = load i32, i32* %y_arg, align 4
+  call void @putint(i32 %__tmp1)
+  call void @putch(i32 44)
+  call void @putch(i32 32)
   ret void
 }
 
@@ -76,10 +76,10 @@ bb0:
 bb1:
   %__tmp3 = call i32 @getint()
   %__tmp4 = call i32 @hanoi(i32 %__tmp3, i32 1, i32 2, i32 3)
-  %__tmp5 = call i32 @putch(i32 10)
-  %__tmp6 = load i32, i32* %n, align 4
-  %__tmp7 = sub i32 %__tmp6, 1
-  store i32 %__tmp7, i32* %n, align 4
+  call void @putch(i32 10)
+  %__tmp5 = load i32, i32* %n, align 4
+  %__tmp6 = sub i32 %__tmp5, 1
+  store i32 %__tmp6, i32* %n, align 4
   br label %bb0
 bb2:
   ret i32 0

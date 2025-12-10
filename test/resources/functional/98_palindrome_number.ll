@@ -79,17 +79,17 @@ mainEntry:
   br i1 %__tmp3, label %bb0, label %bb1
 bb0:
   %__tmp4 = load i32, i32* %test, align 4
-  %__tmp5 = call i32 @putint(i32 %__tmp4)
+  call void @putint(i32 %__tmp4)
   br label %bb2
 bb1:
   store i32 0, i32* %flag, align 4
-  %__tmp6 = load i32, i32* %flag, align 4
-  %__tmp7 = call i32 @putint(i32 %__tmp6)
+  %__tmp5 = load i32, i32* %flag, align 4
+  call void @putint(i32 %__tmp5)
   br label %bb2
 bb2:
   store i32 10, i32* %flag, align 4
-  %__tmp8 = load i32, i32* %flag, align 4
-  %__tmp9 = call i32 @putch(i32 %__tmp8)
+  %__tmp6 = load i32, i32* %flag, align 4
+  call void @putch(i32 %__tmp6)
   ret i32 0
 }
 

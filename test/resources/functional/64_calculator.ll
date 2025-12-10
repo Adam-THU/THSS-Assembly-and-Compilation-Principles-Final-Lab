@@ -974,7 +974,7 @@ bb128:
 bb125:
   %__tmp379 = getelementptr inbounds [10000 x i32], [10000 x i32]* @ints, i64 0, i64 1
   %__tmp380 = load i32, i32* %__tmp379, align 4
-  %__tmp381 = call i32 @putint(i32 %__tmp380)
+  call void @putint(i32 %__tmp380)
   ret i32 0
 }
 

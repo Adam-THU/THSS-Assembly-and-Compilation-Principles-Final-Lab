@@ -254,8 +254,8 @@ mainEntry:
   %__tmp63 = add i32 %__tmp61, %__tmp62
   store i32 %__tmp63, i32* %sum, align 4
   %__tmp64 = load i32, i32* %sum, align 4
-  %__tmp65 = call i32 @putint(i32 %__tmp64)
-  %__tmp66 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp64)
+  call void @putch(i32 10)
   ret i32 0
 }
 

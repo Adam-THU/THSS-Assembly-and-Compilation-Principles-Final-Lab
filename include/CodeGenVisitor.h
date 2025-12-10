@@ -365,12 +365,16 @@ public:
         // 处理子初始化列表中的每个元素
         for (auto subInit : subInits) {
             // 检查 subInit 是否是嵌套的 {}
-            bool isNestedBrace = (subInit->constInitVal().size() > 0 || 
-                                 (subInit->constInitVal().size() == 0 && !subInit->constExp()));
+            // constInitVal可以是单个constExp，或者是 LBRACE {...} RBRACE
+            // 如果subInit包含子constInitVal，说明它是花括号列表
+            bool isNestedBrace = (subInit->constInitVal().size() > 0);
             
-            if (isNestedBrace && depth < (int)dims.size()) {
+            // 对于多维数组，如果我们还没到最内层，需要对齐子数组
+            bool needAlignment = (depth < (int)dims.size() - 1);
+            
+            if (isNestedBrace || needAlignment) {
                 // 对齐到子数组边界
-                if (subArraySize > 0 && currentIndex % subArraySize != 0) {
+                if (subArraySize > 0 && currentIndex % subArraySize != 0 && needAlignment) {
                     currentIndex = ((currentIndex / subArraySize) + 1) * subArraySize;
                 }
                 
@@ -380,8 +384,8 @@ public:
                 // 递归处理嵌套初始化
                 fillConstArrayWithCSemantics(subInit, dims, values, currentIndex, depth + 1);
                 
-                // 完成子数组后，确保移动到下一个子数组边界
-                if (subArraySize > 0 && currentIndex < subArrayStart + subArraySize) {
+                // 完成子数组后，确保移动到下一个子数组边界（仅当需要对齐时）
+                if (subArraySize > 0 && currentIndex < subArrayStart + subArraySize && needAlignment) {
                     currentIndex = subArrayStart + subArraySize;
                 }
             } else {
@@ -452,16 +456,80 @@ public:
             return getTypeLLVMString(std::make_shared<ArrayType>(i32Type(), dims)) + " zeroinitializer";
         }
 
-        std::vector<int> values;
-        collectInitValues(initCtx, values);
-
+        // 计算总大小并初始化为0
         int totalSize = 1;
         for (int d : dims) totalSize *= d;
-        while ((int)values.size() < totalSize) {
-            values.push_back(0);
-        }
+        std::vector<int> values(totalSize, 0);
+        
+        // 使用C语言语义填充（与const数组相同的逻辑）
+        int currentIndex = 0;
+        fillArrayWithCSemanticsForInit(initCtx, dims, values, currentIndex, 0);
 
         return buildConstArrayLiteral(dims, values);
+    }
+    
+    // 为InitValContext填充数组（与fillConstArrayWithCSemantics逻辑相同）
+    void fillArrayWithCSemanticsForInit(SysYParser::InitValContext* initVal,
+                                       const std::vector<int>& dims,
+                                       std::vector<int>& values,
+                                       int& currentIndex,
+                                       int depth) {
+        if (!initVal) return;
+        
+        // 如果是单个表达式（叶子节点）
+        if (initVal->exp()) {
+            if (currentIndex < (int)values.size()) {
+                try {
+                    values[currentIndex] = evalConstExp(initVal->exp()->addExp());
+                } catch (...) {
+                    values[currentIndex] = 0;
+                }
+            }
+            currentIndex++;
+            return;
+        }
+        
+        // 嵌套初始化列表 {...}
+        auto subInits = initVal->initVal();
+        if (subInits.empty()) return;
+        
+        // 计算当前深度的子数组大小
+        int subArraySize = 1;
+        if (depth < (int)dims.size()) {
+            for (size_t i = depth + 1; i < dims.size(); ++i) {
+                subArraySize *= dims[i];
+            }
+        }
+        
+        // 处理子初始化列表中的每个元素
+        for (auto subInit : subInits) {
+            // 检查 subInit 是否是嵌套的 {}
+            bool isNestedBrace = (subInit->initVal().size() > 0);
+            
+            // 对于多维数组，如果我们还没到最内层，需要对齐子数组
+            bool needAlignment = (depth < (int)dims.size() - 1);
+            
+            if (isNestedBrace || needAlignment) {
+                // 对齐到子数组边界
+                if (subArraySize > 0 && currentIndex % subArraySize != 0 && needAlignment) {
+                    currentIndex = ((currentIndex / subArraySize) + 1) * subArraySize;
+                }
+                
+                // 记录子数组起始位置
+                int subArrayStart = currentIndex;
+                
+                // 递归处理嵌套初始化
+                fillArrayWithCSemanticsForInit(subInit, dims, values, currentIndex, depth + 1);
+                
+                // 完成子数组后，确保移动到下一个子数组边界（仅当需要对齐时）
+                if (subArraySize > 0 && currentIndex < subArrayStart + subArraySize && needAlignment) {
+                    currentIndex = subArrayStart + subArraySize;
+                }
+            } else {
+                // 处理单个表达式
+                fillArrayWithCSemanticsForInit(subInit, dims, values, currentIndex, depth + 1);
+            }
+        }
     }
     
     // 生成常量数组初始化字符串
@@ -1143,11 +1211,38 @@ public:
             std::string argStr;
             for (size_t i = 0; i < args.size(); ++i) {
                 if (i > 0) argStr += ", ";
-                std::string argTypeStr = getTypeLLVMString(args[i].type);
-                if (args[i].isConst) {
-                    argStr += argTypeStr + " " + std::to_string(args[i].constValue);
+                
+                IRValue arg = args[i];
+                
+                // 如果参数是指向数组的指针，需要转换为指向元素的指针
+                // [N x T]* → T*
+                if (auto ptrType = std::dynamic_pointer_cast<PointerType>(arg.type)) {
+                    if (auto arrType = std::dynamic_pointer_cast<ArrayType>(ptrType->pointee)) {
+                        // 生成 getelementptr 或 bitcast
+                        std::string tmp = genTmpVar();
+                        std::string arrTypeStr = getTypeLLVMString(arrType);
+                        std::string elemTypeStr = getTypeLLVMString(arrType->elementType);
+                        
+                        std::string operand = arg.name;
+                        if (!(operand.size() && (operand[0] == '%' || operand[0] == '@'))) {
+                            operand = "%" + operand;
+                        }
+                        
+                        // 使用 getelementptr 转换: [N x T]* → T*
+                        currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + 
+                                                arrTypeStr + ", " + arrTypeStr + "* " + operand + ", i64 0, i64 0");
+                        
+                        // 更新参数为转换后的类型和名称
+                        arg.name = tmp;
+                        arg.type = std::make_shared<PointerType>(arrType->elementType);
+                    }
+                }
+                
+                std::string argTypeStr = getTypeLLVMString(arg.type);
+                if (arg.isConst) {
+                    argStr += argTypeStr + " " + std::to_string(arg.constValue);
                 } else {
-                    std::string operand = args[i].name;
+                    std::string operand = arg.name;
                     if (!(operand.size() && (operand[0] == '%' || operand[0] == '@'))) {
                         operand = "%" + operand;
                     }
@@ -1155,9 +1250,32 @@ public:
                 }
             }
             
-            std::string tmp = genTmpVar();
-            currentBB->addInstruction("%"+tmp+" = call i32 @"+funcName+"(" + argStr + ")");
-            return IRValue(tmp, i32Type());
+            // 查询函数返回类型
+            // 内置函数的返回类型
+            std::string returnTypeStr = "i32";  // 默认返回int
+            bool isVoidFunc = false;
+            
+            // 检查是否是void返回的内置函数
+            if (funcName == "putch" || funcName == "putint" || funcName == "putarray") {
+                isVoidFunc = true;
+                returnTypeStr = "void";
+            } else if (funcName == "getint" || funcName == "getch" || funcName == "getarray") {
+                returnTypeStr = "i32";
+            } else {
+                // 用户定义的函数，查询符号表
+                // 目前SysY只支持int返回类型，所以默认i32
+                returnTypeStr = "i32";
+            }
+            
+            if (isVoidFunc) {
+                // void函数调用不需要赋值
+                currentBB->addInstruction("call " + returnTypeStr + " @" + funcName + "(" + argStr + ")");
+                return IRValue("0", i32Type());  // void函数返回默认值
+            } else {
+                std::string tmp = genTmpVar();
+                currentBB->addInstruction("%" + tmp + " = call " + returnTypeStr + " @" + funcName + "(" + argStr + ")");
+                return IRValue(tmp, i32Type());
+            }
         }
         
         return IRValue("0", i32Type());

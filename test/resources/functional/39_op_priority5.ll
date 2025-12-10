@@ -70,8 +70,8 @@ bb1:
   br label %bb2
 bb2:
   %__tmp33 = load i32, i32* %flag, align 4
-  %__tmp34 = call i32 @putint(i32 %__tmp33)
-  %__tmp35 = load i32, i32* %flag, align 4
-  ret i32 %__tmp35
+  call void @putint(i32 %__tmp33)
+  %__tmp34 = load i32, i32* %flag, align 4
+  ret i32 %__tmp34
 }
 

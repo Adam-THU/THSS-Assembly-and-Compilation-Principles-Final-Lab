@@ -18,9 +18,9 @@ funcEntry:
   %__tmp2 = add i32 %__tmp0, %__tmp1
   store i32 %__tmp2, i32* @g, align 4
   %__tmp3 = load i32, i32* @g, align 4
-  %__tmp4 = call i32 @putint(i32 %__tmp3)
-  %__tmp5 = load i32, i32* @g, align 4
-  ret i32 %__tmp5
+  call void @putint(i32 %__tmp3)
+  %__tmp4 = load i32, i32* @g, align 4
+  ret i32 %__tmp4
 }
 
 define i32 @main() {

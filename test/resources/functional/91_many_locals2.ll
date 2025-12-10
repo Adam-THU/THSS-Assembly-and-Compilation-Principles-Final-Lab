@@ -145,74 +145,74 @@ bb2:
   store i32 %__tmp62, i32* %a29, align 4
   %t = alloca i32, align 4
   %__tmp63 = load i32, i32* %a0, align 4
-  %__tmp64 = call i32 @putint(i32 %__tmp63)
-  %__tmp65 = load i32, i32* %a1, align 4
-  %__tmp66 = call i32 @putint(i32 %__tmp65)
-  %__tmp67 = load i32, i32* %a2, align 4
-  %__tmp68 = call i32 @putint(i32 %__tmp67)
-  %__tmp69 = load i32, i32* %a3, align 4
-  %__tmp70 = call i32 @putint(i32 %__tmp69)
-  %__tmp71 = load i32, i32* %a4, align 4
-  %__tmp72 = call i32 @putint(i32 %__tmp71)
-  %__tmp73 = load i32, i32* %a5, align 4
-  %__tmp74 = call i32 @putint(i32 %__tmp73)
-  %__tmp75 = load i32, i32* %a6, align 4
-  %__tmp76 = call i32 @putint(i32 %__tmp75)
-  %__tmp77 = load i32, i32* %a7, align 4
-  %__tmp78 = call i32 @putint(i32 %__tmp77)
-  %__tmp79 = load i32, i32* %a8, align 4
-  %__tmp80 = call i32 @putint(i32 %__tmp79)
-  %__tmp81 = load i32, i32* %a9, align 4
-  %__tmp82 = call i32 @putint(i32 %__tmp81)
-  %__tmp83 = load i32, i32* %a10, align 4
-  %__tmp84 = call i32 @putint(i32 %__tmp83)
-  %__tmp85 = load i32, i32* %a11, align 4
-  %__tmp86 = call i32 @putint(i32 %__tmp85)
-  %__tmp87 = load i32, i32* %a12, align 4
-  %__tmp88 = call i32 @putint(i32 %__tmp87)
-  %__tmp89 = load i32, i32* %a13, align 4
-  %__tmp90 = call i32 @putint(i32 %__tmp89)
-  %__tmp91 = load i32, i32* %a14, align 4
-  %__tmp92 = call i32 @putint(i32 %__tmp91)
-  %__tmp93 = load i32, i32* %a15, align 4
-  %__tmp94 = call i32 @putint(i32 %__tmp93)
-  %__tmp95 = load i32, i32* %a16, align 4
-  %__tmp96 = call i32 @putint(i32 %__tmp95)
-  %__tmp97 = load i32, i32* %a17, align 4
-  %__tmp98 = call i32 @putint(i32 %__tmp97)
-  %__tmp99 = load i32, i32* %a18, align 4
-  %__tmp100 = call i32 @putint(i32 %__tmp99)
-  %__tmp101 = load i32, i32* %a19, align 4
-  %__tmp102 = call i32 @putint(i32 %__tmp101)
-  %__tmp103 = load i32, i32* %a20, align 4
-  %__tmp104 = call i32 @putint(i32 %__tmp103)
-  %__tmp105 = load i32, i32* %a21, align 4
-  %__tmp106 = call i32 @putint(i32 %__tmp105)
-  %__tmp107 = load i32, i32* %a22, align 4
-  %__tmp108 = call i32 @putint(i32 %__tmp107)
-  %__tmp109 = load i32, i32* %a23, align 4
-  %__tmp110 = call i32 @putint(i32 %__tmp109)
-  %__tmp111 = load i32, i32* %a24, align 4
-  %__tmp112 = call i32 @putint(i32 %__tmp111)
-  %__tmp113 = load i32, i32* %a25, align 4
-  %__tmp114 = call i32 @putint(i32 %__tmp113)
-  %__tmp115 = load i32, i32* %a26, align 4
-  %__tmp116 = call i32 @putint(i32 %__tmp115)
-  %__tmp117 = load i32, i32* %a27, align 4
-  %__tmp118 = call i32 @putint(i32 %__tmp117)
-  %__tmp119 = load i32, i32* %a28, align 4
-  %__tmp120 = call i32 @putint(i32 %__tmp119)
-  %__tmp121 = load i32, i32* %a29, align 4
-  %__tmp122 = call i32 @putint(i32 %__tmp121)
+  call void @putint(i32 %__tmp63)
+  %__tmp64 = load i32, i32* %a1, align 4
+  call void @putint(i32 %__tmp64)
+  %__tmp65 = load i32, i32* %a2, align 4
+  call void @putint(i32 %__tmp65)
+  %__tmp66 = load i32, i32* %a3, align 4
+  call void @putint(i32 %__tmp66)
+  %__tmp67 = load i32, i32* %a4, align 4
+  call void @putint(i32 %__tmp67)
+  %__tmp68 = load i32, i32* %a5, align 4
+  call void @putint(i32 %__tmp68)
+  %__tmp69 = load i32, i32* %a6, align 4
+  call void @putint(i32 %__tmp69)
+  %__tmp70 = load i32, i32* %a7, align 4
+  call void @putint(i32 %__tmp70)
+  %__tmp71 = load i32, i32* %a8, align 4
+  call void @putint(i32 %__tmp71)
+  %__tmp72 = load i32, i32* %a9, align 4
+  call void @putint(i32 %__tmp72)
+  %__tmp73 = load i32, i32* %a10, align 4
+  call void @putint(i32 %__tmp73)
+  %__tmp74 = load i32, i32* %a11, align 4
+  call void @putint(i32 %__tmp74)
+  %__tmp75 = load i32, i32* %a12, align 4
+  call void @putint(i32 %__tmp75)
+  %__tmp76 = load i32, i32* %a13, align 4
+  call void @putint(i32 %__tmp76)
+  %__tmp77 = load i32, i32* %a14, align 4
+  call void @putint(i32 %__tmp77)
+  %__tmp78 = load i32, i32* %a15, align 4
+  call void @putint(i32 %__tmp78)
+  %__tmp79 = load i32, i32* %a16, align 4
+  call void @putint(i32 %__tmp79)
+  %__tmp80 = load i32, i32* %a17, align 4
+  call void @putint(i32 %__tmp80)
+  %__tmp81 = load i32, i32* %a18, align 4
+  call void @putint(i32 %__tmp81)
+  %__tmp82 = load i32, i32* %a19, align 4
+  call void @putint(i32 %__tmp82)
+  %__tmp83 = load i32, i32* %a20, align 4
+  call void @putint(i32 %__tmp83)
+  %__tmp84 = load i32, i32* %a21, align 4
+  call void @putint(i32 %__tmp84)
+  %__tmp85 = load i32, i32* %a22, align 4
+  call void @putint(i32 %__tmp85)
+  %__tmp86 = load i32, i32* %a23, align 4
+  call void @putint(i32 %__tmp86)
+  %__tmp87 = load i32, i32* %a24, align 4
+  call void @putint(i32 %__tmp87)
+  %__tmp88 = load i32, i32* %a25, align 4
+  call void @putint(i32 %__tmp88)
+  %__tmp89 = load i32, i32* %a26, align 4
+  call void @putint(i32 %__tmp89)
+  %__tmp90 = load i32, i32* %a27, align 4
+  call void @putint(i32 %__tmp90)
+  %__tmp91 = load i32, i32* %a28, align 4
+  call void @putint(i32 %__tmp91)
+  %__tmp92 = load i32, i32* %a29, align 4
+  call void @putint(i32 %__tmp92)
   %newline = alloca i32, align 4
   store i32 10, i32* %newline, align 4
-  %__tmp123 = load i32, i32* %newline, align 4
-  %__tmp124 = call i32 @putch(i32 %__tmp123)
-  %__tmp125 = load i32, i32* %b, align 4
-  %__tmp126 = call i32 @putint(i32 %__tmp125)
-  %__tmp127 = load i32, i32* %newline, align 4
-  %__tmp128 = call i32 @putch(i32 %__tmp127)
-  %__tmp129 = load i32, i32* %a25, align 4
-  ret i32 %__tmp129
+  %__tmp93 = load i32, i32* %newline, align 4
+  call void @putch(i32 %__tmp93)
+  %__tmp94 = load i32, i32* %b, align 4
+  call void @putint(i32 %__tmp94)
+  %__tmp95 = load i32, i32* %newline, align 4
+  call void @putch(i32 %__tmp95)
+  %__tmp96 = load i32, i32* %a25, align 4
+  ret i32 %__tmp96
 }
 

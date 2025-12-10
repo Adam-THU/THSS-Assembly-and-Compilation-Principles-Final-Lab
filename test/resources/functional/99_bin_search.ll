@@ -104,17 +104,17 @@ bb5:
   br i1 %__tmp45, label %bb12, label %bb13
 bb12:
   %__tmp46 = load i32, i32* %x, align 4
-  %__tmp47 = call i32 @putint(i32 %__tmp46)
+  call void @putint(i32 %__tmp46)
   br label %bb14
 bb13:
   store i32 0, i32* %x, align 4
-  %__tmp48 = load i32, i32* %x, align 4
-  %__tmp49 = call i32 @putint(i32 %__tmp48)
+  %__tmp47 = load i32, i32* %x, align 4
+  call void @putint(i32 %__tmp47)
   br label %bb14
 bb14:
   store i32 10, i32* %x, align 4
-  %__tmp50 = load i32, i32* %x, align 4
-  %__tmp51 = call i32 @putch(i32 %__tmp50)
+  %__tmp48 = load i32, i32* %x, align 4
+  call void @putch(i32 %__tmp48)
   ret i32 0
 }
 

@@ -58,12 +58,12 @@ bb8:
   br label %bb3
 bb5:
   %__tmp18 = load i32, i32* %k, align 4
-  %__tmp19 = call i32 @putint(i32 %__tmp18)
+  call void @putint(i32 %__tmp18)
   br label %bb2
 bb1:
   br label %bb2
 bb2:
-  %__tmp20 = load i32, i32* @k, align 4
-  ret i32 %__tmp20
+  %__tmp19 = load i32, i32* @k, align 4
+  ret i32 %__tmp19
 }
 

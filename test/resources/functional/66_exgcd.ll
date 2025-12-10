@@ -100,7 +100,7 @@ mainEntry:
   store i32 %__tmp15, i32* %__tmp7, align 4
   %__tmp16 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
   %__tmp17 = load i32, i32* %__tmp16, align 4
-  %__tmp18 = call i32 @putint(i32 %__tmp17)
+  call void @putint(i32 %__tmp17)
   ret i32 0
 }
 

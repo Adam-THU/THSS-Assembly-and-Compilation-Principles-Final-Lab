@@ -32,21 +32,21 @@ bb1:
   %__tmp6 = sext i32 %__tmp5 to i64
   %__tmp7 = getelementptr inbounds [50 x i32], [50 x i32]* @ans, i64 0, i64 %__tmp6
   %__tmp8 = load i32, i32* %__tmp7, align 4
-  %__tmp9 = call i32 @putint(i32 %__tmp8)
-  %__tmp10 = load i32, i32* %i, align 4
-  %__tmp11 = load i32, i32* @n, align 4
-  %__tmp12 = icmp eq i32 %__tmp10, %__tmp11
-  br i1 %__tmp12, label %bb3, label %bb4
+  call void @putint(i32 %__tmp8)
+  %__tmp9 = load i32, i32* %i, align 4
+  %__tmp10 = load i32, i32* @n, align 4
+  %__tmp11 = icmp eq i32 %__tmp9, %__tmp10
+  br i1 %__tmp11, label %bb3, label %bb4
 bb3:
-  %__tmp13 = call i32 @putch(i32 10)
+  call void @putch(i32 10)
   ret void
 bb4:
-  %__tmp14 = call i32 @putch(i32 32)
+  call void @putch(i32 32)
   br label %bb5
 bb5:
-  %__tmp15 = load i32, i32* %i, align 4
-  %__tmp16 = add i32 %__tmp15, 1
-  store i32 %__tmp16, i32* %i, align 4
+  %__tmp12 = load i32, i32* %i, align 4
+  %__tmp13 = add i32 %__tmp12, 1
+  store i32 %__tmp13, i32* %i, align 4
   br label %bb0
 bb2:
   ret void

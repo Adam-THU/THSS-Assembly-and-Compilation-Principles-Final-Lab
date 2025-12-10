@@ -39,7 +39,7 @@ bb1:
   br label %bb2
 bb2:
   %__tmp15 = load i32, i32* %a, align 4
-  %__tmp16 = call i32 @putint(i32 %__tmp15)
+  call void @putint(i32 %__tmp15)
   ret i32 0
 }
 

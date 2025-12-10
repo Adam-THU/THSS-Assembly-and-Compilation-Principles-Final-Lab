@@ -120,13 +120,13 @@ bb5:
 
 define i32 @panic() {
 panicEntry:
-  %__tmp0 = call i32 @putch(i32 112)
-  %__tmp1 = call i32 @putch(i32 97)
-  %__tmp2 = call i32 @putch(i32 110)
-  %__tmp3 = call i32 @putch(i32 105)
-  %__tmp4 = call i32 @putch(i32 99)
-  %__tmp5 = call i32 @putch(i32 33)
-  %__tmp6 = call i32 @putch(i32 10)
+  call void @putch(i32 112)
+  call void @putch(i32 97)
+  call void @putch(i32 110)
+  call void @putch(i32 105)
+  call void @putch(i32 99)
+  call void @putch(i32 33)
+  call void @putch(i32 10)
   ret i32 -1
 }
 
@@ -463,11 +463,11 @@ bb0:
   br i1 %__tmp4, label %bb1, label %bb2
 bb1:
   %__tmp5 = call i32 @eval()
-  %__tmp6 = call i32 @putint(i32 %__tmp5)
-  %__tmp7 = call i32 @putch(i32 10)
-  %__tmp8 = load i32, i32* %count, align 4
-  %__tmp9 = sub i32 %__tmp8, 1
-  store i32 %__tmp9, i32* %count, align 4
+  call void @putint(i32 %__tmp5)
+  call void @putch(i32 10)
+  %__tmp6 = load i32, i32* %count, align 4
+  %__tmp7 = sub i32 %__tmp6, 1
+  store i32 %__tmp7, i32* %count, align 4
   br label %bb0
 bb2:
   ret i32 0

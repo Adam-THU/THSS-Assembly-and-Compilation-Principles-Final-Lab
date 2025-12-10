@@ -283,14 +283,14 @@ bb13:
   %__tmp46 = sext i32 %__tmp45 to i64
   %__tmp47 = getelementptr inbounds [16 x i32], [16 x i32]* @dis, i64 0, i64 %__tmp46
   %__tmp48 = load i32, i32* %__tmp47, align 4
-  %__tmp49 = call i32 @putint(i32 %__tmp48)
-  %__tmp50 = call i32 @putch(i32 32)
-  %__tmp51 = load i32, i32* %i, align 4
-  %__tmp52 = add i32 %__tmp51, 1
-  store i32 %__tmp52, i32* %i, align 4
+  call void @putint(i32 %__tmp48)
+  call void @putch(i32 32)
+  %__tmp49 = load i32, i32* %i, align 4
+  %__tmp50 = add i32 %__tmp49, 1
+  store i32 %__tmp50, i32* %i, align 4
   br label %bb12
 bb14:
-  %__tmp53 = call i32 @putch(i32 10)
+  call void @putch(i32 10)
   ret i32 0
 }
 

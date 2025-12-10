@@ -44,46 +44,46 @@ bb1:
   %__tmp7 = sext i32 %__tmp6 to i64
   %__tmp8 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp5, i64 0, i64 %__tmp7
   %__tmp9 = load i32, i32* %__tmp8, align 4
-  %__tmp10 = call i32 @putint(i32 %__tmp9)
-  %__tmp11 = load i32, i32* %index, align 4
-  %__tmp12 = add i32 %__tmp11, 1
-  store i32 %__tmp12, i32* %index, align 4
+  call void @putint(i32 %__tmp9)
+  %__tmp10 = load i32, i32* %index, align 4
+  %__tmp11 = add i32 %__tmp10, 1
+  store i32 %__tmp11, i32* %index, align 4
   br label %bb0
 bb2:
-  %__tmp13 = call i32 @putch(i32 10)
-  %__tmp14 = load i32*, i32** %d_arg, align 4
-  %__tmp15 = load i32, i32* %c_arg, align 4
-  %__tmp16 = sext i32 %__tmp15 to i64
-  %__tmp17 = getelementptr inbounds i32, i32* %__tmp14, i64 %__tmp16
-  %__tmp18 = load i32, i32* %__tmp17, align 4
-  %__tmp19 = call i32 @putint(i32 %__tmp18)
-  %__tmp20 = call i32 @putch(i32 10)
+  call void @putch(i32 10)
+  %__tmp12 = load i32*, i32** %d_arg, align 4
+  %__tmp13 = load i32, i32* %c_arg, align 4
+  %__tmp14 = sext i32 %__tmp13 to i64
+  %__tmp15 = getelementptr inbounds i32, i32* %__tmp12, i64 %__tmp14
+  %__tmp16 = load i32, i32* %__tmp15, align 4
+  call void @putint(i32 %__tmp16)
+  call void @putch(i32 10)
   br label %bb3
 bb3:
-  %__tmp21 = load i32, i32* %i_arg, align 4
-  %__tmp22 = icmp slt i32 %__tmp21, 10
-  br i1 %__tmp22, label %bb4, label %bb5
+  %__tmp17 = load i32, i32* %i_arg, align 4
+  %__tmp18 = icmp slt i32 %__tmp17, 10
+  br i1 %__tmp18, label %bb4, label %bb5
 bb4:
-  %__tmp23 = load i32*, i32** %g_arg, align 4
-  %__tmp24 = load i32, i32* %i_arg, align 4
-  %__tmp25 = sext i32 %__tmp24 to i64
-  %__tmp26 = getelementptr inbounds i32, i32* %__tmp23, i64 %__tmp25
-  %__tmp27 = load i32, i32* %h_arg, align 4
-  %__tmp28 = mul i32 %__tmp27, 128875
-  %__tmp29 = srem i32 %__tmp28, 3724
-  store i32 %__tmp29, i32* %__tmp26, align 4
-  %__tmp30 = load i32, i32* %i_arg, align 4
-  %__tmp31 = add i32 %__tmp30, 1
-  store i32 %__tmp31, i32* %i_arg, align 4
-  %__tmp32 = load i32, i32* %h_arg, align 4
-  %__tmp33 = add i32 %__tmp32, 7
-  store i32 %__tmp33, i32* %h_arg, align 4
+  %__tmp19 = load i32*, i32** %g_arg, align 4
+  %__tmp20 = load i32, i32* %i_arg, align 4
+  %__tmp21 = sext i32 %__tmp20 to i64
+  %__tmp22 = getelementptr inbounds i32, i32* %__tmp19, i64 %__tmp21
+  %__tmp23 = load i32, i32* %h_arg, align 4
+  %__tmp24 = mul i32 %__tmp23, 128875
+  %__tmp25 = srem i32 %__tmp24, 3724
+  store i32 %__tmp25, i32* %__tmp22, align 4
+  %__tmp26 = load i32, i32* %i_arg, align 4
+  %__tmp27 = add i32 %__tmp26, 1
+  store i32 %__tmp27, i32* %i_arg, align 4
+  %__tmp28 = load i32, i32* %h_arg, align 4
+  %__tmp29 = add i32 %__tmp28, 7
+  store i32 %__tmp29, i32* %h_arg, align 4
   br label %bb3
 bb5:
-  %__tmp34 = load i32, i32* %e_arg, align 4
-  %__tmp35 = load i32, i32* %f_arg, align 4
-  %__tmp36 = add i32 %__tmp34, %__tmp35
-  ret i32 %__tmp36
+  %__tmp30 = load i32, i32* %e_arg, align 4
+  %__tmp31 = load i32, i32* %f_arg, align 4
+  %__tmp32 = add i32 %__tmp30, %__tmp31
+  ret i32 %__tmp32
 }
 
 define i32 @main() {
@@ -141,28 +141,31 @@ mainEntry:
   %__tmp36 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 51
   %__tmp37 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp36, i64 0, i64 18
   %__tmp38 = load i32, i32* %__tmp37, align 4
-  %__tmp39 = call i32 @func(i32 %__tmp20, [59 x i32]* %__tmp21, i32 %__tmp24, [67 x i32]* %__tmp25, i32 %__tmp28, i32 %__tmp31, [59 x i32]* %__tmp32, i32 %__tmp35, i32 %__tmp38)
-  %__tmp40 = mul i32 %__tmp39, 3
-  store i32 %__tmp40, i32* %ret, align 4
+  %__tmp39 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp21, i64 0, i64 0
+  %__tmp40 = getelementptr inbounds [67 x i32], [67 x i32]* %__tmp25, i64 0, i64 0
+  %__tmp41 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp32, i64 0, i64 0
+  %__tmp42 = call i32 @func(i32 %__tmp20, i32* %__tmp39, i32 %__tmp24, i32* %__tmp40, i32 %__tmp28, i32 %__tmp31, i32* %__tmp41, i32 %__tmp35, i32 %__tmp38)
+  %__tmp43 = mul i32 %__tmp42, 3
+  store i32 %__tmp43, i32* %ret, align 4
   br label %bb0
 bb0:
-  %__tmp41 = load i32, i32* %ret, align 4
-  %__tmp42 = icmp sge i32 %__tmp41, 0
-  br i1 %__tmp42, label %bb1, label %bb2
-bb1:
-  %__tmp43 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
   %__tmp44 = load i32, i32* %ret, align 4
-  %__tmp45 = sext i32 %__tmp44 to i64
-  %__tmp46 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp43, i64 0, i64 %__tmp45
-  %__tmp47 = load i32, i32* %__tmp46, align 4
-  %__tmp48 = call i32 @putint(i32 %__tmp47)
-  %__tmp49 = call i32 @putch(i32 32)
-  %__tmp50 = load i32, i32* %ret, align 4
-  %__tmp51 = sub i32 %__tmp50, 1
-  store i32 %__tmp51, i32* %ret, align 4
+  %__tmp45 = icmp sge i32 %__tmp44, 0
+  br i1 %__tmp45, label %bb1, label %bb2
+bb1:
+  %__tmp46 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
+  %__tmp47 = load i32, i32* %ret, align 4
+  %__tmp48 = sext i32 %__tmp47 to i64
+  %__tmp49 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp46, i64 0, i64 %__tmp48
+  %__tmp50 = load i32, i32* %__tmp49, align 4
+  call void @putint(i32 %__tmp50)
+  call void @putch(i32 32)
+  %__tmp51 = load i32, i32* %ret, align 4
+  %__tmp52 = sub i32 %__tmp51, 1
+  store i32 %__tmp52, i32* %ret, align 4
   br label %bb0
 bb2:
-  %__tmp52 = call i32 @putch(i32 10)
+  call void @putch(i32 10)
   ret i32 0
 }
 

@@ -57,63 +57,63 @@ bb10:
   br i1 %__tmp9, label %bb3, label %bb4
 bb3:
   %__tmp10 = load i32, i32* @a, align 4
-  %__tmp11 = call i32 @putint(i32 %__tmp10)
-  %__tmp12 = call i32 @putch(i32 32)
-  %__tmp13 = load i32, i32* @b, align 4
-  %__tmp14 = call i32 @putint(i32 %__tmp13)
-  %__tmp15 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp10)
+  call void @putch(i32 32)
+  %__tmp11 = load i32, i32* @b, align 4
+  call void @putint(i32 %__tmp11)
+  call void @putch(i32 10)
   br label %bb5
 bb4:
   br label %bb5
 bb5:
-  %__tmp16 = call i32 @inc_a()
-  %__tmp17 = icmp slt i32 %__tmp16, 14
-  br i1 %__tmp17, label %bb17, label %bb15
+  %__tmp12 = call i32 @inc_a()
+  %__tmp13 = icmp slt i32 %__tmp12, 14
+  br i1 %__tmp13, label %bb17, label %bb15
 bb17:
   br label %bb16
 bb15:
-  %__tmp18 = call i32 @inc_a()
-  %__tmp19 = icmp ne i32 %__tmp18, 0
-  br i1 %__tmp19, label %bb18, label %bb20
+  %__tmp14 = call i32 @inc_a()
+  %__tmp15 = icmp ne i32 %__tmp14, 0
+  br i1 %__tmp15, label %bb18, label %bb20
 bb20:
   br label %bb19
 bb18:
-  %__tmp20 = call i32 @inc_a()
-  %__tmp21 = call i32 @inc_a()
-  %__tmp22 = sub i32 %__tmp20, %__tmp21
-  %__tmp23 = add i32 %__tmp22, 1
-  %__tmp24 = icmp ne i32 %__tmp23, 0
+  %__tmp16 = call i32 @inc_a()
+  %__tmp17 = call i32 @inc_a()
+  %__tmp18 = sub i32 %__tmp16, %__tmp17
+  %__tmp19 = add i32 %__tmp18, 1
+  %__tmp20 = icmp ne i32 %__tmp19, 0
   br label %bb19
 bb19:
-  %__tmp25 = phi i1 [ 0, %bb20 ], [ %__tmp24, %bb18 ]
+  %__tmp21 = phi i1 [ 0, %bb20 ], [ %__tmp20, %bb18 ]
   br label %bb16
 bb16:
-  %__tmp26 = phi i1 [ 1, %bb17 ], [ %__tmp25, %bb19 ]
-  br i1 %__tmp26, label %bb12, label %bb13
+  %__tmp22 = phi i1 [ 1, %bb17 ], [ %__tmp21, %bb19 ]
+  br i1 %__tmp22, label %bb12, label %bb13
 bb12:
-  %__tmp27 = load i32, i32* @a, align 4
-  %__tmp28 = call i32 @putint(i32 %__tmp27)
-  %__tmp29 = call i32 @putch(i32 10)
-  %__tmp30 = load i32, i32* @b, align 4
-  %__tmp31 = mul i32 %__tmp30, 2
-  store i32 %__tmp31, i32* @b, align 4
+  %__tmp23 = load i32, i32* @a, align 4
+  call void @putint(i32 %__tmp23)
+  call void @putch(i32 10)
+  %__tmp24 = load i32, i32* @b, align 4
+  %__tmp25 = mul i32 %__tmp24, 2
+  store i32 %__tmp25, i32* @b, align 4
   br label %bb14
 bb13:
-  %__tmp32 = call i32 @inc_a()
+  %__tmp26 = call i32 @inc_a()
   br label %bb14
 bb14:
-  %__tmp33 = load i32, i32* %k, align 4
-  %__tmp34 = sub i32 %__tmp33, 1
-  store i32 %__tmp34, i32* %k, align 4
+  %__tmp27 = load i32, i32* %k, align 4
+  %__tmp28 = sub i32 %__tmp27, 1
+  store i32 %__tmp28, i32* %k, align 4
   br label %bb0
 bb2:
-  %__tmp35 = load i32, i32* @a, align 4
-  %__tmp36 = call i32 @putint(i32 %__tmp35)
-  %__tmp37 = call i32 @putch(i32 32)
-  %__tmp38 = load i32, i32* @b, align 4
-  %__tmp39 = call i32 @putint(i32 %__tmp38)
-  %__tmp40 = call i32 @putch(i32 10)
-  %__tmp41 = load i32, i32* @a, align 4
-  ret i32 %__tmp41
+  %__tmp29 = load i32, i32* @a, align 4
+  call void @putint(i32 %__tmp29)
+  call void @putch(i32 32)
+  %__tmp30 = load i32, i32* @b, align 4
+  call void @putint(i32 %__tmp30)
+  call void @putch(i32 10)
+  %__tmp31 = load i32, i32* @a, align 4
+  ret i32 %__tmp31
 }
 

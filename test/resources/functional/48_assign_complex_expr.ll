@@ -33,26 +33,26 @@ mainEntry:
   %__tmp11 = sub i32 %__tmp6, %__tmp10
   store i32 %__tmp11, i32* %result, align 4
   %__tmp12 = load i32, i32* %result, align 4
-  %__tmp13 = call i32 @putint(i32 %__tmp12)
-  %__tmp14 = load i32, i32* %d, align 4
-  %__tmp15 = srem i32 %__tmp14, 2
-  %__tmp16 = add i32 %__tmp15, 67
-  %__tmp17 = load i32, i32* %a, align 4
-  %__tmp18 = load i32, i32* %b, align 4
-  %__tmp19 = sub i32 %__tmp17, %__tmp18
-  %__tmp20 = sub i32 0, %__tmp19
-  %__tmp21 = add i32 %__tmp16, %__tmp20
-  %__tmp22 = load i32, i32* %c, align 4
-  %__tmp23 = add i32 %__tmp22, 2
-  %__tmp24 = srem i32 %__tmp23, 2
-  %__tmp25 = sub i32 0, %__tmp24
-  %__tmp26 = sub i32 %__tmp21, %__tmp25
-  store i32 %__tmp26, i32* %result, align 4
-  %__tmp27 = load i32, i32* %result, align 4
-  %__tmp28 = add i32 %__tmp27, 3
-  store i32 %__tmp28, i32* %result, align 4
-  %__tmp29 = load i32, i32* %result, align 4
-  %__tmp30 = call i32 @putint(i32 %__tmp29)
+  call void @putint(i32 %__tmp12)
+  %__tmp13 = load i32, i32* %d, align 4
+  %__tmp14 = srem i32 %__tmp13, 2
+  %__tmp15 = add i32 %__tmp14, 67
+  %__tmp16 = load i32, i32* %a, align 4
+  %__tmp17 = load i32, i32* %b, align 4
+  %__tmp18 = sub i32 %__tmp16, %__tmp17
+  %__tmp19 = sub i32 0, %__tmp18
+  %__tmp20 = add i32 %__tmp15, %__tmp19
+  %__tmp21 = load i32, i32* %c, align 4
+  %__tmp22 = add i32 %__tmp21, 2
+  %__tmp23 = srem i32 %__tmp22, 2
+  %__tmp24 = sub i32 0, %__tmp23
+  %__tmp25 = sub i32 %__tmp20, %__tmp24
+  store i32 %__tmp25, i32* %result, align 4
+  %__tmp26 = load i32, i32* %result, align 4
+  %__tmp27 = add i32 %__tmp26, 3
+  store i32 %__tmp27, i32* %result, align 4
+  %__tmp28 = load i32, i32* %result, align 4
+  call void @putint(i32 %__tmp28)
   ret i32 0
 }
 

@@ -222,8 +222,8 @@ mainEntry:
   %__tmp4 = getelementptr inbounds [4096 x i32], [4096 x i32]* %dst, i64 0, i64 0
   %__tmp5 = getelementptr inbounds [4096 x i32], [4096 x i32]* %src, i64 0, i64 0
   %__tmp6 = call i32 @KMP(i32* %__tmp4, i32* %__tmp5)
-  %__tmp7 = call i32 @putint(i32 %__tmp6)
-  %__tmp8 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp6)
+  call void @putch(i32 10)
   ret i32 0
 }
 

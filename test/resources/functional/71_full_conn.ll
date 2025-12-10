@@ -1613,25 +1613,26 @@ bb8:
   br label %bb3
 bb5:
   %__tmp18 = getelementptr inbounds [5 x [5 x i32]], [5 x [5 x i32]]* %a, i64 0, i64 0
-  %__tmp19 = call i32 @model([5 x i32]* %__tmp18)
-  %__tmp20 = trunc i32 %__tmp19 to i1
-  br i1 %__tmp20, label %bb9, label %bb10
+  %__tmp19 = getelementptr inbounds [5 x i32], [5 x i32]* %__tmp18, i64 0, i64 0
+  %__tmp20 = call i32 @model(i32* %__tmp19)
+  %__tmp21 = trunc i32 %__tmp20 to i1
+  br i1 %__tmp21, label %bb9, label %bb10
 bb9:
-  %__tmp21 = call i32 @putch(i32 99)
-  %__tmp22 = call i32 @putch(i32 97)
-  %__tmp23 = call i32 @putch(i32 116)
-  %__tmp24 = call i32 @putch(i32 10)
+  call void @putch(i32 99)
+  call void @putch(i32 97)
+  call void @putch(i32 116)
+  call void @putch(i32 10)
   br label %bb11
 bb10:
-  %__tmp25 = call i32 @putch(i32 100)
-  %__tmp26 = call i32 @putch(i32 111)
-  %__tmp27 = call i32 @putch(i32 103)
-  %__tmp28 = call i32 @putch(i32 10)
+  call void @putch(i32 100)
+  call void @putch(i32 111)
+  call void @putch(i32 103)
+  call void @putch(i32 10)
   br label %bb11
 bb11:
-  %__tmp29 = load i32, i32* %N, align 4
-  %__tmp30 = sub i32 %__tmp29, 1
-  store i32 %__tmp30, i32* %N, align 4
+  %__tmp22 = load i32, i32* %N, align 4
+  %__tmp23 = sub i32 %__tmp22, 1
+  store i32 %__tmp23, i32* %N, align 4
   br label %bb0
 bb2:
   ret i32 0

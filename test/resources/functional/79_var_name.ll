@@ -57,14 +57,14 @@ bb1:
   %__tmp30 = sext i32 %__tmp29 to i64
   %__tmp31 = getelementptr inbounds [20 x i32], [20 x i32]* %VLDTJUr0eYj3UiHhVWtQqVrqunxn8G_69278196, i64 0, i64 %__tmp30
   %__tmp32 = load i32, i32* %__tmp31, align 4
-  %__tmp33 = call i32 @putint(i32 %__tmp32)
-  %__tmp34 = call i32 @putch(i32 10)
-  %__tmp35 = load i32, i32* %xU4UVdo6fPho5bRhUTjrlIMjqIY_ev_11081019, align 4
-  %__tmp36 = add i32 %__tmp35, 1
-  store i32 %__tmp36, i32* %xU4UVdo6fPho5bRhUTjrlIMjqIY_ev_11081019, align 4
+  call void @putint(i32 %__tmp32)
+  call void @putch(i32 10)
+  %__tmp33 = load i32, i32* %xU4UVdo6fPho5bRhUTjrlIMjqIY_ev_11081019, align 4
+  %__tmp34 = add i32 %__tmp33, 1
+  store i32 %__tmp34, i32* %xU4UVdo6fPho5bRhUTjrlIMjqIY_ev_11081019, align 4
   br label %bb0
 bb2:
-  %__tmp37 = load i32, i32* %V62vtYqjKr7vUHagX8crbD1Pj3RQqU_97538039, align 4
-  ret i32 %__tmp37
+  %__tmp35 = load i32, i32* %V62vtYqjKr7vUHagX8crbD1Pj3RQqU_97538039, align 4
+  ret i32 %__tmp35
 }
 

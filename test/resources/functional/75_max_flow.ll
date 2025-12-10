@@ -400,8 +400,8 @@ bb1:
 bb2:
   %__tmp15 = load i32, i32* %V, align 4
   %__tmp16 = call i32 @max_flow(i32 1, i32 %__tmp15)
-  %__tmp17 = call i32 @putint(i32 %__tmp16)
-  %__tmp18 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp16)
+  call void @putch(i32 10)
   ret i32 0
 }
 

@@ -266,7 +266,7 @@ bb11:
 bb18:
   %__tmp134 = getelementptr inbounds [40 x i32], [40 x i32]* %result, i64 0, i64 0
   %__tmp135 = load i32, i32* %__tmp134, align 4
-  %__tmp136 = call i32 @putint(i32 %__tmp135)
+  call void @putint(i32 %__tmp135)
   br label %bb20
 bb19:
   br label %bb20
@@ -274,22 +274,22 @@ bb20:
   store i32 1, i32* %i, align 4
   br label %bb21
 bb21:
-  %__tmp137 = load i32, i32* %i, align 4
-  %__tmp138 = load i32, i32* %len1, align 4
-  %__tmp139 = load i32, i32* %len2, align 4
-  %__tmp140 = add i32 %__tmp138, %__tmp139
-  %__tmp141 = sub i32 %__tmp140, 1
-  %__tmp142 = icmp sle i32 %__tmp137, %__tmp141
-  br i1 %__tmp142, label %bb22, label %bb23
+  %__tmp136 = load i32, i32* %i, align 4
+  %__tmp137 = load i32, i32* %len1, align 4
+  %__tmp138 = load i32, i32* %len2, align 4
+  %__tmp139 = add i32 %__tmp137, %__tmp138
+  %__tmp140 = sub i32 %__tmp139, 1
+  %__tmp141 = icmp sle i32 %__tmp136, %__tmp140
+  br i1 %__tmp141, label %bb22, label %bb23
 bb22:
-  %__tmp143 = load i32, i32* %i, align 4
-  %__tmp144 = sext i32 %__tmp143 to i64
-  %__tmp145 = getelementptr inbounds [40 x i32], [40 x i32]* %result, i64 0, i64 %__tmp144
-  %__tmp146 = load i32, i32* %__tmp145, align 4
-  %__tmp147 = call i32 @putint(i32 %__tmp146)
-  %__tmp148 = load i32, i32* %i, align 4
-  %__tmp149 = add i32 %__tmp148, 1
-  store i32 %__tmp149, i32* %i, align 4
+  %__tmp142 = load i32, i32* %i, align 4
+  %__tmp143 = sext i32 %__tmp142 to i64
+  %__tmp144 = getelementptr inbounds [40 x i32], [40 x i32]* %result, i64 0, i64 %__tmp143
+  %__tmp145 = load i32, i32* %__tmp144, align 4
+  call void @putint(i32 %__tmp145)
+  %__tmp146 = load i32, i32* %i, align 4
+  %__tmp147 = add i32 %__tmp146, 1
+  store i32 %__tmp147, i32* %i, align 4
   br label %bb21
 bb23:
   ret i32 0

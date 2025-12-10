@@ -1227,8 +1227,8 @@ bb2:
   %__tmp557 = load i32, i32* %pres, align 4
   store i32 %__tmp557, i32* %ans, align 4
   %__tmp558 = load i32, i32* %ans, align 4
-  %__tmp559 = call i32 @putint(i32 %__tmp558)
-  %__tmp560 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp558)
+  call void @putch(i32 10)
   %pl.1 = alloca i32, align 4
   store i32 2, i32* %pl.1, align 4
   %pr.1 = alloca i32, align 4
@@ -1237,538 +1237,538 @@ bb2:
   store i32 1, i32* %pres.1, align 4
   br label %bb225
 bb225:
-  %__tmp561 = load i32, i32* %pr.1, align 4
-  %__tmp562 = icmp sgt i32 %__tmp561, 0
-  br i1 %__tmp562, label %bb226, label %bb227
+  %__tmp559 = load i32, i32* %pr.1, align 4
+  %__tmp560 = icmp sgt i32 %__tmp559, 0
+  br i1 %__tmp560, label %bb226, label %bb227
 bb226:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp563 = load i32, i32* %pr.1, align 4
-  store i32 %__tmp563, i32* %x, align 4
+  %__tmp561 = load i32, i32* %pr.1, align 4
+  store i32 %__tmp561, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb228
 bb228:
-  %__tmp564 = load i32, i32* %i, align 4
-  %__tmp565 = icmp slt i32 %__tmp564, 16
-  br i1 %__tmp565, label %bb229, label %bb230
+  %__tmp562 = load i32, i32* %i, align 4
+  %__tmp563 = icmp slt i32 %__tmp562, 16
+  br i1 %__tmp563, label %bb229, label %bb230
 bb229:
-  %__tmp566 = load i32, i32* %x, align 4
-  %__tmp567 = srem i32 %__tmp566, 2
-  %__tmp568 = icmp ne i32 %__tmp567, 0
-  br i1 %__tmp568, label %bb234, label %bb236
+  %__tmp564 = load i32, i32* %x, align 4
+  %__tmp565 = srem i32 %__tmp564, 2
+  %__tmp566 = icmp ne i32 %__tmp565, 0
+  br i1 %__tmp566, label %bb234, label %bb236
 bb236:
   br label %bb235
 bb234:
-  %__tmp569 = load i32, i32* %y, align 4
-  %__tmp570 = srem i32 %__tmp569, 2
-  %__tmp571 = icmp ne i32 %__tmp570, 0
+  %__tmp567 = load i32, i32* %y, align 4
+  %__tmp568 = srem i32 %__tmp567, 2
+  %__tmp569 = icmp ne i32 %__tmp568, 0
   br label %bb235
 bb235:
-  %__tmp572 = phi i1 [ 0, %bb236 ], [ %__tmp571, %bb234 ]
-  br i1 %__tmp572, label %bb231, label %bb232
+  %__tmp570 = phi i1 [ 0, %bb236 ], [ %__tmp569, %bb234 ]
+  br i1 %__tmp570, label %bb231, label %bb232
 bb231:
-  %__tmp573 = load i32, i32* %ans, align 4
-  %__tmp574 = load i32, i32* %i, align 4
-  %__tmp575 = sext i32 %__tmp574 to i64
-  %__tmp576 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp575
-  %__tmp577 = load i32, i32* %__tmp576, align 4
-  %__tmp578 = mul i32 1, %__tmp577
-  %__tmp579 = add i32 %__tmp573, %__tmp578
-  store i32 %__tmp579, i32* %ans, align 4
+  %__tmp571 = load i32, i32* %ans, align 4
+  %__tmp572 = load i32, i32* %i, align 4
+  %__tmp573 = sext i32 %__tmp572 to i64
+  %__tmp574 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp573
+  %__tmp575 = load i32, i32* %__tmp574, align 4
+  %__tmp576 = mul i32 1, %__tmp575
+  %__tmp577 = add i32 %__tmp571, %__tmp576
+  store i32 %__tmp577, i32* %ans, align 4
   br label %bb233
 bb232:
   br label %bb233
 bb233:
-  %__tmp580 = load i32, i32* %x, align 4
+  %__tmp578 = load i32, i32* %x, align 4
+  %__tmp579 = sdiv i32 %__tmp578, 2
+  store i32 %__tmp579, i32* %x, align 4
+  %__tmp580 = load i32, i32* %y, align 4
   %__tmp581 = sdiv i32 %__tmp580, 2
-  store i32 %__tmp581, i32* %x, align 4
-  %__tmp582 = load i32, i32* %y, align 4
-  %__tmp583 = sdiv i32 %__tmp582, 2
-  store i32 %__tmp583, i32* %y, align 4
-  %__tmp584 = load i32, i32* %i, align 4
-  %__tmp585 = add i32 %__tmp584, 1
-  store i32 %__tmp585, i32* %i, align 4
+  store i32 %__tmp581, i32* %y, align 4
+  %__tmp582 = load i32, i32* %i, align 4
+  %__tmp583 = add i32 %__tmp582, 1
+  store i32 %__tmp583, i32* %i, align 4
   br label %bb228
 bb230:
-  %__tmp586 = load i32, i32* %ans, align 4
-  %__tmp587 = trunc i32 %__tmp586 to i1
-  br i1 %__tmp587, label %bb237, label %bb238
+  %__tmp584 = load i32, i32* %ans, align 4
+  %__tmp585 = trunc i32 %__tmp584 to i1
+  br i1 %__tmp585, label %bb237, label %bb238
 bb237:
   %ml.2 = alloca i32, align 4
-  %__tmp588 = load i32, i32* %pres.1, align 4
-  store i32 %__tmp588, i32* %ml.2, align 4
+  %__tmp586 = load i32, i32* %pres.1, align 4
+  store i32 %__tmp586, i32* %ml.2, align 4
   %mr.2 = alloca i32, align 4
-  %__tmp589 = load i32, i32* %pl.1, align 4
-  store i32 %__tmp589, i32* %mr.2, align 4
+  %__tmp587 = load i32, i32* %pl.1, align 4
+  store i32 %__tmp587, i32* %mr.2, align 4
   %mres.2 = alloca i32, align 4
   store i32 0, i32* %mres.2, align 4
   br label %bb240
 bb240:
-  %__tmp590 = load i32, i32* %mr.2, align 4
-  %__tmp591 = trunc i32 %__tmp590 to i1
-  br i1 %__tmp591, label %bb241, label %bb242
+  %__tmp588 = load i32, i32* %mr.2, align 4
+  %__tmp589 = trunc i32 %__tmp588 to i1
+  br i1 %__tmp589, label %bb241, label %bb242
 bb241:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp592 = load i32, i32* %mr.2, align 4
-  store i32 %__tmp592, i32* %x, align 4
+  %__tmp590 = load i32, i32* %mr.2, align 4
+  store i32 %__tmp590, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb243
 bb243:
-  %__tmp593 = load i32, i32* %i, align 4
-  %__tmp594 = icmp slt i32 %__tmp593, 16
-  br i1 %__tmp594, label %bb244, label %bb245
+  %__tmp591 = load i32, i32* %i, align 4
+  %__tmp592 = icmp slt i32 %__tmp591, 16
+  br i1 %__tmp592, label %bb244, label %bb245
 bb244:
-  %__tmp595 = load i32, i32* %x, align 4
-  %__tmp596 = srem i32 %__tmp595, 2
-  %__tmp597 = icmp ne i32 %__tmp596, 0
-  br i1 %__tmp597, label %bb249, label %bb251
+  %__tmp593 = load i32, i32* %x, align 4
+  %__tmp594 = srem i32 %__tmp593, 2
+  %__tmp595 = icmp ne i32 %__tmp594, 0
+  br i1 %__tmp595, label %bb249, label %bb251
 bb251:
   br label %bb250
 bb249:
-  %__tmp598 = load i32, i32* %y, align 4
-  %__tmp599 = srem i32 %__tmp598, 2
-  %__tmp600 = icmp ne i32 %__tmp599, 0
+  %__tmp596 = load i32, i32* %y, align 4
+  %__tmp597 = srem i32 %__tmp596, 2
+  %__tmp598 = icmp ne i32 %__tmp597, 0
   br label %bb250
 bb250:
-  %__tmp601 = phi i1 [ 0, %bb251 ], [ %__tmp600, %bb249 ]
-  br i1 %__tmp601, label %bb246, label %bb247
+  %__tmp599 = phi i1 [ 0, %bb251 ], [ %__tmp598, %bb249 ]
+  br i1 %__tmp599, label %bb246, label %bb247
 bb246:
-  %__tmp602 = load i32, i32* %ans, align 4
-  %__tmp603 = load i32, i32* %i, align 4
-  %__tmp604 = sext i32 %__tmp603 to i64
-  %__tmp605 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp604
-  %__tmp606 = load i32, i32* %__tmp605, align 4
-  %__tmp607 = mul i32 1, %__tmp606
-  %__tmp608 = add i32 %__tmp602, %__tmp607
-  store i32 %__tmp608, i32* %ans, align 4
+  %__tmp600 = load i32, i32* %ans, align 4
+  %__tmp601 = load i32, i32* %i, align 4
+  %__tmp602 = sext i32 %__tmp601 to i64
+  %__tmp603 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp602
+  %__tmp604 = load i32, i32* %__tmp603, align 4
+  %__tmp605 = mul i32 1, %__tmp604
+  %__tmp606 = add i32 %__tmp600, %__tmp605
+  store i32 %__tmp606, i32* %ans, align 4
   br label %bb248
 bb247:
   br label %bb248
 bb248:
-  %__tmp609 = load i32, i32* %x, align 4
+  %__tmp607 = load i32, i32* %x, align 4
+  %__tmp608 = sdiv i32 %__tmp607, 2
+  store i32 %__tmp608, i32* %x, align 4
+  %__tmp609 = load i32, i32* %y, align 4
   %__tmp610 = sdiv i32 %__tmp609, 2
-  store i32 %__tmp610, i32* %x, align 4
-  %__tmp611 = load i32, i32* %y, align 4
-  %__tmp612 = sdiv i32 %__tmp611, 2
-  store i32 %__tmp612, i32* %y, align 4
-  %__tmp613 = load i32, i32* %i, align 4
-  %__tmp614 = add i32 %__tmp613, 1
-  store i32 %__tmp614, i32* %i, align 4
+  store i32 %__tmp610, i32* %y, align 4
+  %__tmp611 = load i32, i32* %i, align 4
+  %__tmp612 = add i32 %__tmp611, 1
+  store i32 %__tmp612, i32* %i, align 4
   br label %bb243
 bb245:
-  %__tmp615 = load i32, i32* %ans, align 4
-  %__tmp616 = trunc i32 %__tmp615 to i1
-  br i1 %__tmp616, label %bb252, label %bb253
+  %__tmp613 = load i32, i32* %ans, align 4
+  %__tmp614 = trunc i32 %__tmp613 to i1
+  br i1 %__tmp614, label %bb252, label %bb253
 bb252:
   %al.4 = alloca i32, align 4
-  %__tmp617 = load i32, i32* %mres.2, align 4
-  store i32 %__tmp617, i32* %al.4, align 4
+  %__tmp615 = load i32, i32* %mres.2, align 4
+  store i32 %__tmp615, i32* %al.4, align 4
   %c.4 = alloca i32, align 4
-  %__tmp618 = load i32, i32* %ml.2, align 4
-  store i32 %__tmp618, i32* %c.4, align 4
+  %__tmp616 = load i32, i32* %ml.2, align 4
+  store i32 %__tmp616, i32* %c.4, align 4
   %sum.4 = alloca i32, align 4
   br label %bb255
 bb255:
-  %__tmp619 = load i32, i32* %c.4, align 4
-  %__tmp620 = trunc i32 %__tmp619 to i1
-  br i1 %__tmp620, label %bb256, label %bb257
+  %__tmp617 = load i32, i32* %c.4, align 4
+  %__tmp618 = trunc i32 %__tmp617 to i1
+  br i1 %__tmp618, label %bb256, label %bb257
 bb256:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp621 = load i32, i32* %al.4, align 4
-  store i32 %__tmp621, i32* %x, align 4
-  %__tmp622 = load i32, i32* %c.4, align 4
-  store i32 %__tmp622, i32* %y, align 4
+  %__tmp619 = load i32, i32* %al.4, align 4
+  store i32 %__tmp619, i32* %x, align 4
+  %__tmp620 = load i32, i32* %c.4, align 4
+  store i32 %__tmp620, i32* %y, align 4
   br label %bb258
 bb258:
-  %__tmp623 = load i32, i32* %i, align 4
-  %__tmp624 = icmp slt i32 %__tmp623, 16
-  br i1 %__tmp624, label %bb259, label %bb260
+  %__tmp621 = load i32, i32* %i, align 4
+  %__tmp622 = icmp slt i32 %__tmp621, 16
+  br i1 %__tmp622, label %bb259, label %bb260
 bb259:
-  %__tmp625 = load i32, i32* %x, align 4
-  %__tmp626 = srem i32 %__tmp625, 2
-  %__tmp627 = trunc i32 %__tmp626 to i1
-  br i1 %__tmp627, label %bb261, label %bb262
+  %__tmp623 = load i32, i32* %x, align 4
+  %__tmp624 = srem i32 %__tmp623, 2
+  %__tmp625 = trunc i32 %__tmp624 to i1
+  br i1 %__tmp625, label %bb261, label %bb262
 bb261:
-  %__tmp628 = load i32, i32* %y, align 4
-  %__tmp629 = srem i32 %__tmp628, 2
-  %__tmp630 = icmp eq i32 %__tmp629, 0
-  br i1 %__tmp630, label %bb264, label %bb265
+  %__tmp626 = load i32, i32* %y, align 4
+  %__tmp627 = srem i32 %__tmp626, 2
+  %__tmp628 = icmp eq i32 %__tmp627, 0
+  br i1 %__tmp628, label %bb264, label %bb265
 bb264:
-  %__tmp631 = load i32, i32* %ans, align 4
-  %__tmp632 = load i32, i32* %i, align 4
-  %__tmp633 = sext i32 %__tmp632 to i64
-  %__tmp634 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp633
-  %__tmp635 = load i32, i32* %__tmp634, align 4
-  %__tmp636 = mul i32 1, %__tmp635
-  %__tmp637 = add i32 %__tmp631, %__tmp636
-  store i32 %__tmp637, i32* %ans, align 4
+  %__tmp629 = load i32, i32* %ans, align 4
+  %__tmp630 = load i32, i32* %i, align 4
+  %__tmp631 = sext i32 %__tmp630 to i64
+  %__tmp632 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp631
+  %__tmp633 = load i32, i32* %__tmp632, align 4
+  %__tmp634 = mul i32 1, %__tmp633
+  %__tmp635 = add i32 %__tmp629, %__tmp634
+  store i32 %__tmp635, i32* %ans, align 4
   br label %bb266
 bb265:
   br label %bb266
 bb266:
   br label %bb263
 bb262:
-  %__tmp638 = load i32, i32* %y, align 4
-  %__tmp639 = srem i32 %__tmp638, 2
-  %__tmp640 = trunc i32 %__tmp639 to i1
-  br i1 %__tmp640, label %bb267, label %bb268
+  %__tmp636 = load i32, i32* %y, align 4
+  %__tmp637 = srem i32 %__tmp636, 2
+  %__tmp638 = trunc i32 %__tmp637 to i1
+  br i1 %__tmp638, label %bb267, label %bb268
 bb267:
-  %__tmp641 = load i32, i32* %ans, align 4
-  %__tmp642 = load i32, i32* %i, align 4
-  %__tmp643 = sext i32 %__tmp642 to i64
-  %__tmp644 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp643
-  %__tmp645 = load i32, i32* %__tmp644, align 4
-  %__tmp646 = mul i32 1, %__tmp645
-  %__tmp647 = add i32 %__tmp641, %__tmp646
-  store i32 %__tmp647, i32* %ans, align 4
+  %__tmp639 = load i32, i32* %ans, align 4
+  %__tmp640 = load i32, i32* %i, align 4
+  %__tmp641 = sext i32 %__tmp640 to i64
+  %__tmp642 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp641
+  %__tmp643 = load i32, i32* %__tmp642, align 4
+  %__tmp644 = mul i32 1, %__tmp643
+  %__tmp645 = add i32 %__tmp639, %__tmp644
+  store i32 %__tmp645, i32* %ans, align 4
   br label %bb269
 bb268:
   br label %bb269
 bb269:
   br label %bb263
 bb263:
-  %__tmp648 = load i32, i32* %x, align 4
+  %__tmp646 = load i32, i32* %x, align 4
+  %__tmp647 = sdiv i32 %__tmp646, 2
+  store i32 %__tmp647, i32* %x, align 4
+  %__tmp648 = load i32, i32* %y, align 4
   %__tmp649 = sdiv i32 %__tmp648, 2
-  store i32 %__tmp649, i32* %x, align 4
-  %__tmp650 = load i32, i32* %y, align 4
-  %__tmp651 = sdiv i32 %__tmp650, 2
-  store i32 %__tmp651, i32* %y, align 4
-  %__tmp652 = load i32, i32* %i, align 4
-  %__tmp653 = add i32 %__tmp652, 1
-  store i32 %__tmp653, i32* %i, align 4
+  store i32 %__tmp649, i32* %y, align 4
+  %__tmp650 = load i32, i32* %i, align 4
+  %__tmp651 = add i32 %__tmp650, 1
+  store i32 %__tmp651, i32* %i, align 4
   br label %bb258
 bb260:
-  %__tmp654 = load i32, i32* %ans, align 4
-  store i32 %__tmp654, i32* %sum.4, align 4
+  %__tmp652 = load i32, i32* %ans, align 4
+  store i32 %__tmp652, i32* %sum.4, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp655 = load i32, i32* %al.4, align 4
-  store i32 %__tmp655, i32* %x, align 4
-  %__tmp656 = load i32, i32* %c.4, align 4
-  store i32 %__tmp656, i32* %y, align 4
+  %__tmp653 = load i32, i32* %al.4, align 4
+  store i32 %__tmp653, i32* %x, align 4
+  %__tmp654 = load i32, i32* %c.4, align 4
+  store i32 %__tmp654, i32* %y, align 4
   br label %bb270
 bb270:
-  %__tmp657 = load i32, i32* %i, align 4
-  %__tmp658 = icmp slt i32 %__tmp657, 16
-  br i1 %__tmp658, label %bb271, label %bb272
+  %__tmp655 = load i32, i32* %i, align 4
+  %__tmp656 = icmp slt i32 %__tmp655, 16
+  br i1 %__tmp656, label %bb271, label %bb272
 bb271:
-  %__tmp659 = load i32, i32* %x, align 4
-  %__tmp660 = srem i32 %__tmp659, 2
-  %__tmp661 = icmp ne i32 %__tmp660, 0
-  br i1 %__tmp661, label %bb276, label %bb278
+  %__tmp657 = load i32, i32* %x, align 4
+  %__tmp658 = srem i32 %__tmp657, 2
+  %__tmp659 = icmp ne i32 %__tmp658, 0
+  br i1 %__tmp659, label %bb276, label %bb278
 bb278:
   br label %bb277
 bb276:
-  %__tmp662 = load i32, i32* %y, align 4
-  %__tmp663 = srem i32 %__tmp662, 2
-  %__tmp664 = icmp ne i32 %__tmp663, 0
+  %__tmp660 = load i32, i32* %y, align 4
+  %__tmp661 = srem i32 %__tmp660, 2
+  %__tmp662 = icmp ne i32 %__tmp661, 0
   br label %bb277
 bb277:
-  %__tmp665 = phi i1 [ 0, %bb278 ], [ %__tmp664, %bb276 ]
-  br i1 %__tmp665, label %bb273, label %bb274
+  %__tmp663 = phi i1 [ 0, %bb278 ], [ %__tmp662, %bb276 ]
+  br i1 %__tmp663, label %bb273, label %bb274
 bb273:
-  %__tmp666 = load i32, i32* %ans, align 4
-  %__tmp667 = load i32, i32* %i, align 4
-  %__tmp668 = sext i32 %__tmp667 to i64
-  %__tmp669 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp668
-  %__tmp670 = load i32, i32* %__tmp669, align 4
-  %__tmp671 = mul i32 1, %__tmp670
-  %__tmp672 = add i32 %__tmp666, %__tmp671
-  store i32 %__tmp672, i32* %ans, align 4
+  %__tmp664 = load i32, i32* %ans, align 4
+  %__tmp665 = load i32, i32* %i, align 4
+  %__tmp666 = sext i32 %__tmp665 to i64
+  %__tmp667 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp666
+  %__tmp668 = load i32, i32* %__tmp667, align 4
+  %__tmp669 = mul i32 1, %__tmp668
+  %__tmp670 = add i32 %__tmp664, %__tmp669
+  store i32 %__tmp670, i32* %ans, align 4
   br label %bb275
 bb274:
   br label %bb275
 bb275:
-  %__tmp673 = load i32, i32* %x, align 4
+  %__tmp671 = load i32, i32* %x, align 4
+  %__tmp672 = sdiv i32 %__tmp671, 2
+  store i32 %__tmp672, i32* %x, align 4
+  %__tmp673 = load i32, i32* %y, align 4
   %__tmp674 = sdiv i32 %__tmp673, 2
-  store i32 %__tmp674, i32* %x, align 4
-  %__tmp675 = load i32, i32* %y, align 4
-  %__tmp676 = sdiv i32 %__tmp675, 2
-  store i32 %__tmp676, i32* %y, align 4
-  %__tmp677 = load i32, i32* %i, align 4
-  %__tmp678 = add i32 %__tmp677, 1
-  store i32 %__tmp678, i32* %i, align 4
+  store i32 %__tmp674, i32* %y, align 4
+  %__tmp675 = load i32, i32* %i, align 4
+  %__tmp676 = add i32 %__tmp675, 1
+  store i32 %__tmp676, i32* %i, align 4
   br label %bb270
 bb272:
-  %__tmp679 = load i32, i32* %ans, align 4
-  store i32 %__tmp679, i32* %c.4, align 4
+  %__tmp677 = load i32, i32* %ans, align 4
+  store i32 %__tmp677, i32* %c.4, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp680 = load i32, i32* %c.4, align 4
-  %__tmp681 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp682 = load i32, i32* %__tmp681, align 4
-  %__tmp683 = mul i32 %__tmp680, %__tmp682
-  store i32 %__tmp683, i32* %x, align 4
+  %__tmp678 = load i32, i32* %c.4, align 4
+  %__tmp679 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp680 = load i32, i32* %__tmp679, align 4
+  %__tmp681 = mul i32 %__tmp678, %__tmp680
+  store i32 %__tmp681, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb282
 bb282:
-  %__tmp684 = load i32, i32* %i, align 4
-  %__tmp685 = icmp slt i32 %__tmp684, 16
-  br i1 %__tmp685, label %bb283, label %bb284
+  %__tmp682 = load i32, i32* %i, align 4
+  %__tmp683 = icmp slt i32 %__tmp682, 16
+  br i1 %__tmp683, label %bb283, label %bb284
 bb283:
-  %__tmp686 = load i32, i32* %x, align 4
-  %__tmp687 = srem i32 %__tmp686, 2
-  %__tmp688 = icmp ne i32 %__tmp687, 0
-  br i1 %__tmp688, label %bb288, label %bb290
+  %__tmp684 = load i32, i32* %x, align 4
+  %__tmp685 = srem i32 %__tmp684, 2
+  %__tmp686 = icmp ne i32 %__tmp685, 0
+  br i1 %__tmp686, label %bb288, label %bb290
 bb290:
   br label %bb289
 bb288:
-  %__tmp689 = load i32, i32* %y, align 4
-  %__tmp690 = srem i32 %__tmp689, 2
-  %__tmp691 = icmp ne i32 %__tmp690, 0
+  %__tmp687 = load i32, i32* %y, align 4
+  %__tmp688 = srem i32 %__tmp687, 2
+  %__tmp689 = icmp ne i32 %__tmp688, 0
   br label %bb289
 bb289:
-  %__tmp692 = phi i1 [ 0, %bb290 ], [ %__tmp691, %bb288 ]
-  br i1 %__tmp692, label %bb285, label %bb286
+  %__tmp690 = phi i1 [ 0, %bb290 ], [ %__tmp689, %bb288 ]
+  br i1 %__tmp690, label %bb285, label %bb286
 bb285:
-  %__tmp693 = load i32, i32* %ans, align 4
-  %__tmp694 = load i32, i32* %i, align 4
-  %__tmp695 = sext i32 %__tmp694 to i64
-  %__tmp696 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp695
-  %__tmp697 = load i32, i32* %__tmp696, align 4
-  %__tmp698 = mul i32 1, %__tmp697
-  %__tmp699 = add i32 %__tmp693, %__tmp698
-  store i32 %__tmp699, i32* %ans, align 4
+  %__tmp691 = load i32, i32* %ans, align 4
+  %__tmp692 = load i32, i32* %i, align 4
+  %__tmp693 = sext i32 %__tmp692 to i64
+  %__tmp694 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp693
+  %__tmp695 = load i32, i32* %__tmp694, align 4
+  %__tmp696 = mul i32 1, %__tmp695
+  %__tmp697 = add i32 %__tmp691, %__tmp696
+  store i32 %__tmp697, i32* %ans, align 4
   br label %bb287
 bb286:
   br label %bb287
 bb287:
-  %__tmp700 = load i32, i32* %x, align 4
+  %__tmp698 = load i32, i32* %x, align 4
+  %__tmp699 = sdiv i32 %__tmp698, 2
+  store i32 %__tmp699, i32* %x, align 4
+  %__tmp700 = load i32, i32* %y, align 4
   %__tmp701 = sdiv i32 %__tmp700, 2
-  store i32 %__tmp701, i32* %x, align 4
-  %__tmp702 = load i32, i32* %y, align 4
-  %__tmp703 = sdiv i32 %__tmp702, 2
-  store i32 %__tmp703, i32* %y, align 4
-  %__tmp704 = load i32, i32* %i, align 4
-  %__tmp705 = add i32 %__tmp704, 1
-  store i32 %__tmp705, i32* %i, align 4
+  store i32 %__tmp701, i32* %y, align 4
+  %__tmp702 = load i32, i32* %i, align 4
+  %__tmp703 = add i32 %__tmp702, 1
+  store i32 %__tmp703, i32* %i, align 4
   br label %bb282
 bb284:
   br label %bb281
 bb281:
-  %__tmp706 = load i32, i32* %ans, align 4
-  store i32 %__tmp706, i32* %c.4, align 4
-  %__tmp707 = load i32, i32* %sum.4, align 4
-  store i32 %__tmp707, i32* %al.4, align 4
+  %__tmp704 = load i32, i32* %ans, align 4
+  store i32 %__tmp704, i32* %c.4, align 4
+  %__tmp705 = load i32, i32* %sum.4, align 4
+  store i32 %__tmp705, i32* %al.4, align 4
   br label %bb255
 bb257:
-  %__tmp708 = load i32, i32* %al.4, align 4
-  store i32 %__tmp708, i32* %ans, align 4
-  %__tmp709 = load i32, i32* %ans, align 4
-  store i32 %__tmp709, i32* %mres.2, align 4
+  %__tmp706 = load i32, i32* %al.4, align 4
+  store i32 %__tmp706, i32* %ans, align 4
+  %__tmp707 = load i32, i32* %ans, align 4
+  store i32 %__tmp707, i32* %mres.2, align 4
   br label %bb254
 bb253:
   br label %bb254
 bb254:
   %al.5 = alloca i32, align 4
-  %__tmp710 = load i32, i32* %ml.2, align 4
-  store i32 %__tmp710, i32* %al.5, align 4
+  %__tmp708 = load i32, i32* %ml.2, align 4
+  store i32 %__tmp708, i32* %al.5, align 4
   %c.5 = alloca i32, align 4
-  %__tmp711 = load i32, i32* %ml.2, align 4
-  store i32 %__tmp711, i32* %c.5, align 4
+  %__tmp709 = load i32, i32* %ml.2, align 4
+  store i32 %__tmp709, i32* %c.5, align 4
   %sum.5 = alloca i32, align 4
   br label %bb291
 bb291:
-  %__tmp712 = load i32, i32* %c.5, align 4
-  %__tmp713 = trunc i32 %__tmp712 to i1
-  br i1 %__tmp713, label %bb292, label %bb293
+  %__tmp710 = load i32, i32* %c.5, align 4
+  %__tmp711 = trunc i32 %__tmp710 to i1
+  br i1 %__tmp711, label %bb292, label %bb293
 bb292:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp714 = load i32, i32* %al.5, align 4
-  store i32 %__tmp714, i32* %x, align 4
-  %__tmp715 = load i32, i32* %c.5, align 4
-  store i32 %__tmp715, i32* %y, align 4
+  %__tmp712 = load i32, i32* %al.5, align 4
+  store i32 %__tmp712, i32* %x, align 4
+  %__tmp713 = load i32, i32* %c.5, align 4
+  store i32 %__tmp713, i32* %y, align 4
   br label %bb294
 bb294:
-  %__tmp716 = load i32, i32* %i, align 4
-  %__tmp717 = icmp slt i32 %__tmp716, 16
-  br i1 %__tmp717, label %bb295, label %bb296
+  %__tmp714 = load i32, i32* %i, align 4
+  %__tmp715 = icmp slt i32 %__tmp714, 16
+  br i1 %__tmp715, label %bb295, label %bb296
 bb295:
-  %__tmp718 = load i32, i32* %x, align 4
-  %__tmp719 = srem i32 %__tmp718, 2
-  %__tmp720 = trunc i32 %__tmp719 to i1
-  br i1 %__tmp720, label %bb297, label %bb298
+  %__tmp716 = load i32, i32* %x, align 4
+  %__tmp717 = srem i32 %__tmp716, 2
+  %__tmp718 = trunc i32 %__tmp717 to i1
+  br i1 %__tmp718, label %bb297, label %bb298
 bb297:
-  %__tmp721 = load i32, i32* %y, align 4
-  %__tmp722 = srem i32 %__tmp721, 2
-  %__tmp723 = icmp eq i32 %__tmp722, 0
-  br i1 %__tmp723, label %bb300, label %bb301
+  %__tmp719 = load i32, i32* %y, align 4
+  %__tmp720 = srem i32 %__tmp719, 2
+  %__tmp721 = icmp eq i32 %__tmp720, 0
+  br i1 %__tmp721, label %bb300, label %bb301
 bb300:
-  %__tmp724 = load i32, i32* %ans, align 4
-  %__tmp725 = load i32, i32* %i, align 4
-  %__tmp726 = sext i32 %__tmp725 to i64
-  %__tmp727 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp726
-  %__tmp728 = load i32, i32* %__tmp727, align 4
-  %__tmp729 = mul i32 1, %__tmp728
-  %__tmp730 = add i32 %__tmp724, %__tmp729
-  store i32 %__tmp730, i32* %ans, align 4
+  %__tmp722 = load i32, i32* %ans, align 4
+  %__tmp723 = load i32, i32* %i, align 4
+  %__tmp724 = sext i32 %__tmp723 to i64
+  %__tmp725 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp724
+  %__tmp726 = load i32, i32* %__tmp725, align 4
+  %__tmp727 = mul i32 1, %__tmp726
+  %__tmp728 = add i32 %__tmp722, %__tmp727
+  store i32 %__tmp728, i32* %ans, align 4
   br label %bb302
 bb301:
   br label %bb302
 bb302:
   br label %bb299
 bb298:
-  %__tmp731 = load i32, i32* %y, align 4
-  %__tmp732 = srem i32 %__tmp731, 2
-  %__tmp733 = trunc i32 %__tmp732 to i1
-  br i1 %__tmp733, label %bb303, label %bb304
+  %__tmp729 = load i32, i32* %y, align 4
+  %__tmp730 = srem i32 %__tmp729, 2
+  %__tmp731 = trunc i32 %__tmp730 to i1
+  br i1 %__tmp731, label %bb303, label %bb304
 bb303:
-  %__tmp734 = load i32, i32* %ans, align 4
-  %__tmp735 = load i32, i32* %i, align 4
-  %__tmp736 = sext i32 %__tmp735 to i64
-  %__tmp737 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp736
-  %__tmp738 = load i32, i32* %__tmp737, align 4
-  %__tmp739 = mul i32 1, %__tmp738
-  %__tmp740 = add i32 %__tmp734, %__tmp739
-  store i32 %__tmp740, i32* %ans, align 4
+  %__tmp732 = load i32, i32* %ans, align 4
+  %__tmp733 = load i32, i32* %i, align 4
+  %__tmp734 = sext i32 %__tmp733 to i64
+  %__tmp735 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp734
+  %__tmp736 = load i32, i32* %__tmp735, align 4
+  %__tmp737 = mul i32 1, %__tmp736
+  %__tmp738 = add i32 %__tmp732, %__tmp737
+  store i32 %__tmp738, i32* %ans, align 4
   br label %bb305
 bb304:
   br label %bb305
 bb305:
   br label %bb299
 bb299:
-  %__tmp741 = load i32, i32* %x, align 4
+  %__tmp739 = load i32, i32* %x, align 4
+  %__tmp740 = sdiv i32 %__tmp739, 2
+  store i32 %__tmp740, i32* %x, align 4
+  %__tmp741 = load i32, i32* %y, align 4
   %__tmp742 = sdiv i32 %__tmp741, 2
-  store i32 %__tmp742, i32* %x, align 4
-  %__tmp743 = load i32, i32* %y, align 4
-  %__tmp744 = sdiv i32 %__tmp743, 2
-  store i32 %__tmp744, i32* %y, align 4
-  %__tmp745 = load i32, i32* %i, align 4
-  %__tmp746 = add i32 %__tmp745, 1
-  store i32 %__tmp746, i32* %i, align 4
+  store i32 %__tmp742, i32* %y, align 4
+  %__tmp743 = load i32, i32* %i, align 4
+  %__tmp744 = add i32 %__tmp743, 1
+  store i32 %__tmp744, i32* %i, align 4
   br label %bb294
 bb296:
-  %__tmp747 = load i32, i32* %ans, align 4
-  store i32 %__tmp747, i32* %sum.5, align 4
+  %__tmp745 = load i32, i32* %ans, align 4
+  store i32 %__tmp745, i32* %sum.5, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp748 = load i32, i32* %al.5, align 4
-  store i32 %__tmp748, i32* %x, align 4
-  %__tmp749 = load i32, i32* %c.5, align 4
-  store i32 %__tmp749, i32* %y, align 4
+  %__tmp746 = load i32, i32* %al.5, align 4
+  store i32 %__tmp746, i32* %x, align 4
+  %__tmp747 = load i32, i32* %c.5, align 4
+  store i32 %__tmp747, i32* %y, align 4
   br label %bb306
 bb306:
-  %__tmp750 = load i32, i32* %i, align 4
-  %__tmp751 = icmp slt i32 %__tmp750, 16
-  br i1 %__tmp751, label %bb307, label %bb308
+  %__tmp748 = load i32, i32* %i, align 4
+  %__tmp749 = icmp slt i32 %__tmp748, 16
+  br i1 %__tmp749, label %bb307, label %bb308
 bb307:
-  %__tmp752 = load i32, i32* %x, align 4
-  %__tmp753 = srem i32 %__tmp752, 2
-  %__tmp754 = icmp ne i32 %__tmp753, 0
-  br i1 %__tmp754, label %bb312, label %bb314
+  %__tmp750 = load i32, i32* %x, align 4
+  %__tmp751 = srem i32 %__tmp750, 2
+  %__tmp752 = icmp ne i32 %__tmp751, 0
+  br i1 %__tmp752, label %bb312, label %bb314
 bb314:
   br label %bb313
 bb312:
-  %__tmp755 = load i32, i32* %y, align 4
-  %__tmp756 = srem i32 %__tmp755, 2
-  %__tmp757 = icmp ne i32 %__tmp756, 0
+  %__tmp753 = load i32, i32* %y, align 4
+  %__tmp754 = srem i32 %__tmp753, 2
+  %__tmp755 = icmp ne i32 %__tmp754, 0
   br label %bb313
 bb313:
-  %__tmp758 = phi i1 [ 0, %bb314 ], [ %__tmp757, %bb312 ]
-  br i1 %__tmp758, label %bb309, label %bb310
+  %__tmp756 = phi i1 [ 0, %bb314 ], [ %__tmp755, %bb312 ]
+  br i1 %__tmp756, label %bb309, label %bb310
 bb309:
-  %__tmp759 = load i32, i32* %ans, align 4
-  %__tmp760 = load i32, i32* %i, align 4
-  %__tmp761 = sext i32 %__tmp760 to i64
-  %__tmp762 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp761
-  %__tmp763 = load i32, i32* %__tmp762, align 4
-  %__tmp764 = mul i32 1, %__tmp763
-  %__tmp765 = add i32 %__tmp759, %__tmp764
-  store i32 %__tmp765, i32* %ans, align 4
+  %__tmp757 = load i32, i32* %ans, align 4
+  %__tmp758 = load i32, i32* %i, align 4
+  %__tmp759 = sext i32 %__tmp758 to i64
+  %__tmp760 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp759
+  %__tmp761 = load i32, i32* %__tmp760, align 4
+  %__tmp762 = mul i32 1, %__tmp761
+  %__tmp763 = add i32 %__tmp757, %__tmp762
+  store i32 %__tmp763, i32* %ans, align 4
   br label %bb311
 bb310:
   br label %bb311
 bb311:
-  %__tmp766 = load i32, i32* %x, align 4
+  %__tmp764 = load i32, i32* %x, align 4
+  %__tmp765 = sdiv i32 %__tmp764, 2
+  store i32 %__tmp765, i32* %x, align 4
+  %__tmp766 = load i32, i32* %y, align 4
   %__tmp767 = sdiv i32 %__tmp766, 2
-  store i32 %__tmp767, i32* %x, align 4
-  %__tmp768 = load i32, i32* %y, align 4
-  %__tmp769 = sdiv i32 %__tmp768, 2
-  store i32 %__tmp769, i32* %y, align 4
-  %__tmp770 = load i32, i32* %i, align 4
-  %__tmp771 = add i32 %__tmp770, 1
-  store i32 %__tmp771, i32* %i, align 4
+  store i32 %__tmp767, i32* %y, align 4
+  %__tmp768 = load i32, i32* %i, align 4
+  %__tmp769 = add i32 %__tmp768, 1
+  store i32 %__tmp769, i32* %i, align 4
   br label %bb306
 bb308:
-  %__tmp772 = load i32, i32* %ans, align 4
-  store i32 %__tmp772, i32* %c.5, align 4
+  %__tmp770 = load i32, i32* %ans, align 4
+  store i32 %__tmp770, i32* %c.5, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp773 = load i32, i32* %c.5, align 4
-  %__tmp774 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp775 = load i32, i32* %__tmp774, align 4
-  %__tmp776 = mul i32 %__tmp773, %__tmp775
-  store i32 %__tmp776, i32* %x, align 4
+  %__tmp771 = load i32, i32* %c.5, align 4
+  %__tmp772 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp773 = load i32, i32* %__tmp772, align 4
+  %__tmp774 = mul i32 %__tmp771, %__tmp773
+  store i32 %__tmp774, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb318
 bb318:
-  %__tmp777 = load i32, i32* %i, align 4
-  %__tmp778 = icmp slt i32 %__tmp777, 16
-  br i1 %__tmp778, label %bb319, label %bb320
+  %__tmp775 = load i32, i32* %i, align 4
+  %__tmp776 = icmp slt i32 %__tmp775, 16
+  br i1 %__tmp776, label %bb319, label %bb320
 bb319:
-  %__tmp779 = load i32, i32* %x, align 4
-  %__tmp780 = srem i32 %__tmp779, 2
-  %__tmp781 = icmp ne i32 %__tmp780, 0
-  br i1 %__tmp781, label %bb324, label %bb326
+  %__tmp777 = load i32, i32* %x, align 4
+  %__tmp778 = srem i32 %__tmp777, 2
+  %__tmp779 = icmp ne i32 %__tmp778, 0
+  br i1 %__tmp779, label %bb324, label %bb326
 bb326:
   br label %bb325
 bb324:
-  %__tmp782 = load i32, i32* %y, align 4
-  %__tmp783 = srem i32 %__tmp782, 2
-  %__tmp784 = icmp ne i32 %__tmp783, 0
+  %__tmp780 = load i32, i32* %y, align 4
+  %__tmp781 = srem i32 %__tmp780, 2
+  %__tmp782 = icmp ne i32 %__tmp781, 0
   br label %bb325
 bb325:
-  %__tmp785 = phi i1 [ 0, %bb326 ], [ %__tmp784, %bb324 ]
-  br i1 %__tmp785, label %bb321, label %bb322
+  %__tmp783 = phi i1 [ 0, %bb326 ], [ %__tmp782, %bb324 ]
+  br i1 %__tmp783, label %bb321, label %bb322
 bb321:
-  %__tmp786 = load i32, i32* %ans, align 4
-  %__tmp787 = load i32, i32* %i, align 4
-  %__tmp788 = sext i32 %__tmp787 to i64
-  %__tmp789 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp788
-  %__tmp790 = load i32, i32* %__tmp789, align 4
-  %__tmp791 = mul i32 1, %__tmp790
-  %__tmp792 = add i32 %__tmp786, %__tmp791
-  store i32 %__tmp792, i32* %ans, align 4
+  %__tmp784 = load i32, i32* %ans, align 4
+  %__tmp785 = load i32, i32* %i, align 4
+  %__tmp786 = sext i32 %__tmp785 to i64
+  %__tmp787 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp786
+  %__tmp788 = load i32, i32* %__tmp787, align 4
+  %__tmp789 = mul i32 1, %__tmp788
+  %__tmp790 = add i32 %__tmp784, %__tmp789
+  store i32 %__tmp790, i32* %ans, align 4
   br label %bb323
 bb322:
   br label %bb323
 bb323:
-  %__tmp793 = load i32, i32* %x, align 4
+  %__tmp791 = load i32, i32* %x, align 4
+  %__tmp792 = sdiv i32 %__tmp791, 2
+  store i32 %__tmp792, i32* %x, align 4
+  %__tmp793 = load i32, i32* %y, align 4
   %__tmp794 = sdiv i32 %__tmp793, 2
-  store i32 %__tmp794, i32* %x, align 4
-  %__tmp795 = load i32, i32* %y, align 4
-  %__tmp796 = sdiv i32 %__tmp795, 2
-  store i32 %__tmp796, i32* %y, align 4
-  %__tmp797 = load i32, i32* %i, align 4
-  %__tmp798 = add i32 %__tmp797, 1
-  store i32 %__tmp798, i32* %i, align 4
+  store i32 %__tmp794, i32* %y, align 4
+  %__tmp795 = load i32, i32* %i, align 4
+  %__tmp796 = add i32 %__tmp795, 1
+  store i32 %__tmp796, i32* %i, align 4
   br label %bb318
 bb320:
   br label %bb317
 bb317:
-  %__tmp799 = load i32, i32* %ans, align 4
-  store i32 %__tmp799, i32* %c.5, align 4
-  %__tmp800 = load i32, i32* %sum.5, align 4
-  store i32 %__tmp800, i32* %al.5, align 4
+  %__tmp797 = load i32, i32* %ans, align 4
+  store i32 %__tmp797, i32* %c.5, align 4
+  %__tmp798 = load i32, i32* %sum.5, align 4
+  store i32 %__tmp798, i32* %al.5, align 4
   br label %bb291
 bb293:
-  %__tmp801 = load i32, i32* %al.5, align 4
-  store i32 %__tmp801, i32* %ans, align 4
-  %__tmp802 = load i32, i32* %ans, align 4
-  store i32 %__tmp802, i32* %ml.2, align 4
-  %__tmp803 = load i32, i32* %mr.2, align 4
-  store i32 %__tmp803, i32* %x, align 4
+  %__tmp799 = load i32, i32* %al.5, align 4
+  store i32 %__tmp799, i32* %ans, align 4
+  %__tmp800 = load i32, i32* %ans, align 4
+  store i32 %__tmp800, i32* %ml.2, align 4
+  %__tmp801 = load i32, i32* %mr.2, align 4
+  store i32 %__tmp801, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp804 = load i32, i32* %y, align 4
-  %__tmp805 = icmp sge i32 %__tmp804, 15
-  br i1 %__tmp805, label %bb327, label %bb328
+  %__tmp802 = load i32, i32* %y, align 4
+  %__tmp803 = icmp sge i32 %__tmp802, 15
+  br i1 %__tmp803, label %bb327, label %bb328
 bb327:
-  %__tmp806 = load i32, i32* %x, align 4
-  %__tmp807 = icmp slt i32 %__tmp806, 0
-  br i1 %__tmp807, label %bb330, label %bb331
+  %__tmp804 = load i32, i32* %x, align 4
+  %__tmp805 = icmp slt i32 %__tmp804, 0
+  br i1 %__tmp805, label %bb330, label %bb331
 bb330:
   store i32 65535, i32* %ans, align 4
   br label %bb332
@@ -1778,537 +1778,537 @@ bb331:
 bb332:
   br label %bb329
 bb328:
-  %__tmp808 = load i32, i32* %y, align 4
-  %__tmp809 = icmp sgt i32 %__tmp808, 0
-  br i1 %__tmp809, label %bb333, label %bb334
+  %__tmp806 = load i32, i32* %y, align 4
+  %__tmp807 = icmp sgt i32 %__tmp806, 0
+  br i1 %__tmp807, label %bb333, label %bb334
 bb333:
-  %__tmp810 = load i32, i32* %x, align 4
-  %__tmp811 = icmp sgt i32 %__tmp810, 32767
-  br i1 %__tmp811, label %bb336, label %bb337
+  %__tmp808 = load i32, i32* %x, align 4
+  %__tmp809 = icmp sgt i32 %__tmp808, 32767
+  br i1 %__tmp809, label %bb336, label %bb337
 bb336:
-  %__tmp812 = load i32, i32* %x, align 4
-  %__tmp813 = load i32, i32* %y, align 4
-  %__tmp814 = sext i32 %__tmp813 to i64
-  %__tmp815 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp814
-  %__tmp816 = load i32, i32* %__tmp815, align 4
-  %__tmp817 = sdiv i32 %__tmp812, %__tmp816
-  store i32 %__tmp817, i32* %x, align 4
-  %__tmp818 = load i32, i32* %x, align 4
-  %__tmp819 = add i32 %__tmp818, 65536
-  %__tmp820 = load i32, i32* %y, align 4
-  %__tmp821 = sub i32 15, %__tmp820
-  %__tmp822 = add i32 %__tmp821, 1
-  %__tmp823 = sext i32 %__tmp822 to i64
-  %__tmp824 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp823
-  %__tmp825 = load i32, i32* %__tmp824, align 4
-  %__tmp826 = sub i32 %__tmp819, %__tmp825
-  store i32 %__tmp826, i32* %ans, align 4
+  %__tmp810 = load i32, i32* %x, align 4
+  %__tmp811 = load i32, i32* %y, align 4
+  %__tmp812 = sext i32 %__tmp811 to i64
+  %__tmp813 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp812
+  %__tmp814 = load i32, i32* %__tmp813, align 4
+  %__tmp815 = sdiv i32 %__tmp810, %__tmp814
+  store i32 %__tmp815, i32* %x, align 4
+  %__tmp816 = load i32, i32* %x, align 4
+  %__tmp817 = add i32 %__tmp816, 65536
+  %__tmp818 = load i32, i32* %y, align 4
+  %__tmp819 = sub i32 15, %__tmp818
+  %__tmp820 = add i32 %__tmp819, 1
+  %__tmp821 = sext i32 %__tmp820 to i64
+  %__tmp822 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp821
+  %__tmp823 = load i32, i32* %__tmp822, align 4
+  %__tmp824 = sub i32 %__tmp817, %__tmp823
+  store i32 %__tmp824, i32* %ans, align 4
   br label %bb338
 bb337:
-  %__tmp827 = load i32, i32* %x, align 4
-  %__tmp828 = load i32, i32* %y, align 4
-  %__tmp829 = sext i32 %__tmp828 to i64
-  %__tmp830 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp829
-  %__tmp831 = load i32, i32* %__tmp830, align 4
-  %__tmp832 = sdiv i32 %__tmp827, %__tmp831
-  store i32 %__tmp832, i32* %ans, align 4
+  %__tmp825 = load i32, i32* %x, align 4
+  %__tmp826 = load i32, i32* %y, align 4
+  %__tmp827 = sext i32 %__tmp826 to i64
+  %__tmp828 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp827
+  %__tmp829 = load i32, i32* %__tmp828, align 4
+  %__tmp830 = sdiv i32 %__tmp825, %__tmp829
+  store i32 %__tmp830, i32* %ans, align 4
   br label %bb338
 bb338:
   br label %bb335
 bb334:
-  %__tmp833 = load i32, i32* %x, align 4
-  store i32 %__tmp833, i32* %ans, align 4
+  %__tmp831 = load i32, i32* %x, align 4
+  store i32 %__tmp831, i32* %ans, align 4
   br label %bb335
 bb335:
   br label %bb329
 bb329:
-  %__tmp834 = load i32, i32* %ans, align 4
-  store i32 %__tmp834, i32* %mr.2, align 4
+  %__tmp832 = load i32, i32* %ans, align 4
+  store i32 %__tmp832, i32* %mr.2, align 4
   br label %bb240
 bb242:
-  %__tmp835 = load i32, i32* %mres.2, align 4
-  store i32 %__tmp835, i32* %ans, align 4
-  %__tmp836 = load i32, i32* %ans, align 4
-  store i32 %__tmp836, i32* %pres.1, align 4
+  %__tmp833 = load i32, i32* %mres.2, align 4
+  store i32 %__tmp833, i32* %ans, align 4
+  %__tmp834 = load i32, i32* %ans, align 4
+  store i32 %__tmp834, i32* %pres.1, align 4
   br label %bb239
 bb238:
   br label %bb239
 bb239:
   %ml.3 = alloca i32, align 4
-  %__tmp837 = load i32, i32* %pl.1, align 4
-  store i32 %__tmp837, i32* %ml.3, align 4
+  %__tmp835 = load i32, i32* %pl.1, align 4
+  store i32 %__tmp835, i32* %ml.3, align 4
   %mr.3 = alloca i32, align 4
-  %__tmp838 = load i32, i32* %pl.1, align 4
-  store i32 %__tmp838, i32* %mr.3, align 4
+  %__tmp836 = load i32, i32* %pl.1, align 4
+  store i32 %__tmp836, i32* %mr.3, align 4
   %mres.3 = alloca i32, align 4
   store i32 0, i32* %mres.3, align 4
   br label %bb339
 bb339:
-  %__tmp839 = load i32, i32* %mr.3, align 4
-  %__tmp840 = trunc i32 %__tmp839 to i1
-  br i1 %__tmp840, label %bb340, label %bb341
+  %__tmp837 = load i32, i32* %mr.3, align 4
+  %__tmp838 = trunc i32 %__tmp837 to i1
+  br i1 %__tmp838, label %bb340, label %bb341
 bb340:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp841 = load i32, i32* %mr.3, align 4
-  store i32 %__tmp841, i32* %x, align 4
+  %__tmp839 = load i32, i32* %mr.3, align 4
+  store i32 %__tmp839, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb342
 bb342:
-  %__tmp842 = load i32, i32* %i, align 4
-  %__tmp843 = icmp slt i32 %__tmp842, 16
-  br i1 %__tmp843, label %bb343, label %bb344
+  %__tmp840 = load i32, i32* %i, align 4
+  %__tmp841 = icmp slt i32 %__tmp840, 16
+  br i1 %__tmp841, label %bb343, label %bb344
 bb343:
-  %__tmp844 = load i32, i32* %x, align 4
-  %__tmp845 = srem i32 %__tmp844, 2
-  %__tmp846 = icmp ne i32 %__tmp845, 0
-  br i1 %__tmp846, label %bb348, label %bb350
+  %__tmp842 = load i32, i32* %x, align 4
+  %__tmp843 = srem i32 %__tmp842, 2
+  %__tmp844 = icmp ne i32 %__tmp843, 0
+  br i1 %__tmp844, label %bb348, label %bb350
 bb350:
   br label %bb349
 bb348:
-  %__tmp847 = load i32, i32* %y, align 4
-  %__tmp848 = srem i32 %__tmp847, 2
-  %__tmp849 = icmp ne i32 %__tmp848, 0
+  %__tmp845 = load i32, i32* %y, align 4
+  %__tmp846 = srem i32 %__tmp845, 2
+  %__tmp847 = icmp ne i32 %__tmp846, 0
   br label %bb349
 bb349:
-  %__tmp850 = phi i1 [ 0, %bb350 ], [ %__tmp849, %bb348 ]
-  br i1 %__tmp850, label %bb345, label %bb346
+  %__tmp848 = phi i1 [ 0, %bb350 ], [ %__tmp847, %bb348 ]
+  br i1 %__tmp848, label %bb345, label %bb346
 bb345:
-  %__tmp851 = load i32, i32* %ans, align 4
-  %__tmp852 = load i32, i32* %i, align 4
-  %__tmp853 = sext i32 %__tmp852 to i64
-  %__tmp854 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp853
-  %__tmp855 = load i32, i32* %__tmp854, align 4
-  %__tmp856 = mul i32 1, %__tmp855
-  %__tmp857 = add i32 %__tmp851, %__tmp856
-  store i32 %__tmp857, i32* %ans, align 4
+  %__tmp849 = load i32, i32* %ans, align 4
+  %__tmp850 = load i32, i32* %i, align 4
+  %__tmp851 = sext i32 %__tmp850 to i64
+  %__tmp852 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp851
+  %__tmp853 = load i32, i32* %__tmp852, align 4
+  %__tmp854 = mul i32 1, %__tmp853
+  %__tmp855 = add i32 %__tmp849, %__tmp854
+  store i32 %__tmp855, i32* %ans, align 4
   br label %bb347
 bb346:
   br label %bb347
 bb347:
-  %__tmp858 = load i32, i32* %x, align 4
+  %__tmp856 = load i32, i32* %x, align 4
+  %__tmp857 = sdiv i32 %__tmp856, 2
+  store i32 %__tmp857, i32* %x, align 4
+  %__tmp858 = load i32, i32* %y, align 4
   %__tmp859 = sdiv i32 %__tmp858, 2
-  store i32 %__tmp859, i32* %x, align 4
-  %__tmp860 = load i32, i32* %y, align 4
-  %__tmp861 = sdiv i32 %__tmp860, 2
-  store i32 %__tmp861, i32* %y, align 4
-  %__tmp862 = load i32, i32* %i, align 4
-  %__tmp863 = add i32 %__tmp862, 1
-  store i32 %__tmp863, i32* %i, align 4
+  store i32 %__tmp859, i32* %y, align 4
+  %__tmp860 = load i32, i32* %i, align 4
+  %__tmp861 = add i32 %__tmp860, 1
+  store i32 %__tmp861, i32* %i, align 4
   br label %bb342
 bb344:
-  %__tmp864 = load i32, i32* %ans, align 4
-  %__tmp865 = trunc i32 %__tmp864 to i1
-  br i1 %__tmp865, label %bb351, label %bb352
+  %__tmp862 = load i32, i32* %ans, align 4
+  %__tmp863 = trunc i32 %__tmp862 to i1
+  br i1 %__tmp863, label %bb351, label %bb352
 bb351:
   %al.6 = alloca i32, align 4
-  %__tmp866 = load i32, i32* %mres.3, align 4
-  store i32 %__tmp866, i32* %al.6, align 4
+  %__tmp864 = load i32, i32* %mres.3, align 4
+  store i32 %__tmp864, i32* %al.6, align 4
   %c.6 = alloca i32, align 4
-  %__tmp867 = load i32, i32* %ml.3, align 4
-  store i32 %__tmp867, i32* %c.6, align 4
+  %__tmp865 = load i32, i32* %ml.3, align 4
+  store i32 %__tmp865, i32* %c.6, align 4
   %sum.6 = alloca i32, align 4
   br label %bb354
 bb354:
-  %__tmp868 = load i32, i32* %c.6, align 4
-  %__tmp869 = trunc i32 %__tmp868 to i1
-  br i1 %__tmp869, label %bb355, label %bb356
+  %__tmp866 = load i32, i32* %c.6, align 4
+  %__tmp867 = trunc i32 %__tmp866 to i1
+  br i1 %__tmp867, label %bb355, label %bb356
 bb355:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp870 = load i32, i32* %al.6, align 4
-  store i32 %__tmp870, i32* %x, align 4
-  %__tmp871 = load i32, i32* %c.6, align 4
-  store i32 %__tmp871, i32* %y, align 4
+  %__tmp868 = load i32, i32* %al.6, align 4
+  store i32 %__tmp868, i32* %x, align 4
+  %__tmp869 = load i32, i32* %c.6, align 4
+  store i32 %__tmp869, i32* %y, align 4
   br label %bb357
 bb357:
-  %__tmp872 = load i32, i32* %i, align 4
-  %__tmp873 = icmp slt i32 %__tmp872, 16
-  br i1 %__tmp873, label %bb358, label %bb359
+  %__tmp870 = load i32, i32* %i, align 4
+  %__tmp871 = icmp slt i32 %__tmp870, 16
+  br i1 %__tmp871, label %bb358, label %bb359
 bb358:
-  %__tmp874 = load i32, i32* %x, align 4
-  %__tmp875 = srem i32 %__tmp874, 2
-  %__tmp876 = trunc i32 %__tmp875 to i1
-  br i1 %__tmp876, label %bb360, label %bb361
+  %__tmp872 = load i32, i32* %x, align 4
+  %__tmp873 = srem i32 %__tmp872, 2
+  %__tmp874 = trunc i32 %__tmp873 to i1
+  br i1 %__tmp874, label %bb360, label %bb361
 bb360:
-  %__tmp877 = load i32, i32* %y, align 4
-  %__tmp878 = srem i32 %__tmp877, 2
-  %__tmp879 = icmp eq i32 %__tmp878, 0
-  br i1 %__tmp879, label %bb363, label %bb364
+  %__tmp875 = load i32, i32* %y, align 4
+  %__tmp876 = srem i32 %__tmp875, 2
+  %__tmp877 = icmp eq i32 %__tmp876, 0
+  br i1 %__tmp877, label %bb363, label %bb364
 bb363:
-  %__tmp880 = load i32, i32* %ans, align 4
-  %__tmp881 = load i32, i32* %i, align 4
-  %__tmp882 = sext i32 %__tmp881 to i64
-  %__tmp883 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp882
-  %__tmp884 = load i32, i32* %__tmp883, align 4
-  %__tmp885 = mul i32 1, %__tmp884
-  %__tmp886 = add i32 %__tmp880, %__tmp885
-  store i32 %__tmp886, i32* %ans, align 4
+  %__tmp878 = load i32, i32* %ans, align 4
+  %__tmp879 = load i32, i32* %i, align 4
+  %__tmp880 = sext i32 %__tmp879 to i64
+  %__tmp881 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp880
+  %__tmp882 = load i32, i32* %__tmp881, align 4
+  %__tmp883 = mul i32 1, %__tmp882
+  %__tmp884 = add i32 %__tmp878, %__tmp883
+  store i32 %__tmp884, i32* %ans, align 4
   br label %bb365
 bb364:
   br label %bb365
 bb365:
   br label %bb362
 bb361:
-  %__tmp887 = load i32, i32* %y, align 4
-  %__tmp888 = srem i32 %__tmp887, 2
-  %__tmp889 = trunc i32 %__tmp888 to i1
-  br i1 %__tmp889, label %bb366, label %bb367
+  %__tmp885 = load i32, i32* %y, align 4
+  %__tmp886 = srem i32 %__tmp885, 2
+  %__tmp887 = trunc i32 %__tmp886 to i1
+  br i1 %__tmp887, label %bb366, label %bb367
 bb366:
-  %__tmp890 = load i32, i32* %ans, align 4
-  %__tmp891 = load i32, i32* %i, align 4
-  %__tmp892 = sext i32 %__tmp891 to i64
-  %__tmp893 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp892
-  %__tmp894 = load i32, i32* %__tmp893, align 4
-  %__tmp895 = mul i32 1, %__tmp894
-  %__tmp896 = add i32 %__tmp890, %__tmp895
-  store i32 %__tmp896, i32* %ans, align 4
+  %__tmp888 = load i32, i32* %ans, align 4
+  %__tmp889 = load i32, i32* %i, align 4
+  %__tmp890 = sext i32 %__tmp889 to i64
+  %__tmp891 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp890
+  %__tmp892 = load i32, i32* %__tmp891, align 4
+  %__tmp893 = mul i32 1, %__tmp892
+  %__tmp894 = add i32 %__tmp888, %__tmp893
+  store i32 %__tmp894, i32* %ans, align 4
   br label %bb368
 bb367:
   br label %bb368
 bb368:
   br label %bb362
 bb362:
-  %__tmp897 = load i32, i32* %x, align 4
+  %__tmp895 = load i32, i32* %x, align 4
+  %__tmp896 = sdiv i32 %__tmp895, 2
+  store i32 %__tmp896, i32* %x, align 4
+  %__tmp897 = load i32, i32* %y, align 4
   %__tmp898 = sdiv i32 %__tmp897, 2
-  store i32 %__tmp898, i32* %x, align 4
-  %__tmp899 = load i32, i32* %y, align 4
-  %__tmp900 = sdiv i32 %__tmp899, 2
-  store i32 %__tmp900, i32* %y, align 4
-  %__tmp901 = load i32, i32* %i, align 4
-  %__tmp902 = add i32 %__tmp901, 1
-  store i32 %__tmp902, i32* %i, align 4
+  store i32 %__tmp898, i32* %y, align 4
+  %__tmp899 = load i32, i32* %i, align 4
+  %__tmp900 = add i32 %__tmp899, 1
+  store i32 %__tmp900, i32* %i, align 4
   br label %bb357
 bb359:
-  %__tmp903 = load i32, i32* %ans, align 4
-  store i32 %__tmp903, i32* %sum.6, align 4
+  %__tmp901 = load i32, i32* %ans, align 4
+  store i32 %__tmp901, i32* %sum.6, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp904 = load i32, i32* %al.6, align 4
-  store i32 %__tmp904, i32* %x, align 4
-  %__tmp905 = load i32, i32* %c.6, align 4
-  store i32 %__tmp905, i32* %y, align 4
+  %__tmp902 = load i32, i32* %al.6, align 4
+  store i32 %__tmp902, i32* %x, align 4
+  %__tmp903 = load i32, i32* %c.6, align 4
+  store i32 %__tmp903, i32* %y, align 4
   br label %bb369
 bb369:
-  %__tmp906 = load i32, i32* %i, align 4
-  %__tmp907 = icmp slt i32 %__tmp906, 16
-  br i1 %__tmp907, label %bb370, label %bb371
+  %__tmp904 = load i32, i32* %i, align 4
+  %__tmp905 = icmp slt i32 %__tmp904, 16
+  br i1 %__tmp905, label %bb370, label %bb371
 bb370:
-  %__tmp908 = load i32, i32* %x, align 4
-  %__tmp909 = srem i32 %__tmp908, 2
-  %__tmp910 = icmp ne i32 %__tmp909, 0
-  br i1 %__tmp910, label %bb375, label %bb377
+  %__tmp906 = load i32, i32* %x, align 4
+  %__tmp907 = srem i32 %__tmp906, 2
+  %__tmp908 = icmp ne i32 %__tmp907, 0
+  br i1 %__tmp908, label %bb375, label %bb377
 bb377:
   br label %bb376
 bb375:
-  %__tmp911 = load i32, i32* %y, align 4
-  %__tmp912 = srem i32 %__tmp911, 2
-  %__tmp913 = icmp ne i32 %__tmp912, 0
+  %__tmp909 = load i32, i32* %y, align 4
+  %__tmp910 = srem i32 %__tmp909, 2
+  %__tmp911 = icmp ne i32 %__tmp910, 0
   br label %bb376
 bb376:
-  %__tmp914 = phi i1 [ 0, %bb377 ], [ %__tmp913, %bb375 ]
-  br i1 %__tmp914, label %bb372, label %bb373
+  %__tmp912 = phi i1 [ 0, %bb377 ], [ %__tmp911, %bb375 ]
+  br i1 %__tmp912, label %bb372, label %bb373
 bb372:
-  %__tmp915 = load i32, i32* %ans, align 4
-  %__tmp916 = load i32, i32* %i, align 4
-  %__tmp917 = sext i32 %__tmp916 to i64
-  %__tmp918 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp917
-  %__tmp919 = load i32, i32* %__tmp918, align 4
-  %__tmp920 = mul i32 1, %__tmp919
-  %__tmp921 = add i32 %__tmp915, %__tmp920
-  store i32 %__tmp921, i32* %ans, align 4
+  %__tmp913 = load i32, i32* %ans, align 4
+  %__tmp914 = load i32, i32* %i, align 4
+  %__tmp915 = sext i32 %__tmp914 to i64
+  %__tmp916 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp915
+  %__tmp917 = load i32, i32* %__tmp916, align 4
+  %__tmp918 = mul i32 1, %__tmp917
+  %__tmp919 = add i32 %__tmp913, %__tmp918
+  store i32 %__tmp919, i32* %ans, align 4
   br label %bb374
 bb373:
   br label %bb374
 bb374:
-  %__tmp922 = load i32, i32* %x, align 4
+  %__tmp920 = load i32, i32* %x, align 4
+  %__tmp921 = sdiv i32 %__tmp920, 2
+  store i32 %__tmp921, i32* %x, align 4
+  %__tmp922 = load i32, i32* %y, align 4
   %__tmp923 = sdiv i32 %__tmp922, 2
-  store i32 %__tmp923, i32* %x, align 4
-  %__tmp924 = load i32, i32* %y, align 4
-  %__tmp925 = sdiv i32 %__tmp924, 2
-  store i32 %__tmp925, i32* %y, align 4
-  %__tmp926 = load i32, i32* %i, align 4
-  %__tmp927 = add i32 %__tmp926, 1
-  store i32 %__tmp927, i32* %i, align 4
+  store i32 %__tmp923, i32* %y, align 4
+  %__tmp924 = load i32, i32* %i, align 4
+  %__tmp925 = add i32 %__tmp924, 1
+  store i32 %__tmp925, i32* %i, align 4
   br label %bb369
 bb371:
-  %__tmp928 = load i32, i32* %ans, align 4
-  store i32 %__tmp928, i32* %c.6, align 4
+  %__tmp926 = load i32, i32* %ans, align 4
+  store i32 %__tmp926, i32* %c.6, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp929 = load i32, i32* %c.6, align 4
-  %__tmp930 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp931 = load i32, i32* %__tmp930, align 4
-  %__tmp932 = mul i32 %__tmp929, %__tmp931
-  store i32 %__tmp932, i32* %x, align 4
+  %__tmp927 = load i32, i32* %c.6, align 4
+  %__tmp928 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp929 = load i32, i32* %__tmp928, align 4
+  %__tmp930 = mul i32 %__tmp927, %__tmp929
+  store i32 %__tmp930, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb381
 bb381:
-  %__tmp933 = load i32, i32* %i, align 4
-  %__tmp934 = icmp slt i32 %__tmp933, 16
-  br i1 %__tmp934, label %bb382, label %bb383
+  %__tmp931 = load i32, i32* %i, align 4
+  %__tmp932 = icmp slt i32 %__tmp931, 16
+  br i1 %__tmp932, label %bb382, label %bb383
 bb382:
-  %__tmp935 = load i32, i32* %x, align 4
-  %__tmp936 = srem i32 %__tmp935, 2
-  %__tmp937 = icmp ne i32 %__tmp936, 0
-  br i1 %__tmp937, label %bb387, label %bb389
+  %__tmp933 = load i32, i32* %x, align 4
+  %__tmp934 = srem i32 %__tmp933, 2
+  %__tmp935 = icmp ne i32 %__tmp934, 0
+  br i1 %__tmp935, label %bb387, label %bb389
 bb389:
   br label %bb388
 bb387:
-  %__tmp938 = load i32, i32* %y, align 4
-  %__tmp939 = srem i32 %__tmp938, 2
-  %__tmp940 = icmp ne i32 %__tmp939, 0
+  %__tmp936 = load i32, i32* %y, align 4
+  %__tmp937 = srem i32 %__tmp936, 2
+  %__tmp938 = icmp ne i32 %__tmp937, 0
   br label %bb388
 bb388:
-  %__tmp941 = phi i1 [ 0, %bb389 ], [ %__tmp940, %bb387 ]
-  br i1 %__tmp941, label %bb384, label %bb385
+  %__tmp939 = phi i1 [ 0, %bb389 ], [ %__tmp938, %bb387 ]
+  br i1 %__tmp939, label %bb384, label %bb385
 bb384:
-  %__tmp942 = load i32, i32* %ans, align 4
-  %__tmp943 = load i32, i32* %i, align 4
-  %__tmp944 = sext i32 %__tmp943 to i64
-  %__tmp945 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp944
-  %__tmp946 = load i32, i32* %__tmp945, align 4
-  %__tmp947 = mul i32 1, %__tmp946
-  %__tmp948 = add i32 %__tmp942, %__tmp947
-  store i32 %__tmp948, i32* %ans, align 4
+  %__tmp940 = load i32, i32* %ans, align 4
+  %__tmp941 = load i32, i32* %i, align 4
+  %__tmp942 = sext i32 %__tmp941 to i64
+  %__tmp943 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp942
+  %__tmp944 = load i32, i32* %__tmp943, align 4
+  %__tmp945 = mul i32 1, %__tmp944
+  %__tmp946 = add i32 %__tmp940, %__tmp945
+  store i32 %__tmp946, i32* %ans, align 4
   br label %bb386
 bb385:
   br label %bb386
 bb386:
-  %__tmp949 = load i32, i32* %x, align 4
+  %__tmp947 = load i32, i32* %x, align 4
+  %__tmp948 = sdiv i32 %__tmp947, 2
+  store i32 %__tmp948, i32* %x, align 4
+  %__tmp949 = load i32, i32* %y, align 4
   %__tmp950 = sdiv i32 %__tmp949, 2
-  store i32 %__tmp950, i32* %x, align 4
-  %__tmp951 = load i32, i32* %y, align 4
-  %__tmp952 = sdiv i32 %__tmp951, 2
-  store i32 %__tmp952, i32* %y, align 4
-  %__tmp953 = load i32, i32* %i, align 4
-  %__tmp954 = add i32 %__tmp953, 1
-  store i32 %__tmp954, i32* %i, align 4
+  store i32 %__tmp950, i32* %y, align 4
+  %__tmp951 = load i32, i32* %i, align 4
+  %__tmp952 = add i32 %__tmp951, 1
+  store i32 %__tmp952, i32* %i, align 4
   br label %bb381
 bb383:
   br label %bb380
 bb380:
-  %__tmp955 = load i32, i32* %ans, align 4
-  store i32 %__tmp955, i32* %c.6, align 4
-  %__tmp956 = load i32, i32* %sum.6, align 4
-  store i32 %__tmp956, i32* %al.6, align 4
+  %__tmp953 = load i32, i32* %ans, align 4
+  store i32 %__tmp953, i32* %c.6, align 4
+  %__tmp954 = load i32, i32* %sum.6, align 4
+  store i32 %__tmp954, i32* %al.6, align 4
   br label %bb354
 bb356:
-  %__tmp957 = load i32, i32* %al.6, align 4
-  store i32 %__tmp957, i32* %ans, align 4
-  %__tmp958 = load i32, i32* %ans, align 4
-  store i32 %__tmp958, i32* %mres.3, align 4
+  %__tmp955 = load i32, i32* %al.6, align 4
+  store i32 %__tmp955, i32* %ans, align 4
+  %__tmp956 = load i32, i32* %ans, align 4
+  store i32 %__tmp956, i32* %mres.3, align 4
   br label %bb353
 bb352:
   br label %bb353
 bb353:
   %al.7 = alloca i32, align 4
-  %__tmp959 = load i32, i32* %ml.3, align 4
-  store i32 %__tmp959, i32* %al.7, align 4
+  %__tmp957 = load i32, i32* %ml.3, align 4
+  store i32 %__tmp957, i32* %al.7, align 4
   %c.7 = alloca i32, align 4
-  %__tmp960 = load i32, i32* %ml.3, align 4
-  store i32 %__tmp960, i32* %c.7, align 4
+  %__tmp958 = load i32, i32* %ml.3, align 4
+  store i32 %__tmp958, i32* %c.7, align 4
   %sum.7 = alloca i32, align 4
   br label %bb390
 bb390:
-  %__tmp961 = load i32, i32* %c.7, align 4
-  %__tmp962 = trunc i32 %__tmp961 to i1
-  br i1 %__tmp962, label %bb391, label %bb392
+  %__tmp959 = load i32, i32* %c.7, align 4
+  %__tmp960 = trunc i32 %__tmp959 to i1
+  br i1 %__tmp960, label %bb391, label %bb392
 bb391:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp963 = load i32, i32* %al.7, align 4
-  store i32 %__tmp963, i32* %x, align 4
-  %__tmp964 = load i32, i32* %c.7, align 4
-  store i32 %__tmp964, i32* %y, align 4
+  %__tmp961 = load i32, i32* %al.7, align 4
+  store i32 %__tmp961, i32* %x, align 4
+  %__tmp962 = load i32, i32* %c.7, align 4
+  store i32 %__tmp962, i32* %y, align 4
   br label %bb393
 bb393:
-  %__tmp965 = load i32, i32* %i, align 4
-  %__tmp966 = icmp slt i32 %__tmp965, 16
-  br i1 %__tmp966, label %bb394, label %bb395
+  %__tmp963 = load i32, i32* %i, align 4
+  %__tmp964 = icmp slt i32 %__tmp963, 16
+  br i1 %__tmp964, label %bb394, label %bb395
 bb394:
-  %__tmp967 = load i32, i32* %x, align 4
-  %__tmp968 = srem i32 %__tmp967, 2
-  %__tmp969 = trunc i32 %__tmp968 to i1
-  br i1 %__tmp969, label %bb396, label %bb397
+  %__tmp965 = load i32, i32* %x, align 4
+  %__tmp966 = srem i32 %__tmp965, 2
+  %__tmp967 = trunc i32 %__tmp966 to i1
+  br i1 %__tmp967, label %bb396, label %bb397
 bb396:
-  %__tmp970 = load i32, i32* %y, align 4
-  %__tmp971 = srem i32 %__tmp970, 2
-  %__tmp972 = icmp eq i32 %__tmp971, 0
-  br i1 %__tmp972, label %bb399, label %bb400
+  %__tmp968 = load i32, i32* %y, align 4
+  %__tmp969 = srem i32 %__tmp968, 2
+  %__tmp970 = icmp eq i32 %__tmp969, 0
+  br i1 %__tmp970, label %bb399, label %bb400
 bb399:
-  %__tmp973 = load i32, i32* %ans, align 4
-  %__tmp974 = load i32, i32* %i, align 4
-  %__tmp975 = sext i32 %__tmp974 to i64
-  %__tmp976 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp975
-  %__tmp977 = load i32, i32* %__tmp976, align 4
-  %__tmp978 = mul i32 1, %__tmp977
-  %__tmp979 = add i32 %__tmp973, %__tmp978
-  store i32 %__tmp979, i32* %ans, align 4
+  %__tmp971 = load i32, i32* %ans, align 4
+  %__tmp972 = load i32, i32* %i, align 4
+  %__tmp973 = sext i32 %__tmp972 to i64
+  %__tmp974 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp973
+  %__tmp975 = load i32, i32* %__tmp974, align 4
+  %__tmp976 = mul i32 1, %__tmp975
+  %__tmp977 = add i32 %__tmp971, %__tmp976
+  store i32 %__tmp977, i32* %ans, align 4
   br label %bb401
 bb400:
   br label %bb401
 bb401:
   br label %bb398
 bb397:
-  %__tmp980 = load i32, i32* %y, align 4
-  %__tmp981 = srem i32 %__tmp980, 2
-  %__tmp982 = trunc i32 %__tmp981 to i1
-  br i1 %__tmp982, label %bb402, label %bb403
+  %__tmp978 = load i32, i32* %y, align 4
+  %__tmp979 = srem i32 %__tmp978, 2
+  %__tmp980 = trunc i32 %__tmp979 to i1
+  br i1 %__tmp980, label %bb402, label %bb403
 bb402:
-  %__tmp983 = load i32, i32* %ans, align 4
-  %__tmp984 = load i32, i32* %i, align 4
-  %__tmp985 = sext i32 %__tmp984 to i64
-  %__tmp986 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp985
-  %__tmp987 = load i32, i32* %__tmp986, align 4
-  %__tmp988 = mul i32 1, %__tmp987
-  %__tmp989 = add i32 %__tmp983, %__tmp988
-  store i32 %__tmp989, i32* %ans, align 4
+  %__tmp981 = load i32, i32* %ans, align 4
+  %__tmp982 = load i32, i32* %i, align 4
+  %__tmp983 = sext i32 %__tmp982 to i64
+  %__tmp984 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp983
+  %__tmp985 = load i32, i32* %__tmp984, align 4
+  %__tmp986 = mul i32 1, %__tmp985
+  %__tmp987 = add i32 %__tmp981, %__tmp986
+  store i32 %__tmp987, i32* %ans, align 4
   br label %bb404
 bb403:
   br label %bb404
 bb404:
   br label %bb398
 bb398:
-  %__tmp990 = load i32, i32* %x, align 4
+  %__tmp988 = load i32, i32* %x, align 4
+  %__tmp989 = sdiv i32 %__tmp988, 2
+  store i32 %__tmp989, i32* %x, align 4
+  %__tmp990 = load i32, i32* %y, align 4
   %__tmp991 = sdiv i32 %__tmp990, 2
-  store i32 %__tmp991, i32* %x, align 4
-  %__tmp992 = load i32, i32* %y, align 4
-  %__tmp993 = sdiv i32 %__tmp992, 2
-  store i32 %__tmp993, i32* %y, align 4
-  %__tmp994 = load i32, i32* %i, align 4
-  %__tmp995 = add i32 %__tmp994, 1
-  store i32 %__tmp995, i32* %i, align 4
+  store i32 %__tmp991, i32* %y, align 4
+  %__tmp992 = load i32, i32* %i, align 4
+  %__tmp993 = add i32 %__tmp992, 1
+  store i32 %__tmp993, i32* %i, align 4
   br label %bb393
 bb395:
-  %__tmp996 = load i32, i32* %ans, align 4
-  store i32 %__tmp996, i32* %sum.7, align 4
+  %__tmp994 = load i32, i32* %ans, align 4
+  store i32 %__tmp994, i32* %sum.7, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp997 = load i32, i32* %al.7, align 4
-  store i32 %__tmp997, i32* %x, align 4
-  %__tmp998 = load i32, i32* %c.7, align 4
-  store i32 %__tmp998, i32* %y, align 4
+  %__tmp995 = load i32, i32* %al.7, align 4
+  store i32 %__tmp995, i32* %x, align 4
+  %__tmp996 = load i32, i32* %c.7, align 4
+  store i32 %__tmp996, i32* %y, align 4
   br label %bb405
 bb405:
-  %__tmp999 = load i32, i32* %i, align 4
-  %__tmp1000 = icmp slt i32 %__tmp999, 16
-  br i1 %__tmp1000, label %bb406, label %bb407
+  %__tmp997 = load i32, i32* %i, align 4
+  %__tmp998 = icmp slt i32 %__tmp997, 16
+  br i1 %__tmp998, label %bb406, label %bb407
 bb406:
-  %__tmp1001 = load i32, i32* %x, align 4
-  %__tmp1002 = srem i32 %__tmp1001, 2
-  %__tmp1003 = icmp ne i32 %__tmp1002, 0
-  br i1 %__tmp1003, label %bb411, label %bb413
+  %__tmp999 = load i32, i32* %x, align 4
+  %__tmp1000 = srem i32 %__tmp999, 2
+  %__tmp1001 = icmp ne i32 %__tmp1000, 0
+  br i1 %__tmp1001, label %bb411, label %bb413
 bb413:
   br label %bb412
 bb411:
-  %__tmp1004 = load i32, i32* %y, align 4
-  %__tmp1005 = srem i32 %__tmp1004, 2
-  %__tmp1006 = icmp ne i32 %__tmp1005, 0
+  %__tmp1002 = load i32, i32* %y, align 4
+  %__tmp1003 = srem i32 %__tmp1002, 2
+  %__tmp1004 = icmp ne i32 %__tmp1003, 0
   br label %bb412
 bb412:
-  %__tmp1007 = phi i1 [ 0, %bb413 ], [ %__tmp1006, %bb411 ]
-  br i1 %__tmp1007, label %bb408, label %bb409
+  %__tmp1005 = phi i1 [ 0, %bb413 ], [ %__tmp1004, %bb411 ]
+  br i1 %__tmp1005, label %bb408, label %bb409
 bb408:
-  %__tmp1008 = load i32, i32* %ans, align 4
-  %__tmp1009 = load i32, i32* %i, align 4
-  %__tmp1010 = sext i32 %__tmp1009 to i64
-  %__tmp1011 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1010
-  %__tmp1012 = load i32, i32* %__tmp1011, align 4
-  %__tmp1013 = mul i32 1, %__tmp1012
-  %__tmp1014 = add i32 %__tmp1008, %__tmp1013
-  store i32 %__tmp1014, i32* %ans, align 4
+  %__tmp1006 = load i32, i32* %ans, align 4
+  %__tmp1007 = load i32, i32* %i, align 4
+  %__tmp1008 = sext i32 %__tmp1007 to i64
+  %__tmp1009 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1008
+  %__tmp1010 = load i32, i32* %__tmp1009, align 4
+  %__tmp1011 = mul i32 1, %__tmp1010
+  %__tmp1012 = add i32 %__tmp1006, %__tmp1011
+  store i32 %__tmp1012, i32* %ans, align 4
   br label %bb410
 bb409:
   br label %bb410
 bb410:
-  %__tmp1015 = load i32, i32* %x, align 4
+  %__tmp1013 = load i32, i32* %x, align 4
+  %__tmp1014 = sdiv i32 %__tmp1013, 2
+  store i32 %__tmp1014, i32* %x, align 4
+  %__tmp1015 = load i32, i32* %y, align 4
   %__tmp1016 = sdiv i32 %__tmp1015, 2
-  store i32 %__tmp1016, i32* %x, align 4
-  %__tmp1017 = load i32, i32* %y, align 4
-  %__tmp1018 = sdiv i32 %__tmp1017, 2
-  store i32 %__tmp1018, i32* %y, align 4
-  %__tmp1019 = load i32, i32* %i, align 4
-  %__tmp1020 = add i32 %__tmp1019, 1
-  store i32 %__tmp1020, i32* %i, align 4
+  store i32 %__tmp1016, i32* %y, align 4
+  %__tmp1017 = load i32, i32* %i, align 4
+  %__tmp1018 = add i32 %__tmp1017, 1
+  store i32 %__tmp1018, i32* %i, align 4
   br label %bb405
 bb407:
-  %__tmp1021 = load i32, i32* %ans, align 4
-  store i32 %__tmp1021, i32* %c.7, align 4
+  %__tmp1019 = load i32, i32* %ans, align 4
+  store i32 %__tmp1019, i32* %c.7, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1022 = load i32, i32* %c.7, align 4
-  %__tmp1023 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1024 = load i32, i32* %__tmp1023, align 4
-  %__tmp1025 = mul i32 %__tmp1022, %__tmp1024
-  store i32 %__tmp1025, i32* %x, align 4
+  %__tmp1020 = load i32, i32* %c.7, align 4
+  %__tmp1021 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1022 = load i32, i32* %__tmp1021, align 4
+  %__tmp1023 = mul i32 %__tmp1020, %__tmp1022
+  store i32 %__tmp1023, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb417
 bb417:
-  %__tmp1026 = load i32, i32* %i, align 4
-  %__tmp1027 = icmp slt i32 %__tmp1026, 16
-  br i1 %__tmp1027, label %bb418, label %bb419
+  %__tmp1024 = load i32, i32* %i, align 4
+  %__tmp1025 = icmp slt i32 %__tmp1024, 16
+  br i1 %__tmp1025, label %bb418, label %bb419
 bb418:
-  %__tmp1028 = load i32, i32* %x, align 4
-  %__tmp1029 = srem i32 %__tmp1028, 2
-  %__tmp1030 = icmp ne i32 %__tmp1029, 0
-  br i1 %__tmp1030, label %bb423, label %bb425
+  %__tmp1026 = load i32, i32* %x, align 4
+  %__tmp1027 = srem i32 %__tmp1026, 2
+  %__tmp1028 = icmp ne i32 %__tmp1027, 0
+  br i1 %__tmp1028, label %bb423, label %bb425
 bb425:
   br label %bb424
 bb423:
-  %__tmp1031 = load i32, i32* %y, align 4
-  %__tmp1032 = srem i32 %__tmp1031, 2
-  %__tmp1033 = icmp ne i32 %__tmp1032, 0
+  %__tmp1029 = load i32, i32* %y, align 4
+  %__tmp1030 = srem i32 %__tmp1029, 2
+  %__tmp1031 = icmp ne i32 %__tmp1030, 0
   br label %bb424
 bb424:
-  %__tmp1034 = phi i1 [ 0, %bb425 ], [ %__tmp1033, %bb423 ]
-  br i1 %__tmp1034, label %bb420, label %bb421
+  %__tmp1032 = phi i1 [ 0, %bb425 ], [ %__tmp1031, %bb423 ]
+  br i1 %__tmp1032, label %bb420, label %bb421
 bb420:
-  %__tmp1035 = load i32, i32* %ans, align 4
-  %__tmp1036 = load i32, i32* %i, align 4
-  %__tmp1037 = sext i32 %__tmp1036 to i64
-  %__tmp1038 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1037
-  %__tmp1039 = load i32, i32* %__tmp1038, align 4
-  %__tmp1040 = mul i32 1, %__tmp1039
-  %__tmp1041 = add i32 %__tmp1035, %__tmp1040
-  store i32 %__tmp1041, i32* %ans, align 4
+  %__tmp1033 = load i32, i32* %ans, align 4
+  %__tmp1034 = load i32, i32* %i, align 4
+  %__tmp1035 = sext i32 %__tmp1034 to i64
+  %__tmp1036 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1035
+  %__tmp1037 = load i32, i32* %__tmp1036, align 4
+  %__tmp1038 = mul i32 1, %__tmp1037
+  %__tmp1039 = add i32 %__tmp1033, %__tmp1038
+  store i32 %__tmp1039, i32* %ans, align 4
   br label %bb422
 bb421:
   br label %bb422
 bb422:
-  %__tmp1042 = load i32, i32* %x, align 4
+  %__tmp1040 = load i32, i32* %x, align 4
+  %__tmp1041 = sdiv i32 %__tmp1040, 2
+  store i32 %__tmp1041, i32* %x, align 4
+  %__tmp1042 = load i32, i32* %y, align 4
   %__tmp1043 = sdiv i32 %__tmp1042, 2
-  store i32 %__tmp1043, i32* %x, align 4
-  %__tmp1044 = load i32, i32* %y, align 4
-  %__tmp1045 = sdiv i32 %__tmp1044, 2
-  store i32 %__tmp1045, i32* %y, align 4
-  %__tmp1046 = load i32, i32* %i, align 4
-  %__tmp1047 = add i32 %__tmp1046, 1
-  store i32 %__tmp1047, i32* %i, align 4
+  store i32 %__tmp1043, i32* %y, align 4
+  %__tmp1044 = load i32, i32* %i, align 4
+  %__tmp1045 = add i32 %__tmp1044, 1
+  store i32 %__tmp1045, i32* %i, align 4
   br label %bb417
 bb419:
   br label %bb416
 bb416:
-  %__tmp1048 = load i32, i32* %ans, align 4
-  store i32 %__tmp1048, i32* %c.7, align 4
-  %__tmp1049 = load i32, i32* %sum.7, align 4
-  store i32 %__tmp1049, i32* %al.7, align 4
+  %__tmp1046 = load i32, i32* %ans, align 4
+  store i32 %__tmp1046, i32* %c.7, align 4
+  %__tmp1047 = load i32, i32* %sum.7, align 4
+  store i32 %__tmp1047, i32* %al.7, align 4
   br label %bb390
 bb392:
-  %__tmp1050 = load i32, i32* %al.7, align 4
-  store i32 %__tmp1050, i32* %ans, align 4
-  %__tmp1051 = load i32, i32* %ans, align 4
-  store i32 %__tmp1051, i32* %ml.3, align 4
-  %__tmp1052 = load i32, i32* %mr.3, align 4
-  store i32 %__tmp1052, i32* %x, align 4
+  %__tmp1048 = load i32, i32* %al.7, align 4
+  store i32 %__tmp1048, i32* %ans, align 4
+  %__tmp1049 = load i32, i32* %ans, align 4
+  store i32 %__tmp1049, i32* %ml.3, align 4
+  %__tmp1050 = load i32, i32* %mr.3, align 4
+  store i32 %__tmp1050, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1053 = load i32, i32* %y, align 4
-  %__tmp1054 = icmp sge i32 %__tmp1053, 15
-  br i1 %__tmp1054, label %bb426, label %bb427
+  %__tmp1051 = load i32, i32* %y, align 4
+  %__tmp1052 = icmp sge i32 %__tmp1051, 15
+  br i1 %__tmp1052, label %bb426, label %bb427
 bb426:
-  %__tmp1055 = load i32, i32* %x, align 4
-  %__tmp1056 = icmp slt i32 %__tmp1055, 0
-  br i1 %__tmp1056, label %bb429, label %bb430
+  %__tmp1053 = load i32, i32* %x, align 4
+  %__tmp1054 = icmp slt i32 %__tmp1053, 0
+  br i1 %__tmp1054, label %bb429, label %bb430
 bb429:
   store i32 65535, i32* %ans, align 4
   br label %bb431
@@ -2318,68 +2318,68 @@ bb430:
 bb431:
   br label %bb428
 bb427:
-  %__tmp1057 = load i32, i32* %y, align 4
-  %__tmp1058 = icmp sgt i32 %__tmp1057, 0
-  br i1 %__tmp1058, label %bb432, label %bb433
+  %__tmp1055 = load i32, i32* %y, align 4
+  %__tmp1056 = icmp sgt i32 %__tmp1055, 0
+  br i1 %__tmp1056, label %bb432, label %bb433
 bb432:
-  %__tmp1059 = load i32, i32* %x, align 4
-  %__tmp1060 = icmp sgt i32 %__tmp1059, 32767
-  br i1 %__tmp1060, label %bb435, label %bb436
+  %__tmp1057 = load i32, i32* %x, align 4
+  %__tmp1058 = icmp sgt i32 %__tmp1057, 32767
+  br i1 %__tmp1058, label %bb435, label %bb436
 bb435:
-  %__tmp1061 = load i32, i32* %x, align 4
-  %__tmp1062 = load i32, i32* %y, align 4
-  %__tmp1063 = sext i32 %__tmp1062 to i64
-  %__tmp1064 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1063
-  %__tmp1065 = load i32, i32* %__tmp1064, align 4
-  %__tmp1066 = sdiv i32 %__tmp1061, %__tmp1065
-  store i32 %__tmp1066, i32* %x, align 4
-  %__tmp1067 = load i32, i32* %x, align 4
-  %__tmp1068 = add i32 %__tmp1067, 65536
-  %__tmp1069 = load i32, i32* %y, align 4
-  %__tmp1070 = sub i32 15, %__tmp1069
-  %__tmp1071 = add i32 %__tmp1070, 1
-  %__tmp1072 = sext i32 %__tmp1071 to i64
-  %__tmp1073 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1072
-  %__tmp1074 = load i32, i32* %__tmp1073, align 4
-  %__tmp1075 = sub i32 %__tmp1068, %__tmp1074
-  store i32 %__tmp1075, i32* %ans, align 4
+  %__tmp1059 = load i32, i32* %x, align 4
+  %__tmp1060 = load i32, i32* %y, align 4
+  %__tmp1061 = sext i32 %__tmp1060 to i64
+  %__tmp1062 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1061
+  %__tmp1063 = load i32, i32* %__tmp1062, align 4
+  %__tmp1064 = sdiv i32 %__tmp1059, %__tmp1063
+  store i32 %__tmp1064, i32* %x, align 4
+  %__tmp1065 = load i32, i32* %x, align 4
+  %__tmp1066 = add i32 %__tmp1065, 65536
+  %__tmp1067 = load i32, i32* %y, align 4
+  %__tmp1068 = sub i32 15, %__tmp1067
+  %__tmp1069 = add i32 %__tmp1068, 1
+  %__tmp1070 = sext i32 %__tmp1069 to i64
+  %__tmp1071 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1070
+  %__tmp1072 = load i32, i32* %__tmp1071, align 4
+  %__tmp1073 = sub i32 %__tmp1066, %__tmp1072
+  store i32 %__tmp1073, i32* %ans, align 4
   br label %bb437
 bb436:
-  %__tmp1076 = load i32, i32* %x, align 4
-  %__tmp1077 = load i32, i32* %y, align 4
-  %__tmp1078 = sext i32 %__tmp1077 to i64
-  %__tmp1079 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1078
-  %__tmp1080 = load i32, i32* %__tmp1079, align 4
-  %__tmp1081 = sdiv i32 %__tmp1076, %__tmp1080
-  store i32 %__tmp1081, i32* %ans, align 4
+  %__tmp1074 = load i32, i32* %x, align 4
+  %__tmp1075 = load i32, i32* %y, align 4
+  %__tmp1076 = sext i32 %__tmp1075 to i64
+  %__tmp1077 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1076
+  %__tmp1078 = load i32, i32* %__tmp1077, align 4
+  %__tmp1079 = sdiv i32 %__tmp1074, %__tmp1078
+  store i32 %__tmp1079, i32* %ans, align 4
   br label %bb437
 bb437:
   br label %bb434
 bb433:
-  %__tmp1082 = load i32, i32* %x, align 4
-  store i32 %__tmp1082, i32* %ans, align 4
+  %__tmp1080 = load i32, i32* %x, align 4
+  store i32 %__tmp1080, i32* %ans, align 4
   br label %bb434
 bb434:
   br label %bb428
 bb428:
-  %__tmp1083 = load i32, i32* %ans, align 4
-  store i32 %__tmp1083, i32* %mr.3, align 4
+  %__tmp1081 = load i32, i32* %ans, align 4
+  store i32 %__tmp1081, i32* %mr.3, align 4
   br label %bb339
 bb341:
-  %__tmp1084 = load i32, i32* %mres.3, align 4
-  store i32 %__tmp1084, i32* %ans, align 4
-  %__tmp1085 = load i32, i32* %ans, align 4
-  store i32 %__tmp1085, i32* %pl.1, align 4
-  %__tmp1086 = load i32, i32* %pr.1, align 4
-  store i32 %__tmp1086, i32* %x, align 4
+  %__tmp1082 = load i32, i32* %mres.3, align 4
+  store i32 %__tmp1082, i32* %ans, align 4
+  %__tmp1083 = load i32, i32* %ans, align 4
+  store i32 %__tmp1083, i32* %pl.1, align 4
+  %__tmp1084 = load i32, i32* %pr.1, align 4
+  store i32 %__tmp1084, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1087 = load i32, i32* %y, align 4
-  %__tmp1088 = icmp sge i32 %__tmp1087, 15
-  br i1 %__tmp1088, label %bb438, label %bb439
+  %__tmp1085 = load i32, i32* %y, align 4
+  %__tmp1086 = icmp sge i32 %__tmp1085, 15
+  br i1 %__tmp1086, label %bb438, label %bb439
 bb438:
-  %__tmp1089 = load i32, i32* %x, align 4
-  %__tmp1090 = icmp slt i32 %__tmp1089, 0
-  br i1 %__tmp1090, label %bb441, label %bb442
+  %__tmp1087 = load i32, i32* %x, align 4
+  %__tmp1088 = icmp slt i32 %__tmp1087, 0
+  br i1 %__tmp1088, label %bb441, label %bb442
 bb441:
   store i32 65535, i32* %ans, align 4
   br label %bb443
@@ -2389,607 +2389,607 @@ bb442:
 bb443:
   br label %bb440
 bb439:
-  %__tmp1091 = load i32, i32* %y, align 4
-  %__tmp1092 = icmp sgt i32 %__tmp1091, 0
-  br i1 %__tmp1092, label %bb444, label %bb445
+  %__tmp1089 = load i32, i32* %y, align 4
+  %__tmp1090 = icmp sgt i32 %__tmp1089, 0
+  br i1 %__tmp1090, label %bb444, label %bb445
 bb444:
-  %__tmp1093 = load i32, i32* %x, align 4
-  %__tmp1094 = icmp sgt i32 %__tmp1093, 32767
-  br i1 %__tmp1094, label %bb447, label %bb448
+  %__tmp1091 = load i32, i32* %x, align 4
+  %__tmp1092 = icmp sgt i32 %__tmp1091, 32767
+  br i1 %__tmp1092, label %bb447, label %bb448
 bb447:
-  %__tmp1095 = load i32, i32* %x, align 4
-  %__tmp1096 = load i32, i32* %y, align 4
-  %__tmp1097 = sext i32 %__tmp1096 to i64
-  %__tmp1098 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1097
-  %__tmp1099 = load i32, i32* %__tmp1098, align 4
-  %__tmp1100 = sdiv i32 %__tmp1095, %__tmp1099
-  store i32 %__tmp1100, i32* %x, align 4
-  %__tmp1101 = load i32, i32* %x, align 4
-  %__tmp1102 = add i32 %__tmp1101, 65536
-  %__tmp1103 = load i32, i32* %y, align 4
-  %__tmp1104 = sub i32 15, %__tmp1103
-  %__tmp1105 = add i32 %__tmp1104, 1
-  %__tmp1106 = sext i32 %__tmp1105 to i64
-  %__tmp1107 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1106
-  %__tmp1108 = load i32, i32* %__tmp1107, align 4
-  %__tmp1109 = sub i32 %__tmp1102, %__tmp1108
-  store i32 %__tmp1109, i32* %ans, align 4
+  %__tmp1093 = load i32, i32* %x, align 4
+  %__tmp1094 = load i32, i32* %y, align 4
+  %__tmp1095 = sext i32 %__tmp1094 to i64
+  %__tmp1096 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1095
+  %__tmp1097 = load i32, i32* %__tmp1096, align 4
+  %__tmp1098 = sdiv i32 %__tmp1093, %__tmp1097
+  store i32 %__tmp1098, i32* %x, align 4
+  %__tmp1099 = load i32, i32* %x, align 4
+  %__tmp1100 = add i32 %__tmp1099, 65536
+  %__tmp1101 = load i32, i32* %y, align 4
+  %__tmp1102 = sub i32 15, %__tmp1101
+  %__tmp1103 = add i32 %__tmp1102, 1
+  %__tmp1104 = sext i32 %__tmp1103 to i64
+  %__tmp1105 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1104
+  %__tmp1106 = load i32, i32* %__tmp1105, align 4
+  %__tmp1107 = sub i32 %__tmp1100, %__tmp1106
+  store i32 %__tmp1107, i32* %ans, align 4
   br label %bb449
 bb448:
-  %__tmp1110 = load i32, i32* %x, align 4
-  %__tmp1111 = load i32, i32* %y, align 4
-  %__tmp1112 = sext i32 %__tmp1111 to i64
-  %__tmp1113 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1112
-  %__tmp1114 = load i32, i32* %__tmp1113, align 4
-  %__tmp1115 = sdiv i32 %__tmp1110, %__tmp1114
-  store i32 %__tmp1115, i32* %ans, align 4
+  %__tmp1108 = load i32, i32* %x, align 4
+  %__tmp1109 = load i32, i32* %y, align 4
+  %__tmp1110 = sext i32 %__tmp1109 to i64
+  %__tmp1111 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1110
+  %__tmp1112 = load i32, i32* %__tmp1111, align 4
+  %__tmp1113 = sdiv i32 %__tmp1108, %__tmp1112
+  store i32 %__tmp1113, i32* %ans, align 4
   br label %bb449
 bb449:
   br label %bb446
 bb445:
-  %__tmp1116 = load i32, i32* %x, align 4
-  store i32 %__tmp1116, i32* %ans, align 4
+  %__tmp1114 = load i32, i32* %x, align 4
+  store i32 %__tmp1114, i32* %ans, align 4
   br label %bb446
 bb446:
   br label %bb440
 bb440:
-  %__tmp1117 = load i32, i32* %ans, align 4
-  store i32 %__tmp1117, i32* %pr.1, align 4
+  %__tmp1115 = load i32, i32* %ans, align 4
+  store i32 %__tmp1115, i32* %pr.1, align 4
   br label %bb225
 bb227:
-  %__tmp1118 = load i32, i32* %pres.1, align 4
-  store i32 %__tmp1118, i32* %ans, align 4
-  %__tmp1119 = load i32, i32* %ans, align 4
-  %__tmp1120 = call i32 @putint(i32 %__tmp1119)
-  %__tmp1121 = call i32 @putch(i32 10)
+  %__tmp1116 = load i32, i32* %pres.1, align 4
+  store i32 %__tmp1116, i32* %ans, align 4
+  %__tmp1117 = load i32, i32* %ans, align 4
+  call void @putint(i32 %__tmp1117)
+  call void @putch(i32 10)
   store i32 2, i32* %cur, align 4
   br label %bb450
 bb450:
-  %__tmp1122 = load i32, i32* %cur, align 4
-  %__tmp1123 = icmp slt i32 %__tmp1122, 16
-  br i1 %__tmp1123, label %bb451, label %bb452
+  %__tmp1118 = load i32, i32* %cur, align 4
+  %__tmp1119 = icmp slt i32 %__tmp1118, 16
+  br i1 %__tmp1119, label %bb451, label %bb452
 bb451:
   %pl.2 = alloca i32, align 4
   store i32 2, i32* %pl.2, align 4
   %pr.2 = alloca i32, align 4
-  %__tmp1124 = load i32, i32* %cur, align 4
-  store i32 %__tmp1124, i32* %pr.2, align 4
+  %__tmp1120 = load i32, i32* %cur, align 4
+  store i32 %__tmp1120, i32* %pr.2, align 4
   %pres.2 = alloca i32, align 4
   store i32 1, i32* %pres.2, align 4
   br label %bb453
 bb453:
-  %__tmp1125 = load i32, i32* %pr.2, align 4
-  %__tmp1126 = icmp sgt i32 %__tmp1125, 0
-  br i1 %__tmp1126, label %bb454, label %bb455
+  %__tmp1121 = load i32, i32* %pr.2, align 4
+  %__tmp1122 = icmp sgt i32 %__tmp1121, 0
+  br i1 %__tmp1122, label %bb454, label %bb455
 bb454:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1127 = load i32, i32* %pr.2, align 4
-  store i32 %__tmp1127, i32* %x, align 4
+  %__tmp1123 = load i32, i32* %pr.2, align 4
+  store i32 %__tmp1123, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb456
 bb456:
-  %__tmp1128 = load i32, i32* %i, align 4
-  %__tmp1129 = icmp slt i32 %__tmp1128, 16
-  br i1 %__tmp1129, label %bb457, label %bb458
+  %__tmp1124 = load i32, i32* %i, align 4
+  %__tmp1125 = icmp slt i32 %__tmp1124, 16
+  br i1 %__tmp1125, label %bb457, label %bb458
 bb457:
-  %__tmp1130 = load i32, i32* %x, align 4
-  %__tmp1131 = srem i32 %__tmp1130, 2
-  %__tmp1132 = icmp ne i32 %__tmp1131, 0
-  br i1 %__tmp1132, label %bb462, label %bb464
+  %__tmp1126 = load i32, i32* %x, align 4
+  %__tmp1127 = srem i32 %__tmp1126, 2
+  %__tmp1128 = icmp ne i32 %__tmp1127, 0
+  br i1 %__tmp1128, label %bb462, label %bb464
 bb464:
   br label %bb463
 bb462:
-  %__tmp1133 = load i32, i32* %y, align 4
-  %__tmp1134 = srem i32 %__tmp1133, 2
-  %__tmp1135 = icmp ne i32 %__tmp1134, 0
+  %__tmp1129 = load i32, i32* %y, align 4
+  %__tmp1130 = srem i32 %__tmp1129, 2
+  %__tmp1131 = icmp ne i32 %__tmp1130, 0
   br label %bb463
 bb463:
-  %__tmp1136 = phi i1 [ 0, %bb464 ], [ %__tmp1135, %bb462 ]
-  br i1 %__tmp1136, label %bb459, label %bb460
+  %__tmp1132 = phi i1 [ 0, %bb464 ], [ %__tmp1131, %bb462 ]
+  br i1 %__tmp1132, label %bb459, label %bb460
 bb459:
-  %__tmp1137 = load i32, i32* %ans, align 4
-  %__tmp1138 = load i32, i32* %i, align 4
-  %__tmp1139 = sext i32 %__tmp1138 to i64
-  %__tmp1140 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1139
-  %__tmp1141 = load i32, i32* %__tmp1140, align 4
-  %__tmp1142 = mul i32 1, %__tmp1141
-  %__tmp1143 = add i32 %__tmp1137, %__tmp1142
-  store i32 %__tmp1143, i32* %ans, align 4
+  %__tmp1133 = load i32, i32* %ans, align 4
+  %__tmp1134 = load i32, i32* %i, align 4
+  %__tmp1135 = sext i32 %__tmp1134 to i64
+  %__tmp1136 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1135
+  %__tmp1137 = load i32, i32* %__tmp1136, align 4
+  %__tmp1138 = mul i32 1, %__tmp1137
+  %__tmp1139 = add i32 %__tmp1133, %__tmp1138
+  store i32 %__tmp1139, i32* %ans, align 4
   br label %bb461
 bb460:
   br label %bb461
 bb461:
-  %__tmp1144 = load i32, i32* %x, align 4
-  %__tmp1145 = sdiv i32 %__tmp1144, 2
-  store i32 %__tmp1145, i32* %x, align 4
-  %__tmp1146 = load i32, i32* %y, align 4
-  %__tmp1147 = sdiv i32 %__tmp1146, 2
-  store i32 %__tmp1147, i32* %y, align 4
-  %__tmp1148 = load i32, i32* %i, align 4
-  %__tmp1149 = add i32 %__tmp1148, 1
-  store i32 %__tmp1149, i32* %i, align 4
+  %__tmp1140 = load i32, i32* %x, align 4
+  %__tmp1141 = sdiv i32 %__tmp1140, 2
+  store i32 %__tmp1141, i32* %x, align 4
+  %__tmp1142 = load i32, i32* %y, align 4
+  %__tmp1143 = sdiv i32 %__tmp1142, 2
+  store i32 %__tmp1143, i32* %y, align 4
+  %__tmp1144 = load i32, i32* %i, align 4
+  %__tmp1145 = add i32 %__tmp1144, 1
+  store i32 %__tmp1145, i32* %i, align 4
   br label %bb456
 bb458:
-  %__tmp1150 = load i32, i32* %ans, align 4
-  %__tmp1151 = trunc i32 %__tmp1150 to i1
-  br i1 %__tmp1151, label %bb465, label %bb466
+  %__tmp1146 = load i32, i32* %ans, align 4
+  %__tmp1147 = trunc i32 %__tmp1146 to i1
+  br i1 %__tmp1147, label %bb465, label %bb466
 bb465:
   %ml.4 = alloca i32, align 4
-  %__tmp1152 = load i32, i32* %pres.2, align 4
-  store i32 %__tmp1152, i32* %ml.4, align 4
+  %__tmp1148 = load i32, i32* %pres.2, align 4
+  store i32 %__tmp1148, i32* %ml.4, align 4
   %mr.4 = alloca i32, align 4
-  %__tmp1153 = load i32, i32* %pl.2, align 4
-  store i32 %__tmp1153, i32* %mr.4, align 4
+  %__tmp1149 = load i32, i32* %pl.2, align 4
+  store i32 %__tmp1149, i32* %mr.4, align 4
   %mres.4 = alloca i32, align 4
   store i32 0, i32* %mres.4, align 4
   br label %bb468
 bb468:
-  %__tmp1154 = load i32, i32* %mr.4, align 4
-  %__tmp1155 = trunc i32 %__tmp1154 to i1
-  br i1 %__tmp1155, label %bb469, label %bb470
+  %__tmp1150 = load i32, i32* %mr.4, align 4
+  %__tmp1151 = trunc i32 %__tmp1150 to i1
+  br i1 %__tmp1151, label %bb469, label %bb470
 bb469:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1156 = load i32, i32* %mr.4, align 4
-  store i32 %__tmp1156, i32* %x, align 4
+  %__tmp1152 = load i32, i32* %mr.4, align 4
+  store i32 %__tmp1152, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb471
 bb471:
-  %__tmp1157 = load i32, i32* %i, align 4
-  %__tmp1158 = icmp slt i32 %__tmp1157, 16
-  br i1 %__tmp1158, label %bb472, label %bb473
+  %__tmp1153 = load i32, i32* %i, align 4
+  %__tmp1154 = icmp slt i32 %__tmp1153, 16
+  br i1 %__tmp1154, label %bb472, label %bb473
 bb472:
-  %__tmp1159 = load i32, i32* %x, align 4
-  %__tmp1160 = srem i32 %__tmp1159, 2
-  %__tmp1161 = icmp ne i32 %__tmp1160, 0
-  br i1 %__tmp1161, label %bb477, label %bb479
+  %__tmp1155 = load i32, i32* %x, align 4
+  %__tmp1156 = srem i32 %__tmp1155, 2
+  %__tmp1157 = icmp ne i32 %__tmp1156, 0
+  br i1 %__tmp1157, label %bb477, label %bb479
 bb479:
   br label %bb478
 bb477:
-  %__tmp1162 = load i32, i32* %y, align 4
-  %__tmp1163 = srem i32 %__tmp1162, 2
-  %__tmp1164 = icmp ne i32 %__tmp1163, 0
+  %__tmp1158 = load i32, i32* %y, align 4
+  %__tmp1159 = srem i32 %__tmp1158, 2
+  %__tmp1160 = icmp ne i32 %__tmp1159, 0
   br label %bb478
 bb478:
-  %__tmp1165 = phi i1 [ 0, %bb479 ], [ %__tmp1164, %bb477 ]
-  br i1 %__tmp1165, label %bb474, label %bb475
+  %__tmp1161 = phi i1 [ 0, %bb479 ], [ %__tmp1160, %bb477 ]
+  br i1 %__tmp1161, label %bb474, label %bb475
 bb474:
-  %__tmp1166 = load i32, i32* %ans, align 4
-  %__tmp1167 = load i32, i32* %i, align 4
-  %__tmp1168 = sext i32 %__tmp1167 to i64
-  %__tmp1169 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1168
-  %__tmp1170 = load i32, i32* %__tmp1169, align 4
-  %__tmp1171 = mul i32 1, %__tmp1170
-  %__tmp1172 = add i32 %__tmp1166, %__tmp1171
-  store i32 %__tmp1172, i32* %ans, align 4
+  %__tmp1162 = load i32, i32* %ans, align 4
+  %__tmp1163 = load i32, i32* %i, align 4
+  %__tmp1164 = sext i32 %__tmp1163 to i64
+  %__tmp1165 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1164
+  %__tmp1166 = load i32, i32* %__tmp1165, align 4
+  %__tmp1167 = mul i32 1, %__tmp1166
+  %__tmp1168 = add i32 %__tmp1162, %__tmp1167
+  store i32 %__tmp1168, i32* %ans, align 4
   br label %bb476
 bb475:
   br label %bb476
 bb476:
-  %__tmp1173 = load i32, i32* %x, align 4
-  %__tmp1174 = sdiv i32 %__tmp1173, 2
-  store i32 %__tmp1174, i32* %x, align 4
-  %__tmp1175 = load i32, i32* %y, align 4
-  %__tmp1176 = sdiv i32 %__tmp1175, 2
-  store i32 %__tmp1176, i32* %y, align 4
-  %__tmp1177 = load i32, i32* %i, align 4
-  %__tmp1178 = add i32 %__tmp1177, 1
-  store i32 %__tmp1178, i32* %i, align 4
+  %__tmp1169 = load i32, i32* %x, align 4
+  %__tmp1170 = sdiv i32 %__tmp1169, 2
+  store i32 %__tmp1170, i32* %x, align 4
+  %__tmp1171 = load i32, i32* %y, align 4
+  %__tmp1172 = sdiv i32 %__tmp1171, 2
+  store i32 %__tmp1172, i32* %y, align 4
+  %__tmp1173 = load i32, i32* %i, align 4
+  %__tmp1174 = add i32 %__tmp1173, 1
+  store i32 %__tmp1174, i32* %i, align 4
   br label %bb471
 bb473:
-  %__tmp1179 = load i32, i32* %ans, align 4
-  %__tmp1180 = trunc i32 %__tmp1179 to i1
-  br i1 %__tmp1180, label %bb480, label %bb481
+  %__tmp1175 = load i32, i32* %ans, align 4
+  %__tmp1176 = trunc i32 %__tmp1175 to i1
+  br i1 %__tmp1176, label %bb480, label %bb481
 bb480:
   %al.8 = alloca i32, align 4
-  %__tmp1181 = load i32, i32* %mres.4, align 4
-  store i32 %__tmp1181, i32* %al.8, align 4
+  %__tmp1177 = load i32, i32* %mres.4, align 4
+  store i32 %__tmp1177, i32* %al.8, align 4
   %c.8 = alloca i32, align 4
-  %__tmp1182 = load i32, i32* %ml.4, align 4
-  store i32 %__tmp1182, i32* %c.8, align 4
+  %__tmp1178 = load i32, i32* %ml.4, align 4
+  store i32 %__tmp1178, i32* %c.8, align 4
   %sum.8 = alloca i32, align 4
   br label %bb483
 bb483:
-  %__tmp1183 = load i32, i32* %c.8, align 4
-  %__tmp1184 = trunc i32 %__tmp1183 to i1
-  br i1 %__tmp1184, label %bb484, label %bb485
+  %__tmp1179 = load i32, i32* %c.8, align 4
+  %__tmp1180 = trunc i32 %__tmp1179 to i1
+  br i1 %__tmp1180, label %bb484, label %bb485
 bb484:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1185 = load i32, i32* %al.8, align 4
-  store i32 %__tmp1185, i32* %x, align 4
-  %__tmp1186 = load i32, i32* %c.8, align 4
-  store i32 %__tmp1186, i32* %y, align 4
+  %__tmp1181 = load i32, i32* %al.8, align 4
+  store i32 %__tmp1181, i32* %x, align 4
+  %__tmp1182 = load i32, i32* %c.8, align 4
+  store i32 %__tmp1182, i32* %y, align 4
   br label %bb486
 bb486:
-  %__tmp1187 = load i32, i32* %i, align 4
-  %__tmp1188 = icmp slt i32 %__tmp1187, 16
-  br i1 %__tmp1188, label %bb487, label %bb488
+  %__tmp1183 = load i32, i32* %i, align 4
+  %__tmp1184 = icmp slt i32 %__tmp1183, 16
+  br i1 %__tmp1184, label %bb487, label %bb488
 bb487:
-  %__tmp1189 = load i32, i32* %x, align 4
-  %__tmp1190 = srem i32 %__tmp1189, 2
-  %__tmp1191 = trunc i32 %__tmp1190 to i1
-  br i1 %__tmp1191, label %bb489, label %bb490
+  %__tmp1185 = load i32, i32* %x, align 4
+  %__tmp1186 = srem i32 %__tmp1185, 2
+  %__tmp1187 = trunc i32 %__tmp1186 to i1
+  br i1 %__tmp1187, label %bb489, label %bb490
 bb489:
-  %__tmp1192 = load i32, i32* %y, align 4
-  %__tmp1193 = srem i32 %__tmp1192, 2
-  %__tmp1194 = icmp eq i32 %__tmp1193, 0
-  br i1 %__tmp1194, label %bb492, label %bb493
+  %__tmp1188 = load i32, i32* %y, align 4
+  %__tmp1189 = srem i32 %__tmp1188, 2
+  %__tmp1190 = icmp eq i32 %__tmp1189, 0
+  br i1 %__tmp1190, label %bb492, label %bb493
 bb492:
-  %__tmp1195 = load i32, i32* %ans, align 4
-  %__tmp1196 = load i32, i32* %i, align 4
-  %__tmp1197 = sext i32 %__tmp1196 to i64
-  %__tmp1198 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1197
-  %__tmp1199 = load i32, i32* %__tmp1198, align 4
-  %__tmp1200 = mul i32 1, %__tmp1199
-  %__tmp1201 = add i32 %__tmp1195, %__tmp1200
-  store i32 %__tmp1201, i32* %ans, align 4
+  %__tmp1191 = load i32, i32* %ans, align 4
+  %__tmp1192 = load i32, i32* %i, align 4
+  %__tmp1193 = sext i32 %__tmp1192 to i64
+  %__tmp1194 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1193
+  %__tmp1195 = load i32, i32* %__tmp1194, align 4
+  %__tmp1196 = mul i32 1, %__tmp1195
+  %__tmp1197 = add i32 %__tmp1191, %__tmp1196
+  store i32 %__tmp1197, i32* %ans, align 4
   br label %bb494
 bb493:
   br label %bb494
 bb494:
   br label %bb491
 bb490:
-  %__tmp1202 = load i32, i32* %y, align 4
-  %__tmp1203 = srem i32 %__tmp1202, 2
-  %__tmp1204 = trunc i32 %__tmp1203 to i1
-  br i1 %__tmp1204, label %bb495, label %bb496
+  %__tmp1198 = load i32, i32* %y, align 4
+  %__tmp1199 = srem i32 %__tmp1198, 2
+  %__tmp1200 = trunc i32 %__tmp1199 to i1
+  br i1 %__tmp1200, label %bb495, label %bb496
 bb495:
-  %__tmp1205 = load i32, i32* %ans, align 4
-  %__tmp1206 = load i32, i32* %i, align 4
-  %__tmp1207 = sext i32 %__tmp1206 to i64
-  %__tmp1208 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1207
-  %__tmp1209 = load i32, i32* %__tmp1208, align 4
-  %__tmp1210 = mul i32 1, %__tmp1209
-  %__tmp1211 = add i32 %__tmp1205, %__tmp1210
-  store i32 %__tmp1211, i32* %ans, align 4
+  %__tmp1201 = load i32, i32* %ans, align 4
+  %__tmp1202 = load i32, i32* %i, align 4
+  %__tmp1203 = sext i32 %__tmp1202 to i64
+  %__tmp1204 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1203
+  %__tmp1205 = load i32, i32* %__tmp1204, align 4
+  %__tmp1206 = mul i32 1, %__tmp1205
+  %__tmp1207 = add i32 %__tmp1201, %__tmp1206
+  store i32 %__tmp1207, i32* %ans, align 4
   br label %bb497
 bb496:
   br label %bb497
 bb497:
   br label %bb491
 bb491:
-  %__tmp1212 = load i32, i32* %x, align 4
-  %__tmp1213 = sdiv i32 %__tmp1212, 2
-  store i32 %__tmp1213, i32* %x, align 4
-  %__tmp1214 = load i32, i32* %y, align 4
-  %__tmp1215 = sdiv i32 %__tmp1214, 2
-  store i32 %__tmp1215, i32* %y, align 4
-  %__tmp1216 = load i32, i32* %i, align 4
-  %__tmp1217 = add i32 %__tmp1216, 1
-  store i32 %__tmp1217, i32* %i, align 4
+  %__tmp1208 = load i32, i32* %x, align 4
+  %__tmp1209 = sdiv i32 %__tmp1208, 2
+  store i32 %__tmp1209, i32* %x, align 4
+  %__tmp1210 = load i32, i32* %y, align 4
+  %__tmp1211 = sdiv i32 %__tmp1210, 2
+  store i32 %__tmp1211, i32* %y, align 4
+  %__tmp1212 = load i32, i32* %i, align 4
+  %__tmp1213 = add i32 %__tmp1212, 1
+  store i32 %__tmp1213, i32* %i, align 4
   br label %bb486
 bb488:
-  %__tmp1218 = load i32, i32* %ans, align 4
-  store i32 %__tmp1218, i32* %sum.8, align 4
+  %__tmp1214 = load i32, i32* %ans, align 4
+  store i32 %__tmp1214, i32* %sum.8, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1219 = load i32, i32* %al.8, align 4
-  store i32 %__tmp1219, i32* %x, align 4
-  %__tmp1220 = load i32, i32* %c.8, align 4
-  store i32 %__tmp1220, i32* %y, align 4
+  %__tmp1215 = load i32, i32* %al.8, align 4
+  store i32 %__tmp1215, i32* %x, align 4
+  %__tmp1216 = load i32, i32* %c.8, align 4
+  store i32 %__tmp1216, i32* %y, align 4
   br label %bb498
 bb498:
-  %__tmp1221 = load i32, i32* %i, align 4
-  %__tmp1222 = icmp slt i32 %__tmp1221, 16
-  br i1 %__tmp1222, label %bb499, label %bb500
+  %__tmp1217 = load i32, i32* %i, align 4
+  %__tmp1218 = icmp slt i32 %__tmp1217, 16
+  br i1 %__tmp1218, label %bb499, label %bb500
 bb499:
-  %__tmp1223 = load i32, i32* %x, align 4
-  %__tmp1224 = srem i32 %__tmp1223, 2
-  %__tmp1225 = icmp ne i32 %__tmp1224, 0
-  br i1 %__tmp1225, label %bb504, label %bb506
+  %__tmp1219 = load i32, i32* %x, align 4
+  %__tmp1220 = srem i32 %__tmp1219, 2
+  %__tmp1221 = icmp ne i32 %__tmp1220, 0
+  br i1 %__tmp1221, label %bb504, label %bb506
 bb506:
   br label %bb505
 bb504:
-  %__tmp1226 = load i32, i32* %y, align 4
-  %__tmp1227 = srem i32 %__tmp1226, 2
-  %__tmp1228 = icmp ne i32 %__tmp1227, 0
+  %__tmp1222 = load i32, i32* %y, align 4
+  %__tmp1223 = srem i32 %__tmp1222, 2
+  %__tmp1224 = icmp ne i32 %__tmp1223, 0
   br label %bb505
 bb505:
-  %__tmp1229 = phi i1 [ 0, %bb506 ], [ %__tmp1228, %bb504 ]
-  br i1 %__tmp1229, label %bb501, label %bb502
+  %__tmp1225 = phi i1 [ 0, %bb506 ], [ %__tmp1224, %bb504 ]
+  br i1 %__tmp1225, label %bb501, label %bb502
 bb501:
-  %__tmp1230 = load i32, i32* %ans, align 4
-  %__tmp1231 = load i32, i32* %i, align 4
-  %__tmp1232 = sext i32 %__tmp1231 to i64
-  %__tmp1233 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1232
-  %__tmp1234 = load i32, i32* %__tmp1233, align 4
-  %__tmp1235 = mul i32 1, %__tmp1234
-  %__tmp1236 = add i32 %__tmp1230, %__tmp1235
-  store i32 %__tmp1236, i32* %ans, align 4
+  %__tmp1226 = load i32, i32* %ans, align 4
+  %__tmp1227 = load i32, i32* %i, align 4
+  %__tmp1228 = sext i32 %__tmp1227 to i64
+  %__tmp1229 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1228
+  %__tmp1230 = load i32, i32* %__tmp1229, align 4
+  %__tmp1231 = mul i32 1, %__tmp1230
+  %__tmp1232 = add i32 %__tmp1226, %__tmp1231
+  store i32 %__tmp1232, i32* %ans, align 4
   br label %bb503
 bb502:
   br label %bb503
 bb503:
-  %__tmp1237 = load i32, i32* %x, align 4
-  %__tmp1238 = sdiv i32 %__tmp1237, 2
-  store i32 %__tmp1238, i32* %x, align 4
-  %__tmp1239 = load i32, i32* %y, align 4
-  %__tmp1240 = sdiv i32 %__tmp1239, 2
-  store i32 %__tmp1240, i32* %y, align 4
-  %__tmp1241 = load i32, i32* %i, align 4
-  %__tmp1242 = add i32 %__tmp1241, 1
-  store i32 %__tmp1242, i32* %i, align 4
+  %__tmp1233 = load i32, i32* %x, align 4
+  %__tmp1234 = sdiv i32 %__tmp1233, 2
+  store i32 %__tmp1234, i32* %x, align 4
+  %__tmp1235 = load i32, i32* %y, align 4
+  %__tmp1236 = sdiv i32 %__tmp1235, 2
+  store i32 %__tmp1236, i32* %y, align 4
+  %__tmp1237 = load i32, i32* %i, align 4
+  %__tmp1238 = add i32 %__tmp1237, 1
+  store i32 %__tmp1238, i32* %i, align 4
   br label %bb498
 bb500:
-  %__tmp1243 = load i32, i32* %ans, align 4
-  store i32 %__tmp1243, i32* %c.8, align 4
+  %__tmp1239 = load i32, i32* %ans, align 4
+  store i32 %__tmp1239, i32* %c.8, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1244 = load i32, i32* %c.8, align 4
-  %__tmp1245 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1246 = load i32, i32* %__tmp1245, align 4
-  %__tmp1247 = mul i32 %__tmp1244, %__tmp1246
-  store i32 %__tmp1247, i32* %x, align 4
+  %__tmp1240 = load i32, i32* %c.8, align 4
+  %__tmp1241 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1242 = load i32, i32* %__tmp1241, align 4
+  %__tmp1243 = mul i32 %__tmp1240, %__tmp1242
+  store i32 %__tmp1243, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb510
 bb510:
-  %__tmp1248 = load i32, i32* %i, align 4
-  %__tmp1249 = icmp slt i32 %__tmp1248, 16
-  br i1 %__tmp1249, label %bb511, label %bb512
+  %__tmp1244 = load i32, i32* %i, align 4
+  %__tmp1245 = icmp slt i32 %__tmp1244, 16
+  br i1 %__tmp1245, label %bb511, label %bb512
 bb511:
-  %__tmp1250 = load i32, i32* %x, align 4
-  %__tmp1251 = srem i32 %__tmp1250, 2
-  %__tmp1252 = icmp ne i32 %__tmp1251, 0
-  br i1 %__tmp1252, label %bb516, label %bb518
+  %__tmp1246 = load i32, i32* %x, align 4
+  %__tmp1247 = srem i32 %__tmp1246, 2
+  %__tmp1248 = icmp ne i32 %__tmp1247, 0
+  br i1 %__tmp1248, label %bb516, label %bb518
 bb518:
   br label %bb517
 bb516:
-  %__tmp1253 = load i32, i32* %y, align 4
-  %__tmp1254 = srem i32 %__tmp1253, 2
-  %__tmp1255 = icmp ne i32 %__tmp1254, 0
+  %__tmp1249 = load i32, i32* %y, align 4
+  %__tmp1250 = srem i32 %__tmp1249, 2
+  %__tmp1251 = icmp ne i32 %__tmp1250, 0
   br label %bb517
 bb517:
-  %__tmp1256 = phi i1 [ 0, %bb518 ], [ %__tmp1255, %bb516 ]
-  br i1 %__tmp1256, label %bb513, label %bb514
+  %__tmp1252 = phi i1 [ 0, %bb518 ], [ %__tmp1251, %bb516 ]
+  br i1 %__tmp1252, label %bb513, label %bb514
 bb513:
-  %__tmp1257 = load i32, i32* %ans, align 4
-  %__tmp1258 = load i32, i32* %i, align 4
-  %__tmp1259 = sext i32 %__tmp1258 to i64
-  %__tmp1260 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1259
-  %__tmp1261 = load i32, i32* %__tmp1260, align 4
-  %__tmp1262 = mul i32 1, %__tmp1261
-  %__tmp1263 = add i32 %__tmp1257, %__tmp1262
-  store i32 %__tmp1263, i32* %ans, align 4
+  %__tmp1253 = load i32, i32* %ans, align 4
+  %__tmp1254 = load i32, i32* %i, align 4
+  %__tmp1255 = sext i32 %__tmp1254 to i64
+  %__tmp1256 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1255
+  %__tmp1257 = load i32, i32* %__tmp1256, align 4
+  %__tmp1258 = mul i32 1, %__tmp1257
+  %__tmp1259 = add i32 %__tmp1253, %__tmp1258
+  store i32 %__tmp1259, i32* %ans, align 4
   br label %bb515
 bb514:
   br label %bb515
 bb515:
-  %__tmp1264 = load i32, i32* %x, align 4
-  %__tmp1265 = sdiv i32 %__tmp1264, 2
-  store i32 %__tmp1265, i32* %x, align 4
-  %__tmp1266 = load i32, i32* %y, align 4
-  %__tmp1267 = sdiv i32 %__tmp1266, 2
-  store i32 %__tmp1267, i32* %y, align 4
-  %__tmp1268 = load i32, i32* %i, align 4
-  %__tmp1269 = add i32 %__tmp1268, 1
-  store i32 %__tmp1269, i32* %i, align 4
+  %__tmp1260 = load i32, i32* %x, align 4
+  %__tmp1261 = sdiv i32 %__tmp1260, 2
+  store i32 %__tmp1261, i32* %x, align 4
+  %__tmp1262 = load i32, i32* %y, align 4
+  %__tmp1263 = sdiv i32 %__tmp1262, 2
+  store i32 %__tmp1263, i32* %y, align 4
+  %__tmp1264 = load i32, i32* %i, align 4
+  %__tmp1265 = add i32 %__tmp1264, 1
+  store i32 %__tmp1265, i32* %i, align 4
   br label %bb510
 bb512:
   br label %bb509
 bb509:
-  %__tmp1270 = load i32, i32* %ans, align 4
-  store i32 %__tmp1270, i32* %c.8, align 4
-  %__tmp1271 = load i32, i32* %sum.8, align 4
-  store i32 %__tmp1271, i32* %al.8, align 4
+  %__tmp1266 = load i32, i32* %ans, align 4
+  store i32 %__tmp1266, i32* %c.8, align 4
+  %__tmp1267 = load i32, i32* %sum.8, align 4
+  store i32 %__tmp1267, i32* %al.8, align 4
   br label %bb483
 bb485:
-  %__tmp1272 = load i32, i32* %al.8, align 4
-  store i32 %__tmp1272, i32* %ans, align 4
-  %__tmp1273 = load i32, i32* %ans, align 4
-  store i32 %__tmp1273, i32* %mres.4, align 4
+  %__tmp1268 = load i32, i32* %al.8, align 4
+  store i32 %__tmp1268, i32* %ans, align 4
+  %__tmp1269 = load i32, i32* %ans, align 4
+  store i32 %__tmp1269, i32* %mres.4, align 4
   br label %bb482
 bb481:
   br label %bb482
 bb482:
   %al.9 = alloca i32, align 4
-  %__tmp1274 = load i32, i32* %ml.4, align 4
-  store i32 %__tmp1274, i32* %al.9, align 4
+  %__tmp1270 = load i32, i32* %ml.4, align 4
+  store i32 %__tmp1270, i32* %al.9, align 4
   %c.9 = alloca i32, align 4
-  %__tmp1275 = load i32, i32* %ml.4, align 4
-  store i32 %__tmp1275, i32* %c.9, align 4
+  %__tmp1271 = load i32, i32* %ml.4, align 4
+  store i32 %__tmp1271, i32* %c.9, align 4
   %sum.9 = alloca i32, align 4
   br label %bb519
 bb519:
-  %__tmp1276 = load i32, i32* %c.9, align 4
-  %__tmp1277 = trunc i32 %__tmp1276 to i1
-  br i1 %__tmp1277, label %bb520, label %bb521
+  %__tmp1272 = load i32, i32* %c.9, align 4
+  %__tmp1273 = trunc i32 %__tmp1272 to i1
+  br i1 %__tmp1273, label %bb520, label %bb521
 bb520:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1278 = load i32, i32* %al.9, align 4
-  store i32 %__tmp1278, i32* %x, align 4
-  %__tmp1279 = load i32, i32* %c.9, align 4
-  store i32 %__tmp1279, i32* %y, align 4
+  %__tmp1274 = load i32, i32* %al.9, align 4
+  store i32 %__tmp1274, i32* %x, align 4
+  %__tmp1275 = load i32, i32* %c.9, align 4
+  store i32 %__tmp1275, i32* %y, align 4
   br label %bb522
 bb522:
-  %__tmp1280 = load i32, i32* %i, align 4
-  %__tmp1281 = icmp slt i32 %__tmp1280, 16
-  br i1 %__tmp1281, label %bb523, label %bb524
+  %__tmp1276 = load i32, i32* %i, align 4
+  %__tmp1277 = icmp slt i32 %__tmp1276, 16
+  br i1 %__tmp1277, label %bb523, label %bb524
 bb523:
-  %__tmp1282 = load i32, i32* %x, align 4
-  %__tmp1283 = srem i32 %__tmp1282, 2
-  %__tmp1284 = trunc i32 %__tmp1283 to i1
-  br i1 %__tmp1284, label %bb525, label %bb526
+  %__tmp1278 = load i32, i32* %x, align 4
+  %__tmp1279 = srem i32 %__tmp1278, 2
+  %__tmp1280 = trunc i32 %__tmp1279 to i1
+  br i1 %__tmp1280, label %bb525, label %bb526
 bb525:
-  %__tmp1285 = load i32, i32* %y, align 4
-  %__tmp1286 = srem i32 %__tmp1285, 2
-  %__tmp1287 = icmp eq i32 %__tmp1286, 0
-  br i1 %__tmp1287, label %bb528, label %bb529
+  %__tmp1281 = load i32, i32* %y, align 4
+  %__tmp1282 = srem i32 %__tmp1281, 2
+  %__tmp1283 = icmp eq i32 %__tmp1282, 0
+  br i1 %__tmp1283, label %bb528, label %bb529
 bb528:
-  %__tmp1288 = load i32, i32* %ans, align 4
-  %__tmp1289 = load i32, i32* %i, align 4
-  %__tmp1290 = sext i32 %__tmp1289 to i64
-  %__tmp1291 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1290
-  %__tmp1292 = load i32, i32* %__tmp1291, align 4
-  %__tmp1293 = mul i32 1, %__tmp1292
-  %__tmp1294 = add i32 %__tmp1288, %__tmp1293
-  store i32 %__tmp1294, i32* %ans, align 4
+  %__tmp1284 = load i32, i32* %ans, align 4
+  %__tmp1285 = load i32, i32* %i, align 4
+  %__tmp1286 = sext i32 %__tmp1285 to i64
+  %__tmp1287 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1286
+  %__tmp1288 = load i32, i32* %__tmp1287, align 4
+  %__tmp1289 = mul i32 1, %__tmp1288
+  %__tmp1290 = add i32 %__tmp1284, %__tmp1289
+  store i32 %__tmp1290, i32* %ans, align 4
   br label %bb530
 bb529:
   br label %bb530
 bb530:
   br label %bb527
 bb526:
-  %__tmp1295 = load i32, i32* %y, align 4
-  %__tmp1296 = srem i32 %__tmp1295, 2
-  %__tmp1297 = trunc i32 %__tmp1296 to i1
-  br i1 %__tmp1297, label %bb531, label %bb532
+  %__tmp1291 = load i32, i32* %y, align 4
+  %__tmp1292 = srem i32 %__tmp1291, 2
+  %__tmp1293 = trunc i32 %__tmp1292 to i1
+  br i1 %__tmp1293, label %bb531, label %bb532
 bb531:
-  %__tmp1298 = load i32, i32* %ans, align 4
-  %__tmp1299 = load i32, i32* %i, align 4
-  %__tmp1300 = sext i32 %__tmp1299 to i64
-  %__tmp1301 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1300
-  %__tmp1302 = load i32, i32* %__tmp1301, align 4
-  %__tmp1303 = mul i32 1, %__tmp1302
-  %__tmp1304 = add i32 %__tmp1298, %__tmp1303
-  store i32 %__tmp1304, i32* %ans, align 4
+  %__tmp1294 = load i32, i32* %ans, align 4
+  %__tmp1295 = load i32, i32* %i, align 4
+  %__tmp1296 = sext i32 %__tmp1295 to i64
+  %__tmp1297 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1296
+  %__tmp1298 = load i32, i32* %__tmp1297, align 4
+  %__tmp1299 = mul i32 1, %__tmp1298
+  %__tmp1300 = add i32 %__tmp1294, %__tmp1299
+  store i32 %__tmp1300, i32* %ans, align 4
   br label %bb533
 bb532:
   br label %bb533
 bb533:
   br label %bb527
 bb527:
-  %__tmp1305 = load i32, i32* %x, align 4
-  %__tmp1306 = sdiv i32 %__tmp1305, 2
-  store i32 %__tmp1306, i32* %x, align 4
-  %__tmp1307 = load i32, i32* %y, align 4
-  %__tmp1308 = sdiv i32 %__tmp1307, 2
-  store i32 %__tmp1308, i32* %y, align 4
-  %__tmp1309 = load i32, i32* %i, align 4
-  %__tmp1310 = add i32 %__tmp1309, 1
-  store i32 %__tmp1310, i32* %i, align 4
+  %__tmp1301 = load i32, i32* %x, align 4
+  %__tmp1302 = sdiv i32 %__tmp1301, 2
+  store i32 %__tmp1302, i32* %x, align 4
+  %__tmp1303 = load i32, i32* %y, align 4
+  %__tmp1304 = sdiv i32 %__tmp1303, 2
+  store i32 %__tmp1304, i32* %y, align 4
+  %__tmp1305 = load i32, i32* %i, align 4
+  %__tmp1306 = add i32 %__tmp1305, 1
+  store i32 %__tmp1306, i32* %i, align 4
   br label %bb522
 bb524:
-  %__tmp1311 = load i32, i32* %ans, align 4
-  store i32 %__tmp1311, i32* %sum.9, align 4
+  %__tmp1307 = load i32, i32* %ans, align 4
+  store i32 %__tmp1307, i32* %sum.9, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1312 = load i32, i32* %al.9, align 4
-  store i32 %__tmp1312, i32* %x, align 4
-  %__tmp1313 = load i32, i32* %c.9, align 4
-  store i32 %__tmp1313, i32* %y, align 4
+  %__tmp1308 = load i32, i32* %al.9, align 4
+  store i32 %__tmp1308, i32* %x, align 4
+  %__tmp1309 = load i32, i32* %c.9, align 4
+  store i32 %__tmp1309, i32* %y, align 4
   br label %bb534
 bb534:
-  %__tmp1314 = load i32, i32* %i, align 4
-  %__tmp1315 = icmp slt i32 %__tmp1314, 16
-  br i1 %__tmp1315, label %bb535, label %bb536
+  %__tmp1310 = load i32, i32* %i, align 4
+  %__tmp1311 = icmp slt i32 %__tmp1310, 16
+  br i1 %__tmp1311, label %bb535, label %bb536
 bb535:
-  %__tmp1316 = load i32, i32* %x, align 4
-  %__tmp1317 = srem i32 %__tmp1316, 2
-  %__tmp1318 = icmp ne i32 %__tmp1317, 0
-  br i1 %__tmp1318, label %bb540, label %bb542
+  %__tmp1312 = load i32, i32* %x, align 4
+  %__tmp1313 = srem i32 %__tmp1312, 2
+  %__tmp1314 = icmp ne i32 %__tmp1313, 0
+  br i1 %__tmp1314, label %bb540, label %bb542
 bb542:
   br label %bb541
 bb540:
-  %__tmp1319 = load i32, i32* %y, align 4
-  %__tmp1320 = srem i32 %__tmp1319, 2
-  %__tmp1321 = icmp ne i32 %__tmp1320, 0
+  %__tmp1315 = load i32, i32* %y, align 4
+  %__tmp1316 = srem i32 %__tmp1315, 2
+  %__tmp1317 = icmp ne i32 %__tmp1316, 0
   br label %bb541
 bb541:
-  %__tmp1322 = phi i1 [ 0, %bb542 ], [ %__tmp1321, %bb540 ]
-  br i1 %__tmp1322, label %bb537, label %bb538
+  %__tmp1318 = phi i1 [ 0, %bb542 ], [ %__tmp1317, %bb540 ]
+  br i1 %__tmp1318, label %bb537, label %bb538
 bb537:
-  %__tmp1323 = load i32, i32* %ans, align 4
-  %__tmp1324 = load i32, i32* %i, align 4
-  %__tmp1325 = sext i32 %__tmp1324 to i64
-  %__tmp1326 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1325
-  %__tmp1327 = load i32, i32* %__tmp1326, align 4
-  %__tmp1328 = mul i32 1, %__tmp1327
-  %__tmp1329 = add i32 %__tmp1323, %__tmp1328
-  store i32 %__tmp1329, i32* %ans, align 4
+  %__tmp1319 = load i32, i32* %ans, align 4
+  %__tmp1320 = load i32, i32* %i, align 4
+  %__tmp1321 = sext i32 %__tmp1320 to i64
+  %__tmp1322 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1321
+  %__tmp1323 = load i32, i32* %__tmp1322, align 4
+  %__tmp1324 = mul i32 1, %__tmp1323
+  %__tmp1325 = add i32 %__tmp1319, %__tmp1324
+  store i32 %__tmp1325, i32* %ans, align 4
   br label %bb539
 bb538:
   br label %bb539
 bb539:
-  %__tmp1330 = load i32, i32* %x, align 4
-  %__tmp1331 = sdiv i32 %__tmp1330, 2
-  store i32 %__tmp1331, i32* %x, align 4
-  %__tmp1332 = load i32, i32* %y, align 4
-  %__tmp1333 = sdiv i32 %__tmp1332, 2
-  store i32 %__tmp1333, i32* %y, align 4
-  %__tmp1334 = load i32, i32* %i, align 4
-  %__tmp1335 = add i32 %__tmp1334, 1
-  store i32 %__tmp1335, i32* %i, align 4
+  %__tmp1326 = load i32, i32* %x, align 4
+  %__tmp1327 = sdiv i32 %__tmp1326, 2
+  store i32 %__tmp1327, i32* %x, align 4
+  %__tmp1328 = load i32, i32* %y, align 4
+  %__tmp1329 = sdiv i32 %__tmp1328, 2
+  store i32 %__tmp1329, i32* %y, align 4
+  %__tmp1330 = load i32, i32* %i, align 4
+  %__tmp1331 = add i32 %__tmp1330, 1
+  store i32 %__tmp1331, i32* %i, align 4
   br label %bb534
 bb536:
-  %__tmp1336 = load i32, i32* %ans, align 4
-  store i32 %__tmp1336, i32* %c.9, align 4
+  %__tmp1332 = load i32, i32* %ans, align 4
+  store i32 %__tmp1332, i32* %c.9, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1337 = load i32, i32* %c.9, align 4
-  %__tmp1338 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1339 = load i32, i32* %__tmp1338, align 4
-  %__tmp1340 = mul i32 %__tmp1337, %__tmp1339
-  store i32 %__tmp1340, i32* %x, align 4
+  %__tmp1333 = load i32, i32* %c.9, align 4
+  %__tmp1334 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1335 = load i32, i32* %__tmp1334, align 4
+  %__tmp1336 = mul i32 %__tmp1333, %__tmp1335
+  store i32 %__tmp1336, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb546
 bb546:
-  %__tmp1341 = load i32, i32* %i, align 4
-  %__tmp1342 = icmp slt i32 %__tmp1341, 16
-  br i1 %__tmp1342, label %bb547, label %bb548
+  %__tmp1337 = load i32, i32* %i, align 4
+  %__tmp1338 = icmp slt i32 %__tmp1337, 16
+  br i1 %__tmp1338, label %bb547, label %bb548
 bb547:
-  %__tmp1343 = load i32, i32* %x, align 4
-  %__tmp1344 = srem i32 %__tmp1343, 2
-  %__tmp1345 = icmp ne i32 %__tmp1344, 0
-  br i1 %__tmp1345, label %bb552, label %bb554
+  %__tmp1339 = load i32, i32* %x, align 4
+  %__tmp1340 = srem i32 %__tmp1339, 2
+  %__tmp1341 = icmp ne i32 %__tmp1340, 0
+  br i1 %__tmp1341, label %bb552, label %bb554
 bb554:
   br label %bb553
 bb552:
-  %__tmp1346 = load i32, i32* %y, align 4
-  %__tmp1347 = srem i32 %__tmp1346, 2
-  %__tmp1348 = icmp ne i32 %__tmp1347, 0
+  %__tmp1342 = load i32, i32* %y, align 4
+  %__tmp1343 = srem i32 %__tmp1342, 2
+  %__tmp1344 = icmp ne i32 %__tmp1343, 0
   br label %bb553
 bb553:
-  %__tmp1349 = phi i1 [ 0, %bb554 ], [ %__tmp1348, %bb552 ]
-  br i1 %__tmp1349, label %bb549, label %bb550
+  %__tmp1345 = phi i1 [ 0, %bb554 ], [ %__tmp1344, %bb552 ]
+  br i1 %__tmp1345, label %bb549, label %bb550
 bb549:
-  %__tmp1350 = load i32, i32* %ans, align 4
-  %__tmp1351 = load i32, i32* %i, align 4
-  %__tmp1352 = sext i32 %__tmp1351 to i64
-  %__tmp1353 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1352
-  %__tmp1354 = load i32, i32* %__tmp1353, align 4
-  %__tmp1355 = mul i32 1, %__tmp1354
-  %__tmp1356 = add i32 %__tmp1350, %__tmp1355
-  store i32 %__tmp1356, i32* %ans, align 4
+  %__tmp1346 = load i32, i32* %ans, align 4
+  %__tmp1347 = load i32, i32* %i, align 4
+  %__tmp1348 = sext i32 %__tmp1347 to i64
+  %__tmp1349 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1348
+  %__tmp1350 = load i32, i32* %__tmp1349, align 4
+  %__tmp1351 = mul i32 1, %__tmp1350
+  %__tmp1352 = add i32 %__tmp1346, %__tmp1351
+  store i32 %__tmp1352, i32* %ans, align 4
   br label %bb551
 bb550:
   br label %bb551
 bb551:
-  %__tmp1357 = load i32, i32* %x, align 4
-  %__tmp1358 = sdiv i32 %__tmp1357, 2
-  store i32 %__tmp1358, i32* %x, align 4
-  %__tmp1359 = load i32, i32* %y, align 4
-  %__tmp1360 = sdiv i32 %__tmp1359, 2
-  store i32 %__tmp1360, i32* %y, align 4
-  %__tmp1361 = load i32, i32* %i, align 4
-  %__tmp1362 = add i32 %__tmp1361, 1
-  store i32 %__tmp1362, i32* %i, align 4
+  %__tmp1353 = load i32, i32* %x, align 4
+  %__tmp1354 = sdiv i32 %__tmp1353, 2
+  store i32 %__tmp1354, i32* %x, align 4
+  %__tmp1355 = load i32, i32* %y, align 4
+  %__tmp1356 = sdiv i32 %__tmp1355, 2
+  store i32 %__tmp1356, i32* %y, align 4
+  %__tmp1357 = load i32, i32* %i, align 4
+  %__tmp1358 = add i32 %__tmp1357, 1
+  store i32 %__tmp1358, i32* %i, align 4
   br label %bb546
 bb548:
   br label %bb545
 bb545:
-  %__tmp1363 = load i32, i32* %ans, align 4
-  store i32 %__tmp1363, i32* %c.9, align 4
-  %__tmp1364 = load i32, i32* %sum.9, align 4
-  store i32 %__tmp1364, i32* %al.9, align 4
+  %__tmp1359 = load i32, i32* %ans, align 4
+  store i32 %__tmp1359, i32* %c.9, align 4
+  %__tmp1360 = load i32, i32* %sum.9, align 4
+  store i32 %__tmp1360, i32* %al.9, align 4
   br label %bb519
 bb521:
-  %__tmp1365 = load i32, i32* %al.9, align 4
-  store i32 %__tmp1365, i32* %ans, align 4
-  %__tmp1366 = load i32, i32* %ans, align 4
-  store i32 %__tmp1366, i32* %ml.4, align 4
-  %__tmp1367 = load i32, i32* %mr.4, align 4
-  store i32 %__tmp1367, i32* %x, align 4
+  %__tmp1361 = load i32, i32* %al.9, align 4
+  store i32 %__tmp1361, i32* %ans, align 4
+  %__tmp1362 = load i32, i32* %ans, align 4
+  store i32 %__tmp1362, i32* %ml.4, align 4
+  %__tmp1363 = load i32, i32* %mr.4, align 4
+  store i32 %__tmp1363, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1368 = load i32, i32* %y, align 4
-  %__tmp1369 = icmp sge i32 %__tmp1368, 15
-  br i1 %__tmp1369, label %bb555, label %bb556
+  %__tmp1364 = load i32, i32* %y, align 4
+  %__tmp1365 = icmp sge i32 %__tmp1364, 15
+  br i1 %__tmp1365, label %bb555, label %bb556
 bb555:
-  %__tmp1370 = load i32, i32* %x, align 4
-  %__tmp1371 = icmp slt i32 %__tmp1370, 0
-  br i1 %__tmp1371, label %bb558, label %bb559
+  %__tmp1366 = load i32, i32* %x, align 4
+  %__tmp1367 = icmp slt i32 %__tmp1366, 0
+  br i1 %__tmp1367, label %bb558, label %bb559
 bb558:
   store i32 65535, i32* %ans, align 4
   br label %bb560
@@ -2999,537 +2999,537 @@ bb559:
 bb560:
   br label %bb557
 bb556:
-  %__tmp1372 = load i32, i32* %y, align 4
-  %__tmp1373 = icmp sgt i32 %__tmp1372, 0
-  br i1 %__tmp1373, label %bb561, label %bb562
+  %__tmp1368 = load i32, i32* %y, align 4
+  %__tmp1369 = icmp sgt i32 %__tmp1368, 0
+  br i1 %__tmp1369, label %bb561, label %bb562
 bb561:
-  %__tmp1374 = load i32, i32* %x, align 4
-  %__tmp1375 = icmp sgt i32 %__tmp1374, 32767
-  br i1 %__tmp1375, label %bb564, label %bb565
+  %__tmp1370 = load i32, i32* %x, align 4
+  %__tmp1371 = icmp sgt i32 %__tmp1370, 32767
+  br i1 %__tmp1371, label %bb564, label %bb565
 bb564:
-  %__tmp1376 = load i32, i32* %x, align 4
-  %__tmp1377 = load i32, i32* %y, align 4
-  %__tmp1378 = sext i32 %__tmp1377 to i64
-  %__tmp1379 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1378
-  %__tmp1380 = load i32, i32* %__tmp1379, align 4
-  %__tmp1381 = sdiv i32 %__tmp1376, %__tmp1380
-  store i32 %__tmp1381, i32* %x, align 4
-  %__tmp1382 = load i32, i32* %x, align 4
-  %__tmp1383 = add i32 %__tmp1382, 65536
-  %__tmp1384 = load i32, i32* %y, align 4
-  %__tmp1385 = sub i32 15, %__tmp1384
-  %__tmp1386 = add i32 %__tmp1385, 1
-  %__tmp1387 = sext i32 %__tmp1386 to i64
-  %__tmp1388 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1387
-  %__tmp1389 = load i32, i32* %__tmp1388, align 4
-  %__tmp1390 = sub i32 %__tmp1383, %__tmp1389
-  store i32 %__tmp1390, i32* %ans, align 4
+  %__tmp1372 = load i32, i32* %x, align 4
+  %__tmp1373 = load i32, i32* %y, align 4
+  %__tmp1374 = sext i32 %__tmp1373 to i64
+  %__tmp1375 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1374
+  %__tmp1376 = load i32, i32* %__tmp1375, align 4
+  %__tmp1377 = sdiv i32 %__tmp1372, %__tmp1376
+  store i32 %__tmp1377, i32* %x, align 4
+  %__tmp1378 = load i32, i32* %x, align 4
+  %__tmp1379 = add i32 %__tmp1378, 65536
+  %__tmp1380 = load i32, i32* %y, align 4
+  %__tmp1381 = sub i32 15, %__tmp1380
+  %__tmp1382 = add i32 %__tmp1381, 1
+  %__tmp1383 = sext i32 %__tmp1382 to i64
+  %__tmp1384 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1383
+  %__tmp1385 = load i32, i32* %__tmp1384, align 4
+  %__tmp1386 = sub i32 %__tmp1379, %__tmp1385
+  store i32 %__tmp1386, i32* %ans, align 4
   br label %bb566
 bb565:
-  %__tmp1391 = load i32, i32* %x, align 4
-  %__tmp1392 = load i32, i32* %y, align 4
-  %__tmp1393 = sext i32 %__tmp1392 to i64
-  %__tmp1394 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1393
-  %__tmp1395 = load i32, i32* %__tmp1394, align 4
-  %__tmp1396 = sdiv i32 %__tmp1391, %__tmp1395
-  store i32 %__tmp1396, i32* %ans, align 4
+  %__tmp1387 = load i32, i32* %x, align 4
+  %__tmp1388 = load i32, i32* %y, align 4
+  %__tmp1389 = sext i32 %__tmp1388 to i64
+  %__tmp1390 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1389
+  %__tmp1391 = load i32, i32* %__tmp1390, align 4
+  %__tmp1392 = sdiv i32 %__tmp1387, %__tmp1391
+  store i32 %__tmp1392, i32* %ans, align 4
   br label %bb566
 bb566:
   br label %bb563
 bb562:
-  %__tmp1397 = load i32, i32* %x, align 4
-  store i32 %__tmp1397, i32* %ans, align 4
+  %__tmp1393 = load i32, i32* %x, align 4
+  store i32 %__tmp1393, i32* %ans, align 4
   br label %bb563
 bb563:
   br label %bb557
 bb557:
-  %__tmp1398 = load i32, i32* %ans, align 4
-  store i32 %__tmp1398, i32* %mr.4, align 4
+  %__tmp1394 = load i32, i32* %ans, align 4
+  store i32 %__tmp1394, i32* %mr.4, align 4
   br label %bb468
 bb470:
-  %__tmp1399 = load i32, i32* %mres.4, align 4
-  store i32 %__tmp1399, i32* %ans, align 4
-  %__tmp1400 = load i32, i32* %ans, align 4
-  store i32 %__tmp1400, i32* %pres.2, align 4
+  %__tmp1395 = load i32, i32* %mres.4, align 4
+  store i32 %__tmp1395, i32* %ans, align 4
+  %__tmp1396 = load i32, i32* %ans, align 4
+  store i32 %__tmp1396, i32* %pres.2, align 4
   br label %bb467
 bb466:
   br label %bb467
 bb467:
   %ml.5 = alloca i32, align 4
-  %__tmp1401 = load i32, i32* %pl.2, align 4
-  store i32 %__tmp1401, i32* %ml.5, align 4
+  %__tmp1397 = load i32, i32* %pl.2, align 4
+  store i32 %__tmp1397, i32* %ml.5, align 4
   %mr.5 = alloca i32, align 4
-  %__tmp1402 = load i32, i32* %pl.2, align 4
-  store i32 %__tmp1402, i32* %mr.5, align 4
+  %__tmp1398 = load i32, i32* %pl.2, align 4
+  store i32 %__tmp1398, i32* %mr.5, align 4
   %mres.5 = alloca i32, align 4
   store i32 0, i32* %mres.5, align 4
   br label %bb567
 bb567:
-  %__tmp1403 = load i32, i32* %mr.5, align 4
-  %__tmp1404 = trunc i32 %__tmp1403 to i1
-  br i1 %__tmp1404, label %bb568, label %bb569
+  %__tmp1399 = load i32, i32* %mr.5, align 4
+  %__tmp1400 = trunc i32 %__tmp1399 to i1
+  br i1 %__tmp1400, label %bb568, label %bb569
 bb568:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1405 = load i32, i32* %mr.5, align 4
-  store i32 %__tmp1405, i32* %x, align 4
+  %__tmp1401 = load i32, i32* %mr.5, align 4
+  store i32 %__tmp1401, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb570
 bb570:
-  %__tmp1406 = load i32, i32* %i, align 4
-  %__tmp1407 = icmp slt i32 %__tmp1406, 16
-  br i1 %__tmp1407, label %bb571, label %bb572
+  %__tmp1402 = load i32, i32* %i, align 4
+  %__tmp1403 = icmp slt i32 %__tmp1402, 16
+  br i1 %__tmp1403, label %bb571, label %bb572
 bb571:
-  %__tmp1408 = load i32, i32* %x, align 4
-  %__tmp1409 = srem i32 %__tmp1408, 2
-  %__tmp1410 = icmp ne i32 %__tmp1409, 0
-  br i1 %__tmp1410, label %bb576, label %bb578
+  %__tmp1404 = load i32, i32* %x, align 4
+  %__tmp1405 = srem i32 %__tmp1404, 2
+  %__tmp1406 = icmp ne i32 %__tmp1405, 0
+  br i1 %__tmp1406, label %bb576, label %bb578
 bb578:
   br label %bb577
 bb576:
-  %__tmp1411 = load i32, i32* %y, align 4
-  %__tmp1412 = srem i32 %__tmp1411, 2
-  %__tmp1413 = icmp ne i32 %__tmp1412, 0
+  %__tmp1407 = load i32, i32* %y, align 4
+  %__tmp1408 = srem i32 %__tmp1407, 2
+  %__tmp1409 = icmp ne i32 %__tmp1408, 0
   br label %bb577
 bb577:
-  %__tmp1414 = phi i1 [ 0, %bb578 ], [ %__tmp1413, %bb576 ]
-  br i1 %__tmp1414, label %bb573, label %bb574
+  %__tmp1410 = phi i1 [ 0, %bb578 ], [ %__tmp1409, %bb576 ]
+  br i1 %__tmp1410, label %bb573, label %bb574
 bb573:
-  %__tmp1415 = load i32, i32* %ans, align 4
-  %__tmp1416 = load i32, i32* %i, align 4
-  %__tmp1417 = sext i32 %__tmp1416 to i64
-  %__tmp1418 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1417
-  %__tmp1419 = load i32, i32* %__tmp1418, align 4
-  %__tmp1420 = mul i32 1, %__tmp1419
-  %__tmp1421 = add i32 %__tmp1415, %__tmp1420
-  store i32 %__tmp1421, i32* %ans, align 4
+  %__tmp1411 = load i32, i32* %ans, align 4
+  %__tmp1412 = load i32, i32* %i, align 4
+  %__tmp1413 = sext i32 %__tmp1412 to i64
+  %__tmp1414 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1413
+  %__tmp1415 = load i32, i32* %__tmp1414, align 4
+  %__tmp1416 = mul i32 1, %__tmp1415
+  %__tmp1417 = add i32 %__tmp1411, %__tmp1416
+  store i32 %__tmp1417, i32* %ans, align 4
   br label %bb575
 bb574:
   br label %bb575
 bb575:
-  %__tmp1422 = load i32, i32* %x, align 4
-  %__tmp1423 = sdiv i32 %__tmp1422, 2
-  store i32 %__tmp1423, i32* %x, align 4
-  %__tmp1424 = load i32, i32* %y, align 4
-  %__tmp1425 = sdiv i32 %__tmp1424, 2
-  store i32 %__tmp1425, i32* %y, align 4
-  %__tmp1426 = load i32, i32* %i, align 4
-  %__tmp1427 = add i32 %__tmp1426, 1
-  store i32 %__tmp1427, i32* %i, align 4
+  %__tmp1418 = load i32, i32* %x, align 4
+  %__tmp1419 = sdiv i32 %__tmp1418, 2
+  store i32 %__tmp1419, i32* %x, align 4
+  %__tmp1420 = load i32, i32* %y, align 4
+  %__tmp1421 = sdiv i32 %__tmp1420, 2
+  store i32 %__tmp1421, i32* %y, align 4
+  %__tmp1422 = load i32, i32* %i, align 4
+  %__tmp1423 = add i32 %__tmp1422, 1
+  store i32 %__tmp1423, i32* %i, align 4
   br label %bb570
 bb572:
-  %__tmp1428 = load i32, i32* %ans, align 4
-  %__tmp1429 = trunc i32 %__tmp1428 to i1
-  br i1 %__tmp1429, label %bb579, label %bb580
+  %__tmp1424 = load i32, i32* %ans, align 4
+  %__tmp1425 = trunc i32 %__tmp1424 to i1
+  br i1 %__tmp1425, label %bb579, label %bb580
 bb579:
   %al.10 = alloca i32, align 4
-  %__tmp1430 = load i32, i32* %mres.5, align 4
-  store i32 %__tmp1430, i32* %al.10, align 4
+  %__tmp1426 = load i32, i32* %mres.5, align 4
+  store i32 %__tmp1426, i32* %al.10, align 4
   %c.10 = alloca i32, align 4
-  %__tmp1431 = load i32, i32* %ml.5, align 4
-  store i32 %__tmp1431, i32* %c.10, align 4
+  %__tmp1427 = load i32, i32* %ml.5, align 4
+  store i32 %__tmp1427, i32* %c.10, align 4
   %sum.10 = alloca i32, align 4
   br label %bb582
 bb582:
-  %__tmp1432 = load i32, i32* %c.10, align 4
-  %__tmp1433 = trunc i32 %__tmp1432 to i1
-  br i1 %__tmp1433, label %bb583, label %bb584
+  %__tmp1428 = load i32, i32* %c.10, align 4
+  %__tmp1429 = trunc i32 %__tmp1428 to i1
+  br i1 %__tmp1429, label %bb583, label %bb584
 bb583:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1434 = load i32, i32* %al.10, align 4
-  store i32 %__tmp1434, i32* %x, align 4
-  %__tmp1435 = load i32, i32* %c.10, align 4
-  store i32 %__tmp1435, i32* %y, align 4
+  %__tmp1430 = load i32, i32* %al.10, align 4
+  store i32 %__tmp1430, i32* %x, align 4
+  %__tmp1431 = load i32, i32* %c.10, align 4
+  store i32 %__tmp1431, i32* %y, align 4
   br label %bb585
 bb585:
-  %__tmp1436 = load i32, i32* %i, align 4
-  %__tmp1437 = icmp slt i32 %__tmp1436, 16
-  br i1 %__tmp1437, label %bb586, label %bb587
+  %__tmp1432 = load i32, i32* %i, align 4
+  %__tmp1433 = icmp slt i32 %__tmp1432, 16
+  br i1 %__tmp1433, label %bb586, label %bb587
 bb586:
-  %__tmp1438 = load i32, i32* %x, align 4
-  %__tmp1439 = srem i32 %__tmp1438, 2
-  %__tmp1440 = trunc i32 %__tmp1439 to i1
-  br i1 %__tmp1440, label %bb588, label %bb589
+  %__tmp1434 = load i32, i32* %x, align 4
+  %__tmp1435 = srem i32 %__tmp1434, 2
+  %__tmp1436 = trunc i32 %__tmp1435 to i1
+  br i1 %__tmp1436, label %bb588, label %bb589
 bb588:
-  %__tmp1441 = load i32, i32* %y, align 4
-  %__tmp1442 = srem i32 %__tmp1441, 2
-  %__tmp1443 = icmp eq i32 %__tmp1442, 0
-  br i1 %__tmp1443, label %bb591, label %bb592
+  %__tmp1437 = load i32, i32* %y, align 4
+  %__tmp1438 = srem i32 %__tmp1437, 2
+  %__tmp1439 = icmp eq i32 %__tmp1438, 0
+  br i1 %__tmp1439, label %bb591, label %bb592
 bb591:
-  %__tmp1444 = load i32, i32* %ans, align 4
-  %__tmp1445 = load i32, i32* %i, align 4
-  %__tmp1446 = sext i32 %__tmp1445 to i64
-  %__tmp1447 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1446
-  %__tmp1448 = load i32, i32* %__tmp1447, align 4
-  %__tmp1449 = mul i32 1, %__tmp1448
-  %__tmp1450 = add i32 %__tmp1444, %__tmp1449
-  store i32 %__tmp1450, i32* %ans, align 4
+  %__tmp1440 = load i32, i32* %ans, align 4
+  %__tmp1441 = load i32, i32* %i, align 4
+  %__tmp1442 = sext i32 %__tmp1441 to i64
+  %__tmp1443 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1442
+  %__tmp1444 = load i32, i32* %__tmp1443, align 4
+  %__tmp1445 = mul i32 1, %__tmp1444
+  %__tmp1446 = add i32 %__tmp1440, %__tmp1445
+  store i32 %__tmp1446, i32* %ans, align 4
   br label %bb593
 bb592:
   br label %bb593
 bb593:
   br label %bb590
 bb589:
-  %__tmp1451 = load i32, i32* %y, align 4
-  %__tmp1452 = srem i32 %__tmp1451, 2
-  %__tmp1453 = trunc i32 %__tmp1452 to i1
-  br i1 %__tmp1453, label %bb594, label %bb595
+  %__tmp1447 = load i32, i32* %y, align 4
+  %__tmp1448 = srem i32 %__tmp1447, 2
+  %__tmp1449 = trunc i32 %__tmp1448 to i1
+  br i1 %__tmp1449, label %bb594, label %bb595
 bb594:
-  %__tmp1454 = load i32, i32* %ans, align 4
-  %__tmp1455 = load i32, i32* %i, align 4
-  %__tmp1456 = sext i32 %__tmp1455 to i64
-  %__tmp1457 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1456
-  %__tmp1458 = load i32, i32* %__tmp1457, align 4
-  %__tmp1459 = mul i32 1, %__tmp1458
-  %__tmp1460 = add i32 %__tmp1454, %__tmp1459
-  store i32 %__tmp1460, i32* %ans, align 4
+  %__tmp1450 = load i32, i32* %ans, align 4
+  %__tmp1451 = load i32, i32* %i, align 4
+  %__tmp1452 = sext i32 %__tmp1451 to i64
+  %__tmp1453 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1452
+  %__tmp1454 = load i32, i32* %__tmp1453, align 4
+  %__tmp1455 = mul i32 1, %__tmp1454
+  %__tmp1456 = add i32 %__tmp1450, %__tmp1455
+  store i32 %__tmp1456, i32* %ans, align 4
   br label %bb596
 bb595:
   br label %bb596
 bb596:
   br label %bb590
 bb590:
-  %__tmp1461 = load i32, i32* %x, align 4
-  %__tmp1462 = sdiv i32 %__tmp1461, 2
-  store i32 %__tmp1462, i32* %x, align 4
-  %__tmp1463 = load i32, i32* %y, align 4
-  %__tmp1464 = sdiv i32 %__tmp1463, 2
-  store i32 %__tmp1464, i32* %y, align 4
-  %__tmp1465 = load i32, i32* %i, align 4
-  %__tmp1466 = add i32 %__tmp1465, 1
-  store i32 %__tmp1466, i32* %i, align 4
+  %__tmp1457 = load i32, i32* %x, align 4
+  %__tmp1458 = sdiv i32 %__tmp1457, 2
+  store i32 %__tmp1458, i32* %x, align 4
+  %__tmp1459 = load i32, i32* %y, align 4
+  %__tmp1460 = sdiv i32 %__tmp1459, 2
+  store i32 %__tmp1460, i32* %y, align 4
+  %__tmp1461 = load i32, i32* %i, align 4
+  %__tmp1462 = add i32 %__tmp1461, 1
+  store i32 %__tmp1462, i32* %i, align 4
   br label %bb585
 bb587:
-  %__tmp1467 = load i32, i32* %ans, align 4
-  store i32 %__tmp1467, i32* %sum.10, align 4
+  %__tmp1463 = load i32, i32* %ans, align 4
+  store i32 %__tmp1463, i32* %sum.10, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1468 = load i32, i32* %al.10, align 4
-  store i32 %__tmp1468, i32* %x, align 4
-  %__tmp1469 = load i32, i32* %c.10, align 4
-  store i32 %__tmp1469, i32* %y, align 4
+  %__tmp1464 = load i32, i32* %al.10, align 4
+  store i32 %__tmp1464, i32* %x, align 4
+  %__tmp1465 = load i32, i32* %c.10, align 4
+  store i32 %__tmp1465, i32* %y, align 4
   br label %bb597
 bb597:
-  %__tmp1470 = load i32, i32* %i, align 4
-  %__tmp1471 = icmp slt i32 %__tmp1470, 16
-  br i1 %__tmp1471, label %bb598, label %bb599
+  %__tmp1466 = load i32, i32* %i, align 4
+  %__tmp1467 = icmp slt i32 %__tmp1466, 16
+  br i1 %__tmp1467, label %bb598, label %bb599
 bb598:
-  %__tmp1472 = load i32, i32* %x, align 4
-  %__tmp1473 = srem i32 %__tmp1472, 2
-  %__tmp1474 = icmp ne i32 %__tmp1473, 0
-  br i1 %__tmp1474, label %bb603, label %bb605
+  %__tmp1468 = load i32, i32* %x, align 4
+  %__tmp1469 = srem i32 %__tmp1468, 2
+  %__tmp1470 = icmp ne i32 %__tmp1469, 0
+  br i1 %__tmp1470, label %bb603, label %bb605
 bb605:
   br label %bb604
 bb603:
-  %__tmp1475 = load i32, i32* %y, align 4
-  %__tmp1476 = srem i32 %__tmp1475, 2
-  %__tmp1477 = icmp ne i32 %__tmp1476, 0
+  %__tmp1471 = load i32, i32* %y, align 4
+  %__tmp1472 = srem i32 %__tmp1471, 2
+  %__tmp1473 = icmp ne i32 %__tmp1472, 0
   br label %bb604
 bb604:
-  %__tmp1478 = phi i1 [ 0, %bb605 ], [ %__tmp1477, %bb603 ]
-  br i1 %__tmp1478, label %bb600, label %bb601
+  %__tmp1474 = phi i1 [ 0, %bb605 ], [ %__tmp1473, %bb603 ]
+  br i1 %__tmp1474, label %bb600, label %bb601
 bb600:
-  %__tmp1479 = load i32, i32* %ans, align 4
-  %__tmp1480 = load i32, i32* %i, align 4
-  %__tmp1481 = sext i32 %__tmp1480 to i64
-  %__tmp1482 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1481
-  %__tmp1483 = load i32, i32* %__tmp1482, align 4
-  %__tmp1484 = mul i32 1, %__tmp1483
-  %__tmp1485 = add i32 %__tmp1479, %__tmp1484
-  store i32 %__tmp1485, i32* %ans, align 4
+  %__tmp1475 = load i32, i32* %ans, align 4
+  %__tmp1476 = load i32, i32* %i, align 4
+  %__tmp1477 = sext i32 %__tmp1476 to i64
+  %__tmp1478 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1477
+  %__tmp1479 = load i32, i32* %__tmp1478, align 4
+  %__tmp1480 = mul i32 1, %__tmp1479
+  %__tmp1481 = add i32 %__tmp1475, %__tmp1480
+  store i32 %__tmp1481, i32* %ans, align 4
   br label %bb602
 bb601:
   br label %bb602
 bb602:
-  %__tmp1486 = load i32, i32* %x, align 4
-  %__tmp1487 = sdiv i32 %__tmp1486, 2
-  store i32 %__tmp1487, i32* %x, align 4
-  %__tmp1488 = load i32, i32* %y, align 4
-  %__tmp1489 = sdiv i32 %__tmp1488, 2
-  store i32 %__tmp1489, i32* %y, align 4
-  %__tmp1490 = load i32, i32* %i, align 4
-  %__tmp1491 = add i32 %__tmp1490, 1
-  store i32 %__tmp1491, i32* %i, align 4
+  %__tmp1482 = load i32, i32* %x, align 4
+  %__tmp1483 = sdiv i32 %__tmp1482, 2
+  store i32 %__tmp1483, i32* %x, align 4
+  %__tmp1484 = load i32, i32* %y, align 4
+  %__tmp1485 = sdiv i32 %__tmp1484, 2
+  store i32 %__tmp1485, i32* %y, align 4
+  %__tmp1486 = load i32, i32* %i, align 4
+  %__tmp1487 = add i32 %__tmp1486, 1
+  store i32 %__tmp1487, i32* %i, align 4
   br label %bb597
 bb599:
-  %__tmp1492 = load i32, i32* %ans, align 4
-  store i32 %__tmp1492, i32* %c.10, align 4
+  %__tmp1488 = load i32, i32* %ans, align 4
+  store i32 %__tmp1488, i32* %c.10, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1493 = load i32, i32* %c.10, align 4
-  %__tmp1494 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1495 = load i32, i32* %__tmp1494, align 4
-  %__tmp1496 = mul i32 %__tmp1493, %__tmp1495
-  store i32 %__tmp1496, i32* %x, align 4
+  %__tmp1489 = load i32, i32* %c.10, align 4
+  %__tmp1490 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1491 = load i32, i32* %__tmp1490, align 4
+  %__tmp1492 = mul i32 %__tmp1489, %__tmp1491
+  store i32 %__tmp1492, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb609
 bb609:
-  %__tmp1497 = load i32, i32* %i, align 4
-  %__tmp1498 = icmp slt i32 %__tmp1497, 16
-  br i1 %__tmp1498, label %bb610, label %bb611
+  %__tmp1493 = load i32, i32* %i, align 4
+  %__tmp1494 = icmp slt i32 %__tmp1493, 16
+  br i1 %__tmp1494, label %bb610, label %bb611
 bb610:
-  %__tmp1499 = load i32, i32* %x, align 4
-  %__tmp1500 = srem i32 %__tmp1499, 2
-  %__tmp1501 = icmp ne i32 %__tmp1500, 0
-  br i1 %__tmp1501, label %bb615, label %bb617
+  %__tmp1495 = load i32, i32* %x, align 4
+  %__tmp1496 = srem i32 %__tmp1495, 2
+  %__tmp1497 = icmp ne i32 %__tmp1496, 0
+  br i1 %__tmp1497, label %bb615, label %bb617
 bb617:
   br label %bb616
 bb615:
-  %__tmp1502 = load i32, i32* %y, align 4
-  %__tmp1503 = srem i32 %__tmp1502, 2
-  %__tmp1504 = icmp ne i32 %__tmp1503, 0
+  %__tmp1498 = load i32, i32* %y, align 4
+  %__tmp1499 = srem i32 %__tmp1498, 2
+  %__tmp1500 = icmp ne i32 %__tmp1499, 0
   br label %bb616
 bb616:
-  %__tmp1505 = phi i1 [ 0, %bb617 ], [ %__tmp1504, %bb615 ]
-  br i1 %__tmp1505, label %bb612, label %bb613
+  %__tmp1501 = phi i1 [ 0, %bb617 ], [ %__tmp1500, %bb615 ]
+  br i1 %__tmp1501, label %bb612, label %bb613
 bb612:
-  %__tmp1506 = load i32, i32* %ans, align 4
-  %__tmp1507 = load i32, i32* %i, align 4
-  %__tmp1508 = sext i32 %__tmp1507 to i64
-  %__tmp1509 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1508
-  %__tmp1510 = load i32, i32* %__tmp1509, align 4
-  %__tmp1511 = mul i32 1, %__tmp1510
-  %__tmp1512 = add i32 %__tmp1506, %__tmp1511
-  store i32 %__tmp1512, i32* %ans, align 4
+  %__tmp1502 = load i32, i32* %ans, align 4
+  %__tmp1503 = load i32, i32* %i, align 4
+  %__tmp1504 = sext i32 %__tmp1503 to i64
+  %__tmp1505 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1504
+  %__tmp1506 = load i32, i32* %__tmp1505, align 4
+  %__tmp1507 = mul i32 1, %__tmp1506
+  %__tmp1508 = add i32 %__tmp1502, %__tmp1507
+  store i32 %__tmp1508, i32* %ans, align 4
   br label %bb614
 bb613:
   br label %bb614
 bb614:
-  %__tmp1513 = load i32, i32* %x, align 4
-  %__tmp1514 = sdiv i32 %__tmp1513, 2
-  store i32 %__tmp1514, i32* %x, align 4
-  %__tmp1515 = load i32, i32* %y, align 4
-  %__tmp1516 = sdiv i32 %__tmp1515, 2
-  store i32 %__tmp1516, i32* %y, align 4
-  %__tmp1517 = load i32, i32* %i, align 4
-  %__tmp1518 = add i32 %__tmp1517, 1
-  store i32 %__tmp1518, i32* %i, align 4
+  %__tmp1509 = load i32, i32* %x, align 4
+  %__tmp1510 = sdiv i32 %__tmp1509, 2
+  store i32 %__tmp1510, i32* %x, align 4
+  %__tmp1511 = load i32, i32* %y, align 4
+  %__tmp1512 = sdiv i32 %__tmp1511, 2
+  store i32 %__tmp1512, i32* %y, align 4
+  %__tmp1513 = load i32, i32* %i, align 4
+  %__tmp1514 = add i32 %__tmp1513, 1
+  store i32 %__tmp1514, i32* %i, align 4
   br label %bb609
 bb611:
   br label %bb608
 bb608:
-  %__tmp1519 = load i32, i32* %ans, align 4
-  store i32 %__tmp1519, i32* %c.10, align 4
-  %__tmp1520 = load i32, i32* %sum.10, align 4
-  store i32 %__tmp1520, i32* %al.10, align 4
+  %__tmp1515 = load i32, i32* %ans, align 4
+  store i32 %__tmp1515, i32* %c.10, align 4
+  %__tmp1516 = load i32, i32* %sum.10, align 4
+  store i32 %__tmp1516, i32* %al.10, align 4
   br label %bb582
 bb584:
-  %__tmp1521 = load i32, i32* %al.10, align 4
-  store i32 %__tmp1521, i32* %ans, align 4
-  %__tmp1522 = load i32, i32* %ans, align 4
-  store i32 %__tmp1522, i32* %mres.5, align 4
+  %__tmp1517 = load i32, i32* %al.10, align 4
+  store i32 %__tmp1517, i32* %ans, align 4
+  %__tmp1518 = load i32, i32* %ans, align 4
+  store i32 %__tmp1518, i32* %mres.5, align 4
   br label %bb581
 bb580:
   br label %bb581
 bb581:
   %al.11 = alloca i32, align 4
-  %__tmp1523 = load i32, i32* %ml.5, align 4
-  store i32 %__tmp1523, i32* %al.11, align 4
+  %__tmp1519 = load i32, i32* %ml.5, align 4
+  store i32 %__tmp1519, i32* %al.11, align 4
   %c.11 = alloca i32, align 4
-  %__tmp1524 = load i32, i32* %ml.5, align 4
-  store i32 %__tmp1524, i32* %c.11, align 4
+  %__tmp1520 = load i32, i32* %ml.5, align 4
+  store i32 %__tmp1520, i32* %c.11, align 4
   %sum.11 = alloca i32, align 4
   br label %bb618
 bb618:
-  %__tmp1525 = load i32, i32* %c.11, align 4
-  %__tmp1526 = trunc i32 %__tmp1525 to i1
-  br i1 %__tmp1526, label %bb619, label %bb620
+  %__tmp1521 = load i32, i32* %c.11, align 4
+  %__tmp1522 = trunc i32 %__tmp1521 to i1
+  br i1 %__tmp1522, label %bb619, label %bb620
 bb619:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1527 = load i32, i32* %al.11, align 4
-  store i32 %__tmp1527, i32* %x, align 4
-  %__tmp1528 = load i32, i32* %c.11, align 4
-  store i32 %__tmp1528, i32* %y, align 4
+  %__tmp1523 = load i32, i32* %al.11, align 4
+  store i32 %__tmp1523, i32* %x, align 4
+  %__tmp1524 = load i32, i32* %c.11, align 4
+  store i32 %__tmp1524, i32* %y, align 4
   br label %bb621
 bb621:
-  %__tmp1529 = load i32, i32* %i, align 4
-  %__tmp1530 = icmp slt i32 %__tmp1529, 16
-  br i1 %__tmp1530, label %bb622, label %bb623
+  %__tmp1525 = load i32, i32* %i, align 4
+  %__tmp1526 = icmp slt i32 %__tmp1525, 16
+  br i1 %__tmp1526, label %bb622, label %bb623
 bb622:
-  %__tmp1531 = load i32, i32* %x, align 4
-  %__tmp1532 = srem i32 %__tmp1531, 2
-  %__tmp1533 = trunc i32 %__tmp1532 to i1
-  br i1 %__tmp1533, label %bb624, label %bb625
+  %__tmp1527 = load i32, i32* %x, align 4
+  %__tmp1528 = srem i32 %__tmp1527, 2
+  %__tmp1529 = trunc i32 %__tmp1528 to i1
+  br i1 %__tmp1529, label %bb624, label %bb625
 bb624:
-  %__tmp1534 = load i32, i32* %y, align 4
-  %__tmp1535 = srem i32 %__tmp1534, 2
-  %__tmp1536 = icmp eq i32 %__tmp1535, 0
-  br i1 %__tmp1536, label %bb627, label %bb628
+  %__tmp1530 = load i32, i32* %y, align 4
+  %__tmp1531 = srem i32 %__tmp1530, 2
+  %__tmp1532 = icmp eq i32 %__tmp1531, 0
+  br i1 %__tmp1532, label %bb627, label %bb628
 bb627:
-  %__tmp1537 = load i32, i32* %ans, align 4
-  %__tmp1538 = load i32, i32* %i, align 4
-  %__tmp1539 = sext i32 %__tmp1538 to i64
-  %__tmp1540 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1539
-  %__tmp1541 = load i32, i32* %__tmp1540, align 4
-  %__tmp1542 = mul i32 1, %__tmp1541
-  %__tmp1543 = add i32 %__tmp1537, %__tmp1542
-  store i32 %__tmp1543, i32* %ans, align 4
+  %__tmp1533 = load i32, i32* %ans, align 4
+  %__tmp1534 = load i32, i32* %i, align 4
+  %__tmp1535 = sext i32 %__tmp1534 to i64
+  %__tmp1536 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1535
+  %__tmp1537 = load i32, i32* %__tmp1536, align 4
+  %__tmp1538 = mul i32 1, %__tmp1537
+  %__tmp1539 = add i32 %__tmp1533, %__tmp1538
+  store i32 %__tmp1539, i32* %ans, align 4
   br label %bb629
 bb628:
   br label %bb629
 bb629:
   br label %bb626
 bb625:
-  %__tmp1544 = load i32, i32* %y, align 4
-  %__tmp1545 = srem i32 %__tmp1544, 2
-  %__tmp1546 = trunc i32 %__tmp1545 to i1
-  br i1 %__tmp1546, label %bb630, label %bb631
+  %__tmp1540 = load i32, i32* %y, align 4
+  %__tmp1541 = srem i32 %__tmp1540, 2
+  %__tmp1542 = trunc i32 %__tmp1541 to i1
+  br i1 %__tmp1542, label %bb630, label %bb631
 bb630:
-  %__tmp1547 = load i32, i32* %ans, align 4
-  %__tmp1548 = load i32, i32* %i, align 4
-  %__tmp1549 = sext i32 %__tmp1548 to i64
-  %__tmp1550 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1549
-  %__tmp1551 = load i32, i32* %__tmp1550, align 4
-  %__tmp1552 = mul i32 1, %__tmp1551
-  %__tmp1553 = add i32 %__tmp1547, %__tmp1552
-  store i32 %__tmp1553, i32* %ans, align 4
+  %__tmp1543 = load i32, i32* %ans, align 4
+  %__tmp1544 = load i32, i32* %i, align 4
+  %__tmp1545 = sext i32 %__tmp1544 to i64
+  %__tmp1546 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1545
+  %__tmp1547 = load i32, i32* %__tmp1546, align 4
+  %__tmp1548 = mul i32 1, %__tmp1547
+  %__tmp1549 = add i32 %__tmp1543, %__tmp1548
+  store i32 %__tmp1549, i32* %ans, align 4
   br label %bb632
 bb631:
   br label %bb632
 bb632:
   br label %bb626
 bb626:
-  %__tmp1554 = load i32, i32* %x, align 4
-  %__tmp1555 = sdiv i32 %__tmp1554, 2
-  store i32 %__tmp1555, i32* %x, align 4
-  %__tmp1556 = load i32, i32* %y, align 4
-  %__tmp1557 = sdiv i32 %__tmp1556, 2
-  store i32 %__tmp1557, i32* %y, align 4
-  %__tmp1558 = load i32, i32* %i, align 4
-  %__tmp1559 = add i32 %__tmp1558, 1
-  store i32 %__tmp1559, i32* %i, align 4
+  %__tmp1550 = load i32, i32* %x, align 4
+  %__tmp1551 = sdiv i32 %__tmp1550, 2
+  store i32 %__tmp1551, i32* %x, align 4
+  %__tmp1552 = load i32, i32* %y, align 4
+  %__tmp1553 = sdiv i32 %__tmp1552, 2
+  store i32 %__tmp1553, i32* %y, align 4
+  %__tmp1554 = load i32, i32* %i, align 4
+  %__tmp1555 = add i32 %__tmp1554, 1
+  store i32 %__tmp1555, i32* %i, align 4
   br label %bb621
 bb623:
-  %__tmp1560 = load i32, i32* %ans, align 4
-  store i32 %__tmp1560, i32* %sum.11, align 4
+  %__tmp1556 = load i32, i32* %ans, align 4
+  store i32 %__tmp1556, i32* %sum.11, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1561 = load i32, i32* %al.11, align 4
-  store i32 %__tmp1561, i32* %x, align 4
-  %__tmp1562 = load i32, i32* %c.11, align 4
-  store i32 %__tmp1562, i32* %y, align 4
+  %__tmp1557 = load i32, i32* %al.11, align 4
+  store i32 %__tmp1557, i32* %x, align 4
+  %__tmp1558 = load i32, i32* %c.11, align 4
+  store i32 %__tmp1558, i32* %y, align 4
   br label %bb633
 bb633:
-  %__tmp1563 = load i32, i32* %i, align 4
-  %__tmp1564 = icmp slt i32 %__tmp1563, 16
-  br i1 %__tmp1564, label %bb634, label %bb635
+  %__tmp1559 = load i32, i32* %i, align 4
+  %__tmp1560 = icmp slt i32 %__tmp1559, 16
+  br i1 %__tmp1560, label %bb634, label %bb635
 bb634:
-  %__tmp1565 = load i32, i32* %x, align 4
-  %__tmp1566 = srem i32 %__tmp1565, 2
-  %__tmp1567 = icmp ne i32 %__tmp1566, 0
-  br i1 %__tmp1567, label %bb639, label %bb641
+  %__tmp1561 = load i32, i32* %x, align 4
+  %__tmp1562 = srem i32 %__tmp1561, 2
+  %__tmp1563 = icmp ne i32 %__tmp1562, 0
+  br i1 %__tmp1563, label %bb639, label %bb641
 bb641:
   br label %bb640
 bb639:
-  %__tmp1568 = load i32, i32* %y, align 4
-  %__tmp1569 = srem i32 %__tmp1568, 2
-  %__tmp1570 = icmp ne i32 %__tmp1569, 0
+  %__tmp1564 = load i32, i32* %y, align 4
+  %__tmp1565 = srem i32 %__tmp1564, 2
+  %__tmp1566 = icmp ne i32 %__tmp1565, 0
   br label %bb640
 bb640:
-  %__tmp1571 = phi i1 [ 0, %bb641 ], [ %__tmp1570, %bb639 ]
-  br i1 %__tmp1571, label %bb636, label %bb637
+  %__tmp1567 = phi i1 [ 0, %bb641 ], [ %__tmp1566, %bb639 ]
+  br i1 %__tmp1567, label %bb636, label %bb637
 bb636:
-  %__tmp1572 = load i32, i32* %ans, align 4
-  %__tmp1573 = load i32, i32* %i, align 4
-  %__tmp1574 = sext i32 %__tmp1573 to i64
-  %__tmp1575 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1574
-  %__tmp1576 = load i32, i32* %__tmp1575, align 4
-  %__tmp1577 = mul i32 1, %__tmp1576
-  %__tmp1578 = add i32 %__tmp1572, %__tmp1577
-  store i32 %__tmp1578, i32* %ans, align 4
+  %__tmp1568 = load i32, i32* %ans, align 4
+  %__tmp1569 = load i32, i32* %i, align 4
+  %__tmp1570 = sext i32 %__tmp1569 to i64
+  %__tmp1571 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1570
+  %__tmp1572 = load i32, i32* %__tmp1571, align 4
+  %__tmp1573 = mul i32 1, %__tmp1572
+  %__tmp1574 = add i32 %__tmp1568, %__tmp1573
+  store i32 %__tmp1574, i32* %ans, align 4
   br label %bb638
 bb637:
   br label %bb638
 bb638:
-  %__tmp1579 = load i32, i32* %x, align 4
-  %__tmp1580 = sdiv i32 %__tmp1579, 2
-  store i32 %__tmp1580, i32* %x, align 4
-  %__tmp1581 = load i32, i32* %y, align 4
-  %__tmp1582 = sdiv i32 %__tmp1581, 2
-  store i32 %__tmp1582, i32* %y, align 4
-  %__tmp1583 = load i32, i32* %i, align 4
-  %__tmp1584 = add i32 %__tmp1583, 1
-  store i32 %__tmp1584, i32* %i, align 4
+  %__tmp1575 = load i32, i32* %x, align 4
+  %__tmp1576 = sdiv i32 %__tmp1575, 2
+  store i32 %__tmp1576, i32* %x, align 4
+  %__tmp1577 = load i32, i32* %y, align 4
+  %__tmp1578 = sdiv i32 %__tmp1577, 2
+  store i32 %__tmp1578, i32* %y, align 4
+  %__tmp1579 = load i32, i32* %i, align 4
+  %__tmp1580 = add i32 %__tmp1579, 1
+  store i32 %__tmp1580, i32* %i, align 4
   br label %bb633
 bb635:
-  %__tmp1585 = load i32, i32* %ans, align 4
-  store i32 %__tmp1585, i32* %c.11, align 4
+  %__tmp1581 = load i32, i32* %ans, align 4
+  store i32 %__tmp1581, i32* %c.11, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1586 = load i32, i32* %c.11, align 4
-  %__tmp1587 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1588 = load i32, i32* %__tmp1587, align 4
-  %__tmp1589 = mul i32 %__tmp1586, %__tmp1588
-  store i32 %__tmp1589, i32* %x, align 4
+  %__tmp1582 = load i32, i32* %c.11, align 4
+  %__tmp1583 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1584 = load i32, i32* %__tmp1583, align 4
+  %__tmp1585 = mul i32 %__tmp1582, %__tmp1584
+  store i32 %__tmp1585, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb645
 bb645:
-  %__tmp1590 = load i32, i32* %i, align 4
-  %__tmp1591 = icmp slt i32 %__tmp1590, 16
-  br i1 %__tmp1591, label %bb646, label %bb647
+  %__tmp1586 = load i32, i32* %i, align 4
+  %__tmp1587 = icmp slt i32 %__tmp1586, 16
+  br i1 %__tmp1587, label %bb646, label %bb647
 bb646:
-  %__tmp1592 = load i32, i32* %x, align 4
-  %__tmp1593 = srem i32 %__tmp1592, 2
-  %__tmp1594 = icmp ne i32 %__tmp1593, 0
-  br i1 %__tmp1594, label %bb651, label %bb653
+  %__tmp1588 = load i32, i32* %x, align 4
+  %__tmp1589 = srem i32 %__tmp1588, 2
+  %__tmp1590 = icmp ne i32 %__tmp1589, 0
+  br i1 %__tmp1590, label %bb651, label %bb653
 bb653:
   br label %bb652
 bb651:
-  %__tmp1595 = load i32, i32* %y, align 4
-  %__tmp1596 = srem i32 %__tmp1595, 2
-  %__tmp1597 = icmp ne i32 %__tmp1596, 0
+  %__tmp1591 = load i32, i32* %y, align 4
+  %__tmp1592 = srem i32 %__tmp1591, 2
+  %__tmp1593 = icmp ne i32 %__tmp1592, 0
   br label %bb652
 bb652:
-  %__tmp1598 = phi i1 [ 0, %bb653 ], [ %__tmp1597, %bb651 ]
-  br i1 %__tmp1598, label %bb648, label %bb649
+  %__tmp1594 = phi i1 [ 0, %bb653 ], [ %__tmp1593, %bb651 ]
+  br i1 %__tmp1594, label %bb648, label %bb649
 bb648:
-  %__tmp1599 = load i32, i32* %ans, align 4
-  %__tmp1600 = load i32, i32* %i, align 4
-  %__tmp1601 = sext i32 %__tmp1600 to i64
-  %__tmp1602 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1601
-  %__tmp1603 = load i32, i32* %__tmp1602, align 4
-  %__tmp1604 = mul i32 1, %__tmp1603
-  %__tmp1605 = add i32 %__tmp1599, %__tmp1604
-  store i32 %__tmp1605, i32* %ans, align 4
+  %__tmp1595 = load i32, i32* %ans, align 4
+  %__tmp1596 = load i32, i32* %i, align 4
+  %__tmp1597 = sext i32 %__tmp1596 to i64
+  %__tmp1598 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1597
+  %__tmp1599 = load i32, i32* %__tmp1598, align 4
+  %__tmp1600 = mul i32 1, %__tmp1599
+  %__tmp1601 = add i32 %__tmp1595, %__tmp1600
+  store i32 %__tmp1601, i32* %ans, align 4
   br label %bb650
 bb649:
   br label %bb650
 bb650:
-  %__tmp1606 = load i32, i32* %x, align 4
-  %__tmp1607 = sdiv i32 %__tmp1606, 2
-  store i32 %__tmp1607, i32* %x, align 4
-  %__tmp1608 = load i32, i32* %y, align 4
-  %__tmp1609 = sdiv i32 %__tmp1608, 2
-  store i32 %__tmp1609, i32* %y, align 4
-  %__tmp1610 = load i32, i32* %i, align 4
-  %__tmp1611 = add i32 %__tmp1610, 1
-  store i32 %__tmp1611, i32* %i, align 4
+  %__tmp1602 = load i32, i32* %x, align 4
+  %__tmp1603 = sdiv i32 %__tmp1602, 2
+  store i32 %__tmp1603, i32* %x, align 4
+  %__tmp1604 = load i32, i32* %y, align 4
+  %__tmp1605 = sdiv i32 %__tmp1604, 2
+  store i32 %__tmp1605, i32* %y, align 4
+  %__tmp1606 = load i32, i32* %i, align 4
+  %__tmp1607 = add i32 %__tmp1606, 1
+  store i32 %__tmp1607, i32* %i, align 4
   br label %bb645
 bb647:
   br label %bb644
 bb644:
-  %__tmp1612 = load i32, i32* %ans, align 4
-  store i32 %__tmp1612, i32* %c.11, align 4
-  %__tmp1613 = load i32, i32* %sum.11, align 4
-  store i32 %__tmp1613, i32* %al.11, align 4
+  %__tmp1608 = load i32, i32* %ans, align 4
+  store i32 %__tmp1608, i32* %c.11, align 4
+  %__tmp1609 = load i32, i32* %sum.11, align 4
+  store i32 %__tmp1609, i32* %al.11, align 4
   br label %bb618
 bb620:
-  %__tmp1614 = load i32, i32* %al.11, align 4
-  store i32 %__tmp1614, i32* %ans, align 4
-  %__tmp1615 = load i32, i32* %ans, align 4
-  store i32 %__tmp1615, i32* %ml.5, align 4
-  %__tmp1616 = load i32, i32* %mr.5, align 4
-  store i32 %__tmp1616, i32* %x, align 4
+  %__tmp1610 = load i32, i32* %al.11, align 4
+  store i32 %__tmp1610, i32* %ans, align 4
+  %__tmp1611 = load i32, i32* %ans, align 4
+  store i32 %__tmp1611, i32* %ml.5, align 4
+  %__tmp1612 = load i32, i32* %mr.5, align 4
+  store i32 %__tmp1612, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1617 = load i32, i32* %y, align 4
-  %__tmp1618 = icmp sge i32 %__tmp1617, 15
-  br i1 %__tmp1618, label %bb654, label %bb655
+  %__tmp1613 = load i32, i32* %y, align 4
+  %__tmp1614 = icmp sge i32 %__tmp1613, 15
+  br i1 %__tmp1614, label %bb654, label %bb655
 bb654:
-  %__tmp1619 = load i32, i32* %x, align 4
-  %__tmp1620 = icmp slt i32 %__tmp1619, 0
-  br i1 %__tmp1620, label %bb657, label %bb658
+  %__tmp1615 = load i32, i32* %x, align 4
+  %__tmp1616 = icmp slt i32 %__tmp1615, 0
+  br i1 %__tmp1616, label %bb657, label %bb658
 bb657:
   store i32 65535, i32* %ans, align 4
   br label %bb659
@@ -3539,68 +3539,68 @@ bb658:
 bb659:
   br label %bb656
 bb655:
-  %__tmp1621 = load i32, i32* %y, align 4
-  %__tmp1622 = icmp sgt i32 %__tmp1621, 0
-  br i1 %__tmp1622, label %bb660, label %bb661
+  %__tmp1617 = load i32, i32* %y, align 4
+  %__tmp1618 = icmp sgt i32 %__tmp1617, 0
+  br i1 %__tmp1618, label %bb660, label %bb661
 bb660:
-  %__tmp1623 = load i32, i32* %x, align 4
-  %__tmp1624 = icmp sgt i32 %__tmp1623, 32767
-  br i1 %__tmp1624, label %bb663, label %bb664
+  %__tmp1619 = load i32, i32* %x, align 4
+  %__tmp1620 = icmp sgt i32 %__tmp1619, 32767
+  br i1 %__tmp1620, label %bb663, label %bb664
 bb663:
-  %__tmp1625 = load i32, i32* %x, align 4
-  %__tmp1626 = load i32, i32* %y, align 4
-  %__tmp1627 = sext i32 %__tmp1626 to i64
-  %__tmp1628 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1627
-  %__tmp1629 = load i32, i32* %__tmp1628, align 4
-  %__tmp1630 = sdiv i32 %__tmp1625, %__tmp1629
-  store i32 %__tmp1630, i32* %x, align 4
-  %__tmp1631 = load i32, i32* %x, align 4
-  %__tmp1632 = add i32 %__tmp1631, 65536
-  %__tmp1633 = load i32, i32* %y, align 4
-  %__tmp1634 = sub i32 15, %__tmp1633
-  %__tmp1635 = add i32 %__tmp1634, 1
-  %__tmp1636 = sext i32 %__tmp1635 to i64
-  %__tmp1637 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1636
-  %__tmp1638 = load i32, i32* %__tmp1637, align 4
-  %__tmp1639 = sub i32 %__tmp1632, %__tmp1638
-  store i32 %__tmp1639, i32* %ans, align 4
+  %__tmp1621 = load i32, i32* %x, align 4
+  %__tmp1622 = load i32, i32* %y, align 4
+  %__tmp1623 = sext i32 %__tmp1622 to i64
+  %__tmp1624 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1623
+  %__tmp1625 = load i32, i32* %__tmp1624, align 4
+  %__tmp1626 = sdiv i32 %__tmp1621, %__tmp1625
+  store i32 %__tmp1626, i32* %x, align 4
+  %__tmp1627 = load i32, i32* %x, align 4
+  %__tmp1628 = add i32 %__tmp1627, 65536
+  %__tmp1629 = load i32, i32* %y, align 4
+  %__tmp1630 = sub i32 15, %__tmp1629
+  %__tmp1631 = add i32 %__tmp1630, 1
+  %__tmp1632 = sext i32 %__tmp1631 to i64
+  %__tmp1633 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1632
+  %__tmp1634 = load i32, i32* %__tmp1633, align 4
+  %__tmp1635 = sub i32 %__tmp1628, %__tmp1634
+  store i32 %__tmp1635, i32* %ans, align 4
   br label %bb665
 bb664:
-  %__tmp1640 = load i32, i32* %x, align 4
-  %__tmp1641 = load i32, i32* %y, align 4
-  %__tmp1642 = sext i32 %__tmp1641 to i64
-  %__tmp1643 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1642
-  %__tmp1644 = load i32, i32* %__tmp1643, align 4
-  %__tmp1645 = sdiv i32 %__tmp1640, %__tmp1644
-  store i32 %__tmp1645, i32* %ans, align 4
+  %__tmp1636 = load i32, i32* %x, align 4
+  %__tmp1637 = load i32, i32* %y, align 4
+  %__tmp1638 = sext i32 %__tmp1637 to i64
+  %__tmp1639 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1638
+  %__tmp1640 = load i32, i32* %__tmp1639, align 4
+  %__tmp1641 = sdiv i32 %__tmp1636, %__tmp1640
+  store i32 %__tmp1641, i32* %ans, align 4
   br label %bb665
 bb665:
   br label %bb662
 bb661:
-  %__tmp1646 = load i32, i32* %x, align 4
-  store i32 %__tmp1646, i32* %ans, align 4
+  %__tmp1642 = load i32, i32* %x, align 4
+  store i32 %__tmp1642, i32* %ans, align 4
   br label %bb662
 bb662:
   br label %bb656
 bb656:
-  %__tmp1647 = load i32, i32* %ans, align 4
-  store i32 %__tmp1647, i32* %mr.5, align 4
+  %__tmp1643 = load i32, i32* %ans, align 4
+  store i32 %__tmp1643, i32* %mr.5, align 4
   br label %bb567
 bb569:
-  %__tmp1648 = load i32, i32* %mres.5, align 4
-  store i32 %__tmp1648, i32* %ans, align 4
-  %__tmp1649 = load i32, i32* %ans, align 4
-  store i32 %__tmp1649, i32* %pl.2, align 4
-  %__tmp1650 = load i32, i32* %pr.2, align 4
-  store i32 %__tmp1650, i32* %x, align 4
+  %__tmp1644 = load i32, i32* %mres.5, align 4
+  store i32 %__tmp1644, i32* %ans, align 4
+  %__tmp1645 = load i32, i32* %ans, align 4
+  store i32 %__tmp1645, i32* %pl.2, align 4
+  %__tmp1646 = load i32, i32* %pr.2, align 4
+  store i32 %__tmp1646, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1651 = load i32, i32* %y, align 4
-  %__tmp1652 = icmp sge i32 %__tmp1651, 15
-  br i1 %__tmp1652, label %bb666, label %bb667
+  %__tmp1647 = load i32, i32* %y, align 4
+  %__tmp1648 = icmp sge i32 %__tmp1647, 15
+  br i1 %__tmp1648, label %bb666, label %bb667
 bb666:
-  %__tmp1653 = load i32, i32* %x, align 4
-  %__tmp1654 = icmp slt i32 %__tmp1653, 0
-  br i1 %__tmp1654, label %bb669, label %bb670
+  %__tmp1649 = load i32, i32* %x, align 4
+  %__tmp1650 = icmp slt i32 %__tmp1649, 0
+  br i1 %__tmp1650, label %bb669, label %bb670
 bb669:
   store i32 65535, i32* %ans, align 4
   br label %bb671
@@ -3610,612 +3610,612 @@ bb670:
 bb671:
   br label %bb668
 bb667:
-  %__tmp1655 = load i32, i32* %y, align 4
-  %__tmp1656 = icmp sgt i32 %__tmp1655, 0
-  br i1 %__tmp1656, label %bb672, label %bb673
+  %__tmp1651 = load i32, i32* %y, align 4
+  %__tmp1652 = icmp sgt i32 %__tmp1651, 0
+  br i1 %__tmp1652, label %bb672, label %bb673
 bb672:
-  %__tmp1657 = load i32, i32* %x, align 4
-  %__tmp1658 = icmp sgt i32 %__tmp1657, 32767
-  br i1 %__tmp1658, label %bb675, label %bb676
+  %__tmp1653 = load i32, i32* %x, align 4
+  %__tmp1654 = icmp sgt i32 %__tmp1653, 32767
+  br i1 %__tmp1654, label %bb675, label %bb676
 bb675:
-  %__tmp1659 = load i32, i32* %x, align 4
-  %__tmp1660 = load i32, i32* %y, align 4
-  %__tmp1661 = sext i32 %__tmp1660 to i64
-  %__tmp1662 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1661
-  %__tmp1663 = load i32, i32* %__tmp1662, align 4
-  %__tmp1664 = sdiv i32 %__tmp1659, %__tmp1663
-  store i32 %__tmp1664, i32* %x, align 4
-  %__tmp1665 = load i32, i32* %x, align 4
-  %__tmp1666 = add i32 %__tmp1665, 65536
-  %__tmp1667 = load i32, i32* %y, align 4
-  %__tmp1668 = sub i32 15, %__tmp1667
-  %__tmp1669 = add i32 %__tmp1668, 1
-  %__tmp1670 = sext i32 %__tmp1669 to i64
-  %__tmp1671 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1670
-  %__tmp1672 = load i32, i32* %__tmp1671, align 4
-  %__tmp1673 = sub i32 %__tmp1666, %__tmp1672
-  store i32 %__tmp1673, i32* %ans, align 4
+  %__tmp1655 = load i32, i32* %x, align 4
+  %__tmp1656 = load i32, i32* %y, align 4
+  %__tmp1657 = sext i32 %__tmp1656 to i64
+  %__tmp1658 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1657
+  %__tmp1659 = load i32, i32* %__tmp1658, align 4
+  %__tmp1660 = sdiv i32 %__tmp1655, %__tmp1659
+  store i32 %__tmp1660, i32* %x, align 4
+  %__tmp1661 = load i32, i32* %x, align 4
+  %__tmp1662 = add i32 %__tmp1661, 65536
+  %__tmp1663 = load i32, i32* %y, align 4
+  %__tmp1664 = sub i32 15, %__tmp1663
+  %__tmp1665 = add i32 %__tmp1664, 1
+  %__tmp1666 = sext i32 %__tmp1665 to i64
+  %__tmp1667 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1666
+  %__tmp1668 = load i32, i32* %__tmp1667, align 4
+  %__tmp1669 = sub i32 %__tmp1662, %__tmp1668
+  store i32 %__tmp1669, i32* %ans, align 4
   br label %bb677
 bb676:
-  %__tmp1674 = load i32, i32* %x, align 4
-  %__tmp1675 = load i32, i32* %y, align 4
-  %__tmp1676 = sext i32 %__tmp1675 to i64
-  %__tmp1677 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1676
-  %__tmp1678 = load i32, i32* %__tmp1677, align 4
-  %__tmp1679 = sdiv i32 %__tmp1674, %__tmp1678
-  store i32 %__tmp1679, i32* %ans, align 4
+  %__tmp1670 = load i32, i32* %x, align 4
+  %__tmp1671 = load i32, i32* %y, align 4
+  %__tmp1672 = sext i32 %__tmp1671 to i64
+  %__tmp1673 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1672
+  %__tmp1674 = load i32, i32* %__tmp1673, align 4
+  %__tmp1675 = sdiv i32 %__tmp1670, %__tmp1674
+  store i32 %__tmp1675, i32* %ans, align 4
   br label %bb677
 bb677:
   br label %bb674
 bb673:
-  %__tmp1680 = load i32, i32* %x, align 4
-  store i32 %__tmp1680, i32* %ans, align 4
+  %__tmp1676 = load i32, i32* %x, align 4
+  store i32 %__tmp1676, i32* %ans, align 4
   br label %bb674
 bb674:
   br label %bb668
 bb668:
-  %__tmp1681 = load i32, i32* %ans, align 4
-  store i32 %__tmp1681, i32* %pr.2, align 4
+  %__tmp1677 = load i32, i32* %ans, align 4
+  store i32 %__tmp1677, i32* %pr.2, align 4
   br label %bb453
 bb455:
-  %__tmp1682 = load i32, i32* %pres.2, align 4
-  store i32 %__tmp1682, i32* %ans, align 4
-  %__tmp1683 = load i32, i32* %ans, align 4
-  %__tmp1684 = call i32 @putint(i32 %__tmp1683)
-  %__tmp1685 = call i32 @putch(i32 10)
-  %__tmp1686 = load i32, i32* %cur, align 4
-  %__tmp1687 = add i32 %__tmp1686, 1
-  store i32 %__tmp1687, i32* %cur, align 4
+  %__tmp1678 = load i32, i32* %pres.2, align 4
+  store i32 %__tmp1678, i32* %ans, align 4
+  %__tmp1679 = load i32, i32* %ans, align 4
+  call void @putint(i32 %__tmp1679)
+  call void @putch(i32 10)
+  %__tmp1680 = load i32, i32* %cur, align 4
+  %__tmp1681 = add i32 %__tmp1680, 1
+  store i32 %__tmp1681, i32* %cur, align 4
   br label %bb450
 bb452:
   store i32 0, i32* %cur, align 4
   br label %bb678
 bb678:
-  %__tmp1688 = load i32, i32* %cur, align 4
-  %__tmp1689 = icmp slt i32 %__tmp1688, 16
-  br i1 %__tmp1689, label %bb679, label %bb680
+  %__tmp1682 = load i32, i32* %cur, align 4
+  %__tmp1683 = icmp slt i32 %__tmp1682, 16
+  br i1 %__tmp1683, label %bb679, label %bb680
 bb679:
   %pl.3 = alloca i32, align 4
   store i32 2, i32* %pl.3, align 4
   %pr.3 = alloca i32, align 4
-  %__tmp1690 = load i32, i32* %cur, align 4
-  store i32 %__tmp1690, i32* %pr.3, align 4
+  %__tmp1684 = load i32, i32* %cur, align 4
+  store i32 %__tmp1684, i32* %pr.3, align 4
   %pres.3 = alloca i32, align 4
   store i32 1, i32* %pres.3, align 4
   br label %bb681
 bb681:
-  %__tmp1691 = load i32, i32* %pr.3, align 4
-  %__tmp1692 = icmp sgt i32 %__tmp1691, 0
-  br i1 %__tmp1692, label %bb682, label %bb683
+  %__tmp1685 = load i32, i32* %pr.3, align 4
+  %__tmp1686 = icmp sgt i32 %__tmp1685, 0
+  br i1 %__tmp1686, label %bb682, label %bb683
 bb682:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1693 = load i32, i32* %pr.3, align 4
-  store i32 %__tmp1693, i32* %x, align 4
+  %__tmp1687 = load i32, i32* %pr.3, align 4
+  store i32 %__tmp1687, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb684
 bb684:
-  %__tmp1694 = load i32, i32* %i, align 4
-  %__tmp1695 = icmp slt i32 %__tmp1694, 16
-  br i1 %__tmp1695, label %bb685, label %bb686
+  %__tmp1688 = load i32, i32* %i, align 4
+  %__tmp1689 = icmp slt i32 %__tmp1688, 16
+  br i1 %__tmp1689, label %bb685, label %bb686
 bb685:
-  %__tmp1696 = load i32, i32* %x, align 4
-  %__tmp1697 = srem i32 %__tmp1696, 2
-  %__tmp1698 = icmp ne i32 %__tmp1697, 0
-  br i1 %__tmp1698, label %bb690, label %bb692
+  %__tmp1690 = load i32, i32* %x, align 4
+  %__tmp1691 = srem i32 %__tmp1690, 2
+  %__tmp1692 = icmp ne i32 %__tmp1691, 0
+  br i1 %__tmp1692, label %bb690, label %bb692
 bb692:
   br label %bb691
 bb690:
-  %__tmp1699 = load i32, i32* %y, align 4
-  %__tmp1700 = srem i32 %__tmp1699, 2
-  %__tmp1701 = icmp ne i32 %__tmp1700, 0
+  %__tmp1693 = load i32, i32* %y, align 4
+  %__tmp1694 = srem i32 %__tmp1693, 2
+  %__tmp1695 = icmp ne i32 %__tmp1694, 0
   br label %bb691
 bb691:
-  %__tmp1702 = phi i1 [ 0, %bb692 ], [ %__tmp1701, %bb690 ]
-  br i1 %__tmp1702, label %bb687, label %bb688
+  %__tmp1696 = phi i1 [ 0, %bb692 ], [ %__tmp1695, %bb690 ]
+  br i1 %__tmp1696, label %bb687, label %bb688
 bb687:
-  %__tmp1703 = load i32, i32* %ans, align 4
-  %__tmp1704 = load i32, i32* %i, align 4
-  %__tmp1705 = sext i32 %__tmp1704 to i64
-  %__tmp1706 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1705
-  %__tmp1707 = load i32, i32* %__tmp1706, align 4
-  %__tmp1708 = mul i32 1, %__tmp1707
-  %__tmp1709 = add i32 %__tmp1703, %__tmp1708
-  store i32 %__tmp1709, i32* %ans, align 4
+  %__tmp1697 = load i32, i32* %ans, align 4
+  %__tmp1698 = load i32, i32* %i, align 4
+  %__tmp1699 = sext i32 %__tmp1698 to i64
+  %__tmp1700 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1699
+  %__tmp1701 = load i32, i32* %__tmp1700, align 4
+  %__tmp1702 = mul i32 1, %__tmp1701
+  %__tmp1703 = add i32 %__tmp1697, %__tmp1702
+  store i32 %__tmp1703, i32* %ans, align 4
   br label %bb689
 bb688:
   br label %bb689
 bb689:
-  %__tmp1710 = load i32, i32* %x, align 4
-  %__tmp1711 = sdiv i32 %__tmp1710, 2
-  store i32 %__tmp1711, i32* %x, align 4
-  %__tmp1712 = load i32, i32* %y, align 4
-  %__tmp1713 = sdiv i32 %__tmp1712, 2
-  store i32 %__tmp1713, i32* %y, align 4
-  %__tmp1714 = load i32, i32* %i, align 4
-  %__tmp1715 = add i32 %__tmp1714, 1
-  store i32 %__tmp1715, i32* %i, align 4
+  %__tmp1704 = load i32, i32* %x, align 4
+  %__tmp1705 = sdiv i32 %__tmp1704, 2
+  store i32 %__tmp1705, i32* %x, align 4
+  %__tmp1706 = load i32, i32* %y, align 4
+  %__tmp1707 = sdiv i32 %__tmp1706, 2
+  store i32 %__tmp1707, i32* %y, align 4
+  %__tmp1708 = load i32, i32* %i, align 4
+  %__tmp1709 = add i32 %__tmp1708, 1
+  store i32 %__tmp1709, i32* %i, align 4
   br label %bb684
 bb686:
-  %__tmp1716 = load i32, i32* %ans, align 4
-  %__tmp1717 = trunc i32 %__tmp1716 to i1
-  br i1 %__tmp1717, label %bb693, label %bb694
+  %__tmp1710 = load i32, i32* %ans, align 4
+  %__tmp1711 = trunc i32 %__tmp1710 to i1
+  br i1 %__tmp1711, label %bb693, label %bb694
 bb693:
   %ml.6 = alloca i32, align 4
-  %__tmp1718 = load i32, i32* %pres.3, align 4
-  store i32 %__tmp1718, i32* %ml.6, align 4
+  %__tmp1712 = load i32, i32* %pres.3, align 4
+  store i32 %__tmp1712, i32* %ml.6, align 4
   %mr.6 = alloca i32, align 4
-  %__tmp1719 = load i32, i32* %pl.3, align 4
-  store i32 %__tmp1719, i32* %mr.6, align 4
+  %__tmp1713 = load i32, i32* %pl.3, align 4
+  store i32 %__tmp1713, i32* %mr.6, align 4
   %mres.6 = alloca i32, align 4
   store i32 0, i32* %mres.6, align 4
   br label %bb696
 bb696:
-  %__tmp1720 = load i32, i32* %mr.6, align 4
-  %__tmp1721 = trunc i32 %__tmp1720 to i1
-  br i1 %__tmp1721, label %bb697, label %bb698
+  %__tmp1714 = load i32, i32* %mr.6, align 4
+  %__tmp1715 = trunc i32 %__tmp1714 to i1
+  br i1 %__tmp1715, label %bb697, label %bb698
 bb697:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1722 = load i32, i32* %mr.6, align 4
-  store i32 %__tmp1722, i32* %x, align 4
+  %__tmp1716 = load i32, i32* %mr.6, align 4
+  store i32 %__tmp1716, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb699
 bb699:
-  %__tmp1723 = load i32, i32* %i, align 4
-  %__tmp1724 = icmp slt i32 %__tmp1723, 16
-  br i1 %__tmp1724, label %bb700, label %bb701
+  %__tmp1717 = load i32, i32* %i, align 4
+  %__tmp1718 = icmp slt i32 %__tmp1717, 16
+  br i1 %__tmp1718, label %bb700, label %bb701
 bb700:
-  %__tmp1725 = load i32, i32* %x, align 4
-  %__tmp1726 = srem i32 %__tmp1725, 2
-  %__tmp1727 = icmp ne i32 %__tmp1726, 0
-  br i1 %__tmp1727, label %bb705, label %bb707
+  %__tmp1719 = load i32, i32* %x, align 4
+  %__tmp1720 = srem i32 %__tmp1719, 2
+  %__tmp1721 = icmp ne i32 %__tmp1720, 0
+  br i1 %__tmp1721, label %bb705, label %bb707
 bb707:
   br label %bb706
 bb705:
-  %__tmp1728 = load i32, i32* %y, align 4
-  %__tmp1729 = srem i32 %__tmp1728, 2
-  %__tmp1730 = icmp ne i32 %__tmp1729, 0
+  %__tmp1722 = load i32, i32* %y, align 4
+  %__tmp1723 = srem i32 %__tmp1722, 2
+  %__tmp1724 = icmp ne i32 %__tmp1723, 0
   br label %bb706
 bb706:
-  %__tmp1731 = phi i1 [ 0, %bb707 ], [ %__tmp1730, %bb705 ]
-  br i1 %__tmp1731, label %bb702, label %bb703
+  %__tmp1725 = phi i1 [ 0, %bb707 ], [ %__tmp1724, %bb705 ]
+  br i1 %__tmp1725, label %bb702, label %bb703
 bb702:
-  %__tmp1732 = load i32, i32* %ans, align 4
-  %__tmp1733 = load i32, i32* %i, align 4
-  %__tmp1734 = sext i32 %__tmp1733 to i64
-  %__tmp1735 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1734
-  %__tmp1736 = load i32, i32* %__tmp1735, align 4
-  %__tmp1737 = mul i32 1, %__tmp1736
-  %__tmp1738 = add i32 %__tmp1732, %__tmp1737
-  store i32 %__tmp1738, i32* %ans, align 4
+  %__tmp1726 = load i32, i32* %ans, align 4
+  %__tmp1727 = load i32, i32* %i, align 4
+  %__tmp1728 = sext i32 %__tmp1727 to i64
+  %__tmp1729 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1728
+  %__tmp1730 = load i32, i32* %__tmp1729, align 4
+  %__tmp1731 = mul i32 1, %__tmp1730
+  %__tmp1732 = add i32 %__tmp1726, %__tmp1731
+  store i32 %__tmp1732, i32* %ans, align 4
   br label %bb704
 bb703:
   br label %bb704
 bb704:
-  %__tmp1739 = load i32, i32* %x, align 4
-  %__tmp1740 = sdiv i32 %__tmp1739, 2
-  store i32 %__tmp1740, i32* %x, align 4
-  %__tmp1741 = load i32, i32* %y, align 4
-  %__tmp1742 = sdiv i32 %__tmp1741, 2
-  store i32 %__tmp1742, i32* %y, align 4
-  %__tmp1743 = load i32, i32* %i, align 4
-  %__tmp1744 = add i32 %__tmp1743, 1
-  store i32 %__tmp1744, i32* %i, align 4
+  %__tmp1733 = load i32, i32* %x, align 4
+  %__tmp1734 = sdiv i32 %__tmp1733, 2
+  store i32 %__tmp1734, i32* %x, align 4
+  %__tmp1735 = load i32, i32* %y, align 4
+  %__tmp1736 = sdiv i32 %__tmp1735, 2
+  store i32 %__tmp1736, i32* %y, align 4
+  %__tmp1737 = load i32, i32* %i, align 4
+  %__tmp1738 = add i32 %__tmp1737, 1
+  store i32 %__tmp1738, i32* %i, align 4
   br label %bb699
 bb701:
-  %__tmp1745 = load i32, i32* %ans, align 4
-  %__tmp1746 = trunc i32 %__tmp1745 to i1
-  br i1 %__tmp1746, label %bb708, label %bb709
+  %__tmp1739 = load i32, i32* %ans, align 4
+  %__tmp1740 = trunc i32 %__tmp1739 to i1
+  br i1 %__tmp1740, label %bb708, label %bb709
 bb708:
   %al.12 = alloca i32, align 4
-  %__tmp1747 = load i32, i32* %mres.6, align 4
-  store i32 %__tmp1747, i32* %al.12, align 4
+  %__tmp1741 = load i32, i32* %mres.6, align 4
+  store i32 %__tmp1741, i32* %al.12, align 4
   %c.12 = alloca i32, align 4
-  %__tmp1748 = load i32, i32* %ml.6, align 4
-  store i32 %__tmp1748, i32* %c.12, align 4
+  %__tmp1742 = load i32, i32* %ml.6, align 4
+  store i32 %__tmp1742, i32* %c.12, align 4
   %sum.12 = alloca i32, align 4
   br label %bb711
 bb711:
-  %__tmp1749 = load i32, i32* %c.12, align 4
-  %__tmp1750 = trunc i32 %__tmp1749 to i1
-  br i1 %__tmp1750, label %bb712, label %bb713
+  %__tmp1743 = load i32, i32* %c.12, align 4
+  %__tmp1744 = trunc i32 %__tmp1743 to i1
+  br i1 %__tmp1744, label %bb712, label %bb713
 bb712:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1751 = load i32, i32* %al.12, align 4
-  store i32 %__tmp1751, i32* %x, align 4
-  %__tmp1752 = load i32, i32* %c.12, align 4
-  store i32 %__tmp1752, i32* %y, align 4
+  %__tmp1745 = load i32, i32* %al.12, align 4
+  store i32 %__tmp1745, i32* %x, align 4
+  %__tmp1746 = load i32, i32* %c.12, align 4
+  store i32 %__tmp1746, i32* %y, align 4
   br label %bb714
 bb714:
-  %__tmp1753 = load i32, i32* %i, align 4
-  %__tmp1754 = icmp slt i32 %__tmp1753, 16
-  br i1 %__tmp1754, label %bb715, label %bb716
+  %__tmp1747 = load i32, i32* %i, align 4
+  %__tmp1748 = icmp slt i32 %__tmp1747, 16
+  br i1 %__tmp1748, label %bb715, label %bb716
 bb715:
-  %__tmp1755 = load i32, i32* %x, align 4
-  %__tmp1756 = srem i32 %__tmp1755, 2
-  %__tmp1757 = trunc i32 %__tmp1756 to i1
-  br i1 %__tmp1757, label %bb717, label %bb718
+  %__tmp1749 = load i32, i32* %x, align 4
+  %__tmp1750 = srem i32 %__tmp1749, 2
+  %__tmp1751 = trunc i32 %__tmp1750 to i1
+  br i1 %__tmp1751, label %bb717, label %bb718
 bb717:
-  %__tmp1758 = load i32, i32* %y, align 4
-  %__tmp1759 = srem i32 %__tmp1758, 2
-  %__tmp1760 = icmp eq i32 %__tmp1759, 0
-  br i1 %__tmp1760, label %bb720, label %bb721
+  %__tmp1752 = load i32, i32* %y, align 4
+  %__tmp1753 = srem i32 %__tmp1752, 2
+  %__tmp1754 = icmp eq i32 %__tmp1753, 0
+  br i1 %__tmp1754, label %bb720, label %bb721
 bb720:
-  %__tmp1761 = load i32, i32* %ans, align 4
-  %__tmp1762 = load i32, i32* %i, align 4
-  %__tmp1763 = sext i32 %__tmp1762 to i64
-  %__tmp1764 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1763
-  %__tmp1765 = load i32, i32* %__tmp1764, align 4
-  %__tmp1766 = mul i32 1, %__tmp1765
-  %__tmp1767 = add i32 %__tmp1761, %__tmp1766
-  store i32 %__tmp1767, i32* %ans, align 4
+  %__tmp1755 = load i32, i32* %ans, align 4
+  %__tmp1756 = load i32, i32* %i, align 4
+  %__tmp1757 = sext i32 %__tmp1756 to i64
+  %__tmp1758 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1757
+  %__tmp1759 = load i32, i32* %__tmp1758, align 4
+  %__tmp1760 = mul i32 1, %__tmp1759
+  %__tmp1761 = add i32 %__tmp1755, %__tmp1760
+  store i32 %__tmp1761, i32* %ans, align 4
   br label %bb722
 bb721:
   br label %bb722
 bb722:
   br label %bb719
 bb718:
-  %__tmp1768 = load i32, i32* %y, align 4
-  %__tmp1769 = srem i32 %__tmp1768, 2
-  %__tmp1770 = trunc i32 %__tmp1769 to i1
-  br i1 %__tmp1770, label %bb723, label %bb724
+  %__tmp1762 = load i32, i32* %y, align 4
+  %__tmp1763 = srem i32 %__tmp1762, 2
+  %__tmp1764 = trunc i32 %__tmp1763 to i1
+  br i1 %__tmp1764, label %bb723, label %bb724
 bb723:
-  %__tmp1771 = load i32, i32* %ans, align 4
-  %__tmp1772 = load i32, i32* %i, align 4
-  %__tmp1773 = sext i32 %__tmp1772 to i64
-  %__tmp1774 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1773
-  %__tmp1775 = load i32, i32* %__tmp1774, align 4
-  %__tmp1776 = mul i32 1, %__tmp1775
-  %__tmp1777 = add i32 %__tmp1771, %__tmp1776
-  store i32 %__tmp1777, i32* %ans, align 4
+  %__tmp1765 = load i32, i32* %ans, align 4
+  %__tmp1766 = load i32, i32* %i, align 4
+  %__tmp1767 = sext i32 %__tmp1766 to i64
+  %__tmp1768 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1767
+  %__tmp1769 = load i32, i32* %__tmp1768, align 4
+  %__tmp1770 = mul i32 1, %__tmp1769
+  %__tmp1771 = add i32 %__tmp1765, %__tmp1770
+  store i32 %__tmp1771, i32* %ans, align 4
   br label %bb725
 bb724:
   br label %bb725
 bb725:
   br label %bb719
 bb719:
-  %__tmp1778 = load i32, i32* %x, align 4
-  %__tmp1779 = sdiv i32 %__tmp1778, 2
-  store i32 %__tmp1779, i32* %x, align 4
-  %__tmp1780 = load i32, i32* %y, align 4
-  %__tmp1781 = sdiv i32 %__tmp1780, 2
-  store i32 %__tmp1781, i32* %y, align 4
-  %__tmp1782 = load i32, i32* %i, align 4
-  %__tmp1783 = add i32 %__tmp1782, 1
-  store i32 %__tmp1783, i32* %i, align 4
+  %__tmp1772 = load i32, i32* %x, align 4
+  %__tmp1773 = sdiv i32 %__tmp1772, 2
+  store i32 %__tmp1773, i32* %x, align 4
+  %__tmp1774 = load i32, i32* %y, align 4
+  %__tmp1775 = sdiv i32 %__tmp1774, 2
+  store i32 %__tmp1775, i32* %y, align 4
+  %__tmp1776 = load i32, i32* %i, align 4
+  %__tmp1777 = add i32 %__tmp1776, 1
+  store i32 %__tmp1777, i32* %i, align 4
   br label %bb714
 bb716:
-  %__tmp1784 = load i32, i32* %ans, align 4
-  store i32 %__tmp1784, i32* %sum.12, align 4
+  %__tmp1778 = load i32, i32* %ans, align 4
+  store i32 %__tmp1778, i32* %sum.12, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1785 = load i32, i32* %al.12, align 4
-  store i32 %__tmp1785, i32* %x, align 4
-  %__tmp1786 = load i32, i32* %c.12, align 4
-  store i32 %__tmp1786, i32* %y, align 4
+  %__tmp1779 = load i32, i32* %al.12, align 4
+  store i32 %__tmp1779, i32* %x, align 4
+  %__tmp1780 = load i32, i32* %c.12, align 4
+  store i32 %__tmp1780, i32* %y, align 4
   br label %bb726
 bb726:
-  %__tmp1787 = load i32, i32* %i, align 4
-  %__tmp1788 = icmp slt i32 %__tmp1787, 16
-  br i1 %__tmp1788, label %bb727, label %bb728
+  %__tmp1781 = load i32, i32* %i, align 4
+  %__tmp1782 = icmp slt i32 %__tmp1781, 16
+  br i1 %__tmp1782, label %bb727, label %bb728
 bb727:
-  %__tmp1789 = load i32, i32* %x, align 4
-  %__tmp1790 = srem i32 %__tmp1789, 2
-  %__tmp1791 = icmp ne i32 %__tmp1790, 0
-  br i1 %__tmp1791, label %bb732, label %bb734
+  %__tmp1783 = load i32, i32* %x, align 4
+  %__tmp1784 = srem i32 %__tmp1783, 2
+  %__tmp1785 = icmp ne i32 %__tmp1784, 0
+  br i1 %__tmp1785, label %bb732, label %bb734
 bb734:
   br label %bb733
 bb732:
-  %__tmp1792 = load i32, i32* %y, align 4
-  %__tmp1793 = srem i32 %__tmp1792, 2
-  %__tmp1794 = icmp ne i32 %__tmp1793, 0
+  %__tmp1786 = load i32, i32* %y, align 4
+  %__tmp1787 = srem i32 %__tmp1786, 2
+  %__tmp1788 = icmp ne i32 %__tmp1787, 0
   br label %bb733
 bb733:
-  %__tmp1795 = phi i1 [ 0, %bb734 ], [ %__tmp1794, %bb732 ]
-  br i1 %__tmp1795, label %bb729, label %bb730
+  %__tmp1789 = phi i1 [ 0, %bb734 ], [ %__tmp1788, %bb732 ]
+  br i1 %__tmp1789, label %bb729, label %bb730
 bb729:
-  %__tmp1796 = load i32, i32* %ans, align 4
-  %__tmp1797 = load i32, i32* %i, align 4
-  %__tmp1798 = sext i32 %__tmp1797 to i64
-  %__tmp1799 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1798
-  %__tmp1800 = load i32, i32* %__tmp1799, align 4
-  %__tmp1801 = mul i32 1, %__tmp1800
-  %__tmp1802 = add i32 %__tmp1796, %__tmp1801
-  store i32 %__tmp1802, i32* %ans, align 4
+  %__tmp1790 = load i32, i32* %ans, align 4
+  %__tmp1791 = load i32, i32* %i, align 4
+  %__tmp1792 = sext i32 %__tmp1791 to i64
+  %__tmp1793 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1792
+  %__tmp1794 = load i32, i32* %__tmp1793, align 4
+  %__tmp1795 = mul i32 1, %__tmp1794
+  %__tmp1796 = add i32 %__tmp1790, %__tmp1795
+  store i32 %__tmp1796, i32* %ans, align 4
   br label %bb731
 bb730:
   br label %bb731
 bb731:
-  %__tmp1803 = load i32, i32* %x, align 4
-  %__tmp1804 = sdiv i32 %__tmp1803, 2
-  store i32 %__tmp1804, i32* %x, align 4
-  %__tmp1805 = load i32, i32* %y, align 4
-  %__tmp1806 = sdiv i32 %__tmp1805, 2
-  store i32 %__tmp1806, i32* %y, align 4
-  %__tmp1807 = load i32, i32* %i, align 4
-  %__tmp1808 = add i32 %__tmp1807, 1
-  store i32 %__tmp1808, i32* %i, align 4
+  %__tmp1797 = load i32, i32* %x, align 4
+  %__tmp1798 = sdiv i32 %__tmp1797, 2
+  store i32 %__tmp1798, i32* %x, align 4
+  %__tmp1799 = load i32, i32* %y, align 4
+  %__tmp1800 = sdiv i32 %__tmp1799, 2
+  store i32 %__tmp1800, i32* %y, align 4
+  %__tmp1801 = load i32, i32* %i, align 4
+  %__tmp1802 = add i32 %__tmp1801, 1
+  store i32 %__tmp1802, i32* %i, align 4
   br label %bb726
 bb728:
-  %__tmp1809 = load i32, i32* %ans, align 4
-  store i32 %__tmp1809, i32* %c.12, align 4
+  %__tmp1803 = load i32, i32* %ans, align 4
+  store i32 %__tmp1803, i32* %c.12, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1810 = load i32, i32* %c.12, align 4
-  %__tmp1811 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1812 = load i32, i32* %__tmp1811, align 4
-  %__tmp1813 = mul i32 %__tmp1810, %__tmp1812
-  store i32 %__tmp1813, i32* %x, align 4
+  %__tmp1804 = load i32, i32* %c.12, align 4
+  %__tmp1805 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1806 = load i32, i32* %__tmp1805, align 4
+  %__tmp1807 = mul i32 %__tmp1804, %__tmp1806
+  store i32 %__tmp1807, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb738
 bb738:
-  %__tmp1814 = load i32, i32* %i, align 4
-  %__tmp1815 = icmp slt i32 %__tmp1814, 16
-  br i1 %__tmp1815, label %bb739, label %bb740
+  %__tmp1808 = load i32, i32* %i, align 4
+  %__tmp1809 = icmp slt i32 %__tmp1808, 16
+  br i1 %__tmp1809, label %bb739, label %bb740
 bb739:
-  %__tmp1816 = load i32, i32* %x, align 4
-  %__tmp1817 = srem i32 %__tmp1816, 2
-  %__tmp1818 = icmp ne i32 %__tmp1817, 0
-  br i1 %__tmp1818, label %bb744, label %bb746
+  %__tmp1810 = load i32, i32* %x, align 4
+  %__tmp1811 = srem i32 %__tmp1810, 2
+  %__tmp1812 = icmp ne i32 %__tmp1811, 0
+  br i1 %__tmp1812, label %bb744, label %bb746
 bb746:
   br label %bb745
 bb744:
-  %__tmp1819 = load i32, i32* %y, align 4
-  %__tmp1820 = srem i32 %__tmp1819, 2
-  %__tmp1821 = icmp ne i32 %__tmp1820, 0
+  %__tmp1813 = load i32, i32* %y, align 4
+  %__tmp1814 = srem i32 %__tmp1813, 2
+  %__tmp1815 = icmp ne i32 %__tmp1814, 0
   br label %bb745
 bb745:
-  %__tmp1822 = phi i1 [ 0, %bb746 ], [ %__tmp1821, %bb744 ]
-  br i1 %__tmp1822, label %bb741, label %bb742
+  %__tmp1816 = phi i1 [ 0, %bb746 ], [ %__tmp1815, %bb744 ]
+  br i1 %__tmp1816, label %bb741, label %bb742
 bb741:
-  %__tmp1823 = load i32, i32* %ans, align 4
-  %__tmp1824 = load i32, i32* %i, align 4
-  %__tmp1825 = sext i32 %__tmp1824 to i64
-  %__tmp1826 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1825
-  %__tmp1827 = load i32, i32* %__tmp1826, align 4
-  %__tmp1828 = mul i32 1, %__tmp1827
-  %__tmp1829 = add i32 %__tmp1823, %__tmp1828
-  store i32 %__tmp1829, i32* %ans, align 4
+  %__tmp1817 = load i32, i32* %ans, align 4
+  %__tmp1818 = load i32, i32* %i, align 4
+  %__tmp1819 = sext i32 %__tmp1818 to i64
+  %__tmp1820 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1819
+  %__tmp1821 = load i32, i32* %__tmp1820, align 4
+  %__tmp1822 = mul i32 1, %__tmp1821
+  %__tmp1823 = add i32 %__tmp1817, %__tmp1822
+  store i32 %__tmp1823, i32* %ans, align 4
   br label %bb743
 bb742:
   br label %bb743
 bb743:
-  %__tmp1830 = load i32, i32* %x, align 4
-  %__tmp1831 = sdiv i32 %__tmp1830, 2
-  store i32 %__tmp1831, i32* %x, align 4
-  %__tmp1832 = load i32, i32* %y, align 4
-  %__tmp1833 = sdiv i32 %__tmp1832, 2
-  store i32 %__tmp1833, i32* %y, align 4
-  %__tmp1834 = load i32, i32* %i, align 4
-  %__tmp1835 = add i32 %__tmp1834, 1
-  store i32 %__tmp1835, i32* %i, align 4
+  %__tmp1824 = load i32, i32* %x, align 4
+  %__tmp1825 = sdiv i32 %__tmp1824, 2
+  store i32 %__tmp1825, i32* %x, align 4
+  %__tmp1826 = load i32, i32* %y, align 4
+  %__tmp1827 = sdiv i32 %__tmp1826, 2
+  store i32 %__tmp1827, i32* %y, align 4
+  %__tmp1828 = load i32, i32* %i, align 4
+  %__tmp1829 = add i32 %__tmp1828, 1
+  store i32 %__tmp1829, i32* %i, align 4
   br label %bb738
 bb740:
   br label %bb737
 bb737:
-  %__tmp1836 = load i32, i32* %ans, align 4
-  store i32 %__tmp1836, i32* %c.12, align 4
-  %__tmp1837 = load i32, i32* %sum.12, align 4
-  store i32 %__tmp1837, i32* %al.12, align 4
+  %__tmp1830 = load i32, i32* %ans, align 4
+  store i32 %__tmp1830, i32* %c.12, align 4
+  %__tmp1831 = load i32, i32* %sum.12, align 4
+  store i32 %__tmp1831, i32* %al.12, align 4
   br label %bb711
 bb713:
-  %__tmp1838 = load i32, i32* %al.12, align 4
-  store i32 %__tmp1838, i32* %ans, align 4
-  %__tmp1839 = load i32, i32* %ans, align 4
-  store i32 %__tmp1839, i32* %mres.6, align 4
+  %__tmp1832 = load i32, i32* %al.12, align 4
+  store i32 %__tmp1832, i32* %ans, align 4
+  %__tmp1833 = load i32, i32* %ans, align 4
+  store i32 %__tmp1833, i32* %mres.6, align 4
   br label %bb710
 bb709:
   br label %bb710
 bb710:
   %al.13 = alloca i32, align 4
-  %__tmp1840 = load i32, i32* %ml.6, align 4
-  store i32 %__tmp1840, i32* %al.13, align 4
+  %__tmp1834 = load i32, i32* %ml.6, align 4
+  store i32 %__tmp1834, i32* %al.13, align 4
   %c.13 = alloca i32, align 4
-  %__tmp1841 = load i32, i32* %ml.6, align 4
-  store i32 %__tmp1841, i32* %c.13, align 4
+  %__tmp1835 = load i32, i32* %ml.6, align 4
+  store i32 %__tmp1835, i32* %c.13, align 4
   %sum.13 = alloca i32, align 4
   br label %bb747
 bb747:
-  %__tmp1842 = load i32, i32* %c.13, align 4
-  %__tmp1843 = trunc i32 %__tmp1842 to i1
-  br i1 %__tmp1843, label %bb748, label %bb749
+  %__tmp1836 = load i32, i32* %c.13, align 4
+  %__tmp1837 = trunc i32 %__tmp1836 to i1
+  br i1 %__tmp1837, label %bb748, label %bb749
 bb748:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1844 = load i32, i32* %al.13, align 4
-  store i32 %__tmp1844, i32* %x, align 4
-  %__tmp1845 = load i32, i32* %c.13, align 4
-  store i32 %__tmp1845, i32* %y, align 4
+  %__tmp1838 = load i32, i32* %al.13, align 4
+  store i32 %__tmp1838, i32* %x, align 4
+  %__tmp1839 = load i32, i32* %c.13, align 4
+  store i32 %__tmp1839, i32* %y, align 4
   br label %bb750
 bb750:
-  %__tmp1846 = load i32, i32* %i, align 4
-  %__tmp1847 = icmp slt i32 %__tmp1846, 16
-  br i1 %__tmp1847, label %bb751, label %bb752
+  %__tmp1840 = load i32, i32* %i, align 4
+  %__tmp1841 = icmp slt i32 %__tmp1840, 16
+  br i1 %__tmp1841, label %bb751, label %bb752
 bb751:
-  %__tmp1848 = load i32, i32* %x, align 4
-  %__tmp1849 = srem i32 %__tmp1848, 2
-  %__tmp1850 = trunc i32 %__tmp1849 to i1
-  br i1 %__tmp1850, label %bb753, label %bb754
+  %__tmp1842 = load i32, i32* %x, align 4
+  %__tmp1843 = srem i32 %__tmp1842, 2
+  %__tmp1844 = trunc i32 %__tmp1843 to i1
+  br i1 %__tmp1844, label %bb753, label %bb754
 bb753:
-  %__tmp1851 = load i32, i32* %y, align 4
-  %__tmp1852 = srem i32 %__tmp1851, 2
-  %__tmp1853 = icmp eq i32 %__tmp1852, 0
-  br i1 %__tmp1853, label %bb756, label %bb757
+  %__tmp1845 = load i32, i32* %y, align 4
+  %__tmp1846 = srem i32 %__tmp1845, 2
+  %__tmp1847 = icmp eq i32 %__tmp1846, 0
+  br i1 %__tmp1847, label %bb756, label %bb757
 bb756:
-  %__tmp1854 = load i32, i32* %ans, align 4
-  %__tmp1855 = load i32, i32* %i, align 4
-  %__tmp1856 = sext i32 %__tmp1855 to i64
-  %__tmp1857 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1856
-  %__tmp1858 = load i32, i32* %__tmp1857, align 4
-  %__tmp1859 = mul i32 1, %__tmp1858
-  %__tmp1860 = add i32 %__tmp1854, %__tmp1859
-  store i32 %__tmp1860, i32* %ans, align 4
+  %__tmp1848 = load i32, i32* %ans, align 4
+  %__tmp1849 = load i32, i32* %i, align 4
+  %__tmp1850 = sext i32 %__tmp1849 to i64
+  %__tmp1851 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1850
+  %__tmp1852 = load i32, i32* %__tmp1851, align 4
+  %__tmp1853 = mul i32 1, %__tmp1852
+  %__tmp1854 = add i32 %__tmp1848, %__tmp1853
+  store i32 %__tmp1854, i32* %ans, align 4
   br label %bb758
 bb757:
   br label %bb758
 bb758:
   br label %bb755
 bb754:
-  %__tmp1861 = load i32, i32* %y, align 4
-  %__tmp1862 = srem i32 %__tmp1861, 2
-  %__tmp1863 = trunc i32 %__tmp1862 to i1
-  br i1 %__tmp1863, label %bb759, label %bb760
+  %__tmp1855 = load i32, i32* %y, align 4
+  %__tmp1856 = srem i32 %__tmp1855, 2
+  %__tmp1857 = trunc i32 %__tmp1856 to i1
+  br i1 %__tmp1857, label %bb759, label %bb760
 bb759:
-  %__tmp1864 = load i32, i32* %ans, align 4
-  %__tmp1865 = load i32, i32* %i, align 4
-  %__tmp1866 = sext i32 %__tmp1865 to i64
-  %__tmp1867 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1866
-  %__tmp1868 = load i32, i32* %__tmp1867, align 4
-  %__tmp1869 = mul i32 1, %__tmp1868
-  %__tmp1870 = add i32 %__tmp1864, %__tmp1869
-  store i32 %__tmp1870, i32* %ans, align 4
+  %__tmp1858 = load i32, i32* %ans, align 4
+  %__tmp1859 = load i32, i32* %i, align 4
+  %__tmp1860 = sext i32 %__tmp1859 to i64
+  %__tmp1861 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1860
+  %__tmp1862 = load i32, i32* %__tmp1861, align 4
+  %__tmp1863 = mul i32 1, %__tmp1862
+  %__tmp1864 = add i32 %__tmp1858, %__tmp1863
+  store i32 %__tmp1864, i32* %ans, align 4
   br label %bb761
 bb760:
   br label %bb761
 bb761:
   br label %bb755
 bb755:
-  %__tmp1871 = load i32, i32* %x, align 4
-  %__tmp1872 = sdiv i32 %__tmp1871, 2
-  store i32 %__tmp1872, i32* %x, align 4
-  %__tmp1873 = load i32, i32* %y, align 4
-  %__tmp1874 = sdiv i32 %__tmp1873, 2
-  store i32 %__tmp1874, i32* %y, align 4
-  %__tmp1875 = load i32, i32* %i, align 4
-  %__tmp1876 = add i32 %__tmp1875, 1
-  store i32 %__tmp1876, i32* %i, align 4
+  %__tmp1865 = load i32, i32* %x, align 4
+  %__tmp1866 = sdiv i32 %__tmp1865, 2
+  store i32 %__tmp1866, i32* %x, align 4
+  %__tmp1867 = load i32, i32* %y, align 4
+  %__tmp1868 = sdiv i32 %__tmp1867, 2
+  store i32 %__tmp1868, i32* %y, align 4
+  %__tmp1869 = load i32, i32* %i, align 4
+  %__tmp1870 = add i32 %__tmp1869, 1
+  store i32 %__tmp1870, i32* %i, align 4
   br label %bb750
 bb752:
-  %__tmp1877 = load i32, i32* %ans, align 4
-  store i32 %__tmp1877, i32* %sum.13, align 4
+  %__tmp1871 = load i32, i32* %ans, align 4
+  store i32 %__tmp1871, i32* %sum.13, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1878 = load i32, i32* %al.13, align 4
-  store i32 %__tmp1878, i32* %x, align 4
-  %__tmp1879 = load i32, i32* %c.13, align 4
-  store i32 %__tmp1879, i32* %y, align 4
+  %__tmp1872 = load i32, i32* %al.13, align 4
+  store i32 %__tmp1872, i32* %x, align 4
+  %__tmp1873 = load i32, i32* %c.13, align 4
+  store i32 %__tmp1873, i32* %y, align 4
   br label %bb762
 bb762:
-  %__tmp1880 = load i32, i32* %i, align 4
-  %__tmp1881 = icmp slt i32 %__tmp1880, 16
-  br i1 %__tmp1881, label %bb763, label %bb764
+  %__tmp1874 = load i32, i32* %i, align 4
+  %__tmp1875 = icmp slt i32 %__tmp1874, 16
+  br i1 %__tmp1875, label %bb763, label %bb764
 bb763:
-  %__tmp1882 = load i32, i32* %x, align 4
-  %__tmp1883 = srem i32 %__tmp1882, 2
-  %__tmp1884 = icmp ne i32 %__tmp1883, 0
-  br i1 %__tmp1884, label %bb768, label %bb770
+  %__tmp1876 = load i32, i32* %x, align 4
+  %__tmp1877 = srem i32 %__tmp1876, 2
+  %__tmp1878 = icmp ne i32 %__tmp1877, 0
+  br i1 %__tmp1878, label %bb768, label %bb770
 bb770:
   br label %bb769
 bb768:
-  %__tmp1885 = load i32, i32* %y, align 4
-  %__tmp1886 = srem i32 %__tmp1885, 2
-  %__tmp1887 = icmp ne i32 %__tmp1886, 0
+  %__tmp1879 = load i32, i32* %y, align 4
+  %__tmp1880 = srem i32 %__tmp1879, 2
+  %__tmp1881 = icmp ne i32 %__tmp1880, 0
   br label %bb769
 bb769:
-  %__tmp1888 = phi i1 [ 0, %bb770 ], [ %__tmp1887, %bb768 ]
-  br i1 %__tmp1888, label %bb765, label %bb766
+  %__tmp1882 = phi i1 [ 0, %bb770 ], [ %__tmp1881, %bb768 ]
+  br i1 %__tmp1882, label %bb765, label %bb766
 bb765:
-  %__tmp1889 = load i32, i32* %ans, align 4
-  %__tmp1890 = load i32, i32* %i, align 4
-  %__tmp1891 = sext i32 %__tmp1890 to i64
-  %__tmp1892 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1891
-  %__tmp1893 = load i32, i32* %__tmp1892, align 4
-  %__tmp1894 = mul i32 1, %__tmp1893
-  %__tmp1895 = add i32 %__tmp1889, %__tmp1894
-  store i32 %__tmp1895, i32* %ans, align 4
+  %__tmp1883 = load i32, i32* %ans, align 4
+  %__tmp1884 = load i32, i32* %i, align 4
+  %__tmp1885 = sext i32 %__tmp1884 to i64
+  %__tmp1886 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1885
+  %__tmp1887 = load i32, i32* %__tmp1886, align 4
+  %__tmp1888 = mul i32 1, %__tmp1887
+  %__tmp1889 = add i32 %__tmp1883, %__tmp1888
+  store i32 %__tmp1889, i32* %ans, align 4
   br label %bb767
 bb766:
   br label %bb767
 bb767:
-  %__tmp1896 = load i32, i32* %x, align 4
-  %__tmp1897 = sdiv i32 %__tmp1896, 2
-  store i32 %__tmp1897, i32* %x, align 4
-  %__tmp1898 = load i32, i32* %y, align 4
-  %__tmp1899 = sdiv i32 %__tmp1898, 2
-  store i32 %__tmp1899, i32* %y, align 4
-  %__tmp1900 = load i32, i32* %i, align 4
-  %__tmp1901 = add i32 %__tmp1900, 1
-  store i32 %__tmp1901, i32* %i, align 4
+  %__tmp1890 = load i32, i32* %x, align 4
+  %__tmp1891 = sdiv i32 %__tmp1890, 2
+  store i32 %__tmp1891, i32* %x, align 4
+  %__tmp1892 = load i32, i32* %y, align 4
+  %__tmp1893 = sdiv i32 %__tmp1892, 2
+  store i32 %__tmp1893, i32* %y, align 4
+  %__tmp1894 = load i32, i32* %i, align 4
+  %__tmp1895 = add i32 %__tmp1894, 1
+  store i32 %__tmp1895, i32* %i, align 4
   br label %bb762
 bb764:
-  %__tmp1902 = load i32, i32* %ans, align 4
-  store i32 %__tmp1902, i32* %c.13, align 4
+  %__tmp1896 = load i32, i32* %ans, align 4
+  store i32 %__tmp1896, i32* %c.13, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1903 = load i32, i32* %c.13, align 4
-  %__tmp1904 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp1905 = load i32, i32* %__tmp1904, align 4
-  %__tmp1906 = mul i32 %__tmp1903, %__tmp1905
-  store i32 %__tmp1906, i32* %x, align 4
+  %__tmp1897 = load i32, i32* %c.13, align 4
+  %__tmp1898 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp1899 = load i32, i32* %__tmp1898, align 4
+  %__tmp1900 = mul i32 %__tmp1897, %__tmp1899
+  store i32 %__tmp1900, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb774
 bb774:
-  %__tmp1907 = load i32, i32* %i, align 4
-  %__tmp1908 = icmp slt i32 %__tmp1907, 16
-  br i1 %__tmp1908, label %bb775, label %bb776
+  %__tmp1901 = load i32, i32* %i, align 4
+  %__tmp1902 = icmp slt i32 %__tmp1901, 16
+  br i1 %__tmp1902, label %bb775, label %bb776
 bb775:
-  %__tmp1909 = load i32, i32* %x, align 4
-  %__tmp1910 = srem i32 %__tmp1909, 2
-  %__tmp1911 = icmp ne i32 %__tmp1910, 0
-  br i1 %__tmp1911, label %bb780, label %bb782
+  %__tmp1903 = load i32, i32* %x, align 4
+  %__tmp1904 = srem i32 %__tmp1903, 2
+  %__tmp1905 = icmp ne i32 %__tmp1904, 0
+  br i1 %__tmp1905, label %bb780, label %bb782
 bb782:
   br label %bb781
 bb780:
-  %__tmp1912 = load i32, i32* %y, align 4
-  %__tmp1913 = srem i32 %__tmp1912, 2
-  %__tmp1914 = icmp ne i32 %__tmp1913, 0
+  %__tmp1906 = load i32, i32* %y, align 4
+  %__tmp1907 = srem i32 %__tmp1906, 2
+  %__tmp1908 = icmp ne i32 %__tmp1907, 0
   br label %bb781
 bb781:
-  %__tmp1915 = phi i1 [ 0, %bb782 ], [ %__tmp1914, %bb780 ]
-  br i1 %__tmp1915, label %bb777, label %bb778
+  %__tmp1909 = phi i1 [ 0, %bb782 ], [ %__tmp1908, %bb780 ]
+  br i1 %__tmp1909, label %bb777, label %bb778
 bb777:
-  %__tmp1916 = load i32, i32* %ans, align 4
-  %__tmp1917 = load i32, i32* %i, align 4
-  %__tmp1918 = sext i32 %__tmp1917 to i64
-  %__tmp1919 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1918
-  %__tmp1920 = load i32, i32* %__tmp1919, align 4
-  %__tmp1921 = mul i32 1, %__tmp1920
-  %__tmp1922 = add i32 %__tmp1916, %__tmp1921
-  store i32 %__tmp1922, i32* %ans, align 4
+  %__tmp1910 = load i32, i32* %ans, align 4
+  %__tmp1911 = load i32, i32* %i, align 4
+  %__tmp1912 = sext i32 %__tmp1911 to i64
+  %__tmp1913 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1912
+  %__tmp1914 = load i32, i32* %__tmp1913, align 4
+  %__tmp1915 = mul i32 1, %__tmp1914
+  %__tmp1916 = add i32 %__tmp1910, %__tmp1915
+  store i32 %__tmp1916, i32* %ans, align 4
   br label %bb779
 bb778:
   br label %bb779
 bb779:
-  %__tmp1923 = load i32, i32* %x, align 4
-  %__tmp1924 = sdiv i32 %__tmp1923, 2
-  store i32 %__tmp1924, i32* %x, align 4
-  %__tmp1925 = load i32, i32* %y, align 4
-  %__tmp1926 = sdiv i32 %__tmp1925, 2
-  store i32 %__tmp1926, i32* %y, align 4
-  %__tmp1927 = load i32, i32* %i, align 4
-  %__tmp1928 = add i32 %__tmp1927, 1
-  store i32 %__tmp1928, i32* %i, align 4
+  %__tmp1917 = load i32, i32* %x, align 4
+  %__tmp1918 = sdiv i32 %__tmp1917, 2
+  store i32 %__tmp1918, i32* %x, align 4
+  %__tmp1919 = load i32, i32* %y, align 4
+  %__tmp1920 = sdiv i32 %__tmp1919, 2
+  store i32 %__tmp1920, i32* %y, align 4
+  %__tmp1921 = load i32, i32* %i, align 4
+  %__tmp1922 = add i32 %__tmp1921, 1
+  store i32 %__tmp1922, i32* %i, align 4
   br label %bb774
 bb776:
   br label %bb773
 bb773:
-  %__tmp1929 = load i32, i32* %ans, align 4
-  store i32 %__tmp1929, i32* %c.13, align 4
-  %__tmp1930 = load i32, i32* %sum.13, align 4
-  store i32 %__tmp1930, i32* %al.13, align 4
+  %__tmp1923 = load i32, i32* %ans, align 4
+  store i32 %__tmp1923, i32* %c.13, align 4
+  %__tmp1924 = load i32, i32* %sum.13, align 4
+  store i32 %__tmp1924, i32* %al.13, align 4
   br label %bb747
 bb749:
-  %__tmp1931 = load i32, i32* %al.13, align 4
-  store i32 %__tmp1931, i32* %ans, align 4
-  %__tmp1932 = load i32, i32* %ans, align 4
-  store i32 %__tmp1932, i32* %ml.6, align 4
-  %__tmp1933 = load i32, i32* %mr.6, align 4
-  store i32 %__tmp1933, i32* %x, align 4
+  %__tmp1925 = load i32, i32* %al.13, align 4
+  store i32 %__tmp1925, i32* %ans, align 4
+  %__tmp1926 = load i32, i32* %ans, align 4
+  store i32 %__tmp1926, i32* %ml.6, align 4
+  %__tmp1927 = load i32, i32* %mr.6, align 4
+  store i32 %__tmp1927, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp1934 = load i32, i32* %y, align 4
-  %__tmp1935 = icmp sge i32 %__tmp1934, 15
-  br i1 %__tmp1935, label %bb783, label %bb784
+  %__tmp1928 = load i32, i32* %y, align 4
+  %__tmp1929 = icmp sge i32 %__tmp1928, 15
+  br i1 %__tmp1929, label %bb783, label %bb784
 bb783:
-  %__tmp1936 = load i32, i32* %x, align 4
-  %__tmp1937 = icmp slt i32 %__tmp1936, 0
-  br i1 %__tmp1937, label %bb786, label %bb787
+  %__tmp1930 = load i32, i32* %x, align 4
+  %__tmp1931 = icmp slt i32 %__tmp1930, 0
+  br i1 %__tmp1931, label %bb786, label %bb787
 bb786:
   store i32 65535, i32* %ans, align 4
   br label %bb788
@@ -4225,537 +4225,537 @@ bb787:
 bb788:
   br label %bb785
 bb784:
-  %__tmp1938 = load i32, i32* %y, align 4
-  %__tmp1939 = icmp sgt i32 %__tmp1938, 0
-  br i1 %__tmp1939, label %bb789, label %bb790
+  %__tmp1932 = load i32, i32* %y, align 4
+  %__tmp1933 = icmp sgt i32 %__tmp1932, 0
+  br i1 %__tmp1933, label %bb789, label %bb790
 bb789:
-  %__tmp1940 = load i32, i32* %x, align 4
-  %__tmp1941 = icmp sgt i32 %__tmp1940, 32767
-  br i1 %__tmp1941, label %bb792, label %bb793
+  %__tmp1934 = load i32, i32* %x, align 4
+  %__tmp1935 = icmp sgt i32 %__tmp1934, 32767
+  br i1 %__tmp1935, label %bb792, label %bb793
 bb792:
+  %__tmp1936 = load i32, i32* %x, align 4
+  %__tmp1937 = load i32, i32* %y, align 4
+  %__tmp1938 = sext i32 %__tmp1937 to i64
+  %__tmp1939 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1938
+  %__tmp1940 = load i32, i32* %__tmp1939, align 4
+  %__tmp1941 = sdiv i32 %__tmp1936, %__tmp1940
+  store i32 %__tmp1941, i32* %x, align 4
   %__tmp1942 = load i32, i32* %x, align 4
-  %__tmp1943 = load i32, i32* %y, align 4
-  %__tmp1944 = sext i32 %__tmp1943 to i64
-  %__tmp1945 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1944
-  %__tmp1946 = load i32, i32* %__tmp1945, align 4
-  %__tmp1947 = sdiv i32 %__tmp1942, %__tmp1946
-  store i32 %__tmp1947, i32* %x, align 4
-  %__tmp1948 = load i32, i32* %x, align 4
-  %__tmp1949 = add i32 %__tmp1948, 65536
-  %__tmp1950 = load i32, i32* %y, align 4
-  %__tmp1951 = sub i32 15, %__tmp1950
-  %__tmp1952 = add i32 %__tmp1951, 1
+  %__tmp1943 = add i32 %__tmp1942, 65536
+  %__tmp1944 = load i32, i32* %y, align 4
+  %__tmp1945 = sub i32 15, %__tmp1944
+  %__tmp1946 = add i32 %__tmp1945, 1
+  %__tmp1947 = sext i32 %__tmp1946 to i64
+  %__tmp1948 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1947
+  %__tmp1949 = load i32, i32* %__tmp1948, align 4
+  %__tmp1950 = sub i32 %__tmp1943, %__tmp1949
+  store i32 %__tmp1950, i32* %ans, align 4
+  br label %bb794
+bb793:
+  %__tmp1951 = load i32, i32* %x, align 4
+  %__tmp1952 = load i32, i32* %y, align 4
   %__tmp1953 = sext i32 %__tmp1952 to i64
   %__tmp1954 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1953
   %__tmp1955 = load i32, i32* %__tmp1954, align 4
-  %__tmp1956 = sub i32 %__tmp1949, %__tmp1955
+  %__tmp1956 = sdiv i32 %__tmp1951, %__tmp1955
   store i32 %__tmp1956, i32* %ans, align 4
-  br label %bb794
-bb793:
-  %__tmp1957 = load i32, i32* %x, align 4
-  %__tmp1958 = load i32, i32* %y, align 4
-  %__tmp1959 = sext i32 %__tmp1958 to i64
-  %__tmp1960 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1959
-  %__tmp1961 = load i32, i32* %__tmp1960, align 4
-  %__tmp1962 = sdiv i32 %__tmp1957, %__tmp1961
-  store i32 %__tmp1962, i32* %ans, align 4
   br label %bb794
 bb794:
   br label %bb791
 bb790:
-  %__tmp1963 = load i32, i32* %x, align 4
-  store i32 %__tmp1963, i32* %ans, align 4
+  %__tmp1957 = load i32, i32* %x, align 4
+  store i32 %__tmp1957, i32* %ans, align 4
   br label %bb791
 bb791:
   br label %bb785
 bb785:
-  %__tmp1964 = load i32, i32* %ans, align 4
-  store i32 %__tmp1964, i32* %mr.6, align 4
+  %__tmp1958 = load i32, i32* %ans, align 4
+  store i32 %__tmp1958, i32* %mr.6, align 4
   br label %bb696
 bb698:
-  %__tmp1965 = load i32, i32* %mres.6, align 4
-  store i32 %__tmp1965, i32* %ans, align 4
-  %__tmp1966 = load i32, i32* %ans, align 4
-  store i32 %__tmp1966, i32* %pres.3, align 4
+  %__tmp1959 = load i32, i32* %mres.6, align 4
+  store i32 %__tmp1959, i32* %ans, align 4
+  %__tmp1960 = load i32, i32* %ans, align 4
+  store i32 %__tmp1960, i32* %pres.3, align 4
   br label %bb695
 bb694:
   br label %bb695
 bb695:
   %ml.7 = alloca i32, align 4
-  %__tmp1967 = load i32, i32* %pl.3, align 4
-  store i32 %__tmp1967, i32* %ml.7, align 4
+  %__tmp1961 = load i32, i32* %pl.3, align 4
+  store i32 %__tmp1961, i32* %ml.7, align 4
   %mr.7 = alloca i32, align 4
-  %__tmp1968 = load i32, i32* %pl.3, align 4
-  store i32 %__tmp1968, i32* %mr.7, align 4
+  %__tmp1962 = load i32, i32* %pl.3, align 4
+  store i32 %__tmp1962, i32* %mr.7, align 4
   %mres.7 = alloca i32, align 4
   store i32 0, i32* %mres.7, align 4
   br label %bb795
 bb795:
-  %__tmp1969 = load i32, i32* %mr.7, align 4
-  %__tmp1970 = trunc i32 %__tmp1969 to i1
-  br i1 %__tmp1970, label %bb796, label %bb797
+  %__tmp1963 = load i32, i32* %mr.7, align 4
+  %__tmp1964 = trunc i32 %__tmp1963 to i1
+  br i1 %__tmp1964, label %bb796, label %bb797
 bb796:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp1971 = load i32, i32* %mr.7, align 4
-  store i32 %__tmp1971, i32* %x, align 4
+  %__tmp1965 = load i32, i32* %mr.7, align 4
+  store i32 %__tmp1965, i32* %x, align 4
   store i32 1, i32* %y, align 4
   br label %bb798
 bb798:
-  %__tmp1972 = load i32, i32* %i, align 4
-  %__tmp1973 = icmp slt i32 %__tmp1972, 16
-  br i1 %__tmp1973, label %bb799, label %bb800
+  %__tmp1966 = load i32, i32* %i, align 4
+  %__tmp1967 = icmp slt i32 %__tmp1966, 16
+  br i1 %__tmp1967, label %bb799, label %bb800
 bb799:
-  %__tmp1974 = load i32, i32* %x, align 4
-  %__tmp1975 = srem i32 %__tmp1974, 2
-  %__tmp1976 = icmp ne i32 %__tmp1975, 0
-  br i1 %__tmp1976, label %bb804, label %bb806
+  %__tmp1968 = load i32, i32* %x, align 4
+  %__tmp1969 = srem i32 %__tmp1968, 2
+  %__tmp1970 = icmp ne i32 %__tmp1969, 0
+  br i1 %__tmp1970, label %bb804, label %bb806
 bb806:
   br label %bb805
 bb804:
-  %__tmp1977 = load i32, i32* %y, align 4
-  %__tmp1978 = srem i32 %__tmp1977, 2
-  %__tmp1979 = icmp ne i32 %__tmp1978, 0
+  %__tmp1971 = load i32, i32* %y, align 4
+  %__tmp1972 = srem i32 %__tmp1971, 2
+  %__tmp1973 = icmp ne i32 %__tmp1972, 0
   br label %bb805
 bb805:
-  %__tmp1980 = phi i1 [ 0, %bb806 ], [ %__tmp1979, %bb804 ]
-  br i1 %__tmp1980, label %bb801, label %bb802
+  %__tmp1974 = phi i1 [ 0, %bb806 ], [ %__tmp1973, %bb804 ]
+  br i1 %__tmp1974, label %bb801, label %bb802
 bb801:
-  %__tmp1981 = load i32, i32* %ans, align 4
-  %__tmp1982 = load i32, i32* %i, align 4
-  %__tmp1983 = sext i32 %__tmp1982 to i64
-  %__tmp1984 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1983
-  %__tmp1985 = load i32, i32* %__tmp1984, align 4
-  %__tmp1986 = mul i32 1, %__tmp1985
-  %__tmp1987 = add i32 %__tmp1981, %__tmp1986
-  store i32 %__tmp1987, i32* %ans, align 4
+  %__tmp1975 = load i32, i32* %ans, align 4
+  %__tmp1976 = load i32, i32* %i, align 4
+  %__tmp1977 = sext i32 %__tmp1976 to i64
+  %__tmp1978 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp1977
+  %__tmp1979 = load i32, i32* %__tmp1978, align 4
+  %__tmp1980 = mul i32 1, %__tmp1979
+  %__tmp1981 = add i32 %__tmp1975, %__tmp1980
+  store i32 %__tmp1981, i32* %ans, align 4
   br label %bb803
 bb802:
   br label %bb803
 bb803:
-  %__tmp1988 = load i32, i32* %x, align 4
-  %__tmp1989 = sdiv i32 %__tmp1988, 2
-  store i32 %__tmp1989, i32* %x, align 4
-  %__tmp1990 = load i32, i32* %y, align 4
-  %__tmp1991 = sdiv i32 %__tmp1990, 2
-  store i32 %__tmp1991, i32* %y, align 4
-  %__tmp1992 = load i32, i32* %i, align 4
-  %__tmp1993 = add i32 %__tmp1992, 1
-  store i32 %__tmp1993, i32* %i, align 4
+  %__tmp1982 = load i32, i32* %x, align 4
+  %__tmp1983 = sdiv i32 %__tmp1982, 2
+  store i32 %__tmp1983, i32* %x, align 4
+  %__tmp1984 = load i32, i32* %y, align 4
+  %__tmp1985 = sdiv i32 %__tmp1984, 2
+  store i32 %__tmp1985, i32* %y, align 4
+  %__tmp1986 = load i32, i32* %i, align 4
+  %__tmp1987 = add i32 %__tmp1986, 1
+  store i32 %__tmp1987, i32* %i, align 4
   br label %bb798
 bb800:
-  %__tmp1994 = load i32, i32* %ans, align 4
-  %__tmp1995 = trunc i32 %__tmp1994 to i1
-  br i1 %__tmp1995, label %bb807, label %bb808
+  %__tmp1988 = load i32, i32* %ans, align 4
+  %__tmp1989 = trunc i32 %__tmp1988 to i1
+  br i1 %__tmp1989, label %bb807, label %bb808
 bb807:
   %al.14 = alloca i32, align 4
-  %__tmp1996 = load i32, i32* %mres.7, align 4
-  store i32 %__tmp1996, i32* %al.14, align 4
+  %__tmp1990 = load i32, i32* %mres.7, align 4
+  store i32 %__tmp1990, i32* %al.14, align 4
   %c.14 = alloca i32, align 4
-  %__tmp1997 = load i32, i32* %ml.7, align 4
-  store i32 %__tmp1997, i32* %c.14, align 4
+  %__tmp1991 = load i32, i32* %ml.7, align 4
+  store i32 %__tmp1991, i32* %c.14, align 4
   %sum.14 = alloca i32, align 4
   br label %bb810
 bb810:
-  %__tmp1998 = load i32, i32* %c.14, align 4
-  %__tmp1999 = trunc i32 %__tmp1998 to i1
-  br i1 %__tmp1999, label %bb811, label %bb812
+  %__tmp1992 = load i32, i32* %c.14, align 4
+  %__tmp1993 = trunc i32 %__tmp1992 to i1
+  br i1 %__tmp1993, label %bb811, label %bb812
 bb811:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2000 = load i32, i32* %al.14, align 4
-  store i32 %__tmp2000, i32* %x, align 4
-  %__tmp2001 = load i32, i32* %c.14, align 4
-  store i32 %__tmp2001, i32* %y, align 4
+  %__tmp1994 = load i32, i32* %al.14, align 4
+  store i32 %__tmp1994, i32* %x, align 4
+  %__tmp1995 = load i32, i32* %c.14, align 4
+  store i32 %__tmp1995, i32* %y, align 4
   br label %bb813
 bb813:
-  %__tmp2002 = load i32, i32* %i, align 4
-  %__tmp2003 = icmp slt i32 %__tmp2002, 16
-  br i1 %__tmp2003, label %bb814, label %bb815
+  %__tmp1996 = load i32, i32* %i, align 4
+  %__tmp1997 = icmp slt i32 %__tmp1996, 16
+  br i1 %__tmp1997, label %bb814, label %bb815
 bb814:
-  %__tmp2004 = load i32, i32* %x, align 4
-  %__tmp2005 = srem i32 %__tmp2004, 2
-  %__tmp2006 = trunc i32 %__tmp2005 to i1
-  br i1 %__tmp2006, label %bb816, label %bb817
+  %__tmp1998 = load i32, i32* %x, align 4
+  %__tmp1999 = srem i32 %__tmp1998, 2
+  %__tmp2000 = trunc i32 %__tmp1999 to i1
+  br i1 %__tmp2000, label %bb816, label %bb817
 bb816:
-  %__tmp2007 = load i32, i32* %y, align 4
-  %__tmp2008 = srem i32 %__tmp2007, 2
-  %__tmp2009 = icmp eq i32 %__tmp2008, 0
-  br i1 %__tmp2009, label %bb819, label %bb820
+  %__tmp2001 = load i32, i32* %y, align 4
+  %__tmp2002 = srem i32 %__tmp2001, 2
+  %__tmp2003 = icmp eq i32 %__tmp2002, 0
+  br i1 %__tmp2003, label %bb819, label %bb820
 bb819:
-  %__tmp2010 = load i32, i32* %ans, align 4
-  %__tmp2011 = load i32, i32* %i, align 4
-  %__tmp2012 = sext i32 %__tmp2011 to i64
-  %__tmp2013 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2012
-  %__tmp2014 = load i32, i32* %__tmp2013, align 4
-  %__tmp2015 = mul i32 1, %__tmp2014
-  %__tmp2016 = add i32 %__tmp2010, %__tmp2015
-  store i32 %__tmp2016, i32* %ans, align 4
+  %__tmp2004 = load i32, i32* %ans, align 4
+  %__tmp2005 = load i32, i32* %i, align 4
+  %__tmp2006 = sext i32 %__tmp2005 to i64
+  %__tmp2007 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2006
+  %__tmp2008 = load i32, i32* %__tmp2007, align 4
+  %__tmp2009 = mul i32 1, %__tmp2008
+  %__tmp2010 = add i32 %__tmp2004, %__tmp2009
+  store i32 %__tmp2010, i32* %ans, align 4
   br label %bb821
 bb820:
   br label %bb821
 bb821:
   br label %bb818
 bb817:
-  %__tmp2017 = load i32, i32* %y, align 4
-  %__tmp2018 = srem i32 %__tmp2017, 2
-  %__tmp2019 = trunc i32 %__tmp2018 to i1
-  br i1 %__tmp2019, label %bb822, label %bb823
+  %__tmp2011 = load i32, i32* %y, align 4
+  %__tmp2012 = srem i32 %__tmp2011, 2
+  %__tmp2013 = trunc i32 %__tmp2012 to i1
+  br i1 %__tmp2013, label %bb822, label %bb823
 bb822:
-  %__tmp2020 = load i32, i32* %ans, align 4
-  %__tmp2021 = load i32, i32* %i, align 4
-  %__tmp2022 = sext i32 %__tmp2021 to i64
-  %__tmp2023 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2022
-  %__tmp2024 = load i32, i32* %__tmp2023, align 4
-  %__tmp2025 = mul i32 1, %__tmp2024
-  %__tmp2026 = add i32 %__tmp2020, %__tmp2025
-  store i32 %__tmp2026, i32* %ans, align 4
+  %__tmp2014 = load i32, i32* %ans, align 4
+  %__tmp2015 = load i32, i32* %i, align 4
+  %__tmp2016 = sext i32 %__tmp2015 to i64
+  %__tmp2017 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2016
+  %__tmp2018 = load i32, i32* %__tmp2017, align 4
+  %__tmp2019 = mul i32 1, %__tmp2018
+  %__tmp2020 = add i32 %__tmp2014, %__tmp2019
+  store i32 %__tmp2020, i32* %ans, align 4
   br label %bb824
 bb823:
   br label %bb824
 bb824:
   br label %bb818
 bb818:
-  %__tmp2027 = load i32, i32* %x, align 4
-  %__tmp2028 = sdiv i32 %__tmp2027, 2
-  store i32 %__tmp2028, i32* %x, align 4
-  %__tmp2029 = load i32, i32* %y, align 4
-  %__tmp2030 = sdiv i32 %__tmp2029, 2
-  store i32 %__tmp2030, i32* %y, align 4
-  %__tmp2031 = load i32, i32* %i, align 4
-  %__tmp2032 = add i32 %__tmp2031, 1
-  store i32 %__tmp2032, i32* %i, align 4
+  %__tmp2021 = load i32, i32* %x, align 4
+  %__tmp2022 = sdiv i32 %__tmp2021, 2
+  store i32 %__tmp2022, i32* %x, align 4
+  %__tmp2023 = load i32, i32* %y, align 4
+  %__tmp2024 = sdiv i32 %__tmp2023, 2
+  store i32 %__tmp2024, i32* %y, align 4
+  %__tmp2025 = load i32, i32* %i, align 4
+  %__tmp2026 = add i32 %__tmp2025, 1
+  store i32 %__tmp2026, i32* %i, align 4
   br label %bb813
 bb815:
-  %__tmp2033 = load i32, i32* %ans, align 4
-  store i32 %__tmp2033, i32* %sum.14, align 4
+  %__tmp2027 = load i32, i32* %ans, align 4
+  store i32 %__tmp2027, i32* %sum.14, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2034 = load i32, i32* %al.14, align 4
-  store i32 %__tmp2034, i32* %x, align 4
-  %__tmp2035 = load i32, i32* %c.14, align 4
-  store i32 %__tmp2035, i32* %y, align 4
+  %__tmp2028 = load i32, i32* %al.14, align 4
+  store i32 %__tmp2028, i32* %x, align 4
+  %__tmp2029 = load i32, i32* %c.14, align 4
+  store i32 %__tmp2029, i32* %y, align 4
   br label %bb825
 bb825:
-  %__tmp2036 = load i32, i32* %i, align 4
-  %__tmp2037 = icmp slt i32 %__tmp2036, 16
-  br i1 %__tmp2037, label %bb826, label %bb827
+  %__tmp2030 = load i32, i32* %i, align 4
+  %__tmp2031 = icmp slt i32 %__tmp2030, 16
+  br i1 %__tmp2031, label %bb826, label %bb827
 bb826:
-  %__tmp2038 = load i32, i32* %x, align 4
-  %__tmp2039 = srem i32 %__tmp2038, 2
-  %__tmp2040 = icmp ne i32 %__tmp2039, 0
-  br i1 %__tmp2040, label %bb831, label %bb833
+  %__tmp2032 = load i32, i32* %x, align 4
+  %__tmp2033 = srem i32 %__tmp2032, 2
+  %__tmp2034 = icmp ne i32 %__tmp2033, 0
+  br i1 %__tmp2034, label %bb831, label %bb833
 bb833:
   br label %bb832
 bb831:
-  %__tmp2041 = load i32, i32* %y, align 4
-  %__tmp2042 = srem i32 %__tmp2041, 2
-  %__tmp2043 = icmp ne i32 %__tmp2042, 0
+  %__tmp2035 = load i32, i32* %y, align 4
+  %__tmp2036 = srem i32 %__tmp2035, 2
+  %__tmp2037 = icmp ne i32 %__tmp2036, 0
   br label %bb832
 bb832:
-  %__tmp2044 = phi i1 [ 0, %bb833 ], [ %__tmp2043, %bb831 ]
-  br i1 %__tmp2044, label %bb828, label %bb829
+  %__tmp2038 = phi i1 [ 0, %bb833 ], [ %__tmp2037, %bb831 ]
+  br i1 %__tmp2038, label %bb828, label %bb829
 bb828:
-  %__tmp2045 = load i32, i32* %ans, align 4
-  %__tmp2046 = load i32, i32* %i, align 4
-  %__tmp2047 = sext i32 %__tmp2046 to i64
-  %__tmp2048 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2047
-  %__tmp2049 = load i32, i32* %__tmp2048, align 4
-  %__tmp2050 = mul i32 1, %__tmp2049
-  %__tmp2051 = add i32 %__tmp2045, %__tmp2050
-  store i32 %__tmp2051, i32* %ans, align 4
+  %__tmp2039 = load i32, i32* %ans, align 4
+  %__tmp2040 = load i32, i32* %i, align 4
+  %__tmp2041 = sext i32 %__tmp2040 to i64
+  %__tmp2042 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2041
+  %__tmp2043 = load i32, i32* %__tmp2042, align 4
+  %__tmp2044 = mul i32 1, %__tmp2043
+  %__tmp2045 = add i32 %__tmp2039, %__tmp2044
+  store i32 %__tmp2045, i32* %ans, align 4
   br label %bb830
 bb829:
   br label %bb830
 bb830:
-  %__tmp2052 = load i32, i32* %x, align 4
-  %__tmp2053 = sdiv i32 %__tmp2052, 2
-  store i32 %__tmp2053, i32* %x, align 4
-  %__tmp2054 = load i32, i32* %y, align 4
-  %__tmp2055 = sdiv i32 %__tmp2054, 2
-  store i32 %__tmp2055, i32* %y, align 4
-  %__tmp2056 = load i32, i32* %i, align 4
-  %__tmp2057 = add i32 %__tmp2056, 1
-  store i32 %__tmp2057, i32* %i, align 4
+  %__tmp2046 = load i32, i32* %x, align 4
+  %__tmp2047 = sdiv i32 %__tmp2046, 2
+  store i32 %__tmp2047, i32* %x, align 4
+  %__tmp2048 = load i32, i32* %y, align 4
+  %__tmp2049 = sdiv i32 %__tmp2048, 2
+  store i32 %__tmp2049, i32* %y, align 4
+  %__tmp2050 = load i32, i32* %i, align 4
+  %__tmp2051 = add i32 %__tmp2050, 1
+  store i32 %__tmp2051, i32* %i, align 4
   br label %bb825
 bb827:
-  %__tmp2058 = load i32, i32* %ans, align 4
-  store i32 %__tmp2058, i32* %c.14, align 4
+  %__tmp2052 = load i32, i32* %ans, align 4
+  store i32 %__tmp2052, i32* %c.14, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2059 = load i32, i32* %c.14, align 4
-  %__tmp2060 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp2061 = load i32, i32* %__tmp2060, align 4
-  %__tmp2062 = mul i32 %__tmp2059, %__tmp2061
-  store i32 %__tmp2062, i32* %x, align 4
+  %__tmp2053 = load i32, i32* %c.14, align 4
+  %__tmp2054 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp2055 = load i32, i32* %__tmp2054, align 4
+  %__tmp2056 = mul i32 %__tmp2053, %__tmp2055
+  store i32 %__tmp2056, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb837
 bb837:
-  %__tmp2063 = load i32, i32* %i, align 4
-  %__tmp2064 = icmp slt i32 %__tmp2063, 16
-  br i1 %__tmp2064, label %bb838, label %bb839
+  %__tmp2057 = load i32, i32* %i, align 4
+  %__tmp2058 = icmp slt i32 %__tmp2057, 16
+  br i1 %__tmp2058, label %bb838, label %bb839
 bb838:
-  %__tmp2065 = load i32, i32* %x, align 4
-  %__tmp2066 = srem i32 %__tmp2065, 2
-  %__tmp2067 = icmp ne i32 %__tmp2066, 0
-  br i1 %__tmp2067, label %bb843, label %bb845
+  %__tmp2059 = load i32, i32* %x, align 4
+  %__tmp2060 = srem i32 %__tmp2059, 2
+  %__tmp2061 = icmp ne i32 %__tmp2060, 0
+  br i1 %__tmp2061, label %bb843, label %bb845
 bb845:
   br label %bb844
 bb843:
-  %__tmp2068 = load i32, i32* %y, align 4
-  %__tmp2069 = srem i32 %__tmp2068, 2
-  %__tmp2070 = icmp ne i32 %__tmp2069, 0
+  %__tmp2062 = load i32, i32* %y, align 4
+  %__tmp2063 = srem i32 %__tmp2062, 2
+  %__tmp2064 = icmp ne i32 %__tmp2063, 0
   br label %bb844
 bb844:
-  %__tmp2071 = phi i1 [ 0, %bb845 ], [ %__tmp2070, %bb843 ]
-  br i1 %__tmp2071, label %bb840, label %bb841
+  %__tmp2065 = phi i1 [ 0, %bb845 ], [ %__tmp2064, %bb843 ]
+  br i1 %__tmp2065, label %bb840, label %bb841
 bb840:
-  %__tmp2072 = load i32, i32* %ans, align 4
-  %__tmp2073 = load i32, i32* %i, align 4
-  %__tmp2074 = sext i32 %__tmp2073 to i64
-  %__tmp2075 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2074
-  %__tmp2076 = load i32, i32* %__tmp2075, align 4
-  %__tmp2077 = mul i32 1, %__tmp2076
-  %__tmp2078 = add i32 %__tmp2072, %__tmp2077
-  store i32 %__tmp2078, i32* %ans, align 4
+  %__tmp2066 = load i32, i32* %ans, align 4
+  %__tmp2067 = load i32, i32* %i, align 4
+  %__tmp2068 = sext i32 %__tmp2067 to i64
+  %__tmp2069 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2068
+  %__tmp2070 = load i32, i32* %__tmp2069, align 4
+  %__tmp2071 = mul i32 1, %__tmp2070
+  %__tmp2072 = add i32 %__tmp2066, %__tmp2071
+  store i32 %__tmp2072, i32* %ans, align 4
   br label %bb842
 bb841:
   br label %bb842
 bb842:
-  %__tmp2079 = load i32, i32* %x, align 4
-  %__tmp2080 = sdiv i32 %__tmp2079, 2
-  store i32 %__tmp2080, i32* %x, align 4
-  %__tmp2081 = load i32, i32* %y, align 4
-  %__tmp2082 = sdiv i32 %__tmp2081, 2
-  store i32 %__tmp2082, i32* %y, align 4
-  %__tmp2083 = load i32, i32* %i, align 4
-  %__tmp2084 = add i32 %__tmp2083, 1
-  store i32 %__tmp2084, i32* %i, align 4
+  %__tmp2073 = load i32, i32* %x, align 4
+  %__tmp2074 = sdiv i32 %__tmp2073, 2
+  store i32 %__tmp2074, i32* %x, align 4
+  %__tmp2075 = load i32, i32* %y, align 4
+  %__tmp2076 = sdiv i32 %__tmp2075, 2
+  store i32 %__tmp2076, i32* %y, align 4
+  %__tmp2077 = load i32, i32* %i, align 4
+  %__tmp2078 = add i32 %__tmp2077, 1
+  store i32 %__tmp2078, i32* %i, align 4
   br label %bb837
 bb839:
   br label %bb836
 bb836:
-  %__tmp2085 = load i32, i32* %ans, align 4
-  store i32 %__tmp2085, i32* %c.14, align 4
-  %__tmp2086 = load i32, i32* %sum.14, align 4
-  store i32 %__tmp2086, i32* %al.14, align 4
+  %__tmp2079 = load i32, i32* %ans, align 4
+  store i32 %__tmp2079, i32* %c.14, align 4
+  %__tmp2080 = load i32, i32* %sum.14, align 4
+  store i32 %__tmp2080, i32* %al.14, align 4
   br label %bb810
 bb812:
-  %__tmp2087 = load i32, i32* %al.14, align 4
-  store i32 %__tmp2087, i32* %ans, align 4
-  %__tmp2088 = load i32, i32* %ans, align 4
-  store i32 %__tmp2088, i32* %mres.7, align 4
+  %__tmp2081 = load i32, i32* %al.14, align 4
+  store i32 %__tmp2081, i32* %ans, align 4
+  %__tmp2082 = load i32, i32* %ans, align 4
+  store i32 %__tmp2082, i32* %mres.7, align 4
   br label %bb809
 bb808:
   br label %bb809
 bb809:
   %al.15 = alloca i32, align 4
-  %__tmp2089 = load i32, i32* %ml.7, align 4
-  store i32 %__tmp2089, i32* %al.15, align 4
+  %__tmp2083 = load i32, i32* %ml.7, align 4
+  store i32 %__tmp2083, i32* %al.15, align 4
   %c.15 = alloca i32, align 4
-  %__tmp2090 = load i32, i32* %ml.7, align 4
-  store i32 %__tmp2090, i32* %c.15, align 4
+  %__tmp2084 = load i32, i32* %ml.7, align 4
+  store i32 %__tmp2084, i32* %c.15, align 4
   %sum.15 = alloca i32, align 4
   br label %bb846
 bb846:
-  %__tmp2091 = load i32, i32* %c.15, align 4
-  %__tmp2092 = trunc i32 %__tmp2091 to i1
-  br i1 %__tmp2092, label %bb847, label %bb848
+  %__tmp2085 = load i32, i32* %c.15, align 4
+  %__tmp2086 = trunc i32 %__tmp2085 to i1
+  br i1 %__tmp2086, label %bb847, label %bb848
 bb847:
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2093 = load i32, i32* %al.15, align 4
-  store i32 %__tmp2093, i32* %x, align 4
-  %__tmp2094 = load i32, i32* %c.15, align 4
-  store i32 %__tmp2094, i32* %y, align 4
+  %__tmp2087 = load i32, i32* %al.15, align 4
+  store i32 %__tmp2087, i32* %x, align 4
+  %__tmp2088 = load i32, i32* %c.15, align 4
+  store i32 %__tmp2088, i32* %y, align 4
   br label %bb849
 bb849:
-  %__tmp2095 = load i32, i32* %i, align 4
-  %__tmp2096 = icmp slt i32 %__tmp2095, 16
-  br i1 %__tmp2096, label %bb850, label %bb851
+  %__tmp2089 = load i32, i32* %i, align 4
+  %__tmp2090 = icmp slt i32 %__tmp2089, 16
+  br i1 %__tmp2090, label %bb850, label %bb851
 bb850:
-  %__tmp2097 = load i32, i32* %x, align 4
-  %__tmp2098 = srem i32 %__tmp2097, 2
-  %__tmp2099 = trunc i32 %__tmp2098 to i1
-  br i1 %__tmp2099, label %bb852, label %bb853
+  %__tmp2091 = load i32, i32* %x, align 4
+  %__tmp2092 = srem i32 %__tmp2091, 2
+  %__tmp2093 = trunc i32 %__tmp2092 to i1
+  br i1 %__tmp2093, label %bb852, label %bb853
 bb852:
-  %__tmp2100 = load i32, i32* %y, align 4
-  %__tmp2101 = srem i32 %__tmp2100, 2
-  %__tmp2102 = icmp eq i32 %__tmp2101, 0
-  br i1 %__tmp2102, label %bb855, label %bb856
+  %__tmp2094 = load i32, i32* %y, align 4
+  %__tmp2095 = srem i32 %__tmp2094, 2
+  %__tmp2096 = icmp eq i32 %__tmp2095, 0
+  br i1 %__tmp2096, label %bb855, label %bb856
 bb855:
-  %__tmp2103 = load i32, i32* %ans, align 4
-  %__tmp2104 = load i32, i32* %i, align 4
-  %__tmp2105 = sext i32 %__tmp2104 to i64
-  %__tmp2106 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2105
-  %__tmp2107 = load i32, i32* %__tmp2106, align 4
-  %__tmp2108 = mul i32 1, %__tmp2107
-  %__tmp2109 = add i32 %__tmp2103, %__tmp2108
-  store i32 %__tmp2109, i32* %ans, align 4
+  %__tmp2097 = load i32, i32* %ans, align 4
+  %__tmp2098 = load i32, i32* %i, align 4
+  %__tmp2099 = sext i32 %__tmp2098 to i64
+  %__tmp2100 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2099
+  %__tmp2101 = load i32, i32* %__tmp2100, align 4
+  %__tmp2102 = mul i32 1, %__tmp2101
+  %__tmp2103 = add i32 %__tmp2097, %__tmp2102
+  store i32 %__tmp2103, i32* %ans, align 4
   br label %bb857
 bb856:
   br label %bb857
 bb857:
   br label %bb854
 bb853:
-  %__tmp2110 = load i32, i32* %y, align 4
-  %__tmp2111 = srem i32 %__tmp2110, 2
-  %__tmp2112 = trunc i32 %__tmp2111 to i1
-  br i1 %__tmp2112, label %bb858, label %bb859
+  %__tmp2104 = load i32, i32* %y, align 4
+  %__tmp2105 = srem i32 %__tmp2104, 2
+  %__tmp2106 = trunc i32 %__tmp2105 to i1
+  br i1 %__tmp2106, label %bb858, label %bb859
 bb858:
-  %__tmp2113 = load i32, i32* %ans, align 4
-  %__tmp2114 = load i32, i32* %i, align 4
-  %__tmp2115 = sext i32 %__tmp2114 to i64
-  %__tmp2116 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2115
-  %__tmp2117 = load i32, i32* %__tmp2116, align 4
-  %__tmp2118 = mul i32 1, %__tmp2117
-  %__tmp2119 = add i32 %__tmp2113, %__tmp2118
-  store i32 %__tmp2119, i32* %ans, align 4
+  %__tmp2107 = load i32, i32* %ans, align 4
+  %__tmp2108 = load i32, i32* %i, align 4
+  %__tmp2109 = sext i32 %__tmp2108 to i64
+  %__tmp2110 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2109
+  %__tmp2111 = load i32, i32* %__tmp2110, align 4
+  %__tmp2112 = mul i32 1, %__tmp2111
+  %__tmp2113 = add i32 %__tmp2107, %__tmp2112
+  store i32 %__tmp2113, i32* %ans, align 4
   br label %bb860
 bb859:
   br label %bb860
 bb860:
   br label %bb854
 bb854:
-  %__tmp2120 = load i32, i32* %x, align 4
-  %__tmp2121 = sdiv i32 %__tmp2120, 2
-  store i32 %__tmp2121, i32* %x, align 4
-  %__tmp2122 = load i32, i32* %y, align 4
-  %__tmp2123 = sdiv i32 %__tmp2122, 2
-  store i32 %__tmp2123, i32* %y, align 4
-  %__tmp2124 = load i32, i32* %i, align 4
-  %__tmp2125 = add i32 %__tmp2124, 1
-  store i32 %__tmp2125, i32* %i, align 4
+  %__tmp2114 = load i32, i32* %x, align 4
+  %__tmp2115 = sdiv i32 %__tmp2114, 2
+  store i32 %__tmp2115, i32* %x, align 4
+  %__tmp2116 = load i32, i32* %y, align 4
+  %__tmp2117 = sdiv i32 %__tmp2116, 2
+  store i32 %__tmp2117, i32* %y, align 4
+  %__tmp2118 = load i32, i32* %i, align 4
+  %__tmp2119 = add i32 %__tmp2118, 1
+  store i32 %__tmp2119, i32* %i, align 4
   br label %bb849
 bb851:
-  %__tmp2126 = load i32, i32* %ans, align 4
-  store i32 %__tmp2126, i32* %sum.15, align 4
+  %__tmp2120 = load i32, i32* %ans, align 4
+  store i32 %__tmp2120, i32* %sum.15, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2127 = load i32, i32* %al.15, align 4
-  store i32 %__tmp2127, i32* %x, align 4
-  %__tmp2128 = load i32, i32* %c.15, align 4
-  store i32 %__tmp2128, i32* %y, align 4
+  %__tmp2121 = load i32, i32* %al.15, align 4
+  store i32 %__tmp2121, i32* %x, align 4
+  %__tmp2122 = load i32, i32* %c.15, align 4
+  store i32 %__tmp2122, i32* %y, align 4
   br label %bb861
 bb861:
-  %__tmp2129 = load i32, i32* %i, align 4
-  %__tmp2130 = icmp slt i32 %__tmp2129, 16
-  br i1 %__tmp2130, label %bb862, label %bb863
+  %__tmp2123 = load i32, i32* %i, align 4
+  %__tmp2124 = icmp slt i32 %__tmp2123, 16
+  br i1 %__tmp2124, label %bb862, label %bb863
 bb862:
-  %__tmp2131 = load i32, i32* %x, align 4
-  %__tmp2132 = srem i32 %__tmp2131, 2
-  %__tmp2133 = icmp ne i32 %__tmp2132, 0
-  br i1 %__tmp2133, label %bb867, label %bb869
+  %__tmp2125 = load i32, i32* %x, align 4
+  %__tmp2126 = srem i32 %__tmp2125, 2
+  %__tmp2127 = icmp ne i32 %__tmp2126, 0
+  br i1 %__tmp2127, label %bb867, label %bb869
 bb869:
   br label %bb868
 bb867:
-  %__tmp2134 = load i32, i32* %y, align 4
-  %__tmp2135 = srem i32 %__tmp2134, 2
-  %__tmp2136 = icmp ne i32 %__tmp2135, 0
+  %__tmp2128 = load i32, i32* %y, align 4
+  %__tmp2129 = srem i32 %__tmp2128, 2
+  %__tmp2130 = icmp ne i32 %__tmp2129, 0
   br label %bb868
 bb868:
-  %__tmp2137 = phi i1 [ 0, %bb869 ], [ %__tmp2136, %bb867 ]
-  br i1 %__tmp2137, label %bb864, label %bb865
+  %__tmp2131 = phi i1 [ 0, %bb869 ], [ %__tmp2130, %bb867 ]
+  br i1 %__tmp2131, label %bb864, label %bb865
 bb864:
-  %__tmp2138 = load i32, i32* %ans, align 4
-  %__tmp2139 = load i32, i32* %i, align 4
-  %__tmp2140 = sext i32 %__tmp2139 to i64
-  %__tmp2141 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2140
-  %__tmp2142 = load i32, i32* %__tmp2141, align 4
-  %__tmp2143 = mul i32 1, %__tmp2142
-  %__tmp2144 = add i32 %__tmp2138, %__tmp2143
-  store i32 %__tmp2144, i32* %ans, align 4
+  %__tmp2132 = load i32, i32* %ans, align 4
+  %__tmp2133 = load i32, i32* %i, align 4
+  %__tmp2134 = sext i32 %__tmp2133 to i64
+  %__tmp2135 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2134
+  %__tmp2136 = load i32, i32* %__tmp2135, align 4
+  %__tmp2137 = mul i32 1, %__tmp2136
+  %__tmp2138 = add i32 %__tmp2132, %__tmp2137
+  store i32 %__tmp2138, i32* %ans, align 4
   br label %bb866
 bb865:
   br label %bb866
 bb866:
-  %__tmp2145 = load i32, i32* %x, align 4
-  %__tmp2146 = sdiv i32 %__tmp2145, 2
-  store i32 %__tmp2146, i32* %x, align 4
-  %__tmp2147 = load i32, i32* %y, align 4
-  %__tmp2148 = sdiv i32 %__tmp2147, 2
-  store i32 %__tmp2148, i32* %y, align 4
-  %__tmp2149 = load i32, i32* %i, align 4
-  %__tmp2150 = add i32 %__tmp2149, 1
-  store i32 %__tmp2150, i32* %i, align 4
+  %__tmp2139 = load i32, i32* %x, align 4
+  %__tmp2140 = sdiv i32 %__tmp2139, 2
+  store i32 %__tmp2140, i32* %x, align 4
+  %__tmp2141 = load i32, i32* %y, align 4
+  %__tmp2142 = sdiv i32 %__tmp2141, 2
+  store i32 %__tmp2142, i32* %y, align 4
+  %__tmp2143 = load i32, i32* %i, align 4
+  %__tmp2144 = add i32 %__tmp2143, 1
+  store i32 %__tmp2144, i32* %i, align 4
   br label %bb861
 bb863:
-  %__tmp2151 = load i32, i32* %ans, align 4
-  store i32 %__tmp2151, i32* %c.15, align 4
+  %__tmp2145 = load i32, i32* %ans, align 4
+  store i32 %__tmp2145, i32* %c.15, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
-  %__tmp2152 = load i32, i32* %c.15, align 4
-  %__tmp2153 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
-  %__tmp2154 = load i32, i32* %__tmp2153, align 4
-  %__tmp2155 = mul i32 %__tmp2152, %__tmp2154
-  store i32 %__tmp2155, i32* %x, align 4
+  %__tmp2146 = load i32, i32* %c.15, align 4
+  %__tmp2147 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 1
+  %__tmp2148 = load i32, i32* %__tmp2147, align 4
+  %__tmp2149 = mul i32 %__tmp2146, %__tmp2148
+  store i32 %__tmp2149, i32* %x, align 4
   store i32 65535, i32* %y, align 4
   br label %bb873
 bb873:
-  %__tmp2156 = load i32, i32* %i, align 4
-  %__tmp2157 = icmp slt i32 %__tmp2156, 16
-  br i1 %__tmp2157, label %bb874, label %bb875
+  %__tmp2150 = load i32, i32* %i, align 4
+  %__tmp2151 = icmp slt i32 %__tmp2150, 16
+  br i1 %__tmp2151, label %bb874, label %bb875
 bb874:
-  %__tmp2158 = load i32, i32* %x, align 4
-  %__tmp2159 = srem i32 %__tmp2158, 2
-  %__tmp2160 = icmp ne i32 %__tmp2159, 0
-  br i1 %__tmp2160, label %bb879, label %bb881
+  %__tmp2152 = load i32, i32* %x, align 4
+  %__tmp2153 = srem i32 %__tmp2152, 2
+  %__tmp2154 = icmp ne i32 %__tmp2153, 0
+  br i1 %__tmp2154, label %bb879, label %bb881
 bb881:
   br label %bb880
 bb879:
-  %__tmp2161 = load i32, i32* %y, align 4
-  %__tmp2162 = srem i32 %__tmp2161, 2
-  %__tmp2163 = icmp ne i32 %__tmp2162, 0
+  %__tmp2155 = load i32, i32* %y, align 4
+  %__tmp2156 = srem i32 %__tmp2155, 2
+  %__tmp2157 = icmp ne i32 %__tmp2156, 0
   br label %bb880
 bb880:
-  %__tmp2164 = phi i1 [ 0, %bb881 ], [ %__tmp2163, %bb879 ]
-  br i1 %__tmp2164, label %bb876, label %bb877
+  %__tmp2158 = phi i1 [ 0, %bb881 ], [ %__tmp2157, %bb879 ]
+  br i1 %__tmp2158, label %bb876, label %bb877
 bb876:
-  %__tmp2165 = load i32, i32* %ans, align 4
-  %__tmp2166 = load i32, i32* %i, align 4
-  %__tmp2167 = sext i32 %__tmp2166 to i64
-  %__tmp2168 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2167
-  %__tmp2169 = load i32, i32* %__tmp2168, align 4
-  %__tmp2170 = mul i32 1, %__tmp2169
-  %__tmp2171 = add i32 %__tmp2165, %__tmp2170
-  store i32 %__tmp2171, i32* %ans, align 4
+  %__tmp2159 = load i32, i32* %ans, align 4
+  %__tmp2160 = load i32, i32* %i, align 4
+  %__tmp2161 = sext i32 %__tmp2160 to i64
+  %__tmp2162 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2161
+  %__tmp2163 = load i32, i32* %__tmp2162, align 4
+  %__tmp2164 = mul i32 1, %__tmp2163
+  %__tmp2165 = add i32 %__tmp2159, %__tmp2164
+  store i32 %__tmp2165, i32* %ans, align 4
   br label %bb878
 bb877:
   br label %bb878
 bb878:
-  %__tmp2172 = load i32, i32* %x, align 4
-  %__tmp2173 = sdiv i32 %__tmp2172, 2
-  store i32 %__tmp2173, i32* %x, align 4
-  %__tmp2174 = load i32, i32* %y, align 4
-  %__tmp2175 = sdiv i32 %__tmp2174, 2
-  store i32 %__tmp2175, i32* %y, align 4
-  %__tmp2176 = load i32, i32* %i, align 4
-  %__tmp2177 = add i32 %__tmp2176, 1
-  store i32 %__tmp2177, i32* %i, align 4
+  %__tmp2166 = load i32, i32* %x, align 4
+  %__tmp2167 = sdiv i32 %__tmp2166, 2
+  store i32 %__tmp2167, i32* %x, align 4
+  %__tmp2168 = load i32, i32* %y, align 4
+  %__tmp2169 = sdiv i32 %__tmp2168, 2
+  store i32 %__tmp2169, i32* %y, align 4
+  %__tmp2170 = load i32, i32* %i, align 4
+  %__tmp2171 = add i32 %__tmp2170, 1
+  store i32 %__tmp2171, i32* %i, align 4
   br label %bb873
 bb875:
   br label %bb872
 bb872:
-  %__tmp2178 = load i32, i32* %ans, align 4
-  store i32 %__tmp2178, i32* %c.15, align 4
-  %__tmp2179 = load i32, i32* %sum.15, align 4
-  store i32 %__tmp2179, i32* %al.15, align 4
+  %__tmp2172 = load i32, i32* %ans, align 4
+  store i32 %__tmp2172, i32* %c.15, align 4
+  %__tmp2173 = load i32, i32* %sum.15, align 4
+  store i32 %__tmp2173, i32* %al.15, align 4
   br label %bb846
 bb848:
-  %__tmp2180 = load i32, i32* %al.15, align 4
-  store i32 %__tmp2180, i32* %ans, align 4
-  %__tmp2181 = load i32, i32* %ans, align 4
-  store i32 %__tmp2181, i32* %ml.7, align 4
-  %__tmp2182 = load i32, i32* %mr.7, align 4
-  store i32 %__tmp2182, i32* %x, align 4
+  %__tmp2174 = load i32, i32* %al.15, align 4
+  store i32 %__tmp2174, i32* %ans, align 4
+  %__tmp2175 = load i32, i32* %ans, align 4
+  store i32 %__tmp2175, i32* %ml.7, align 4
+  %__tmp2176 = load i32, i32* %mr.7, align 4
+  store i32 %__tmp2176, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp2183 = load i32, i32* %y, align 4
-  %__tmp2184 = icmp sge i32 %__tmp2183, 15
-  br i1 %__tmp2184, label %bb882, label %bb883
+  %__tmp2177 = load i32, i32* %y, align 4
+  %__tmp2178 = icmp sge i32 %__tmp2177, 15
+  br i1 %__tmp2178, label %bb882, label %bb883
 bb882:
-  %__tmp2185 = load i32, i32* %x, align 4
-  %__tmp2186 = icmp slt i32 %__tmp2185, 0
-  br i1 %__tmp2186, label %bb885, label %bb886
+  %__tmp2179 = load i32, i32* %x, align 4
+  %__tmp2180 = icmp slt i32 %__tmp2179, 0
+  br i1 %__tmp2180, label %bb885, label %bb886
 bb885:
   store i32 65535, i32* %ans, align 4
   br label %bb887
@@ -4765,68 +4765,68 @@ bb886:
 bb887:
   br label %bb884
 bb883:
-  %__tmp2187 = load i32, i32* %y, align 4
-  %__tmp2188 = icmp sgt i32 %__tmp2187, 0
-  br i1 %__tmp2188, label %bb888, label %bb889
+  %__tmp2181 = load i32, i32* %y, align 4
+  %__tmp2182 = icmp sgt i32 %__tmp2181, 0
+  br i1 %__tmp2182, label %bb888, label %bb889
 bb888:
-  %__tmp2189 = load i32, i32* %x, align 4
-  %__tmp2190 = icmp sgt i32 %__tmp2189, 32767
-  br i1 %__tmp2190, label %bb891, label %bb892
+  %__tmp2183 = load i32, i32* %x, align 4
+  %__tmp2184 = icmp sgt i32 %__tmp2183, 32767
+  br i1 %__tmp2184, label %bb891, label %bb892
 bb891:
+  %__tmp2185 = load i32, i32* %x, align 4
+  %__tmp2186 = load i32, i32* %y, align 4
+  %__tmp2187 = sext i32 %__tmp2186 to i64
+  %__tmp2188 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2187
+  %__tmp2189 = load i32, i32* %__tmp2188, align 4
+  %__tmp2190 = sdiv i32 %__tmp2185, %__tmp2189
+  store i32 %__tmp2190, i32* %x, align 4
   %__tmp2191 = load i32, i32* %x, align 4
-  %__tmp2192 = load i32, i32* %y, align 4
-  %__tmp2193 = sext i32 %__tmp2192 to i64
-  %__tmp2194 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2193
-  %__tmp2195 = load i32, i32* %__tmp2194, align 4
-  %__tmp2196 = sdiv i32 %__tmp2191, %__tmp2195
-  store i32 %__tmp2196, i32* %x, align 4
-  %__tmp2197 = load i32, i32* %x, align 4
-  %__tmp2198 = add i32 %__tmp2197, 65536
-  %__tmp2199 = load i32, i32* %y, align 4
-  %__tmp2200 = sub i32 15, %__tmp2199
-  %__tmp2201 = add i32 %__tmp2200, 1
+  %__tmp2192 = add i32 %__tmp2191, 65536
+  %__tmp2193 = load i32, i32* %y, align 4
+  %__tmp2194 = sub i32 15, %__tmp2193
+  %__tmp2195 = add i32 %__tmp2194, 1
+  %__tmp2196 = sext i32 %__tmp2195 to i64
+  %__tmp2197 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2196
+  %__tmp2198 = load i32, i32* %__tmp2197, align 4
+  %__tmp2199 = sub i32 %__tmp2192, %__tmp2198
+  store i32 %__tmp2199, i32* %ans, align 4
+  br label %bb893
+bb892:
+  %__tmp2200 = load i32, i32* %x, align 4
+  %__tmp2201 = load i32, i32* %y, align 4
   %__tmp2202 = sext i32 %__tmp2201 to i64
   %__tmp2203 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2202
   %__tmp2204 = load i32, i32* %__tmp2203, align 4
-  %__tmp2205 = sub i32 %__tmp2198, %__tmp2204
+  %__tmp2205 = sdiv i32 %__tmp2200, %__tmp2204
   store i32 %__tmp2205, i32* %ans, align 4
-  br label %bb893
-bb892:
-  %__tmp2206 = load i32, i32* %x, align 4
-  %__tmp2207 = load i32, i32* %y, align 4
-  %__tmp2208 = sext i32 %__tmp2207 to i64
-  %__tmp2209 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2208
-  %__tmp2210 = load i32, i32* %__tmp2209, align 4
-  %__tmp2211 = sdiv i32 %__tmp2206, %__tmp2210
-  store i32 %__tmp2211, i32* %ans, align 4
   br label %bb893
 bb893:
   br label %bb890
 bb889:
-  %__tmp2212 = load i32, i32* %x, align 4
-  store i32 %__tmp2212, i32* %ans, align 4
+  %__tmp2206 = load i32, i32* %x, align 4
+  store i32 %__tmp2206, i32* %ans, align 4
   br label %bb890
 bb890:
   br label %bb884
 bb884:
-  %__tmp2213 = load i32, i32* %ans, align 4
-  store i32 %__tmp2213, i32* %mr.7, align 4
+  %__tmp2207 = load i32, i32* %ans, align 4
+  store i32 %__tmp2207, i32* %mr.7, align 4
   br label %bb795
 bb797:
-  %__tmp2214 = load i32, i32* %mres.7, align 4
-  store i32 %__tmp2214, i32* %ans, align 4
-  %__tmp2215 = load i32, i32* %ans, align 4
-  store i32 %__tmp2215, i32* %pl.3, align 4
-  %__tmp2216 = load i32, i32* %pr.3, align 4
-  store i32 %__tmp2216, i32* %x, align 4
+  %__tmp2208 = load i32, i32* %mres.7, align 4
+  store i32 %__tmp2208, i32* %ans, align 4
+  %__tmp2209 = load i32, i32* %ans, align 4
+  store i32 %__tmp2209, i32* %pl.3, align 4
+  %__tmp2210 = load i32, i32* %pr.3, align 4
+  store i32 %__tmp2210, i32* %x, align 4
   store i32 1, i32* %y, align 4
-  %__tmp2217 = load i32, i32* %y, align 4
-  %__tmp2218 = icmp sge i32 %__tmp2217, 15
-  br i1 %__tmp2218, label %bb894, label %bb895
+  %__tmp2211 = load i32, i32* %y, align 4
+  %__tmp2212 = icmp sge i32 %__tmp2211, 15
+  br i1 %__tmp2212, label %bb894, label %bb895
 bb894:
-  %__tmp2219 = load i32, i32* %x, align 4
-  %__tmp2220 = icmp slt i32 %__tmp2219, 0
-  br i1 %__tmp2220, label %bb897, label %bb898
+  %__tmp2213 = load i32, i32* %x, align 4
+  %__tmp2214 = icmp slt i32 %__tmp2213, 0
+  br i1 %__tmp2214, label %bb897, label %bb898
 bb897:
   store i32 65535, i32* %ans, align 4
   br label %bb899
@@ -4836,71 +4836,71 @@ bb898:
 bb899:
   br label %bb896
 bb895:
-  %__tmp2221 = load i32, i32* %y, align 4
-  %__tmp2222 = icmp sgt i32 %__tmp2221, 0
-  br i1 %__tmp2222, label %bb900, label %bb901
+  %__tmp2215 = load i32, i32* %y, align 4
+  %__tmp2216 = icmp sgt i32 %__tmp2215, 0
+  br i1 %__tmp2216, label %bb900, label %bb901
 bb900:
-  %__tmp2223 = load i32, i32* %x, align 4
-  %__tmp2224 = icmp sgt i32 %__tmp2223, 32767
-  br i1 %__tmp2224, label %bb903, label %bb904
+  %__tmp2217 = load i32, i32* %x, align 4
+  %__tmp2218 = icmp sgt i32 %__tmp2217, 32767
+  br i1 %__tmp2218, label %bb903, label %bb904
 bb903:
+  %__tmp2219 = load i32, i32* %x, align 4
+  %__tmp2220 = load i32, i32* %y, align 4
+  %__tmp2221 = sext i32 %__tmp2220 to i64
+  %__tmp2222 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2221
+  %__tmp2223 = load i32, i32* %__tmp2222, align 4
+  %__tmp2224 = sdiv i32 %__tmp2219, %__tmp2223
+  store i32 %__tmp2224, i32* %x, align 4
   %__tmp2225 = load i32, i32* %x, align 4
-  %__tmp2226 = load i32, i32* %y, align 4
-  %__tmp2227 = sext i32 %__tmp2226 to i64
-  %__tmp2228 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2227
-  %__tmp2229 = load i32, i32* %__tmp2228, align 4
-  %__tmp2230 = sdiv i32 %__tmp2225, %__tmp2229
-  store i32 %__tmp2230, i32* %x, align 4
-  %__tmp2231 = load i32, i32* %x, align 4
-  %__tmp2232 = add i32 %__tmp2231, 65536
-  %__tmp2233 = load i32, i32* %y, align 4
-  %__tmp2234 = sub i32 15, %__tmp2233
-  %__tmp2235 = add i32 %__tmp2234, 1
+  %__tmp2226 = add i32 %__tmp2225, 65536
+  %__tmp2227 = load i32, i32* %y, align 4
+  %__tmp2228 = sub i32 15, %__tmp2227
+  %__tmp2229 = add i32 %__tmp2228, 1
+  %__tmp2230 = sext i32 %__tmp2229 to i64
+  %__tmp2231 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2230
+  %__tmp2232 = load i32, i32* %__tmp2231, align 4
+  %__tmp2233 = sub i32 %__tmp2226, %__tmp2232
+  store i32 %__tmp2233, i32* %ans, align 4
+  br label %bb905
+bb904:
+  %__tmp2234 = load i32, i32* %x, align 4
+  %__tmp2235 = load i32, i32* %y, align 4
   %__tmp2236 = sext i32 %__tmp2235 to i64
   %__tmp2237 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2236
   %__tmp2238 = load i32, i32* %__tmp2237, align 4
-  %__tmp2239 = sub i32 %__tmp2232, %__tmp2238
+  %__tmp2239 = sdiv i32 %__tmp2234, %__tmp2238
   store i32 %__tmp2239, i32* %ans, align 4
-  br label %bb905
-bb904:
-  %__tmp2240 = load i32, i32* %x, align 4
-  %__tmp2241 = load i32, i32* %y, align 4
-  %__tmp2242 = sext i32 %__tmp2241 to i64
-  %__tmp2243 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2242
-  %__tmp2244 = load i32, i32* %__tmp2243, align 4
-  %__tmp2245 = sdiv i32 %__tmp2240, %__tmp2244
-  store i32 %__tmp2245, i32* %ans, align 4
   br label %bb905
 bb905:
   br label %bb902
 bb901:
-  %__tmp2246 = load i32, i32* %x, align 4
-  store i32 %__tmp2246, i32* %ans, align 4
+  %__tmp2240 = load i32, i32* %x, align 4
+  store i32 %__tmp2240, i32* %ans, align 4
   br label %bb902
 bb902:
   br label %bb896
 bb896:
-  %__tmp2247 = load i32, i32* %ans, align 4
-  store i32 %__tmp2247, i32* %pr.3, align 4
+  %__tmp2241 = load i32, i32* %ans, align 4
+  store i32 %__tmp2241, i32* %pr.3, align 4
   br label %bb681
 bb683:
-  %__tmp2248 = load i32, i32* %pres.3, align 4
-  store i32 %__tmp2248, i32* %ans, align 4
-  %__tmp2249 = load i32, i32* %cur, align 4
-  %__tmp2250 = sext i32 %__tmp2249 to i64
-  %__tmp2251 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2250
-  %__tmp2252 = load i32, i32* %__tmp2251, align 4
-  %__tmp2253 = load i32, i32* %ans, align 4
-  %__tmp2254 = icmp ne i32 %__tmp2252, %__tmp2253
-  br i1 %__tmp2254, label %bb906, label %bb907
+  %__tmp2242 = load i32, i32* %pres.3, align 4
+  store i32 %__tmp2242, i32* %ans, align 4
+  %__tmp2243 = load i32, i32* %cur, align 4
+  %__tmp2244 = sext i32 %__tmp2243 to i64
+  %__tmp2245 = getelementptr inbounds [16 x i32], [16 x i32]* @SHIFT_TABLE, i64 0, i64 %__tmp2244
+  %__tmp2246 = load i32, i32* %__tmp2245, align 4
+  %__tmp2247 = load i32, i32* %ans, align 4
+  %__tmp2248 = icmp ne i32 %__tmp2246, %__tmp2247
+  br i1 %__tmp2248, label %bb906, label %bb907
 bb906:
   ret i32 1
 bb907:
   br label %bb908
 bb908:
-  %__tmp2255 = load i32, i32* %cur, align 4
-  %__tmp2256 = add i32 %__tmp2255, 1
-  store i32 %__tmp2256, i32* %cur, align 4
+  %__tmp2249 = load i32, i32* %cur, align 4
+  %__tmp2250 = add i32 %__tmp2249, 1
+  store i32 %__tmp2250, i32* %cur, align 4
   br label %bb678
 bb680:
   ret i32 0

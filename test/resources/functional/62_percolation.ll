@@ -331,8 +331,8 @@ bb39:
   %__tmp117 = add i32 %__tmp116, 1
   store i32 %__tmp117, i32* %tmp, align 4
   %__tmp118 = load i32, i32* %tmp, align 4
-  %__tmp119 = call i32 @putint(i32 %__tmp118)
-  %__tmp120 = call i32 @putch(i32 10)
+  call void @putint(i32 %__tmp118)
+  call void @putch(i32 10)
   br label %bb41
 bb40:
   br label %bb41
@@ -341,19 +341,19 @@ bb41:
 bb7:
   br label %bb8
 bb8:
-  %__tmp121 = load i32, i32* %i, align 4
-  %__tmp122 = add i32 %__tmp121, 1
-  store i32 %__tmp122, i32* %i, align 4
+  %__tmp119 = load i32, i32* %i, align 4
+  %__tmp120 = add i32 %__tmp119, 1
+  store i32 %__tmp120, i32* %i, align 4
   br label %bb3
 bb5:
-  %__tmp123 = load i32, i32* %flag, align 4
-  %__tmp124 = icmp eq i32 %__tmp123, 0
-  %__tmp125 = zext i1 %__tmp124 to i32
-  %__tmp126 = trunc i32 %__tmp125 to i1
-  br i1 %__tmp126, label %bb48, label %bb49
+  %__tmp121 = load i32, i32* %flag, align 4
+  %__tmp122 = icmp eq i32 %__tmp121, 0
+  %__tmp123 = zext i1 %__tmp122 to i32
+  %__tmp124 = trunc i32 %__tmp123 to i1
+  br i1 %__tmp124, label %bb48, label %bb49
 bb48:
-  %__tmp127 = call i32 @putint(i32 -1)
-  %__tmp128 = call i32 @putch(i32 10)
+  call void @putint(i32 -1)
+  call void @putch(i32 10)
   br label %bb50
 bb49:
   br label %bb50

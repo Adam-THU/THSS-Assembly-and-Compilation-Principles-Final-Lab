@@ -421,8 +421,8 @@ bb20:
   %__tmp76 = call i32 @dfs(i32 %__tmp67, i32 %__tmp69, i32 %__tmp71, i32 %__tmp73, i32 %__tmp75, i32 0)
   store i32 %__tmp76, i32* %ans, align 4
   %__tmp77 = load i32, i32* %ans, align 4
-  %__tmp78 = call i32 @putint(i32 %__tmp77)
-  %__tmp79 = load i32, i32* %ans, align 4
-  ret i32 %__tmp79
+  call void @putint(i32 %__tmp77)
+  %__tmp78 = load i32, i32* %ans, align 4
+  ret i32 %__tmp78
 }
 

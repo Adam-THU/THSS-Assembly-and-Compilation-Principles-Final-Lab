@@ -594,8 +594,8 @@ mainEntry:
   %__tmp5 = call i32 @func(i32 %__tmp3, i32 %__tmp4)
   store i32 %__tmp5, i32* %a, align 4
   %__tmp6 = load i32, i32* %a, align 4
-  %__tmp7 = call i32 @putint(i32 %__tmp6)
-  %__tmp8 = load i32, i32* %a, align 4
-  ret i32 %__tmp8
+  call void @putint(i32 %__tmp6)
+  %__tmp7 = load i32, i32* %a, align 4
+  ret i32 %__tmp7
 }
 

@@ -80,7 +80,7 @@ bb2:
 define i32 @main() {
 mainEntry:
   %__tmp0 = call i32 @ifElseIf()
-  %__tmp1 = call i32 @putint(i32 %__tmp0)
+  call void @putint(i32 %__tmp0)
   ret i32 0
 }
 

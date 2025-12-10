@@ -825,9 +825,41 @@ bb2:
   %__tmp76 = getelementptr inbounds [32 x [2 x i32]], [32 x [2 x i32]]* %arr, i64 0, i64 29
   %__tmp77 = getelementptr inbounds [32 x [2 x i32]], [32 x [2 x i32]]* %arr, i64 0, i64 30
   %__tmp78 = getelementptr inbounds [32 x [2 x i32]], [32 x [2 x i32]]* %arr, i64 0, i64 31
-  %__tmp79 = call i32 @param32_arr([2 x i32]* %__tmp47, [2 x i32]* %__tmp48, [2 x i32]* %__tmp49, [2 x i32]* %__tmp50, [2 x i32]* %__tmp51, [2 x i32]* %__tmp52, [2 x i32]* %__tmp53, [2 x i32]* %__tmp54, [2 x i32]* %__tmp55, [2 x i32]* %__tmp56, [2 x i32]* %__tmp57, [2 x i32]* %__tmp58, [2 x i32]* %__tmp59, [2 x i32]* %__tmp60, [2 x i32]* %__tmp61, [2 x i32]* %__tmp62, [2 x i32]* %__tmp63, [2 x i32]* %__tmp64, [2 x i32]* %__tmp65, [2 x i32]* %__tmp66, [2 x i32]* %__tmp67, [2 x i32]* %__tmp68, [2 x i32]* %__tmp69, [2 x i32]* %__tmp70, [2 x i32]* %__tmp71, [2 x i32]* %__tmp72, [2 x i32]* %__tmp73, [2 x i32]* %__tmp74, [2 x i32]* %__tmp75, [2 x i32]* %__tmp76, [2 x i32]* %__tmp77, [2 x i32]* %__tmp78)
-  %__tmp80 = call i32 @putint(i32 %__tmp79)
-  %__tmp81 = call i32 @putch(i32 10)
+  %__tmp79 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp47, i64 0, i64 0
+  %__tmp80 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp48, i64 0, i64 0
+  %__tmp81 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp49, i64 0, i64 0
+  %__tmp82 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp50, i64 0, i64 0
+  %__tmp83 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp51, i64 0, i64 0
+  %__tmp84 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp52, i64 0, i64 0
+  %__tmp85 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp53, i64 0, i64 0
+  %__tmp86 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp54, i64 0, i64 0
+  %__tmp87 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp55, i64 0, i64 0
+  %__tmp88 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp56, i64 0, i64 0
+  %__tmp89 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp57, i64 0, i64 0
+  %__tmp90 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp58, i64 0, i64 0
+  %__tmp91 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp59, i64 0, i64 0
+  %__tmp92 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp60, i64 0, i64 0
+  %__tmp93 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp61, i64 0, i64 0
+  %__tmp94 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp62, i64 0, i64 0
+  %__tmp95 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp63, i64 0, i64 0
+  %__tmp96 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp64, i64 0, i64 0
+  %__tmp97 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp65, i64 0, i64 0
+  %__tmp98 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp66, i64 0, i64 0
+  %__tmp99 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp67, i64 0, i64 0
+  %__tmp100 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp68, i64 0, i64 0
+  %__tmp101 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp69, i64 0, i64 0
+  %__tmp102 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp70, i64 0, i64 0
+  %__tmp103 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp71, i64 0, i64 0
+  %__tmp104 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp72, i64 0, i64 0
+  %__tmp105 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp73, i64 0, i64 0
+  %__tmp106 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp74, i64 0, i64 0
+  %__tmp107 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp75, i64 0, i64 0
+  %__tmp108 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp76, i64 0, i64 0
+  %__tmp109 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp77, i64 0, i64 0
+  %__tmp110 = getelementptr inbounds [2 x i32], [2 x i32]* %__tmp78, i64 0, i64 0
+  %__tmp111 = call i32 @param32_arr(i32* %__tmp79, i32* %__tmp80, i32* %__tmp81, i32* %__tmp82, i32* %__tmp83, i32* %__tmp84, i32* %__tmp85, i32* %__tmp86, i32* %__tmp87, i32* %__tmp88, i32* %__tmp89, i32* %__tmp90, i32* %__tmp91, i32* %__tmp92, i32* %__tmp93, i32* %__tmp94, i32* %__tmp95, i32* %__tmp96, i32* %__tmp97, i32* %__tmp98, i32* %__tmp99, i32* %__tmp100, i32* %__tmp101, i32* %__tmp102, i32* %__tmp103, i32* %__tmp104, i32* %__tmp105, i32* %__tmp106, i32* %__tmp107, i32* %__tmp108, i32* %__tmp109, i32* %__tmp110)
+  call void @putint(i32 %__tmp111)
+  call void @putch(i32 10)
   ret i32 0
 }
 

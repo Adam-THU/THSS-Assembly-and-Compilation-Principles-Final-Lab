@@ -219,13 +219,13 @@ bb1:
   %__tmp20 = load i32, i32* %__tmp19, align 4
   store i32 %__tmp20, i32* %tmp.1, align 4
   %__tmp21 = load i32, i32* %tmp.1, align 4
-  %__tmp22 = call i32 @putint(i32 %__tmp21)
+  call void @putint(i32 %__tmp21)
   store i32 10, i32* %tmp.1, align 4
-  %__tmp23 = load i32, i32* %tmp.1, align 4
-  %__tmp24 = call i32 @putch(i32 %__tmp23)
-  %__tmp25 = load i32, i32* %i, align 4
-  %__tmp26 = add i32 %__tmp25, 1
-  store i32 %__tmp26, i32* %i, align 4
+  %__tmp22 = load i32, i32* %tmp.1, align 4
+  call void @putch(i32 %__tmp22)
+  %__tmp23 = load i32, i32* %i, align 4
+  %__tmp24 = add i32 %__tmp23, 1
+  store i32 %__tmp24, i32* %i, align 4
   br label %bb0
 bb2:
   ret i32 0

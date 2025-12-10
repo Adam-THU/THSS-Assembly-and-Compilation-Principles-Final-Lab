@@ -63,10 +63,10 @@ bb2:
   %__tmp9 = icmp slt i32 %__tmp8, 100
   br i1 %__tmp9, label %bb6, label %bb7
 bb6:
-  %__tmp10 = call i32 @putint(i32 1)
+  call void @putint(i32 1)
   br label %bb8
 bb7:
-  %__tmp11 = call i32 @putint(i32 0)
+  call void @putint(i32 0)
   br label %bb8
 bb8:
   ret i32 0

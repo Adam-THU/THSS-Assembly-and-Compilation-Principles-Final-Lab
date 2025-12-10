@@ -119,7 +119,7 @@ bb4:
   %__tmp17 = sext i32 %__tmp16 to i64
   %__tmp18 = getelementptr inbounds [16 x i32], [16 x i32]* %b, i64 0, i64 %__tmp17
   %__tmp19 = load i32, i32* %__tmp18, align 4
-  %__tmp20 = call i32 @putch(i32 %__tmp19)
+  call void @putch(i32 %__tmp19)
   br label %bb3
 bb5:
   ret void
@@ -141,10 +141,10 @@ bb1:
   store i32 %__tmp3, i32* %m, align 4
   %__tmp4 = load i32, i32* %m, align 4
   %__tmp5 = call i32 @my_putint(i32 %__tmp4)
-  %__tmp6 = call i32 @putch(i32 10)
-  %__tmp7 = load i32, i32* %n, align 4
-  %__tmp8 = sub i32 %__tmp7, 1
-  store i32 %__tmp8, i32* %n, align 4
+  call void @putch(i32 10)
+  %__tmp6 = load i32, i32* %n, align 4
+  %__tmp7 = sub i32 %__tmp6, 1
+  store i32 %__tmp7, i32* %n, align 4
   br label %bb0
 bb2:
   ret i32 0
