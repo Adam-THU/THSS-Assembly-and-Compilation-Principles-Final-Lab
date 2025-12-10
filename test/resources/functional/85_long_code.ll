@@ -774,175 +774,196 @@ mainEntry:
   %__tmp31 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 31
   store i32 290, i32* %__tmp31, align 4
   %t = alloca i32, align 4
-  %__tmp32 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp32, i32* %t, align 4
-  %__tmp33 = call i32 @revert([32 x i32]* %result)
-  store i32 %__tmp33, i32* %t, align 4
+  %__tmp32 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp33 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp34 = call i32 @arrCopy(i32* %__tmp32, i32* %__tmp33)
+  store i32 %__tmp34, i32* %t, align 4
+  %__tmp35 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp36 = call i32 @revert(i32* %__tmp35)
+  store i32 %__tmp36, i32* %t, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   br label %bb0
 bb0:
-  %__tmp34 = load i32, i32* %i, align 4
-  %__tmp35 = icmp slt i32 %__tmp34, 32
-  br i1 %__tmp35, label %bb1, label %bb2
+  %__tmp37 = load i32, i32* %i, align 4
+  %__tmp38 = icmp slt i32 %__tmp37, 32
+  br i1 %__tmp38, label %bb1, label %bb2
 bb1:
-  %__tmp36 = load i32, i32* %i, align 4
-  %__tmp37 = sext i32 %__tmp36 to i64
-  %__tmp38 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp37
-  %__tmp39 = load i32, i32* %__tmp38, align 4
-  store i32 %__tmp39, i32* %t, align 4
-  %__tmp40 = load i32, i32* %t, align 4
-  %__tmp41 = call i32 @putint(i32 %__tmp40)
-  %__tmp42 = load i32, i32* %i, align 4
-  %__tmp43 = add i32 %__tmp42, 1
-  store i32 %__tmp43, i32* %i, align 4
+  %__tmp39 = load i32, i32* %i, align 4
+  %__tmp40 = sext i32 %__tmp39 to i64
+  %__tmp41 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp40
+  %__tmp42 = load i32, i32* %__tmp41, align 4
+  store i32 %__tmp42, i32* %t, align 4
+  %__tmp43 = load i32, i32* %t, align 4
+  %__tmp44 = call i32 @putint(i32 %__tmp43)
+  %__tmp45 = load i32, i32* %i, align 4
+  %__tmp46 = add i32 %__tmp45, 1
+  store i32 %__tmp46, i32* %i, align 4
   br label %bb0
 bb2:
-  %__tmp44 = call i32 @bubblesort([32 x i32]* %result)
-  store i32 %__tmp44, i32* %t, align 4
+  %__tmp47 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp48 = call i32 @bubblesort(i32* %__tmp47)
+  store i32 %__tmp48, i32* %t, align 4
   store i32 0, i32* %i, align 4
   br label %bb3
 bb3:
-  %__tmp45 = load i32, i32* %i, align 4
-  %__tmp46 = icmp slt i32 %__tmp45, 32
-  br i1 %__tmp46, label %bb4, label %bb5
+  %__tmp49 = load i32, i32* %i, align 4
+  %__tmp50 = icmp slt i32 %__tmp49, 32
+  br i1 %__tmp50, label %bb4, label %bb5
 bb4:
-  %__tmp47 = load i32, i32* %i, align 4
-  %__tmp48 = sext i32 %__tmp47 to i64
-  %__tmp49 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp48
-  %__tmp50 = load i32, i32* %__tmp49, align 4
-  store i32 %__tmp50, i32* %t, align 4
-  %__tmp51 = load i32, i32* %t, align 4
-  %__tmp52 = call i32 @putint(i32 %__tmp51)
-  %__tmp53 = load i32, i32* %i, align 4
-  %__tmp54 = add i32 %__tmp53, 1
-  store i32 %__tmp54, i32* %i, align 4
+  %__tmp51 = load i32, i32* %i, align 4
+  %__tmp52 = sext i32 %__tmp51 to i64
+  %__tmp53 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp52
+  %__tmp54 = load i32, i32* %__tmp53, align 4
+  store i32 %__tmp54, i32* %t, align 4
+  %__tmp55 = load i32, i32* %t, align 4
+  %__tmp56 = call i32 @putint(i32 %__tmp55)
+  %__tmp57 = load i32, i32* %i, align 4
+  %__tmp58 = add i32 %__tmp57, 1
+  store i32 %__tmp58, i32* %i, align 4
   br label %bb3
 bb5:
-  %__tmp55 = call i32 @getMid([32 x i32]* %result)
-  store i32 %__tmp55, i32* %t, align 4
-  %__tmp56 = load i32, i32* %t, align 4
-  %__tmp57 = call i32 @putint(i32 %__tmp56)
-  %__tmp58 = call i32 @getMost([32 x i32]* %result)
-  store i32 %__tmp58, i32* %t, align 4
-  %__tmp59 = load i32, i32* %t, align 4
-  %__tmp60 = call i32 @putint(i32 %__tmp59)
-  %__tmp61 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp61, i32* %t, align 4
-  %__tmp62 = call i32 @bubblesort([32 x i32]* %result)
-  store i32 %__tmp62, i32* %t, align 4
+  %__tmp59 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp60 = call i32 @getMid(i32* %__tmp59)
+  store i32 %__tmp60, i32* %t, align 4
+  %__tmp61 = load i32, i32* %t, align 4
+  %__tmp62 = call i32 @putint(i32 %__tmp61)
+  %__tmp63 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp64 = call i32 @getMost(i32* %__tmp63)
+  store i32 %__tmp64, i32* %t, align 4
+  %__tmp65 = load i32, i32* %t, align 4
+  %__tmp66 = call i32 @putint(i32 %__tmp65)
+  %__tmp67 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp68 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp69 = call i32 @arrCopy(i32* %__tmp67, i32* %__tmp68)
+  store i32 %__tmp69, i32* %t, align 4
+  %__tmp70 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp71 = call i32 @bubblesort(i32* %__tmp70)
+  store i32 %__tmp71, i32* %t, align 4
   store i32 0, i32* %i, align 4
   br label %bb6
 bb6:
-  %__tmp63 = load i32, i32* %i, align 4
-  %__tmp64 = icmp slt i32 %__tmp63, 32
-  br i1 %__tmp64, label %bb7, label %bb8
+  %__tmp72 = load i32, i32* %i, align 4
+  %__tmp73 = icmp slt i32 %__tmp72, 32
+  br i1 %__tmp73, label %bb7, label %bb8
 bb7:
-  %__tmp65 = load i32, i32* %i, align 4
-  %__tmp66 = sext i32 %__tmp65 to i64
-  %__tmp67 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp66
-  %__tmp68 = load i32, i32* %__tmp67, align 4
-  store i32 %__tmp68, i32* %t, align 4
-  %__tmp69 = load i32, i32* %t, align 4
-  %__tmp70 = call i32 @putint(i32 %__tmp69)
-  %__tmp71 = load i32, i32* %i, align 4
-  %__tmp72 = add i32 %__tmp71, 1
-  store i32 %__tmp72, i32* %i, align 4
+  %__tmp74 = load i32, i32* %i, align 4
+  %__tmp75 = sext i32 %__tmp74 to i64
+  %__tmp76 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp75
+  %__tmp77 = load i32, i32* %__tmp76, align 4
+  store i32 %__tmp77, i32* %t, align 4
+  %__tmp78 = load i32, i32* %t, align 4
+  %__tmp79 = call i32 @putint(i32 %__tmp78)
+  %__tmp80 = load i32, i32* %i, align 4
+  %__tmp81 = add i32 %__tmp80, 1
+  store i32 %__tmp81, i32* %i, align 4
   br label %bb6
 bb8:
-  %__tmp73 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp73, i32* %t, align 4
-  %__tmp74 = call i32 @insertsort([32 x i32]* %result)
-  store i32 %__tmp74, i32* %t, align 4
+  %__tmp82 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp83 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp84 = call i32 @arrCopy(i32* %__tmp82, i32* %__tmp83)
+  store i32 %__tmp84, i32* %t, align 4
+  %__tmp85 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp86 = call i32 @insertsort(i32* %__tmp85)
+  store i32 %__tmp86, i32* %t, align 4
   store i32 0, i32* %i, align 4
   br label %bb9
 bb9:
-  %__tmp75 = load i32, i32* %i, align 4
-  %__tmp76 = icmp slt i32 %__tmp75, 32
-  br i1 %__tmp76, label %bb10, label %bb11
+  %__tmp87 = load i32, i32* %i, align 4
+  %__tmp88 = icmp slt i32 %__tmp87, 32
+  br i1 %__tmp88, label %bb10, label %bb11
 bb10:
-  %__tmp77 = load i32, i32* %i, align 4
-  %__tmp78 = sext i32 %__tmp77 to i64
-  %__tmp79 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp78
-  %__tmp80 = load i32, i32* %__tmp79, align 4
-  store i32 %__tmp80, i32* %t, align 4
-  %__tmp81 = load i32, i32* %t, align 4
-  %__tmp82 = call i32 @putint(i32 %__tmp81)
-  %__tmp83 = load i32, i32* %i, align 4
-  %__tmp84 = add i32 %__tmp83, 1
-  store i32 %__tmp84, i32* %i, align 4
+  %__tmp89 = load i32, i32* %i, align 4
+  %__tmp90 = sext i32 %__tmp89 to i64
+  %__tmp91 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp90
+  %__tmp92 = load i32, i32* %__tmp91, align 4
+  store i32 %__tmp92, i32* %t, align 4
+  %__tmp93 = load i32, i32* %t, align 4
+  %__tmp94 = call i32 @putint(i32 %__tmp93)
+  %__tmp95 = load i32, i32* %i, align 4
+  %__tmp96 = add i32 %__tmp95, 1
+  store i32 %__tmp96, i32* %i, align 4
   br label %bb9
 bb11:
-  %__tmp85 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp85, i32* %t, align 4
+  %__tmp97 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp98 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp99 = call i32 @arrCopy(i32* %__tmp97, i32* %__tmp98)
+  store i32 %__tmp99, i32* %t, align 4
   store i32 0, i32* %i, align 4
   store i32 31, i32* %t, align 4
-  %__tmp86 = load i32, i32* %i, align 4
-  %__tmp87 = load i32, i32* %t, align 4
-  %__tmp88 = call i32 @QuickSort([32 x i32]* %result, i32 %__tmp86, i32 %__tmp87)
-  store i32 %__tmp88, i32* %t, align 4
+  %__tmp100 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp101 = load i32, i32* %i, align 4
+  %__tmp102 = load i32, i32* %t, align 4
+  %__tmp103 = call i32 @QuickSort(i32* %__tmp100, i32 %__tmp101, i32 %__tmp102)
+  store i32 %__tmp103, i32* %t, align 4
   br label %bb12
 bb12:
-  %__tmp89 = load i32, i32* %i, align 4
-  %__tmp90 = icmp slt i32 %__tmp89, 32
-  br i1 %__tmp90, label %bb13, label %bb14
+  %__tmp104 = load i32, i32* %i, align 4
+  %__tmp105 = icmp slt i32 %__tmp104, 32
+  br i1 %__tmp105, label %bb13, label %bb14
 bb13:
-  %__tmp91 = load i32, i32* %i, align 4
-  %__tmp92 = sext i32 %__tmp91 to i64
-  %__tmp93 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp92
-  %__tmp94 = load i32, i32* %__tmp93, align 4
-  store i32 %__tmp94, i32* %t, align 4
-  %__tmp95 = load i32, i32* %t, align 4
-  %__tmp96 = call i32 @putint(i32 %__tmp95)
-  %__tmp97 = load i32, i32* %i, align 4
-  %__tmp98 = add i32 %__tmp97, 1
-  store i32 %__tmp98, i32* %i, align 4
+  %__tmp106 = load i32, i32* %i, align 4
+  %__tmp107 = sext i32 %__tmp106 to i64
+  %__tmp108 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp107
+  %__tmp109 = load i32, i32* %__tmp108, align 4
+  store i32 %__tmp109, i32* %t, align 4
+  %__tmp110 = load i32, i32* %t, align 4
+  %__tmp111 = call i32 @putint(i32 %__tmp110)
+  %__tmp112 = load i32, i32* %i, align 4
+  %__tmp113 = add i32 %__tmp112, 1
+  store i32 %__tmp113, i32* %i, align 4
   br label %bb12
 bb14:
-  %__tmp99 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp99, i32* %t, align 4
-  %__tmp100 = call i32 @calSum([32 x i32]* %result, i32 4)
-  store i32 %__tmp100, i32* %t, align 4
+  %__tmp114 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp115 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp116 = call i32 @arrCopy(i32* %__tmp114, i32* %__tmp115)
+  store i32 %__tmp116, i32* %t, align 4
+  %__tmp117 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp118 = call i32 @calSum(i32* %__tmp117, i32 4)
+  store i32 %__tmp118, i32* %t, align 4
   store i32 0, i32* %i, align 4
   br label %bb15
 bb15:
-  %__tmp101 = load i32, i32* %i, align 4
-  %__tmp102 = icmp slt i32 %__tmp101, 32
-  br i1 %__tmp102, label %bb16, label %bb17
+  %__tmp119 = load i32, i32* %i, align 4
+  %__tmp120 = icmp slt i32 %__tmp119, 32
+  br i1 %__tmp120, label %bb16, label %bb17
 bb16:
-  %__tmp103 = load i32, i32* %i, align 4
-  %__tmp104 = sext i32 %__tmp103 to i64
-  %__tmp105 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp104
-  %__tmp106 = load i32, i32* %__tmp105, align 4
-  store i32 %__tmp106, i32* %t, align 4
-  %__tmp107 = load i32, i32* %t, align 4
-  %__tmp108 = call i32 @putint(i32 %__tmp107)
-  %__tmp109 = load i32, i32* %i, align 4
-  %__tmp110 = add i32 %__tmp109, 1
-  store i32 %__tmp110, i32* %i, align 4
+  %__tmp121 = load i32, i32* %i, align 4
+  %__tmp122 = sext i32 %__tmp121 to i64
+  %__tmp123 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp122
+  %__tmp124 = load i32, i32* %__tmp123, align 4
+  store i32 %__tmp124, i32* %t, align 4
+  %__tmp125 = load i32, i32* %t, align 4
+  %__tmp126 = call i32 @putint(i32 %__tmp125)
+  %__tmp127 = load i32, i32* %i, align 4
+  %__tmp128 = add i32 %__tmp127, 1
+  store i32 %__tmp128, i32* %i, align 4
   br label %bb15
 bb17:
-  %__tmp111 = call i32 @arrCopy([32 x i32]* %arr, [32 x i32]* %result)
-  store i32 %__tmp111, i32* %t, align 4
-  %__tmp112 = call i32 @avgPooling([32 x i32]* %result, i32 3)
-  store i32 %__tmp112, i32* %t, align 4
+  %__tmp129 = getelementptr inbounds [32 x i32], [32 x i32]* %arr, i64 0, i64 0
+  %__tmp130 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp131 = call i32 @arrCopy(i32* %__tmp129, i32* %__tmp130)
+  store i32 %__tmp131, i32* %t, align 4
+  %__tmp132 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 0
+  %__tmp133 = call i32 @avgPooling(i32* %__tmp132, i32 3)
+  store i32 %__tmp133, i32* %t, align 4
   store i32 0, i32* %i, align 4
   br label %bb18
 bb18:
-  %__tmp113 = load i32, i32* %i, align 4
-  %__tmp114 = icmp slt i32 %__tmp113, 32
-  br i1 %__tmp114, label %bb19, label %bb20
+  %__tmp134 = load i32, i32* %i, align 4
+  %__tmp135 = icmp slt i32 %__tmp134, 32
+  br i1 %__tmp135, label %bb19, label %bb20
 bb19:
-  %__tmp115 = load i32, i32* %i, align 4
-  %__tmp116 = sext i32 %__tmp115 to i64
-  %__tmp117 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp116
-  %__tmp118 = load i32, i32* %__tmp117, align 4
-  store i32 %__tmp118, i32* %t, align 4
-  %__tmp119 = load i32, i32* %t, align 4
-  %__tmp120 = call i32 @putint(i32 %__tmp119)
-  %__tmp121 = load i32, i32* %i, align 4
-  %__tmp122 = add i32 %__tmp121, 1
-  store i32 %__tmp122, i32* %i, align 4
+  %__tmp136 = load i32, i32* %i, align 4
+  %__tmp137 = sext i32 %__tmp136 to i64
+  %__tmp138 = getelementptr inbounds [32 x i32], [32 x i32]* %result, i64 0, i64 %__tmp137
+  %__tmp139 = load i32, i32* %__tmp138, align 4
+  store i32 %__tmp139, i32* %t, align 4
+  %__tmp140 = load i32, i32* %t, align 4
+  %__tmp141 = call i32 @putint(i32 %__tmp140)
+  %__tmp142 = load i32, i32* %i, align 4
+  %__tmp143 = add i32 %__tmp142, 1
+  store i32 %__tmp143, i32* %i, align 4
   br label %bb18
 bb20:
   ret i32 0

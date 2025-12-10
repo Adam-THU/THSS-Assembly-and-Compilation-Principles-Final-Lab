@@ -277,12 +277,15 @@ mainEntry:
   store i32 5, i32* %__tmp27, align 4
   %An = alloca i32, align 4
   %Bn = alloca i32, align 4
-  %__tmp28 = call i32 @max_sum_nonadjacent([15 x i32]* %A, i32 15)
-  %__tmp29 = call i32 @putint(i32 %__tmp28)
-  %__tmp30 = call i32 @putch(i32 10)
-  %__tmp31 = call i32 @longest_common_subseq([15 x i32]* %A, i32 15, [13 x i32]* %B, i32 13)
-  %__tmp32 = call i32 @putint(i32 %__tmp31)
-  %__tmp33 = call i32 @putch(i32 10)
+  %__tmp28 = getelementptr inbounds [15 x i32], [15 x i32]* %A, i64 0, i64 0
+  %__tmp29 = call i32 @max_sum_nonadjacent(i32* %__tmp28, i32 15)
+  %__tmp30 = call i32 @putint(i32 %__tmp29)
+  %__tmp31 = call i32 @putch(i32 10)
+  %__tmp32 = getelementptr inbounds [15 x i32], [15 x i32]* %A, i64 0, i64 0
+  %__tmp33 = getelementptr inbounds [13 x i32], [13 x i32]* %B, i64 0, i64 0
+  %__tmp34 = call i32 @longest_common_subseq(i32* %__tmp32, i32 15, i32* %__tmp33, i32 13)
+  %__tmp35 = call i32 @putint(i32 %__tmp34)
+  %__tmp36 = call i32 @putch(i32 10)
   ret i32 0
 }
 

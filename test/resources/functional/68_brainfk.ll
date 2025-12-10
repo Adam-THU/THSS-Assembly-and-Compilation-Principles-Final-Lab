@@ -221,7 +221,8 @@ bb2:
 define i32 @main() {
 mainEntry:
   %__tmp0 = call i32 @read_program()
-  %__tmp1 = call i32 @interpret([32768 x i32]* @program)
+  %__tmp1 = getelementptr inbounds [32768 x i32], [32768 x i32]* @program, i64 0, i64 0
+  %__tmp2 = call i32 @interpret(i32* %__tmp1)
   ret i32 0
 }
 

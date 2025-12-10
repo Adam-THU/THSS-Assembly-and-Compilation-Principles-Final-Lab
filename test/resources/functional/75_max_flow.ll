@@ -339,25 +339,26 @@ max_flowEntry:
 bb0:
   br label %bb1
 bb1:
-  %__tmp0 = call i32 @my_memset([10 x i32]* @used, i32 0, i32 10)
+  %__tmp0 = getelementptr inbounds [10 x i32], [10 x i32]* @used, i64 0, i64 0
+  %__tmp1 = call i32 @my_memset(i32* %__tmp0, i32 0, i32 10)
   %f = alloca i32, align 4
-  %__tmp1 = load i32, i32* %s_arg, align 4
-  %__tmp2 = load i32, i32* %t_arg, align 4
-  %__tmp3 = call i32 @dfs(i32 %__tmp1, i32 %__tmp2, i32 1879048192)
-  store i32 %__tmp3, i32* %f, align 4
-  %__tmp4 = load i32, i32* %f, align 4
-  %__tmp5 = icmp eq i32 %__tmp4, 0
-  br i1 %__tmp5, label %bb3, label %bb4
+  %__tmp2 = load i32, i32* %s_arg, align 4
+  %__tmp3 = load i32, i32* %t_arg, align 4
+  %__tmp4 = call i32 @dfs(i32 %__tmp2, i32 %__tmp3, i32 1879048192)
+  store i32 %__tmp4, i32* %f, align 4
+  %__tmp5 = load i32, i32* %f, align 4
+  %__tmp6 = icmp eq i32 %__tmp5, 0
+  br i1 %__tmp6, label %bb3, label %bb4
 bb3:
-  %__tmp6 = load i32, i32* %flow, align 4
-  ret i32 %__tmp6
+  %__tmp7 = load i32, i32* %flow, align 4
+  ret i32 %__tmp7
 bb4:
   br label %bb5
 bb5:
-  %__tmp7 = load i32, i32* %flow, align 4
-  %__tmp8 = load i32, i32* %f, align 4
-  %__tmp9 = add i32 %__tmp7, %__tmp8
-  store i32 %__tmp9, i32* %flow, align 4
+  %__tmp8 = load i32, i32* %flow, align 4
+  %__tmp9 = load i32, i32* %f, align 4
+  %__tmp10 = add i32 %__tmp8, %__tmp9
+  store i32 %__tmp10, i32* %flow, align 4
   br label %bb0
 bb2:
   ret i32 0
@@ -371,35 +372,36 @@ mainEntry:
   store i32 %__tmp0, i32* %V, align 4
   %__tmp1 = call i32 @getint()
   store i32 %__tmp1, i32* %E, align 4
-  %__tmp2 = call i32 @my_memset([10 x i32]* @size, i32 0, i32 10)
+  %__tmp2 = getelementptr inbounds [10 x i32], [10 x i32]* @size, i64 0, i64 0
+  %__tmp3 = call i32 @my_memset(i32* %__tmp2, i32 0, i32 10)
   br label %bb0
 bb0:
-  %__tmp3 = load i32, i32* %E, align 4
-  %__tmp4 = icmp sgt i32 %__tmp3, 0
-  br i1 %__tmp4, label %bb1, label %bb2
+  %__tmp4 = load i32, i32* %E, align 4
+  %__tmp5 = icmp sgt i32 %__tmp4, 0
+  br i1 %__tmp5, label %bb1, label %bb2
 bb1:
   %u = alloca i32, align 4
   %v = alloca i32, align 4
-  %__tmp5 = call i32 @getint()
-  store i32 %__tmp5, i32* %u, align 4
   %__tmp6 = call i32 @getint()
-  store i32 %__tmp6, i32* %v, align 4
-  %c = alloca i32, align 4
+  store i32 %__tmp6, i32* %u, align 4
   %__tmp7 = call i32 @getint()
-  store i32 %__tmp7, i32* %c, align 4
-  %__tmp8 = load i32, i32* %u, align 4
-  %__tmp9 = load i32, i32* %v, align 4
-  %__tmp10 = load i32, i32* %c, align 4
-  %__tmp11 = call i32 @add_node(i32 %__tmp8, i32 %__tmp9, i32 %__tmp10)
-  %__tmp12 = load i32, i32* %E, align 4
-  %__tmp13 = sub i32 %__tmp12, 1
-  store i32 %__tmp13, i32* %E, align 4
+  store i32 %__tmp7, i32* %v, align 4
+  %c = alloca i32, align 4
+  %__tmp8 = call i32 @getint()
+  store i32 %__tmp8, i32* %c, align 4
+  %__tmp9 = load i32, i32* %u, align 4
+  %__tmp10 = load i32, i32* %v, align 4
+  %__tmp11 = load i32, i32* %c, align 4
+  %__tmp12 = call i32 @add_node(i32 %__tmp9, i32 %__tmp10, i32 %__tmp11)
+  %__tmp13 = load i32, i32* %E, align 4
+  %__tmp14 = sub i32 %__tmp13, 1
+  store i32 %__tmp14, i32* %E, align 4
   br label %bb0
 bb2:
-  %__tmp14 = load i32, i32* %V, align 4
-  %__tmp15 = call i32 @max_flow(i32 1, i32 %__tmp14)
-  %__tmp16 = call i32 @putint(i32 %__tmp15)
-  %__tmp17 = call i32 @putch(i32 10)
+  %__tmp15 = load i32, i32* %V, align 4
+  %__tmp16 = call i32 @max_flow(i32 1, i32 %__tmp15)
+  %__tmp17 = call i32 @putint(i32 %__tmp16)
+  %__tmp18 = call i32 @putch(i32 10)
   ret i32 0
 }
 

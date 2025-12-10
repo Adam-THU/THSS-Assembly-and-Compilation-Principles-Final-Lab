@@ -868,12 +868,14 @@ public:
         
         // 对指针形参，先加载出真实的指针值
         std::shared_ptr<Type> currentElementType = sym->type;
+        bool isLoadedPointer = false;  // 标记是否已经加载了指针参数
         if (auto ptrType = std::dynamic_pointer_cast<PointerType>(currentElementType)) {
             std::string tmpLoad = genTmpVar();
             std::string ptrTypeStr = getTypeLLVMString(ptrType);
             currentBB->addInstruction("%" + tmpLoad + " = load " + ptrTypeStr + ", " + ptrTypeStr + "* " + addr + ", align 4");
             addr = "%" + tmpLoad;
             currentElementType = ptrType->pointee;
+            isLoadedPointer = true;  // 标记已加载指针
         }
         
         // 处理数组索引 [exp]
@@ -902,10 +904,21 @@ public:
             std::string tmp = genTmpVar();
             
             if (auto arrType = std::dynamic_pointer_cast<ArrayType>(currentElementType)) {
-                // 当前是数组，GEP 格式：getelementptr <arrayType>, <arrayType>* <ptr>, i64 0, i64 <index>
+                // 当前是数组
                 std::string currentTypeStr = getTypeLLVMString(arrType);
-                currentBB->addInstruction("%"+tmp+" = getelementptr inbounds "+currentTypeStr+", "+currentTypeStr+"* "+currentAddr+", i64 0, i64 "+indexStr);
-                currentElementType = getArrayElementType(currentElementType);
+                
+                if (isLoadedPointer && i == 0) {
+                    // 对于已加载的指针参数，第一次索引不需要 i64 0
+                    // GEP 格式：getelementptr <arrayType>, <arrayType>* <ptr>, i64 <index>
+                    // 结果类型仍然是 <arrayType>*，元素类型不变
+                    currentBB->addInstruction("%"+tmp+" = getelementptr inbounds "+currentTypeStr+", "+currentTypeStr+"* "+currentAddr+", i64 "+indexStr);
+                    isLoadedPointer = false;  // 后续维度恢复正常
+                    // 元素类型不变，因为只是移动指针位置
+                } else {
+                    // 本地数组，GEP 格式：getelementptr <arrayType>, <arrayType>* <ptr>, i64 0, i64 <index>
+                    currentBB->addInstruction("%"+tmp+" = getelementptr inbounds "+currentTypeStr+", "+currentTypeStr+"* "+currentAddr+", i64 0, i64 "+indexStr);
+                    currentElementType = getArrayElementType(currentElementType);
+                }
             } else if (auto ptrType = std::dynamic_pointer_cast<PointerType>(currentElementType)) {
                 // 当前是指针，GEP 格式：getelementptr <pointeeType>, <pointeeType>* <ptr>, i64 <index>
                 // 只有一个索引，不加 i64 0
@@ -1176,8 +1189,41 @@ public:
             IRValue addr = getLValAddress(ctx->lVal());
 
             if (needDecay) {
-                // 数组/指针不带下标，返回指针值供上传参
-                return addr;
+                // 数组/指针不带下标，需要decay
+                if (auto arrType = std::dynamic_pointer_cast<ArrayType>(sym->type)) {
+                    // 数组decay为指向第一个元素的指针
+                    // int a[10] → i32*
+                    // int a[10][20] → [20 x i32]*
+                    std::string tmp = genTmpVar();
+                    std::string arrTypeStr = getTypeLLVMString(arrType);
+                    currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + arrTypeStr + 
+                                            ", " + arrTypeStr + "* " + addr.name + ", i64 0, i64 0");
+                    
+                    // 计算decay后的元素类型
+                    std::shared_ptr<Type> decayedType;
+                    if (arrType->dimensions.size() > 1) {
+                        // 多维数组，去掉第一维
+                        std::vector<int> newDims(arrType->dimensions.begin() + 1, arrType->dimensions.end());
+                        decayedType = std::make_shared<PointerType>(
+                            std::make_shared<ArrayType>(arrType->elementType, newDims));
+                    } else {
+                        // 一维数组，decay为元素指针
+                        decayedType = std::make_shared<PointerType>(arrType->elementType);
+                    }
+                    return IRValue(tmp, decayedType);
+                } else {
+                    // 指针参数，已经是指针了
+                    return addr;
+                }
+            }
+            
+            // 检查返回的类型：如果是指向数组或指针的指针，也应该返回地址不load
+            // 例如 a[17] 返回 [67 x i32]* 类型，应该传递地址而不是load
+            if (auto ptrType = std::dynamic_pointer_cast<PointerType>(addr.type)) {
+                if (ptrType->pointee->isArray() || ptrType->pointee->isPointer()) {
+                    // 指向数组或指针的指针，返回地址
+                    return addr;
+                }
             }
             
             // 生成加载指令

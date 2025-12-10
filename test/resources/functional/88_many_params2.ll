@@ -39,10 +39,10 @@ bb1:
   %__tmp2 = load [59 x i32]*, [59 x i32]** %b_arg, align 4
   %__tmp3 = load i32, i32* %a_arg, align 4
   %__tmp4 = sext i32 %__tmp3 to i64
-  %__tmp5 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp2, i64 0, i64 %__tmp4
+  %__tmp5 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp2, i64 %__tmp4
   %__tmp6 = load i32, i32* %index, align 4
   %__tmp7 = sext i32 %__tmp6 to i64
-  %__tmp8 = getelementptr inbounds i32, i32* %__tmp5, i64 %__tmp7
+  %__tmp8 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp5, i64 0, i64 %__tmp7
   %__tmp9 = load i32, i32* %__tmp8, align 4
   %__tmp10 = call i32 @putint(i32 %__tmp9)
   %__tmp11 = load i32, i32* %index, align 4
@@ -123,11 +123,11 @@ mainEntry:
   %__tmp18 = getelementptr inbounds [61 x [67 x i32]], [61 x [67 x i32]]* %a, i64 0, i64 17
   %__tmp19 = getelementptr inbounds [67 x i32], [67 x i32]* %__tmp18, i64 0, i64 1
   %__tmp20 = load i32, i32* %__tmp19, align 4
-  %__tmp21 = getelementptr inbounds [61 x [67 x i32]], [61 x [67 x i32]]* %a, i64 0, i64 17
-  %__tmp22 = getelementptr inbounds [67 x i32], [67 x i32]* %__tmp21, i64 0, i64 3
-  %__tmp23 = load i32, i32* %__tmp22, align 4
-  %__tmp24 = getelementptr inbounds [61 x [67 x i32]], [61 x [67 x i32]]* %a, i64 0, i64 17
-  %__tmp25 = load i32, i32* %__tmp24, align 4
+  %__tmp21 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 0
+  %__tmp22 = getelementptr inbounds [61 x [67 x i32]], [61 x [67 x i32]]* %a, i64 0, i64 17
+  %__tmp23 = getelementptr inbounds [67 x i32], [67 x i32]* %__tmp22, i64 0, i64 3
+  %__tmp24 = load i32, i32* %__tmp23, align 4
+  %__tmp25 = getelementptr inbounds [61 x [67 x i32]], [61 x [67 x i32]]* %a, i64 0, i64 17
   %__tmp26 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
   %__tmp27 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp26, i64 0, i64 3
   %__tmp28 = load i32, i32* %__tmp27, align 4
@@ -135,35 +135,34 @@ mainEntry:
   %__tmp30 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp29, i64 0, i64 0
   %__tmp31 = load i32, i32* %__tmp30, align 4
   %__tmp32 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
-  %__tmp33 = load i32, i32* %__tmp32, align 4
-  %__tmp34 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 34
-  %__tmp35 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp34, i64 0, i64 4
-  %__tmp36 = load i32, i32* %__tmp35, align 4
-  %__tmp37 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 51
-  %__tmp38 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp37, i64 0, i64 18
-  %__tmp39 = load i32, i32* %__tmp38, align 4
-  %__tmp40 = call i32 @func(i32 %__tmp20, [53 x [59 x i32]]* %b, i32 %__tmp23, i32 %__tmp25, i32 %__tmp28, i32 %__tmp31, i32 %__tmp33, i32 %__tmp36, i32 %__tmp39)
-  %__tmp41 = mul i32 %__tmp40, 3
-  store i32 %__tmp41, i32* %ret, align 4
+  %__tmp33 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 34
+  %__tmp34 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp33, i64 0, i64 4
+  %__tmp35 = load i32, i32* %__tmp34, align 4
+  %__tmp36 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 51
+  %__tmp37 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp36, i64 0, i64 18
+  %__tmp38 = load i32, i32* %__tmp37, align 4
+  %__tmp39 = call i32 @func(i32 %__tmp20, [59 x i32]* %__tmp21, i32 %__tmp24, [67 x i32]* %__tmp25, i32 %__tmp28, i32 %__tmp31, [59 x i32]* %__tmp32, i32 %__tmp35, i32 %__tmp38)
+  %__tmp40 = mul i32 %__tmp39, 3
+  store i32 %__tmp40, i32* %ret, align 4
   br label %bb0
 bb0:
-  %__tmp42 = load i32, i32* %ret, align 4
-  %__tmp43 = icmp sge i32 %__tmp42, 0
-  br i1 %__tmp43, label %bb1, label %bb2
+  %__tmp41 = load i32, i32* %ret, align 4
+  %__tmp42 = icmp sge i32 %__tmp41, 0
+  br i1 %__tmp42, label %bb1, label %bb2
 bb1:
-  %__tmp44 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
-  %__tmp45 = load i32, i32* %ret, align 4
-  %__tmp46 = sext i32 %__tmp45 to i64
-  %__tmp47 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp44, i64 0, i64 %__tmp46
-  %__tmp48 = load i32, i32* %__tmp47, align 4
-  %__tmp49 = call i32 @putint(i32 %__tmp48)
-  %__tmp50 = call i32 @putch(i32 32)
-  %__tmp51 = load i32, i32* %ret, align 4
-  %__tmp52 = sub i32 %__tmp51, 1
-  store i32 %__tmp52, i32* %ret, align 4
+  %__tmp43 = getelementptr inbounds [53 x [59 x i32]], [53 x [59 x i32]]* %b, i64 0, i64 6
+  %__tmp44 = load i32, i32* %ret, align 4
+  %__tmp45 = sext i32 %__tmp44 to i64
+  %__tmp46 = getelementptr inbounds [59 x i32], [59 x i32]* %__tmp43, i64 0, i64 %__tmp45
+  %__tmp47 = load i32, i32* %__tmp46, align 4
+  %__tmp48 = call i32 @putint(i32 %__tmp47)
+  %__tmp49 = call i32 @putch(i32 32)
+  %__tmp50 = load i32, i32* %ret, align 4
+  %__tmp51 = sub i32 %__tmp50, 1
+  store i32 %__tmp51, i32* %ret, align 4
   br label %bb0
 bb2:
-  %__tmp53 = call i32 @putch(i32 10)
+  %__tmp52 = call i32 @putch(i32 10)
   ret i32 0
 }
 

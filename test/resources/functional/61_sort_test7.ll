@@ -190,15 +190,13 @@ define i32 @main() {
 mainEntry:
   %n = alloca i32, align 4
   %__tmp0 = getelementptr inbounds [2 x [100 x i32]], [2 x [100 x i32]]* @buf, i64 0, i64 0
-  %__tmp1 = load i32, i32* %__tmp0, align 4
-  %__tmp2 = call i32 @getarray(i32 %__tmp1)
-  store i32 %__tmp2, i32* %n, align 4
-  %__tmp3 = load i32, i32* %n, align 4
-  %__tmp4 = call i32 @merge_sort(i32 0, i32 %__tmp3)
-  %__tmp5 = load i32, i32* %n, align 4
-  %__tmp6 = getelementptr inbounds [2 x [100 x i32]], [2 x [100 x i32]]* @buf, i64 0, i64 0
-  %__tmp7 = load i32, i32* %__tmp6, align 4
-  %__tmp8 = call i32 @putarray(i32 %__tmp5, i32 %__tmp7)
+  %__tmp1 = call i32 @getarray([100 x i32]* %__tmp0)
+  store i32 %__tmp1, i32* %n, align 4
+  %__tmp2 = load i32, i32* %n, align 4
+  %__tmp3 = call i32 @merge_sort(i32 0, i32 %__tmp2)
+  %__tmp4 = load i32, i32* %n, align 4
+  %__tmp5 = getelementptr inbounds [2 x [100 x i32]], [2 x [100 x i32]]* @buf, i64 0, i64 0
+  %__tmp6 = call i32 @putarray(i32 %__tmp4, [100 x i32]* %__tmp5)
   ret i32 0
 }
 

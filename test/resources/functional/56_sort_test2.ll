@@ -110,29 +110,30 @@ mainEntry:
   %__tmp9 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 9
   store i32 8, i32* %__tmp9, align 4
   %i = alloca i32, align 4
-  %__tmp10 = call i32 @insertsort([10 x i32]* %a)
-  store i32 %__tmp10, i32* %i, align 4
+  %__tmp10 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 0
+  %__tmp11 = call i32 @insertsort(i32* %__tmp10)
+  store i32 %__tmp11, i32* %i, align 4
   br label %bb0
 bb0:
-  %__tmp11 = load i32, i32* %i, align 4
-  %__tmp12 = load i32, i32* @n, align 4
-  %__tmp13 = icmp slt i32 %__tmp11, %__tmp12
-  br i1 %__tmp13, label %bb1, label %bb2
+  %__tmp12 = load i32, i32* %i, align 4
+  %__tmp13 = load i32, i32* @n, align 4
+  %__tmp14 = icmp slt i32 %__tmp12, %__tmp13
+  br i1 %__tmp14, label %bb1, label %bb2
 bb1:
   %tmp = alloca i32, align 4
-  %__tmp14 = load i32, i32* %i, align 4
-  %__tmp15 = sext i32 %__tmp14 to i64
-  %__tmp16 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp15
-  %__tmp17 = load i32, i32* %__tmp16, align 4
-  store i32 %__tmp17, i32* %tmp, align 4
-  %__tmp18 = load i32, i32* %tmp, align 4
-  %__tmp19 = call i32 @putint(i32 %__tmp18)
+  %__tmp15 = load i32, i32* %i, align 4
+  %__tmp16 = sext i32 %__tmp15 to i64
+  %__tmp17 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp16
+  %__tmp18 = load i32, i32* %__tmp17, align 4
+  store i32 %__tmp18, i32* %tmp, align 4
+  %__tmp19 = load i32, i32* %tmp, align 4
+  %__tmp20 = call i32 @putint(i32 %__tmp19)
   store i32 10, i32* %tmp, align 4
-  %__tmp20 = load i32, i32* %tmp, align 4
-  %__tmp21 = call i32 @putch(i32 %__tmp20)
-  %__tmp22 = load i32, i32* %i, align 4
-  %__tmp23 = add i32 %__tmp22, 1
-  store i32 %__tmp23, i32* %i, align 4
+  %__tmp21 = load i32, i32* %tmp, align 4
+  %__tmp22 = call i32 @putch(i32 %__tmp21)
+  %__tmp23 = load i32, i32* %i, align 4
+  %__tmp24 = add i32 %__tmp23, 1
+  store i32 %__tmp24, i32* %i, align 4
   br label %bb0
 bb2:
   ret i32 0

@@ -73,13 +73,12 @@ mainEntry:
   %__tmp19 = getelementptr inbounds [4 x i32], [4 x i32]* %__tmp18, i64 0, i64 1
   store i32 4, i32* %__tmp19, align 4
   %__tmp20 = getelementptr inbounds [1024 x [4 x i32]], [1024 x [4 x i32]]* %c, i64 0, i64 0
-  %__tmp21 = load i32, i32* %__tmp20, align 4
-  %__tmp22 = call i32 @f1(i32 %__tmp21)
-  %__tmp23 = call i32 @putint(i32 %__tmp22)
-  %__tmp24 = call i32 @putch(i32 10)
-  %__tmp25 = getelementptr inbounds [1024 x [4 x i32]], [1024 x [4 x i32]]* %c, i64 0, i64 2
-  %__tmp26 = getelementptr inbounds [4 x i32], [4 x i32]* %__tmp25, i64 0, i64 0
-  %__tmp27 = load i32, i32* %__tmp26, align 4
-  ret i32 %__tmp27
+  %__tmp21 = call i32 @f1([4 x i32]* %__tmp20)
+  %__tmp22 = call i32 @putint(i32 %__tmp21)
+  %__tmp23 = call i32 @putch(i32 10)
+  %__tmp24 = getelementptr inbounds [1024 x [4 x i32]], [1024 x [4 x i32]]* %c, i64 0, i64 2
+  %__tmp25 = getelementptr inbounds [4 x i32], [4 x i32]* %__tmp24, i64 0, i64 0
+  %__tmp26 = load i32, i32* %__tmp25, align 4
+  ret i32 %__tmp26
 }
 

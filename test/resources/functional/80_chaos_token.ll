@@ -45,7 +45,8 @@ bb2:
 
 define i32 @main() {
 mainEntry:
-  %__tmp0 = call i32 @putstr([100 x i32]* @__HELLO)
+  %__tmp0 = getelementptr inbounds [100 x i32], [100 x i32]* @__HELLO, i64 0, i64 0
+  %__tmp1 = call i32 @putstr(i32* %__tmp0)
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   br label %bb0
@@ -53,42 +54,42 @@ bb0:
   br label %bb1
 bb1:
   %_ = alloca i32, align 4
-  %__tmp1 = load i32, i32* %i, align 4
-  %__tmp2 = sdiv i32 %__tmp1, 6
-  store i32 %__tmp2, i32* %_, align 4
+  %__tmp2 = load i32, i32* %i, align 4
+  %__tmp3 = sdiv i32 %__tmp2, 6
+  store i32 %__tmp3, i32* %_, align 4
   %__ = alloca i32, align 4
-  %__tmp3 = load i32, i32* %i, align 4
-  %__tmp4 = srem i32 %__tmp3, 6
-  store i32 %__tmp4, i32* %__, align 4
-  %__tmp5 = load i32, i32* %_, align 4
-  %__tmp6 = load i32, i32* %__, align 4
-  %__tmp7 = icmp ne i32 %__tmp5, %__tmp6
-  br i1 %__tmp7, label %bb3, label %bb4
+  %__tmp4 = load i32, i32* %i, align 4
+  %__tmp5 = srem i32 %__tmp4, 6
+  store i32 %__tmp5, i32* %__, align 4
+  %__tmp6 = load i32, i32* %_, align 4
+  %__tmp7 = load i32, i32* %__, align 4
+  %__tmp8 = icmp ne i32 %__tmp6, %__tmp7
+  br i1 %__tmp8, label %bb3, label %bb4
 bb3:
-  %__tmp8 = load i32, i32* %_, align 4
-  %__tmp9 = sext i32 %__tmp8 to i64
-  %__tmp10 = getelementptr inbounds [6 x [50 x i32]], [6 x [50 x i32]]* @N4__mE___, i64 0, i64 %__tmp9
-  %__tmp11 = load i32, i32* %__tmp10, align 4
-  %__tmp12 = call i32 @putstr(i32 %__tmp11)
-  %__tmp13 = call i32 @putstr([40 x i32]* @saY_HeI10_To)
-  %__tmp14 = load i32, i32* %__, align 4
-  %__tmp15 = sext i32 %__tmp14 to i64
-  %__tmp16 = getelementptr inbounds [6 x [50 x i32]], [6 x [50 x i32]]* @N4__mE___, i64 0, i64 %__tmp15
-  %__tmp17 = load i32, i32* %__tmp16, align 4
-  %__tmp18 = call i32 @putstr(i32 %__tmp17)
-  %__tmp19 = call i32 @putstr([5 x i32]* @RET)
+  %__tmp9 = load i32, i32* %_, align 4
+  %__tmp10 = sext i32 %__tmp9 to i64
+  %__tmp11 = getelementptr inbounds [6 x [50 x i32]], [6 x [50 x i32]]* @N4__mE___, i64 0, i64 %__tmp10
+  %__tmp12 = call i32 @putstr([50 x i32]* %__tmp11)
+  %__tmp13 = getelementptr inbounds [40 x i32], [40 x i32]* @saY_HeI10_To, i64 0, i64 0
+  %__tmp14 = call i32 @putstr(i32* %__tmp13)
+  %__tmp15 = load i32, i32* %__, align 4
+  %__tmp16 = sext i32 %__tmp15 to i64
+  %__tmp17 = getelementptr inbounds [6 x [50 x i32]], [6 x [50 x i32]]* @N4__mE___, i64 0, i64 %__tmp16
+  %__tmp18 = call i32 @putstr([50 x i32]* %__tmp17)
+  %__tmp19 = getelementptr inbounds [5 x i32], [5 x i32]* @RET, i64 0, i64 0
+  %__tmp20 = call i32 @putstr(i32* %__tmp19)
   br label %bb5
 bb4:
   br label %bb5
 bb5:
-  %__tmp20 = load i32, i32* %i, align 4
-  %__tmp21 = mul i32 %__tmp20, 17
-  %__tmp22 = add i32 %__tmp21, 23
-  %__tmp23 = srem i32 %__tmp22, 32
-  store i32 %__tmp23, i32* %i, align 4
-  %__tmp24 = load i32, i32* %i, align 4
-  %__tmp25 = icmp eq i32 %__tmp24, 0
-  br i1 %__tmp25, label %bb6, label %bb7
+  %__tmp21 = load i32, i32* %i, align 4
+  %__tmp22 = mul i32 %__tmp21, 17
+  %__tmp23 = add i32 %__tmp22, 23
+  %__tmp24 = srem i32 %__tmp23, 32
+  store i32 %__tmp24, i32* %i, align 4
+  %__tmp25 = load i32, i32* %i, align 4
+  %__tmp26 = icmp eq i32 %__tmp25, 0
+  br i1 %__tmp26, label %bb6, label %bb7
 bb6:
   br label %bb2
 bb7:

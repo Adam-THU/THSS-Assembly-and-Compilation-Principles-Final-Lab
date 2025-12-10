@@ -333,105 +333,120 @@ bb0:
 bb1:
   br label %bb2
 bb2:
-  %__tmp3 = load i32, i32* @num, align 4
-  %__tmp4 = call i32 @stack_push([256 x i32]* %oprs, i32 %__tmp3)
-  %__tmp5 = call i32 @next_token()
+  %__tmp3 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp4 = load i32, i32* @num, align 4
+  %__tmp5 = call i32 @stack_push(i32* %__tmp3, i32 %__tmp4)
+  %__tmp6 = call i32 @next_token()
   br label %bb3
 bb3:
-  %__tmp6 = load i32, i32* @cur_token, align 4
-  %__tmp7 = icmp eq i32 %__tmp6, 1
-  br i1 %__tmp7, label %bb4, label %bb5
+  %__tmp7 = load i32, i32* @cur_token, align 4
+  %__tmp8 = icmp eq i32 %__tmp7, 1
+  br i1 %__tmp8, label %bb4, label %bb5
 bb4:
   %op = alloca i32, align 4
-  %__tmp8 = load i32, i32* @other, align 4
-  store i32 %__tmp8, i32* %op, align 4
-  %__tmp9 = load i32, i32* %op, align 4
-  %__tmp10 = call i32 @get_op_prec(i32 %__tmp9)
-  %__tmp11 = icmp eq i32 %__tmp10, 0
-  %__tmp12 = zext i1 %__tmp11 to i32
-  %__tmp13 = trunc i32 %__tmp12 to i1
-  br i1 %__tmp13, label %bb6, label %bb7
+  %__tmp9 = load i32, i32* @other, align 4
+  store i32 %__tmp9, i32* %op, align 4
+  %__tmp10 = load i32, i32* %op, align 4
+  %__tmp11 = call i32 @get_op_prec(i32 %__tmp10)
+  %__tmp12 = icmp eq i32 %__tmp11, 0
+  %__tmp13 = zext i1 %__tmp12 to i32
+  %__tmp14 = trunc i32 %__tmp13 to i1
+  br i1 %__tmp14, label %bb6, label %bb7
 bb6:
   br label %bb5
 bb7:
   br label %bb8
 bb8:
-  %__tmp14 = call i32 @next_token()
+  %__tmp15 = call i32 @next_token()
   br label %bb9
 bb9:
-  %__tmp15 = call i32 @stack_size([256 x i32]* %ops)
-  %__tmp16 = icmp ne i32 %__tmp15, 0
-  br i1 %__tmp16, label %bb12, label %bb14
+  %__tmp16 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp17 = call i32 @stack_size(i32* %__tmp16)
+  %__tmp18 = icmp ne i32 %__tmp17, 0
+  br i1 %__tmp18, label %bb12, label %bb14
 bb14:
   br label %bb13
 bb12:
-  %__tmp17 = call i32 @stack_peek([256 x i32]* %ops)
-  %__tmp18 = call i32 @get_op_prec(i32 %__tmp17)
-  %__tmp19 = load i32, i32* %op, align 4
-  %__tmp20 = call i32 @get_op_prec(i32 %__tmp19)
-  %__tmp21 = icmp sge i32 %__tmp18, %__tmp20
+  %__tmp19 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp20 = call i32 @stack_peek(i32* %__tmp19)
+  %__tmp21 = call i32 @get_op_prec(i32 %__tmp20)
+  %__tmp22 = load i32, i32* %op, align 4
+  %__tmp23 = call i32 @get_op_prec(i32 %__tmp22)
+  %__tmp24 = icmp sge i32 %__tmp21, %__tmp23
   br label %bb13
 bb13:
-  %__tmp22 = phi i1 [ 0, %bb14 ], [ %__tmp21, %bb12 ]
-  br i1 %__tmp22, label %bb10, label %bb11
+  %__tmp25 = phi i1 [ 0, %bb14 ], [ %__tmp24, %bb12 ]
+  br i1 %__tmp25, label %bb10, label %bb11
 bb10:
   %cur_op = alloca i32, align 4
-  %__tmp23 = call i32 @stack_pop([256 x i32]* %ops)
-  store i32 %__tmp23, i32* %cur_op, align 4
+  %__tmp26 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp27 = call i32 @stack_pop(i32* %__tmp26)
+  store i32 %__tmp27, i32* %cur_op, align 4
   %rhs = alloca i32, align 4
-  %__tmp24 = call i32 @stack_pop([256 x i32]* %oprs)
-  store i32 %__tmp24, i32* %rhs, align 4
+  %__tmp28 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp29 = call i32 @stack_pop(i32* %__tmp28)
+  store i32 %__tmp29, i32* %rhs, align 4
   %lhs = alloca i32, align 4
-  %__tmp25 = call i32 @stack_pop([256 x i32]* %oprs)
-  store i32 %__tmp25, i32* %lhs, align 4
-  %__tmp26 = load i32, i32* %cur_op, align 4
-  %__tmp27 = load i32, i32* %lhs, align 4
-  %__tmp28 = load i32, i32* %rhs, align 4
-  %__tmp29 = call i32 @eval_op(i32 %__tmp26, i32 %__tmp27, i32 %__tmp28)
-  %__tmp30 = call i32 @stack_push([256 x i32]* %oprs, i32 %__tmp29)
+  %__tmp30 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp31 = call i32 @stack_pop(i32* %__tmp30)
+  store i32 %__tmp31, i32* %lhs, align 4
+  %__tmp32 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp33 = load i32, i32* %cur_op, align 4
+  %__tmp34 = load i32, i32* %lhs, align 4
+  %__tmp35 = load i32, i32* %rhs, align 4
+  %__tmp36 = call i32 @eval_op(i32 %__tmp33, i32 %__tmp34, i32 %__tmp35)
+  %__tmp37 = call i32 @stack_push(i32* %__tmp32, i32 %__tmp36)
   br label %bb9
 bb11:
-  %__tmp31 = load i32, i32* %op, align 4
-  %__tmp32 = call i32 @stack_push([256 x i32]* %ops, i32 %__tmp31)
-  %__tmp33 = load i32, i32* @cur_token, align 4
-  %__tmp34 = icmp ne i32 %__tmp33, 0
-  br i1 %__tmp34, label %bb15, label %bb16
+  %__tmp38 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp39 = load i32, i32* %op, align 4
+  %__tmp40 = call i32 @stack_push(i32* %__tmp38, i32 %__tmp39)
+  %__tmp41 = load i32, i32* @cur_token, align 4
+  %__tmp42 = icmp ne i32 %__tmp41, 0
+  br i1 %__tmp42, label %bb15, label %bb16
 bb15:
-  %__tmp35 = call i32 @panic()
-  ret i32 %__tmp35
+  %__tmp43 = call i32 @panic()
+  ret i32 %__tmp43
 bb16:
   br label %bb17
 bb17:
-  %__tmp36 = load i32, i32* @num, align 4
-  %__tmp37 = call i32 @stack_push([256 x i32]* %oprs, i32 %__tmp36)
-  %__tmp38 = call i32 @next_token()
+  %__tmp44 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp45 = load i32, i32* @num, align 4
+  %__tmp46 = call i32 @stack_push(i32* %__tmp44, i32 %__tmp45)
+  %__tmp47 = call i32 @next_token()
   br label %bb3
 bb5:
-  %__tmp39 = call i32 @next_token()
+  %__tmp48 = call i32 @next_token()
   br label %bb18
 bb18:
-  %__tmp40 = call i32 @stack_size([256 x i32]* %ops)
-  %__tmp41 = trunc i32 %__tmp40 to i1
-  br i1 %__tmp41, label %bb19, label %bb20
+  %__tmp49 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp50 = call i32 @stack_size(i32* %__tmp49)
+  %__tmp51 = trunc i32 %__tmp50 to i1
+  br i1 %__tmp51, label %bb19, label %bb20
 bb19:
   %cur_op.1 = alloca i32, align 4
-  %__tmp42 = call i32 @stack_pop([256 x i32]* %ops)
-  store i32 %__tmp42, i32* %cur_op.1, align 4
+  %__tmp52 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
+  %__tmp53 = call i32 @stack_pop(i32* %__tmp52)
+  store i32 %__tmp53, i32* %cur_op.1, align 4
   %rhs.1 = alloca i32, align 4
-  %__tmp43 = call i32 @stack_pop([256 x i32]* %oprs)
-  store i32 %__tmp43, i32* %rhs.1, align 4
+  %__tmp54 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp55 = call i32 @stack_pop(i32* %__tmp54)
+  store i32 %__tmp55, i32* %rhs.1, align 4
   %lhs.1 = alloca i32, align 4
-  %__tmp44 = call i32 @stack_pop([256 x i32]* %oprs)
-  store i32 %__tmp44, i32* %lhs.1, align 4
-  %__tmp45 = load i32, i32* %cur_op.1, align 4
-  %__tmp46 = load i32, i32* %lhs.1, align 4
-  %__tmp47 = load i32, i32* %rhs.1, align 4
-  %__tmp48 = call i32 @eval_op(i32 %__tmp45, i32 %__tmp46, i32 %__tmp47)
-  %__tmp49 = call i32 @stack_push([256 x i32]* %oprs, i32 %__tmp48)
+  %__tmp56 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp57 = call i32 @stack_pop(i32* %__tmp56)
+  store i32 %__tmp57, i32* %lhs.1, align 4
+  %__tmp58 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp59 = load i32, i32* %cur_op.1, align 4
+  %__tmp60 = load i32, i32* %lhs.1, align 4
+  %__tmp61 = load i32, i32* %rhs.1, align 4
+  %__tmp62 = call i32 @eval_op(i32 %__tmp59, i32 %__tmp60, i32 %__tmp61)
+  %__tmp63 = call i32 @stack_push(i32* %__tmp58, i32 %__tmp62)
   br label %bb18
 bb20:
-  %__tmp50 = call i32 @stack_peek([256 x i32]* %oprs)
-  ret i32 %__tmp50
+  %__tmp64 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
+  %__tmp65 = call i32 @stack_peek(i32* %__tmp64)
+  ret i32 %__tmp65
 }
 
 define i32 @main() {

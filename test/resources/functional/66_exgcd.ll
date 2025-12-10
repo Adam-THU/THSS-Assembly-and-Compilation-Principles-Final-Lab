@@ -85,20 +85,22 @@ mainEntry:
   store i32 1, i32* %__tmp1, align 4
   %__tmp2 = load i32, i32* %a, align 4
   %__tmp3 = load i32, i32* %b, align 4
-  %__tmp4 = call i32 @exgcd(i32 %__tmp2, i32 %__tmp3, [1 x i32]* %x, [1 x i32]* %y)
-  %__tmp5 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
-  %__tmp6 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
-  %__tmp7 = load i32, i32* %__tmp6, align 4
-  %__tmp8 = load i32, i32* %b, align 4
-  %__tmp9 = srem i32 %__tmp7, %__tmp8
+  %__tmp4 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
+  %__tmp5 = getelementptr inbounds [1 x i32], [1 x i32]* %y, i64 0, i64 0
+  %__tmp6 = call i32 @exgcd(i32 %__tmp2, i32 %__tmp3, i32* %__tmp4, i32* %__tmp5)
+  %__tmp7 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
+  %__tmp8 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
+  %__tmp9 = load i32, i32* %__tmp8, align 4
   %__tmp10 = load i32, i32* %b, align 4
-  %__tmp11 = add i32 %__tmp9, %__tmp10
+  %__tmp11 = srem i32 %__tmp9, %__tmp10
   %__tmp12 = load i32, i32* %b, align 4
-  %__tmp13 = srem i32 %__tmp11, %__tmp12
-  store i32 %__tmp13, i32* %__tmp5, align 4
-  %__tmp14 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
-  %__tmp15 = load i32, i32* %__tmp14, align 4
-  %__tmp16 = call i32 @putint(i32 %__tmp15)
+  %__tmp13 = add i32 %__tmp11, %__tmp12
+  %__tmp14 = load i32, i32* %b, align 4
+  %__tmp15 = srem i32 %__tmp13, %__tmp14
+  store i32 %__tmp15, i32* %__tmp7, align 4
+  %__tmp16 = getelementptr inbounds [1 x i32], [1 x i32]* %x, i64 0, i64 0
+  %__tmp17 = load i32, i32* %__tmp16, align 4
+  %__tmp18 = call i32 @putint(i32 %__tmp17)
   ret i32 0
 }
 
