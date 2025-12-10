@@ -38,19 +38,20 @@ FetchContent_MakeAvailable(googletest)
 # Add test executable
 enable_testing()
 
-add_executable(
-  unit_tests
-  # Link your test executable to the gtest/gtest_main library
-)
+# Commented out: no test sources yet
+# add_executable(
+#   unit_tests
+#   # Link your test executable to the gtest/gtest_main library
+# )
+# 
+# target_link_libraries(
+#   unit_tests
+#   gtest_main
+#   # Link any libraries your tests need
+# )
 
-target_link_libraries(
-  unit_tests
-  gtest_main
-  # Link any libraries your tests need
-)
-
-include(GoogleTest)
-gtest_discover_tests(unit_tests)
+# include(GoogleTest)
+# gtest_discover_tests(unit_tests)
 
 # Config ASAN
 option(ENABLE_ASAN "Enable AddressSanitizer" OFF)
