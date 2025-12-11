@@ -140,11 +140,11 @@ bb1:
   %__tmp3 = call i32 @my_getint()
   store i32 %__tmp3, i32* %m, align 4
   %__tmp4 = load i32, i32* %m, align 4
-  %__tmp5 = call i32 @my_putint(i32 %__tmp4)
+  call void @my_putint(i32 %__tmp4)
   call void @putch(i32 10)
-  %__tmp6 = load i32, i32* %n, align 4
-  %__tmp7 = sub i32 %__tmp6, 1
-  store i32 %__tmp7, i32* %n, align 4
+  %__tmp5 = load i32, i32* %n, align 4
+  %__tmp6 = sub i32 %__tmp5, 1
+  store i32 %__tmp6, i32* %n, align 4
   br label %bb0
 bb2:
   ret i32 0

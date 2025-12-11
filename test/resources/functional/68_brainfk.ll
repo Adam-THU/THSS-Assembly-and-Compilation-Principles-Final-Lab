@@ -59,7 +59,7 @@ bb0:
   %__tmp2 = sext i32 %__tmp1 to i64
   %__tmp3 = getelementptr inbounds i32, i32* %__tmp0, i64 %__tmp2
   %__tmp4 = load i32, i32* %__tmp3, align 4
-  %__tmp5 = trunc i32 %__tmp4 to i1
+  %__tmp5 = icmp ne i32 %__tmp4, 0
   br i1 %__tmp5, label %bb1, label %bb2
 bb1:
   %__tmp6 = load i32*, i32** %input_arg, align 4
@@ -220,9 +220,9 @@ bb2:
 
 define i32 @main() {
 mainEntry:
-  %__tmp0 = call i32 @read_program()
-  %__tmp1 = getelementptr inbounds [32768 x i32], [32768 x i32]* @program, i64 0, i64 0
-  %__tmp2 = call i32 @interpret(i32* %__tmp1)
+  call void @read_program()
+  %__tmp0 = getelementptr inbounds [32768 x i32], [32768 x i32]* @program, i64 0, i64 0
+  call void @interpret(i32* %__tmp0)
   ret i32 0
 }
 

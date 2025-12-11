@@ -40,24 +40,24 @@ hanoiEntry:
 bb0:
   %__tmp2 = load i32, i32* %one_arg, align 4
   %__tmp3 = load i32, i32* %three_arg, align 4
-  %__tmp4 = call i32 @move(i32 %__tmp2, i32 %__tmp3)
+  call void @move(i32 %__tmp2, i32 %__tmp3)
   br label %bb2
 bb1:
-  %__tmp5 = load i32, i32* %n_arg, align 4
-  %__tmp6 = sub i32 %__tmp5, 1
-  %__tmp7 = load i32, i32* %one_arg, align 4
-  %__tmp8 = load i32, i32* %three_arg, align 4
-  %__tmp9 = load i32, i32* %two_arg, align 4
-  %__tmp10 = call i32 @hanoi(i32 %__tmp6, i32 %__tmp7, i32 %__tmp8, i32 %__tmp9)
-  %__tmp11 = load i32, i32* %one_arg, align 4
-  %__tmp12 = load i32, i32* %three_arg, align 4
-  %__tmp13 = call i32 @move(i32 %__tmp11, i32 %__tmp12)
-  %__tmp14 = load i32, i32* %n_arg, align 4
-  %__tmp15 = sub i32 %__tmp14, 1
-  %__tmp16 = load i32, i32* %two_arg, align 4
-  %__tmp17 = load i32, i32* %one_arg, align 4
-  %__tmp18 = load i32, i32* %three_arg, align 4
-  %__tmp19 = call i32 @hanoi(i32 %__tmp15, i32 %__tmp16, i32 %__tmp17, i32 %__tmp18)
+  %__tmp4 = load i32, i32* %n_arg, align 4
+  %__tmp5 = sub i32 %__tmp4, 1
+  %__tmp6 = load i32, i32* %one_arg, align 4
+  %__tmp7 = load i32, i32* %three_arg, align 4
+  %__tmp8 = load i32, i32* %two_arg, align 4
+  call void @hanoi(i32 %__tmp5, i32 %__tmp6, i32 %__tmp7, i32 %__tmp8)
+  %__tmp9 = load i32, i32* %one_arg, align 4
+  %__tmp10 = load i32, i32* %three_arg, align 4
+  call void @move(i32 %__tmp9, i32 %__tmp10)
+  %__tmp11 = load i32, i32* %n_arg, align 4
+  %__tmp12 = sub i32 %__tmp11, 1
+  %__tmp13 = load i32, i32* %two_arg, align 4
+  %__tmp14 = load i32, i32* %one_arg, align 4
+  %__tmp15 = load i32, i32* %three_arg, align 4
+  call void @hanoi(i32 %__tmp12, i32 %__tmp13, i32 %__tmp14, i32 %__tmp15)
   br label %bb2
 bb2:
   ret void
@@ -75,11 +75,11 @@ bb0:
   br i1 %__tmp2, label %bb1, label %bb2
 bb1:
   %__tmp3 = call i32 @getint()
-  %__tmp4 = call i32 @hanoi(i32 %__tmp3, i32 1, i32 2, i32 3)
+  call void @hanoi(i32 %__tmp3, i32 1, i32 2, i32 3)
   call void @putch(i32 10)
-  %__tmp5 = load i32, i32* %n, align 4
-  %__tmp6 = sub i32 %__tmp5, 1
-  store i32 %__tmp6, i32* %n, align 4
+  %__tmp4 = load i32, i32* %n, align 4
+  %__tmp5 = sub i32 %__tmp4, 1
+  store i32 %__tmp5, i32* %n, align 4
   br label %bb0
 bb2:
   ret i32 0

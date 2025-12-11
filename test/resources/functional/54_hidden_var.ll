@@ -36,7 +36,7 @@ bb1:
   %__tmp6 = add i32 %__tmp5, 1
   store i32 %__tmp6, i32* %a.2, align 4
   %__tmp7 = load i32, i32* %a.2, align 4
-  %__tmp8 = trunc i32 %__tmp7 to i1
+  %__tmp8 = icmp ne i32 %__tmp7, 0
   br i1 %__tmp8, label %bb3, label %bb4
 bb3:
   br label %bb2
@@ -68,7 +68,7 @@ bb2:
   store i32 2, i32* %b, align 4
   %__tmp19 = getelementptr inbounds [4 x i32], [4 x i32]* @c, i64 0, i64 2
   %__tmp20 = load i32, i32* %__tmp19, align 4
-  %__tmp21 = trunc i32 %__tmp20 to i1
+  %__tmp21 = icmp ne i32 %__tmp20, 0
   br i1 %__tmp21, label %bb6, label %bb7
 bb6:
   %c.1 = alloca [7 x [1 x [5 x i32]]], align 4

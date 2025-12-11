@@ -19,7 +19,7 @@ mainEntry:
   br label %bb0
 bb0:
   %__tmp0 = call i32 @getint()
-  %__tmp1 = trunc i32 %__tmp0 to i1
+  %__tmp1 = icmp ne i32 %__tmp0, 0
   br i1 %__tmp1, label %bb1, label %bb2
 bb1:
   %__tmp2 = load i32, i32* %i, align 4
@@ -35,7 +35,7 @@ bb2:
   br label %bb3
 bb3:
   %__tmp8 = load i32, i32* %i, align 4
-  %__tmp9 = trunc i32 %__tmp8 to i1
+  %__tmp9 = icmp ne i32 %__tmp8, 0
   br i1 %__tmp9, label %bb4, label %bb5
 bb4:
   %__tmp10 = load i32, i32* %i, align 4

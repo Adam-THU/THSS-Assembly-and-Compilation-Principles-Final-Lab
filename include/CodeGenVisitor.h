@@ -35,6 +35,7 @@ private:
     int tmpVarCounter = 0;
     int blockCounter = 0;
     std::map<std::string, int> localNameCount;  // unique local name suffixes
+    std::map<std::string, std::shared_ptr<Type>> funcReturnTypes;  // function name -> return type (nullptr for void)
     
     // 循环上下文（用于 break/continue）
     struct LoopContext {
@@ -101,6 +102,14 @@ public:
         irBuilder.addGlobalDeclaration("declare void @putint(i32)");
         irBuilder.addGlobalDeclaration("declare void @putch(i32)");
         irBuilder.addGlobalDeclaration("declare void @putarray(i32, i32*)");
+
+        // 记录内置函数返回类型
+        funcReturnTypes["getint"] = i32Type();
+        funcReturnTypes["getch"] = i32Type();
+        funcReturnTypes["getarray"] = i32Type();
+        funcReturnTypes["putint"] = nullptr;
+        funcReturnTypes["putch"] = nullptr;
+        funcReturnTypes["putarray"] = nullptr;
     }
     
     std::string getIR() {
@@ -109,6 +118,13 @@ public:
     
     // 访问编译单元
     virtual std::any visitCompUnit(SysYParser::CompUnitContext *ctx) override {
+        // 预先收集所有函数的返回类型，供调用时查询
+        for (auto funcDef : ctx->funcDef()) {
+            std::string name = funcDef->IDENT()->getText();
+            std::shared_ptr<Type> retType = funcDef->funcType()->INT() ? i32Type() : nullptr;
+            funcReturnTypes[name] = retType;
+        }
+
         // 先访问所有声明（可能有全局变量）
         for (auto decl : ctx->decl()) {
             visit(decl);
@@ -788,10 +804,11 @@ public:
                     // i32 需要转换为 i1
                     if (!cond.isConst) {
                         std::string tmp = genTmpVar();
-                        currentBB->addInstruction("%"+tmp+" = trunc i32 %"+cond.name+" to i1");
+                        currentBB->addInstruction("%"+tmp+" = icmp ne i32 %"+cond.name+", 0");
                         cond = IRValue(tmp, i1Type());
                     } else {
                         cond.type = i1Type();
+                        cond.constValue = (cond.constValue != 0);
                     }
                 }
             }
@@ -866,10 +883,11 @@ public:
                     // i32 需要转换为 i1
                     if (!cond.isConst) {
                         std::string tmp = genTmpVar();
-                        currentBB->addInstruction("%"+tmp+" = trunc i32 %"+cond.name+" to i1");
+                        currentBB->addInstruction("%"+tmp+" = icmp ne i32 %"+cond.name+", 0");
                         cond = IRValue(tmp, i1Type());
                     } else {
                         cond.type = i1Type();
+                        cond.constValue = (cond.constValue != 0);
                     }
                 }
             }
@@ -1250,31 +1268,27 @@ public:
                 }
             }
             
-            // 查询函数返回类型
-            // 内置函数的返回类型
-            std::string returnTypeStr = "i32";  // 默认返回int
-            bool isVoidFunc = false;
-            
-            // 检查是否是void返回的内置函数
-            if (funcName == "putch" || funcName == "putint" || funcName == "putarray") {
-                isVoidFunc = true;
-                returnTypeStr = "void";
-            } else if (funcName == "getint" || funcName == "getch" || funcName == "getarray") {
-                returnTypeStr = "i32";
-            } else {
-                // 用户定义的函数，查询符号表
-                // 目前SysY只支持int返回类型，所以默认i32
-                returnTypeStr = "i32";
+            // 查询函数返回类型（提前收集），nullptr 表示 void
+            std::shared_ptr<Type> retType = i32Type();
+            auto it = funcReturnTypes.find(funcName);
+            if (it != funcReturnTypes.end()) {
+                retType = it->second;
             }
+
+            bool isVoidFunc = (retType == nullptr);
+            std::string returnTypeStr = isVoidFunc ? "void" : getTypeLLVMString(retType);
             
             if (isVoidFunc) {
                 // void函数调用不需要赋值
                 currentBB->addInstruction("call " + returnTypeStr + " @" + funcName + "(" + argStr + ")");
-                return IRValue("0", i32Type());  // void函数返回默认值
+                IRValue ret("", i32Type());
+                ret.isConst = true;
+                ret.constValue = 0;
+                return ret;  // void函数在表达式中当作0处理
             } else {
                 std::string tmp = genTmpVar();
                 currentBB->addInstruction("%" + tmp + " = call " + returnTypeStr + " @" + funcName + "(" + argStr + ")");
-                return IRValue(tmp, i32Type());
+                return IRValue(tmp, retType);
             }
         }
         

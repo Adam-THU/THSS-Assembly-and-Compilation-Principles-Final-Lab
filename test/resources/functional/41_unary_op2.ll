@@ -27,7 +27,7 @@ mainEntry:
   %__tmp9 = icmp eq i32 %__tmp8, 0
   %__tmp10 = zext i1 %__tmp9 to i32
   %__tmp11 = sub i32 0, %__tmp10
-  %__tmp12 = trunc i32 %__tmp11 to i1
+  %__tmp12 = icmp ne i32 %__tmp11, 0
   br i1 %__tmp12, label %bb0, label %bb1
 bb0:
   store i32 -1, i32* %a, align 4

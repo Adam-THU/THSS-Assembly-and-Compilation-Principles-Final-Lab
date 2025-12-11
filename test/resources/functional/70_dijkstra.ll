@@ -270,24 +270,24 @@ bb10:
   store i32 %__tmp40, i32* %i, align 4
   br label %bb9
 bb11:
-  %__tmp41 = call i32 @Dijkstra()
+  call void @Dijkstra()
   store i32 1, i32* %i, align 4
   br label %bb12
 bb12:
-  %__tmp42 = load i32, i32* %i, align 4
-  %__tmp43 = load i32, i32* @n, align 4
-  %__tmp44 = icmp sle i32 %__tmp42, %__tmp43
-  br i1 %__tmp44, label %bb13, label %bb14
+  %__tmp41 = load i32, i32* %i, align 4
+  %__tmp42 = load i32, i32* @n, align 4
+  %__tmp43 = icmp sle i32 %__tmp41, %__tmp42
+  br i1 %__tmp43, label %bb13, label %bb14
 bb13:
-  %__tmp45 = load i32, i32* %i, align 4
-  %__tmp46 = sext i32 %__tmp45 to i64
-  %__tmp47 = getelementptr inbounds [16 x i32], [16 x i32]* @dis, i64 0, i64 %__tmp46
-  %__tmp48 = load i32, i32* %__tmp47, align 4
-  call void @putint(i32 %__tmp48)
+  %__tmp44 = load i32, i32* %i, align 4
+  %__tmp45 = sext i32 %__tmp44 to i64
+  %__tmp46 = getelementptr inbounds [16 x i32], [16 x i32]* @dis, i64 0, i64 %__tmp45
+  %__tmp47 = load i32, i32* %__tmp46, align 4
+  call void @putint(i32 %__tmp47)
   call void @putch(i32 32)
-  %__tmp49 = load i32, i32* %i, align 4
-  %__tmp50 = add i32 %__tmp49, 1
-  store i32 %__tmp50, i32* %i, align 4
+  %__tmp48 = load i32, i32* %i, align 4
+  %__tmp49 = add i32 %__tmp48, 1
+  store i32 %__tmp49, i32* %i, align 4
   br label %bb12
 bb14:
   call void @putch(i32 10)

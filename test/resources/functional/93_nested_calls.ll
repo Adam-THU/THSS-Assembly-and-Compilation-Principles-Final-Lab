@@ -42,7 +42,7 @@ func2Entry:
   %y_arg = alloca i32, align 4
   store i32 %y, i32* %y_arg, align 4
   %__tmp0 = load i32, i32* %y_arg, align 4
-  %__tmp1 = trunc i32 %__tmp0 to i1
+  %__tmp1 = icmp ne i32 %__tmp0, 0
   br i1 %__tmp1, label %bb0, label %bb1
 bb0:
   %__tmp2 = load i32, i32* %x_arg, align 4
@@ -89,7 +89,7 @@ func4Entry:
   %z_arg = alloca i32, align 4
   store i32 %z, i32* %z_arg, align 4
   %__tmp0 = load i32, i32* %x_arg, align 4
-  %__tmp1 = trunc i32 %__tmp0 to i1
+  %__tmp1 = icmp ne i32 %__tmp0, 0
   br i1 %__tmp1, label %bb0, label %bb1
 bb0:
   %__tmp2 = load i32, i32* %y_arg, align 4
@@ -143,7 +143,7 @@ func7Entry:
   %__tmp0 = load i32, i32* %x_arg, align 4
   %__tmp1 = icmp eq i32 %__tmp0, 0
   %__tmp2 = zext i1 %__tmp1 to i32
-  %__tmp3 = trunc i32 %__tmp2 to i1
+  %__tmp3 = icmp ne i32 %__tmp2, 0
   br i1 %__tmp3, label %bb0, label %bb1
 bb0:
   ret i32 1

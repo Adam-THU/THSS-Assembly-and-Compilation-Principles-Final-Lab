@@ -1615,7 +1615,7 @@ bb5:
   %__tmp18 = getelementptr inbounds [5 x [5 x i32]], [5 x [5 x i32]]* %a, i64 0, i64 0
   %__tmp19 = getelementptr inbounds [5 x i32], [5 x i32]* %__tmp18, i64 0, i64 0
   %__tmp20 = call i32 @model(i32* %__tmp19)
-  %__tmp21 = trunc i32 %__tmp20 to i1
+  %__tmp21 = icmp ne i32 %__tmp20, 0
   br i1 %__tmp21, label %bb9, label %bb10
 bb9:
   call void @putch(i32 99)

@@ -114,57 +114,57 @@ bb3:
   %__tmp34 = icmp eq i32 %__tmp32, %__tmp33
   br i1 %__tmp34, label %bb12, label %bb13
 bb12:
-  %__tmp35 = call i32 @printans()
+  call void @printans()
   br label %bb14
 bb13:
   br label %bb14
 bb14:
-  %__tmp36 = load i32, i32* %i, align 4
-  %__tmp37 = sext i32 %__tmp36 to i64
-  %__tmp38 = getelementptr inbounds [50 x i32], [50 x i32]* @row, i64 0, i64 %__tmp37
-  store i32 1, i32* %__tmp38, align 4
-  %__tmp39 = load i32, i32* %step_arg, align 4
-  %__tmp40 = load i32, i32* %i, align 4
-  %__tmp41 = add i32 %__tmp39, %__tmp40
-  %__tmp42 = sext i32 %__tmp41 to i64
-  %__tmp43 = getelementptr inbounds [50 x i32], [50 x i32]* @line1, i64 0, i64 %__tmp42
-  store i32 1, i32* %__tmp43, align 4
-  %__tmp44 = load i32, i32* @n, align 4
-  %__tmp45 = load i32, i32* %step_arg, align 4
-  %__tmp46 = add i32 %__tmp44, %__tmp45
-  %__tmp47 = load i32, i32* %i, align 4
-  %__tmp48 = sub i32 %__tmp46, %__tmp47
-  %__tmp49 = sext i32 %__tmp48 to i64
-  %__tmp50 = getelementptr inbounds [100 x i32], [100 x i32]* @line2, i64 0, i64 %__tmp49
-  store i32 1, i32* %__tmp50, align 4
-  %__tmp51 = load i32, i32* %step_arg, align 4
-  %__tmp52 = add i32 %__tmp51, 1
-  %__tmp53 = call i32 @f(i32 %__tmp52)
-  %__tmp54 = load i32, i32* %i, align 4
-  %__tmp55 = sext i32 %__tmp54 to i64
-  %__tmp56 = getelementptr inbounds [50 x i32], [50 x i32]* @row, i64 0, i64 %__tmp55
-  store i32 0, i32* %__tmp56, align 4
-  %__tmp57 = load i32, i32* %step_arg, align 4
-  %__tmp58 = load i32, i32* %i, align 4
-  %__tmp59 = add i32 %__tmp57, %__tmp58
-  %__tmp60 = sext i32 %__tmp59 to i64
-  %__tmp61 = getelementptr inbounds [50 x i32], [50 x i32]* @line1, i64 0, i64 %__tmp60
-  store i32 0, i32* %__tmp61, align 4
-  %__tmp62 = load i32, i32* @n, align 4
-  %__tmp63 = load i32, i32* %step_arg, align 4
-  %__tmp64 = add i32 %__tmp62, %__tmp63
-  %__tmp65 = load i32, i32* %i, align 4
-  %__tmp66 = sub i32 %__tmp64, %__tmp65
-  %__tmp67 = sext i32 %__tmp66 to i64
-  %__tmp68 = getelementptr inbounds [100 x i32], [100 x i32]* @line2, i64 0, i64 %__tmp67
-  store i32 0, i32* %__tmp68, align 4
+  %__tmp35 = load i32, i32* %i, align 4
+  %__tmp36 = sext i32 %__tmp35 to i64
+  %__tmp37 = getelementptr inbounds [50 x i32], [50 x i32]* @row, i64 0, i64 %__tmp36
+  store i32 1, i32* %__tmp37, align 4
+  %__tmp38 = load i32, i32* %step_arg, align 4
+  %__tmp39 = load i32, i32* %i, align 4
+  %__tmp40 = add i32 %__tmp38, %__tmp39
+  %__tmp41 = sext i32 %__tmp40 to i64
+  %__tmp42 = getelementptr inbounds [50 x i32], [50 x i32]* @line1, i64 0, i64 %__tmp41
+  store i32 1, i32* %__tmp42, align 4
+  %__tmp43 = load i32, i32* @n, align 4
+  %__tmp44 = load i32, i32* %step_arg, align 4
+  %__tmp45 = add i32 %__tmp43, %__tmp44
+  %__tmp46 = load i32, i32* %i, align 4
+  %__tmp47 = sub i32 %__tmp45, %__tmp46
+  %__tmp48 = sext i32 %__tmp47 to i64
+  %__tmp49 = getelementptr inbounds [100 x i32], [100 x i32]* @line2, i64 0, i64 %__tmp48
+  store i32 1, i32* %__tmp49, align 4
+  %__tmp50 = load i32, i32* %step_arg, align 4
+  %__tmp51 = add i32 %__tmp50, 1
+  call void @f(i32 %__tmp51)
+  %__tmp52 = load i32, i32* %i, align 4
+  %__tmp53 = sext i32 %__tmp52 to i64
+  %__tmp54 = getelementptr inbounds [50 x i32], [50 x i32]* @row, i64 0, i64 %__tmp53
+  store i32 0, i32* %__tmp54, align 4
+  %__tmp55 = load i32, i32* %step_arg, align 4
+  %__tmp56 = load i32, i32* %i, align 4
+  %__tmp57 = add i32 %__tmp55, %__tmp56
+  %__tmp58 = sext i32 %__tmp57 to i64
+  %__tmp59 = getelementptr inbounds [50 x i32], [50 x i32]* @line1, i64 0, i64 %__tmp58
+  store i32 0, i32* %__tmp59, align 4
+  %__tmp60 = load i32, i32* @n, align 4
+  %__tmp61 = load i32, i32* %step_arg, align 4
+  %__tmp62 = add i32 %__tmp60, %__tmp61
+  %__tmp63 = load i32, i32* %i, align 4
+  %__tmp64 = sub i32 %__tmp62, %__tmp63
+  %__tmp65 = sext i32 %__tmp64 to i64
+  %__tmp66 = getelementptr inbounds [100 x i32], [100 x i32]* @line2, i64 0, i64 %__tmp65
+  store i32 0, i32* %__tmp66, align 4
   br label %bb5
 bb4:
   br label %bb5
 bb5:
-  %__tmp69 = load i32, i32* %i, align 4
-  %__tmp70 = add i32 %__tmp69, 1
-  store i32 %__tmp70, i32* %i, align 4
+  %__tmp67 = load i32, i32* %i, align 4
+  %__tmp68 = add i32 %__tmp67, 1
+  store i32 %__tmp68, i32* %i, align 4
   br label %bb0
 bb2:
   ret void
@@ -183,13 +183,13 @@ bb0:
 bb1:
   %__tmp3 = call i32 @getint()
   store i32 %__tmp3, i32* @n, align 4
-  %__tmp4 = call i32 @f(i32 1)
-  %__tmp5 = load i32, i32* %N, align 4
-  %__tmp6 = sub i32 %__tmp5, 1
-  store i32 %__tmp6, i32* %N, align 4
+  call void @f(i32 1)
+  %__tmp4 = load i32, i32* %N, align 4
+  %__tmp5 = sub i32 %__tmp4, 1
+  store i32 %__tmp5, i32* %N, align 4
   br label %bb0
 bb2:
-  %__tmp7 = load i32, i32* @sum, align 4
-  ret i32 %__tmp7
+  %__tmp6 = load i32, i32* @sum, align 4
+  ret i32 %__tmp6
 }
 

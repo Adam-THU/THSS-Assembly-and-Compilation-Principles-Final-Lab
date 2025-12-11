@@ -25,7 +25,7 @@ bb0:
   %__tmp2 = sext i32 %__tmp1 to i64
   %__tmp3 = getelementptr inbounds i32, i32* %__tmp0, i64 %__tmp2
   %__tmp4 = load i32, i32* %__tmp3, align 4
-  %__tmp5 = trunc i32 %__tmp4 to i1
+  %__tmp5 = icmp ne i32 %__tmp4, 0
   br i1 %__tmp5, label %bb1, label %bb2
 bb1:
   %__tmp6 = load i32*, i32** %str_arg, align 4

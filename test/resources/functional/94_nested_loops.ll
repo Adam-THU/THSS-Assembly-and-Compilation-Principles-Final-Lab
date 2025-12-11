@@ -541,16 +541,16 @@ mainEntry:
   store i32 %__tmp8, i32* %n, align 4
   %__tmp9 = load i32, i32* %x, align 4
   %__tmp10 = load i32, i32* %y, align 4
-  %__tmp11 = call i32 @loop1(i32 %__tmp9, i32 %__tmp10)
-  %__tmp12 = call i32 @loop2()
-  %__tmp13 = load i32, i32* %h, align 4
-  %__tmp14 = load i32, i32* %i, align 4
-  %__tmp15 = load i32, i32* %j, align 4
-  %__tmp16 = load i32, i32* %k, align 4
-  %__tmp17 = load i32, i32* %l, align 4
-  %__tmp18 = load i32, i32* %m, align 4
-  %__tmp19 = load i32, i32* %n, align 4
-  %__tmp20 = call i32 @loop3(i32 %__tmp13, i32 %__tmp14, i32 %__tmp15, i32 %__tmp16, i32 %__tmp17, i32 %__tmp18, i32 %__tmp19)
-  ret i32 %__tmp20
+  call void @loop1(i32 %__tmp9, i32 %__tmp10)
+  call void @loop2()
+  %__tmp11 = load i32, i32* %h, align 4
+  %__tmp12 = load i32, i32* %i, align 4
+  %__tmp13 = load i32, i32* %j, align 4
+  %__tmp14 = load i32, i32* %k, align 4
+  %__tmp15 = load i32, i32* %l, align 4
+  %__tmp16 = load i32, i32* %m, align 4
+  %__tmp17 = load i32, i32* %n, align 4
+  %__tmp18 = call i32 @loop3(i32 %__tmp11, i32 %__tmp12, i32 %__tmp13, i32 %__tmp14, i32 %__tmp15, i32 %__tmp16, i32 %__tmp17)
+  ret i32 %__tmp18
 }
 
