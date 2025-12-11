@@ -183,6 +183,7 @@ mainEntry:
   %__tmp12 = load i32, i32* @n, align 4
   %__tmp13 = call i32 @counting_sort(i32* %__tmp10, i32* %__tmp11, i32 %__tmp12)
   store i32 %__tmp13, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp14 = load i32, i32* %i, align 4
@@ -190,7 +191,6 @@ bb0:
   %__tmp16 = icmp slt i32 %__tmp14, %__tmp15
   br i1 %__tmp16, label %bb1, label %bb2
 bb1:
-  %tmp = alloca i32, align 4
   %__tmp17 = load i32, i32* %i, align 4
   %__tmp18 = sext i32 %__tmp17 to i64
   %__tmp19 = getelementptr inbounds [10 x i32], [10 x i32]* %b, i64 0, i64 %__tmp18

@@ -49,15 +49,15 @@ mainEntry:
   %__tmp1 = call i32 @putstr(i32* %__tmp0)
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %_ = alloca i32, align 4
+  %__ = alloca i32, align 4
   br label %bb0
 bb0:
   br label %bb1
 bb1:
-  %_ = alloca i32, align 4
   %__tmp2 = load i32, i32* %i, align 4
   %__tmp3 = sdiv i32 %__tmp2, 6
   store i32 %__tmp3, i32* %_, align 4
-  %__ = alloca i32, align 4
   %__tmp4 = load i32, i32* %i, align 4
   %__tmp5 = srem i32 %__tmp4, 6
   store i32 %__tmp5, i32* %__, align 4

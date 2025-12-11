@@ -16,6 +16,11 @@ mainEntry:
   store [10 x i32] zeroinitializer, [10 x i32]* %a, align 4
   store i32 0, i32* %sum, align 4
   store i32 0, i32* %i, align 4
+  %x = alloca i32, align 4
+  %high = alloca i32, align 4
+  %low = alloca i32, align 4
+  %mid = alloca i32, align 4
+  %n = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -33,11 +38,6 @@ bb1:
   store i32 %__tmp8, i32* %i, align 4
   br label %bb0
 bb2:
-  %x = alloca i32, align 4
-  %high = alloca i32, align 4
-  %low = alloca i32, align 4
-  %mid = alloca i32, align 4
-  %n = alloca i32, align 4
   store i32 10, i32* %n, align 4
   %__tmp9 = call i32 @getint()
   store i32 %__tmp9, i32* %x, align 4

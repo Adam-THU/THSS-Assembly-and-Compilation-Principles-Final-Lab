@@ -22,6 +22,87 @@ long_funcEntry:
   store i32 0, i32* %pr, align 4
   %pres = alloca i32, align 4
   store i32 1, i32* %pres, align 4
+  %ml = alloca i32, align 4
+  %mr = alloca i32, align 4
+  %mres = alloca i32, align 4
+  %al = alloca i32, align 4
+  %c = alloca i32, align 4
+  %sum = alloca i32, align 4
+  %al.1 = alloca i32, align 4
+  %c.1 = alloca i32, align 4
+  %sum.1 = alloca i32, align 4
+  %ml.1 = alloca i32, align 4
+  %mr.1 = alloca i32, align 4
+  %mres.1 = alloca i32, align 4
+  %al.2 = alloca i32, align 4
+  %c.2 = alloca i32, align 4
+  %sum.2 = alloca i32, align 4
+  %al.3 = alloca i32, align 4
+  %c.3 = alloca i32, align 4
+  %sum.3 = alloca i32, align 4
+  %pl.1 = alloca i32, align 4
+  %pr.1 = alloca i32, align 4
+  %pres.1 = alloca i32, align 4
+  %ml.2 = alloca i32, align 4
+  %mr.2 = alloca i32, align 4
+  %mres.2 = alloca i32, align 4
+  %al.4 = alloca i32, align 4
+  %c.4 = alloca i32, align 4
+  %sum.4 = alloca i32, align 4
+  %al.5 = alloca i32, align 4
+  %c.5 = alloca i32, align 4
+  %sum.5 = alloca i32, align 4
+  %ml.3 = alloca i32, align 4
+  %mr.3 = alloca i32, align 4
+  %mres.3 = alloca i32, align 4
+  %al.6 = alloca i32, align 4
+  %c.6 = alloca i32, align 4
+  %sum.6 = alloca i32, align 4
+  %al.7 = alloca i32, align 4
+  %c.7 = alloca i32, align 4
+  %sum.7 = alloca i32, align 4
+  %pl.2 = alloca i32, align 4
+  %pr.2 = alloca i32, align 4
+  %pres.2 = alloca i32, align 4
+  %ml.4 = alloca i32, align 4
+  %mr.4 = alloca i32, align 4
+  %mres.4 = alloca i32, align 4
+  %al.8 = alloca i32, align 4
+  %c.8 = alloca i32, align 4
+  %sum.8 = alloca i32, align 4
+  %al.9 = alloca i32, align 4
+  %c.9 = alloca i32, align 4
+  %sum.9 = alloca i32, align 4
+  %ml.5 = alloca i32, align 4
+  %mr.5 = alloca i32, align 4
+  %mres.5 = alloca i32, align 4
+  %al.10 = alloca i32, align 4
+  %c.10 = alloca i32, align 4
+  %sum.10 = alloca i32, align 4
+  %al.11 = alloca i32, align 4
+  %c.11 = alloca i32, align 4
+  %sum.11 = alloca i32, align 4
+  %pl.3 = alloca i32, align 4
+  %pr.3 = alloca i32, align 4
+  %pres.3 = alloca i32, align 4
+  %ml.6 = alloca i32, align 4
+  %mr.6 = alloca i32, align 4
+  %mres.6 = alloca i32, align 4
+  %al.12 = alloca i32, align 4
+  %c.12 = alloca i32, align 4
+  %sum.12 = alloca i32, align 4
+  %al.13 = alloca i32, align 4
+  %c.13 = alloca i32, align 4
+  %sum.13 = alloca i32, align 4
+  %ml.7 = alloca i32, align 4
+  %mr.7 = alloca i32, align 4
+  %mres.7 = alloca i32, align 4
+  %al.14 = alloca i32, align 4
+  %c.14 = alloca i32, align 4
+  %sum.14 = alloca i32, align 4
+  %al.15 = alloca i32, align 4
+  %c.15 = alloca i32, align 4
+  %sum.15 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %pr, align 4
@@ -81,13 +162,10 @@ bb5:
   %__tmp26 = icmp ne i32 %__tmp25, 0
   br i1 %__tmp26, label %bb12, label %bb13
 bb12:
-  %ml = alloca i32, align 4
   %__tmp27 = load i32, i32* %pres, align 4
   store i32 %__tmp27, i32* %ml, align 4
-  %mr = alloca i32, align 4
   %__tmp28 = load i32, i32* %pl, align 4
   store i32 %__tmp28, i32* %mr, align 4
-  %mres = alloca i32, align 4
   store i32 0, i32* %mres, align 4
   br label %bb15
 bb15:
@@ -148,13 +226,10 @@ bb20:
   %__tmp55 = icmp ne i32 %__tmp54, 0
   br i1 %__tmp55, label %bb27, label %bb28
 bb27:
-  %al = alloca i32, align 4
   %__tmp56 = load i32, i32* %mres, align 4
   store i32 %__tmp56, i32* %al, align 4
-  %c = alloca i32, align 4
   %__tmp57 = load i32, i32* %ml, align 4
   store i32 %__tmp57, i32* %c, align 4
-  %sum = alloca i32, align 4
   br label %bb30
 bb30:
   %__tmp58 = load i32, i32* %c, align 4
@@ -349,13 +424,10 @@ bb32:
 bb28:
   br label %bb29
 bb29:
-  %al.1 = alloca i32, align 4
   %__tmp149 = load i32, i32* %ml, align 4
   store i32 %__tmp149, i32* %al.1, align 4
-  %c.1 = alloca i32, align 4
   %__tmp150 = load i32, i32* %ml, align 4
   store i32 %__tmp150, i32* %c.1, align 4
-  %sum.1 = alloca i32, align 4
   br label %bb66
 bb66:
   %__tmp151 = load i32, i32* %c.1, align 4
@@ -621,13 +693,10 @@ bb17:
 bb13:
   br label %bb14
 bb14:
-  %ml.1 = alloca i32, align 4
   %__tmp276 = load i32, i32* %pl, align 4
   store i32 %__tmp276, i32* %ml.1, align 4
-  %mr.1 = alloca i32, align 4
   %__tmp277 = load i32, i32* %pl, align 4
   store i32 %__tmp277, i32* %mr.1, align 4
-  %mres.1 = alloca i32, align 4
   store i32 0, i32* %mres.1, align 4
   br label %bb114
 bb114:
@@ -688,13 +757,10 @@ bb119:
   %__tmp304 = icmp ne i32 %__tmp303, 0
   br i1 %__tmp304, label %bb126, label %bb127
 bb126:
-  %al.2 = alloca i32, align 4
   %__tmp305 = load i32, i32* %mres.1, align 4
   store i32 %__tmp305, i32* %al.2, align 4
-  %c.2 = alloca i32, align 4
   %__tmp306 = load i32, i32* %ml.1, align 4
   store i32 %__tmp306, i32* %c.2, align 4
-  %sum.2 = alloca i32, align 4
   br label %bb129
 bb129:
   %__tmp307 = load i32, i32* %c.2, align 4
@@ -889,13 +955,10 @@ bb131:
 bb127:
   br label %bb128
 bb128:
-  %al.3 = alloca i32, align 4
   %__tmp398 = load i32, i32* %ml.1, align 4
   store i32 %__tmp398, i32* %al.3, align 4
-  %c.3 = alloca i32, align 4
   %__tmp399 = load i32, i32* %ml.1, align 4
   store i32 %__tmp399, i32* %c.3, align 4
-  %sum.3 = alloca i32, align 4
   br label %bb165
 bb165:
   %__tmp400 = load i32, i32* %c.3, align 4
@@ -1229,11 +1292,8 @@ bb2:
   %__tmp558 = load i32, i32* %ans, align 4
   call void @putint(i32 %__tmp558)
   call void @putch(i32 10)
-  %pl.1 = alloca i32, align 4
   store i32 2, i32* %pl.1, align 4
-  %pr.1 = alloca i32, align 4
   store i32 1, i32* %pr.1, align 4
-  %pres.1 = alloca i32, align 4
   store i32 1, i32* %pres.1, align 4
   br label %bb225
 bb225:
@@ -1294,13 +1354,10 @@ bb230:
   %__tmp585 = icmp ne i32 %__tmp584, 0
   br i1 %__tmp585, label %bb237, label %bb238
 bb237:
-  %ml.2 = alloca i32, align 4
   %__tmp586 = load i32, i32* %pres.1, align 4
   store i32 %__tmp586, i32* %ml.2, align 4
-  %mr.2 = alloca i32, align 4
   %__tmp587 = load i32, i32* %pl.1, align 4
   store i32 %__tmp587, i32* %mr.2, align 4
-  %mres.2 = alloca i32, align 4
   store i32 0, i32* %mres.2, align 4
   br label %bb240
 bb240:
@@ -1361,13 +1418,10 @@ bb245:
   %__tmp614 = icmp ne i32 %__tmp613, 0
   br i1 %__tmp614, label %bb252, label %bb253
 bb252:
-  %al.4 = alloca i32, align 4
   %__tmp615 = load i32, i32* %mres.2, align 4
   store i32 %__tmp615, i32* %al.4, align 4
-  %c.4 = alloca i32, align 4
   %__tmp616 = load i32, i32* %ml.2, align 4
   store i32 %__tmp616, i32* %c.4, align 4
-  %sum.4 = alloca i32, align 4
   br label %bb255
 bb255:
   %__tmp617 = load i32, i32* %c.4, align 4
@@ -1562,13 +1616,10 @@ bb257:
 bb253:
   br label %bb254
 bb254:
-  %al.5 = alloca i32, align 4
   %__tmp708 = load i32, i32* %ml.2, align 4
   store i32 %__tmp708, i32* %al.5, align 4
-  %c.5 = alloca i32, align 4
   %__tmp709 = load i32, i32* %ml.2, align 4
   store i32 %__tmp709, i32* %c.5, align 4
-  %sum.5 = alloca i32, align 4
   br label %bb291
 bb291:
   %__tmp710 = load i32, i32* %c.5, align 4
@@ -1834,13 +1885,10 @@ bb242:
 bb238:
   br label %bb239
 bb239:
-  %ml.3 = alloca i32, align 4
   %__tmp835 = load i32, i32* %pl.1, align 4
   store i32 %__tmp835, i32* %ml.3, align 4
-  %mr.3 = alloca i32, align 4
   %__tmp836 = load i32, i32* %pl.1, align 4
   store i32 %__tmp836, i32* %mr.3, align 4
-  %mres.3 = alloca i32, align 4
   store i32 0, i32* %mres.3, align 4
   br label %bb339
 bb339:
@@ -1901,13 +1949,10 @@ bb344:
   %__tmp863 = icmp ne i32 %__tmp862, 0
   br i1 %__tmp863, label %bb351, label %bb352
 bb351:
-  %al.6 = alloca i32, align 4
   %__tmp864 = load i32, i32* %mres.3, align 4
   store i32 %__tmp864, i32* %al.6, align 4
-  %c.6 = alloca i32, align 4
   %__tmp865 = load i32, i32* %ml.3, align 4
   store i32 %__tmp865, i32* %c.6, align 4
-  %sum.6 = alloca i32, align 4
   br label %bb354
 bb354:
   %__tmp866 = load i32, i32* %c.6, align 4
@@ -2102,13 +2147,10 @@ bb356:
 bb352:
   br label %bb353
 bb353:
-  %al.7 = alloca i32, align 4
   %__tmp957 = load i32, i32* %ml.3, align 4
   store i32 %__tmp957, i32* %al.7, align 4
-  %c.7 = alloca i32, align 4
   %__tmp958 = load i32, i32* %ml.3, align 4
   store i32 %__tmp958, i32* %c.7, align 4
-  %sum.7 = alloca i32, align 4
   br label %bb390
 bb390:
   %__tmp959 = load i32, i32* %c.7, align 4
@@ -2449,12 +2491,9 @@ bb450:
   %__tmp1119 = icmp slt i32 %__tmp1118, 16
   br i1 %__tmp1119, label %bb451, label %bb452
 bb451:
-  %pl.2 = alloca i32, align 4
   store i32 2, i32* %pl.2, align 4
-  %pr.2 = alloca i32, align 4
   %__tmp1120 = load i32, i32* %cur, align 4
   store i32 %__tmp1120, i32* %pr.2, align 4
-  %pres.2 = alloca i32, align 4
   store i32 1, i32* %pres.2, align 4
   br label %bb453
 bb453:
@@ -2515,13 +2554,10 @@ bb458:
   %__tmp1147 = icmp ne i32 %__tmp1146, 0
   br i1 %__tmp1147, label %bb465, label %bb466
 bb465:
-  %ml.4 = alloca i32, align 4
   %__tmp1148 = load i32, i32* %pres.2, align 4
   store i32 %__tmp1148, i32* %ml.4, align 4
-  %mr.4 = alloca i32, align 4
   %__tmp1149 = load i32, i32* %pl.2, align 4
   store i32 %__tmp1149, i32* %mr.4, align 4
-  %mres.4 = alloca i32, align 4
   store i32 0, i32* %mres.4, align 4
   br label %bb468
 bb468:
@@ -2582,13 +2618,10 @@ bb473:
   %__tmp1176 = icmp ne i32 %__tmp1175, 0
   br i1 %__tmp1176, label %bb480, label %bb481
 bb480:
-  %al.8 = alloca i32, align 4
   %__tmp1177 = load i32, i32* %mres.4, align 4
   store i32 %__tmp1177, i32* %al.8, align 4
-  %c.8 = alloca i32, align 4
   %__tmp1178 = load i32, i32* %ml.4, align 4
   store i32 %__tmp1178, i32* %c.8, align 4
-  %sum.8 = alloca i32, align 4
   br label %bb483
 bb483:
   %__tmp1179 = load i32, i32* %c.8, align 4
@@ -2783,13 +2816,10 @@ bb485:
 bb481:
   br label %bb482
 bb482:
-  %al.9 = alloca i32, align 4
   %__tmp1270 = load i32, i32* %ml.4, align 4
   store i32 %__tmp1270, i32* %al.9, align 4
-  %c.9 = alloca i32, align 4
   %__tmp1271 = load i32, i32* %ml.4, align 4
   store i32 %__tmp1271, i32* %c.9, align 4
-  %sum.9 = alloca i32, align 4
   br label %bb519
 bb519:
   %__tmp1272 = load i32, i32* %c.9, align 4
@@ -3055,13 +3085,10 @@ bb470:
 bb466:
   br label %bb467
 bb467:
-  %ml.5 = alloca i32, align 4
   %__tmp1397 = load i32, i32* %pl.2, align 4
   store i32 %__tmp1397, i32* %ml.5, align 4
-  %mr.5 = alloca i32, align 4
   %__tmp1398 = load i32, i32* %pl.2, align 4
   store i32 %__tmp1398, i32* %mr.5, align 4
-  %mres.5 = alloca i32, align 4
   store i32 0, i32* %mres.5, align 4
   br label %bb567
 bb567:
@@ -3122,13 +3149,10 @@ bb572:
   %__tmp1425 = icmp ne i32 %__tmp1424, 0
   br i1 %__tmp1425, label %bb579, label %bb580
 bb579:
-  %al.10 = alloca i32, align 4
   %__tmp1426 = load i32, i32* %mres.5, align 4
   store i32 %__tmp1426, i32* %al.10, align 4
-  %c.10 = alloca i32, align 4
   %__tmp1427 = load i32, i32* %ml.5, align 4
   store i32 %__tmp1427, i32* %c.10, align 4
-  %sum.10 = alloca i32, align 4
   br label %bb582
 bb582:
   %__tmp1428 = load i32, i32* %c.10, align 4
@@ -3323,13 +3347,10 @@ bb584:
 bb580:
   br label %bb581
 bb581:
-  %al.11 = alloca i32, align 4
   %__tmp1519 = load i32, i32* %ml.5, align 4
   store i32 %__tmp1519, i32* %al.11, align 4
-  %c.11 = alloca i32, align 4
   %__tmp1520 = load i32, i32* %ml.5, align 4
   store i32 %__tmp1520, i32* %c.11, align 4
-  %sum.11 = alloca i32, align 4
   br label %bb618
 bb618:
   %__tmp1521 = load i32, i32* %c.11, align 4
@@ -3675,12 +3696,9 @@ bb678:
   %__tmp1683 = icmp slt i32 %__tmp1682, 16
   br i1 %__tmp1683, label %bb679, label %bb680
 bb679:
-  %pl.3 = alloca i32, align 4
   store i32 2, i32* %pl.3, align 4
-  %pr.3 = alloca i32, align 4
   %__tmp1684 = load i32, i32* %cur, align 4
   store i32 %__tmp1684, i32* %pr.3, align 4
-  %pres.3 = alloca i32, align 4
   store i32 1, i32* %pres.3, align 4
   br label %bb681
 bb681:
@@ -3741,13 +3759,10 @@ bb686:
   %__tmp1711 = icmp ne i32 %__tmp1710, 0
   br i1 %__tmp1711, label %bb693, label %bb694
 bb693:
-  %ml.6 = alloca i32, align 4
   %__tmp1712 = load i32, i32* %pres.3, align 4
   store i32 %__tmp1712, i32* %ml.6, align 4
-  %mr.6 = alloca i32, align 4
   %__tmp1713 = load i32, i32* %pl.3, align 4
   store i32 %__tmp1713, i32* %mr.6, align 4
-  %mres.6 = alloca i32, align 4
   store i32 0, i32* %mres.6, align 4
   br label %bb696
 bb696:
@@ -3808,13 +3823,10 @@ bb701:
   %__tmp1740 = icmp ne i32 %__tmp1739, 0
   br i1 %__tmp1740, label %bb708, label %bb709
 bb708:
-  %al.12 = alloca i32, align 4
   %__tmp1741 = load i32, i32* %mres.6, align 4
   store i32 %__tmp1741, i32* %al.12, align 4
-  %c.12 = alloca i32, align 4
   %__tmp1742 = load i32, i32* %ml.6, align 4
   store i32 %__tmp1742, i32* %c.12, align 4
-  %sum.12 = alloca i32, align 4
   br label %bb711
 bb711:
   %__tmp1743 = load i32, i32* %c.12, align 4
@@ -4009,13 +4021,10 @@ bb713:
 bb709:
   br label %bb710
 bb710:
-  %al.13 = alloca i32, align 4
   %__tmp1834 = load i32, i32* %ml.6, align 4
   store i32 %__tmp1834, i32* %al.13, align 4
-  %c.13 = alloca i32, align 4
   %__tmp1835 = load i32, i32* %ml.6, align 4
   store i32 %__tmp1835, i32* %c.13, align 4
-  %sum.13 = alloca i32, align 4
   br label %bb747
 bb747:
   %__tmp1836 = load i32, i32* %c.13, align 4
@@ -4281,13 +4290,10 @@ bb698:
 bb694:
   br label %bb695
 bb695:
-  %ml.7 = alloca i32, align 4
   %__tmp1961 = load i32, i32* %pl.3, align 4
   store i32 %__tmp1961, i32* %ml.7, align 4
-  %mr.7 = alloca i32, align 4
   %__tmp1962 = load i32, i32* %pl.3, align 4
   store i32 %__tmp1962, i32* %mr.7, align 4
-  %mres.7 = alloca i32, align 4
   store i32 0, i32* %mres.7, align 4
   br label %bb795
 bb795:
@@ -4348,13 +4354,10 @@ bb800:
   %__tmp1989 = icmp ne i32 %__tmp1988, 0
   br i1 %__tmp1989, label %bb807, label %bb808
 bb807:
-  %al.14 = alloca i32, align 4
   %__tmp1990 = load i32, i32* %mres.7, align 4
   store i32 %__tmp1990, i32* %al.14, align 4
-  %c.14 = alloca i32, align 4
   %__tmp1991 = load i32, i32* %ml.7, align 4
   store i32 %__tmp1991, i32* %c.14, align 4
-  %sum.14 = alloca i32, align 4
   br label %bb810
 bb810:
   %__tmp1992 = load i32, i32* %c.14, align 4
@@ -4549,13 +4552,10 @@ bb812:
 bb808:
   br label %bb809
 bb809:
-  %al.15 = alloca i32, align 4
   %__tmp2083 = load i32, i32* %ml.7, align 4
   store i32 %__tmp2083, i32* %al.15, align 4
-  %c.15 = alloca i32, align 4
   %__tmp2084 = load i32, i32* %ml.7, align 4
   store i32 %__tmp2084, i32* %c.15, align 4
-  %sum.15 = alloca i32, align 4
   br label %bb846
 bb846:
   %__tmp2085 = load i32, i32* %c.15, align 4

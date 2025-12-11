@@ -1572,13 +1572,14 @@ mainEntry:
   store i32 %__tmp0, i32* %N, align 4
   %a = alloca [5 x [5 x i32]], align 4
   store [5 x [5 x i32]] zeroinitializer, [5 x [5 x i32]]* %a, align 4
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp1 = load i32, i32* %N, align 4
   %__tmp2 = icmp sgt i32 %__tmp1, 0
   br i1 %__tmp2, label %bb1, label %bb2
 bb1:
-  %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   br label %bb3
 bb3:
@@ -1586,7 +1587,6 @@ bb3:
   %__tmp4 = icmp slt i32 %__tmp3, 5
   br i1 %__tmp4, label %bb4, label %bb5
 bb4:
-  %j = alloca i32, align 4
   store i32 0, i32* %j, align 4
   br label %bb6
 bb6:

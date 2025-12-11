@@ -19,13 +19,16 @@ merge_sortEntry:
   %__tmp1 = add i32 %__tmp0, 1
   %__tmp2 = load i32, i32* %r_arg, align 4
   %__tmp3 = icmp sge i32 %__tmp1, %__tmp2
+  %mid = alloca i32, align 4
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
   br i1 %__tmp3, label %bb0, label %bb1
 bb0:
   ret void
 bb1:
   br label %bb2
 bb2:
-  %mid = alloca i32, align 4
   %__tmp4 = load i32, i32* %l_arg, align 4
   %__tmp5 = load i32, i32* %r_arg, align 4
   %__tmp6 = add i32 %__tmp4, %__tmp5
@@ -37,13 +40,10 @@ bb2:
   %__tmp10 = load i32, i32* %mid, align 4
   %__tmp11 = load i32, i32* %r_arg, align 4
   call void @merge_sort(i32 %__tmp10, i32 %__tmp11)
-  %i = alloca i32, align 4
   %__tmp12 = load i32, i32* %l_arg, align 4
   store i32 %__tmp12, i32* %i, align 4
-  %j = alloca i32, align 4
   %__tmp13 = load i32, i32* %mid, align 4
   store i32 %__tmp13, i32* %j, align 4
-  %k = alloca i32, align 4
   %__tmp14 = load i32, i32* %l_arg, align 4
   store i32 %__tmp14, i32* %k, align 4
   br label %bb3

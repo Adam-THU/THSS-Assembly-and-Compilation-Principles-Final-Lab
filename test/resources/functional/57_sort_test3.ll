@@ -20,15 +20,16 @@ QuickSortEntry:
   %__tmp0 = load i32, i32* %low_arg, align 4
   %__tmp1 = load i32, i32* %high_arg, align 4
   %__tmp2 = icmp slt i32 %__tmp0, %__tmp1
+  %i = alloca i32, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
+  %tmp = alloca i32, align 4
   br i1 %__tmp2, label %bb0, label %bb1
 bb0:
-  %i = alloca i32, align 4
   %__tmp3 = load i32, i32* %low_arg, align 4
   store i32 %__tmp3, i32* %i, align 4
-  %j = alloca i32, align 4
   %__tmp4 = load i32, i32* %high_arg, align 4
   store i32 %__tmp4, i32* %j, align 4
-  %k = alloca i32, align 4
   %__tmp5 = load i32*, i32** %arr_arg, align 4
   %__tmp6 = load i32, i32* %low_arg, align 4
   %__tmp7 = sext i32 %__tmp6 to i64
@@ -147,7 +148,6 @@ bb5:
   %__tmp71 = getelementptr inbounds i32, i32* %__tmp68, i64 %__tmp70
   %__tmp72 = load i32, i32* %k, align 4
   store i32 %__tmp72, i32* %__tmp71, align 4
-  %tmp = alloca i32, align 4
   %__tmp73 = load i32, i32* %i, align 4
   %__tmp74 = sub i32 %__tmp73, 1
   store i32 %__tmp74, i32* %tmp, align 4
@@ -205,6 +205,7 @@ mainEntry:
   %__tmp12 = load i32, i32* %tmp, align 4
   %__tmp13 = call i32 @QuickSort(i32* %__tmp10, i32 %__tmp11, i32 %__tmp12)
   store i32 %__tmp13, i32* %i, align 4
+  %tmp.1 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp14 = load i32, i32* %i, align 4
@@ -212,7 +213,6 @@ bb0:
   %__tmp16 = icmp slt i32 %__tmp14, %__tmp15
   br i1 %__tmp16, label %bb1, label %bb2
 bb1:
-  %tmp.1 = alloca i32, align 4
   %__tmp17 = load i32, i32* %i, align 4
   %__tmp18 = sext i32 %__tmp17 to i64
   %__tmp19 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp18

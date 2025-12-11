@@ -44,6 +44,8 @@ mainEntry:
   %b = alloca i32, align 4
   %__tmp0 = call i32 @getint()
   store i32 %__tmp0, i32* %b, align 4
+  %t = alloca i32, align 4
+  %newline = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp1 = load i32, i32* %b, align 4
@@ -143,7 +145,6 @@ bb2:
   %__tmp61 = load i32, i32* %a28, align 4
   %__tmp62 = add i32 %__tmp61, 1
   store i32 %__tmp62, i32* %a29, align 4
-  %t = alloca i32, align 4
   %__tmp63 = load i32, i32* %a0, align 4
   call void @putint(i32 %__tmp63)
   %__tmp64 = load i32, i32* %a1, align 4
@@ -204,7 +205,6 @@ bb2:
   call void @putint(i32 %__tmp91)
   %__tmp92 = load i32, i32* %a29, align 4
   call void @putint(i32 %__tmp92)
-  %newline = alloca i32, align 4
   store i32 10, i32* %newline, align 4
   %__tmp93 = load i32, i32* %newline, align 4
   call void @putch(i32 %__tmp93)

@@ -19,13 +19,14 @@ deepWhileBrEntry:
   %__tmp1 = load i32, i32* %b_arg, align 4
   %__tmp2 = add i32 %__tmp0, %__tmp1
   store i32 %__tmp2, i32* %c, align 4
+  %d = alloca i32, align 4
+  %e = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp3 = load i32, i32* %c, align 4
   %__tmp4 = icmp slt i32 %__tmp3, 75
   br i1 %__tmp4, label %bb1, label %bb2
 bb1:
-  %d = alloca i32, align 4
   store i32 42, i32* %d, align 4
   %__tmp5 = load i32, i32* %c, align 4
   %__tmp6 = icmp slt i32 %__tmp5, 100
@@ -39,7 +40,6 @@ bb3:
   %__tmp11 = icmp sgt i32 %__tmp10, 99
   br i1 %__tmp11, label %bb6, label %bb7
 bb6:
-  %e = alloca i32, align 4
   %__tmp12 = load i32, i32* %d, align 4
   %__tmp13 = mul i32 %__tmp12, 2
   store i32 %__tmp13, i32* %e, align 4

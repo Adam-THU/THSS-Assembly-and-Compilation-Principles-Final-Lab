@@ -53,6 +53,23 @@ private:
         return "bb" + std::to_string(blockCounter++);
     }
 
+    // 获取当前函数的入口块
+    std::shared_ptr<BasicBlock> getEntryBlock() {
+        if (!currentFunc || currentFunc->blocks.empty()) return nullptr;
+        return currentFunc->blocks.front();
+    }
+
+    // 将 alloca 固定到入口块，避免循环体中重复动态分配导致栈膨胀
+    void addAllocaToEntry(const std::string& instr) {
+        auto entry = getEntryBlock();
+        if (!entry) return;
+        if (entry->hasTerminator && !entry->instructions.empty()) {
+            entry->instructions.insert(entry->instructions.end() - 1, instr);
+        } else {
+            entry->instructions.push_back(instr);
+        }
+    }
+
     // Generate a unique SSA name for locals in the current function
     std::string allocateLocalName(const std::string& base) {
         std::string safeBase = base;
@@ -191,7 +208,7 @@ public:
                 } else {
                     allocaInstr += varType->toString() + ", align 4";
                 }
-                currentBB->addInstruction(allocaInstr);
+                addAllocaToEntry(allocaInstr);
                 symTable.addSymbol(varName, varType, llvmName);
                 
                 // 处理初始化
@@ -615,7 +632,7 @@ public:
                     // 局部常量数组需要实际存储
                     std::string llvmName = allocateLocalName(constName);
                     std::string typeStr = constType->toString();
-                    currentBB->addInstruction("%" + llvmName + " = alloca " + typeStr + ", align 4");
+                    addAllocaToEntry("%" + llvmName + " = alloca " + typeStr + ", align 4");
                     std::string arrayInit = generateConstArrayInit(constDef->constInitVal(), dims);
                     currentBB->addInstruction("store " + arrayInit + ", " + typeStr + "* %" + llvmName + ", align 4");
                     symTable.addSymbol(constName, constType, llvmName, true, 0);
@@ -686,7 +703,7 @@ public:
             
             // 为参数创建本地存储
             std::string localParamName = allocateLocalName(paramName + "_arg");
-            currentBB->addInstruction("%" + localParamName + " = alloca " + paramType->toString() + ", align 4");
+            addAllocaToEntry("%" + localParamName + " = alloca " + paramType->toString() + ", align 4");
             currentBB->addInstruction("store " + paramType->toString() + " %" + paramName + ", " + 
                                     paramType->toString() + "* %" + localParamName + ", align 4");
             

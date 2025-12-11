@@ -143,6 +143,7 @@ heap_sortEntry:
   %__tmp1 = sdiv i32 %__tmp0, 2
   %__tmp2 = sub i32 %__tmp1, 1
   store i32 %__tmp2, i32* %i, align 4
+  %tmp0 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp3 = load i32, i32* %i, align 4
@@ -171,7 +172,6 @@ bb3:
   %__tmp16 = icmp sgt i32 %__tmp15, 0
   br i1 %__tmp16, label %bb4, label %bb5
 bb4:
-  %tmp0 = alloca i32, align 4
   store i32 0, i32* %tmp0, align 4
   %__tmp17 = load i32*, i32** %arr_arg, align 4
   %__tmp18 = load i32, i32* %tmp0, align 4
@@ -225,6 +225,7 @@ mainEntry:
   %__tmp11 = load i32, i32* @n, align 4
   %__tmp12 = call i32 @heap_sort(i32* %__tmp10, i32 %__tmp11)
   store i32 %__tmp12, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp13 = load i32, i32* %i, align 4
@@ -232,7 +233,6 @@ bb0:
   %__tmp15 = icmp slt i32 %__tmp13, %__tmp14
   br i1 %__tmp15, label %bb1, label %bb2
 bb1:
-  %tmp = alloca i32, align 4
   %__tmp16 = load i32, i32* %i, align 4
   %__tmp17 = sext i32 %__tmp16 to i64
   %__tmp18 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp17

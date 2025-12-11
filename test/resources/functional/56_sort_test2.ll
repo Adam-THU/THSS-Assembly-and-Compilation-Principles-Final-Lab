@@ -15,6 +15,8 @@ insertsortEntry:
   store i32* %a, i32** %a_arg, align 4
   %i = alloca i32, align 4
   store i32 1, i32* %i, align 4
+  %temp = alloca i32, align 4
+  %j = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -22,14 +24,12 @@ bb0:
   %__tmp2 = icmp slt i32 %__tmp0, %__tmp1
   br i1 %__tmp2, label %bb1, label %bb2
 bb1:
-  %temp = alloca i32, align 4
   %__tmp3 = load i32*, i32** %a_arg, align 4
   %__tmp4 = load i32, i32* %i, align 4
   %__tmp5 = sext i32 %__tmp4 to i64
   %__tmp6 = getelementptr inbounds i32, i32* %__tmp3, i64 %__tmp5
   %__tmp7 = load i32, i32* %__tmp6, align 4
   store i32 %__tmp7, i32* %temp, align 4
-  %j = alloca i32, align 4
   %__tmp8 = load i32, i32* %i, align 4
   %__tmp9 = sub i32 %__tmp8, 1
   store i32 %__tmp9, i32* %j, align 4
@@ -113,6 +113,7 @@ mainEntry:
   %__tmp10 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 0
   %__tmp11 = call i32 @insertsort(i32* %__tmp10)
   store i32 %__tmp11, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp12 = load i32, i32* %i, align 4
@@ -120,7 +121,6 @@ bb0:
   %__tmp14 = icmp slt i32 %__tmp12, %__tmp13
   br i1 %__tmp14, label %bb1, label %bb2
 bb1:
-  %tmp = alloca i32, align 4
   %__tmp15 = load i32, i32* %i, align 4
   %__tmp16 = sext i32 %__tmp15 to i64
   %__tmp17 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp16

@@ -65,6 +65,7 @@ dfsEntry:
   %__tmp17 = getelementptr inbounds [7 x i32], [7 x i32]* %__tmp14, i64 0, i64 %__tmp16
   %__tmp18 = load i32, i32* %__tmp17, align 4
   %__tmp19 = icmp ne i32 %__tmp18, -1
+  %ans = alloca i32, align 4
   br i1 %__tmp19, label %bb0, label %bb1
 bb0:
   %__tmp20 = load i32, i32* %a_arg, align 4
@@ -106,7 +107,6 @@ bb3:
 bb4:
   br label %bb5
 bb5:
-  %ans = alloca i32, align 4
   store i32 0, i32* %ans, align 4
   %__tmp49 = load i32, i32* %a_arg, align 4
   %__tmp50 = icmp ne i32 %__tmp49, 0
@@ -279,13 +279,18 @@ mainEntry:
   store i32 %__tmp0, i32* %n, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %j = alloca i32, align 4
+  %k = alloca i32, align 4
+  %l = alloca i32, align 4
+  %m = alloca i32, align 4
+  %h = alloca i32, align 4
+  %ans = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp1 = load i32, i32* %i, align 4
   %__tmp2 = icmp slt i32 %__tmp1, 18
   br i1 %__tmp2, label %bb1, label %bb2
 bb1:
-  %j = alloca i32, align 4
   store i32 0, i32* %j, align 4
   br label %bb3
 bb3:
@@ -293,7 +298,6 @@ bb3:
   %__tmp4 = icmp slt i32 %__tmp3, 18
   br i1 %__tmp4, label %bb4, label %bb5
 bb4:
-  %k = alloca i32, align 4
   store i32 0, i32* %k, align 4
   br label %bb6
 bb6:
@@ -301,7 +305,6 @@ bb6:
   %__tmp6 = icmp slt i32 %__tmp5, 18
   br i1 %__tmp6, label %bb7, label %bb8
 bb7:
-  %l = alloca i32, align 4
   store i32 0, i32* %l, align 4
   br label %bb9
 bb9:
@@ -309,7 +312,6 @@ bb9:
   %__tmp8 = icmp slt i32 %__tmp7, 18
   br i1 %__tmp8, label %bb10, label %bb11
 bb10:
-  %m = alloca i32, align 4
   store i32 0, i32* %m, align 4
   br label %bb12
 bb12:
@@ -317,7 +319,6 @@ bb12:
   %__tmp10 = icmp slt i32 %__tmp9, 18
   br i1 %__tmp10, label %bb13, label %bb14
 bb13:
-  %h = alloca i32, align 4
   store i32 0, i32* %h, align 4
   br label %bb15
 bb15:
@@ -407,7 +408,6 @@ bb19:
   store i32 %__tmp65, i32* %i, align 4
   br label %bb18
 bb20:
-  %ans = alloca i32, align 4
   %__tmp66 = getelementptr inbounds [20 x i32], [20 x i32]* @cns, i64 0, i64 1
   %__tmp67 = load i32, i32* %__tmp66, align 4
   %__tmp68 = getelementptr inbounds [20 x i32], [20 x i32]* @cns, i64 0, i64 2

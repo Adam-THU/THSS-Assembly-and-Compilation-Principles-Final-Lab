@@ -130,13 +130,13 @@ mainEntry:
   %n = alloca i32, align 4
   %__tmp0 = call i32 @my_getint()
   store i32 %__tmp0, i32* %n, align 4
+  %m = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp1 = load i32, i32* %n, align 4
   %__tmp2 = icmp sgt i32 %__tmp1, 0
   br i1 %__tmp2, label %bb1, label %bb2
 bb1:
-  %m = alloca i32, align 4
   %__tmp3 = call i32 @my_getint()
   store i32 %__tmp3, i32* %m, align 4
   %__tmp4 = load i32, i32* %m, align 4

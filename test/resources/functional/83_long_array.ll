@@ -21,6 +21,9 @@ long_arrayEntry:
   store [10000 x i32] zeroinitializer, [10000 x i32]* %a3, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %ans = alloca i32, align 4
+  %j = alloca i32, align 4
+  %j.1 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -97,7 +100,6 @@ bb7:
   store i32 %__tmp49, i32* %i, align 4
   br label %bb6
 bb8:
-  %ans = alloca i32, align 4
   store i32 0, i32* %ans, align 4
   store i32 0, i32* %i, align 4
   br label %bb9
@@ -126,7 +128,6 @@ bb13:
   %__tmp63 = icmp slt i32 %__tmp62, 20
   br i1 %__tmp63, label %bb15, label %bb16
 bb15:
-  %j = alloca i32, align 4
   store i32 5000, i32* %j, align 4
   br label %bb18
 bb18:
@@ -159,7 +160,6 @@ bb16:
   %__tmp81 = icmp slt i32 %__tmp80, 30
   br i1 %__tmp81, label %bb21, label %bb22
 bb21:
-  %j.1 = alloca i32, align 4
   store i32 5000, i32* %j.1, align 4
   br label %bb24
 bb24:

@@ -20,6 +20,8 @@ exgcdEntry:
   store i32* %y, i32** %y_arg, align 4
   %__tmp0 = load i32, i32* %b_arg, align 4
   %__tmp1 = icmp eq i32 %__tmp0, 0
+  %r = alloca i32, align 4
+  %t = alloca i32, align 4
   br i1 %__tmp1, label %bb0, label %bb1
 bb0:
   %__tmp2 = load i32*, i32** %x_arg, align 4
@@ -31,7 +33,6 @@ bb0:
   %__tmp6 = load i32, i32* %a_arg, align 4
   ret i32 %__tmp6
 bb1:
-  %r = alloca i32, align 4
   %__tmp7 = load i32, i32* %b_arg, align 4
   %__tmp8 = load i32, i32* %a_arg, align 4
   %__tmp9 = load i32, i32* %b_arg, align 4
@@ -40,7 +41,6 @@ bb1:
   %__tmp12 = load i32*, i32** %y_arg, align 4
   %__tmp13 = call i32 @exgcd(i32 %__tmp7, i32 %__tmp10, i32* %__tmp11, i32* %__tmp12)
   store i32 %__tmp13, i32* %r, align 4
-  %t = alloca i32, align 4
   %__tmp14 = load i32*, i32** %x_arg, align 4
   %__tmp15 = getelementptr inbounds i32, i32* %__tmp14, i64 0
   %__tmp16 = load i32, i32* %__tmp15, align 4

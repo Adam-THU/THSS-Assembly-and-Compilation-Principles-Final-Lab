@@ -19,6 +19,7 @@ select_sortEntry:
   %j = alloca i32, align 4
   %min = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -68,7 +69,6 @@ bb5:
   %__tmp26 = icmp ne i32 %__tmp24, %__tmp25
   br i1 %__tmp26, label %bb9, label %bb10
 bb9:
-  %tmp = alloca i32, align 4
   %__tmp27 = load i32*, i32** %A_arg, align 4
   %__tmp28 = load i32, i32* %min, align 4
   %__tmp29 = sext i32 %__tmp28 to i64
@@ -134,6 +134,7 @@ mainEntry:
   %__tmp11 = load i32, i32* @n, align 4
   %__tmp12 = call i32 @select_sort(i32* %__tmp10, i32 %__tmp11)
   store i32 %__tmp12, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp13 = load i32, i32* %i, align 4
@@ -141,7 +142,6 @@ bb0:
   %__tmp15 = icmp slt i32 %__tmp13, %__tmp14
   br i1 %__tmp15, label %bb1, label %bb2
 bb1:
-  %tmp = alloca i32, align 4
   %__tmp16 = load i32, i32* %i, align 4
   %__tmp17 = sext i32 %__tmp16 to i64
   %__tmp18 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp17

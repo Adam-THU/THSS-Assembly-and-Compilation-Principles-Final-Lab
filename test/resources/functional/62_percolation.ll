@@ -109,6 +109,11 @@ mainEntry:
   %a = alloca i32, align 4
   %b = alloca i32, align 4
   store i32 1, i32* %t, align 4
+  %i = alloca i32, align 4
+  %flag = alloca i32, align 4
+  %k = alloca i32, align 4
+  %loc = alloca i32, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %t, align 4
@@ -120,13 +125,10 @@ bb1:
   store i32 %__tmp3, i32* %t, align 4
   store i32 4, i32* @n, align 4
   store i32 10, i32* %m, align 4
-  %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
-  %flag = alloca i32, align 4
   store i32 0, i32* %flag, align 4
   %__tmp4 = load i32, i32* @n, align 4
   call void @init(i32 %__tmp4)
-  %k = alloca i32, align 4
   %__tmp5 = load i32, i32* @n, align 4
   %__tmp6 = load i32, i32* @n, align 4
   %__tmp7 = mul i32 %__tmp5, %__tmp6
@@ -149,7 +151,6 @@ bb4:
   %__tmp17 = icmp ne i32 %__tmp16, 0
   br i1 %__tmp17, label %bb6, label %bb7
 bb6:
-  %loc = alloca i32, align 4
   %__tmp18 = load i32, i32* @n, align 4
   %__tmp19 = load i32, i32* %a, align 4
   %__tmp20 = sub i32 %__tmp19, 1
@@ -326,7 +327,6 @@ bb46:
   br i1 %__tmp108, label %bb39, label %bb40
 bb39:
   store i32 1, i32* %flag, align 4
-  %tmp = alloca i32, align 4
   %__tmp109 = load i32, i32* %i, align 4
   %__tmp110 = add i32 %__tmp109, 1
   store i32 %__tmp110, i32* %tmp, align 4

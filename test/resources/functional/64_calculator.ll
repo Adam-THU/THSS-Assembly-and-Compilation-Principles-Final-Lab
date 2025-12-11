@@ -227,6 +227,10 @@ mainEntry:
   %__tmp0 = getelementptr inbounds [10000 x i32], [10000 x i32]* @get, i64 0, i64 0
   %__tmp1 = call i32 @getstr(i32* %__tmp0)
   store i32 %__tmp1, i32* %lengets, align 4
+  %c = alloca i32, align 4
+  %a = alloca i32, align 4
+  %b = alloca i32, align 4
+  %c.1 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp2 = load i32, i32* @i, align 4
@@ -718,7 +722,6 @@ bb120:
   %__tmp231 = icmp sgt i32 %__tmp230, 0
   br i1 %__tmp231, label %bb121, label %bb122
 bb121:
-  %c = alloca i32, align 4
   %__tmp232 = call i32 @chapop()
   store i32 %__tmp232, i32* %c, align 4
   %__tmp233 = load i32, i32* @ii, align 4
@@ -817,13 +820,10 @@ bb142:
   %__tmp285 = phi i1 [ 1, %bb143 ], [ %__tmp284, %bb141 ]
   br i1 %__tmp285, label %bb126, label %bb127
 bb126:
-  %a = alloca i32, align 4
   %__tmp286 = call i32 @intpop()
   store i32 %__tmp286, i32* %a, align 4
-  %b = alloca i32, align 4
   %__tmp287 = call i32 @intpop()
   store i32 %__tmp287, i32* %b, align 4
-  %c.1 = alloca i32, align 4
   %__tmp288 = load i32, i32* @i, align 4
   %__tmp289 = sext i32 %__tmp288 to i64
   %__tmp290 = getelementptr inbounds [10000 x i32], [10000 x i32]* @get2, i64 0, i64 %__tmp289

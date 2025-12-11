@@ -14,12 +14,15 @@ mainEntry:
   store i32 3389, i32* @k, align 4
   %__tmp0 = load i32, i32* @k, align 4
   %__tmp1 = icmp slt i32 %__tmp0, 10000
+  %k = alloca i32, align 4
+  %g = alloca i32, align 4
+  %l = alloca i32, align 4
+  %g.1 = alloca i32, align 4
   br i1 %__tmp1, label %bb0, label %bb1
 bb0:
   %__tmp2 = load i32, i32* @k, align 4
   %__tmp3 = add i32 %__tmp2, 1
   store i32 %__tmp3, i32* @k, align 4
-  %k = alloca i32, align 4
   store i32 112, i32* %k, align 4
   br label %bb3
 bb3:
@@ -34,16 +37,13 @@ bb4:
   %__tmp9 = icmp slt i32 %__tmp8, 1000
   br i1 %__tmp9, label %bb6, label %bb7
 bb6:
-  %g = alloca i32, align 4
   store i32 9, i32* %g, align 4
-  %l = alloca i32, align 4
   store i32 11, i32* %l, align 4
   store i32 10, i32* %g, align 4
   %__tmp10 = load i32, i32* %k, align 4
   %__tmp11 = load i32, i32* %g, align 4
   %__tmp12 = sub i32 %__tmp10, %__tmp11
   store i32 %__tmp12, i32* %k, align 4
-  %g.1 = alloca i32, align 4
   store i32 11, i32* %g.1, align 4
   %__tmp13 = load i32, i32* %k, align 4
   %__tmp14 = load i32, i32* %g.1, align 4

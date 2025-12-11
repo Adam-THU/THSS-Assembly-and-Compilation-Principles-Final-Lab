@@ -16,6 +16,8 @@ sortEntry:
   store i32 %len, i32* %len_arg, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %j = alloca i32, align 4
+  %temp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -24,7 +26,6 @@ bb0:
   %__tmp3 = icmp slt i32 %__tmp0, %__tmp2
   br i1 %__tmp3, label %bb1, label %bb2
 bb1:
-  %j = alloca i32, align 4
   %__tmp4 = load i32, i32* %i, align 4
   %__tmp5 = add i32 %__tmp4, 1
   store i32 %__tmp5, i32* %j, align 4
@@ -48,7 +49,6 @@ bb4:
   %__tmp19 = icmp slt i32 %__tmp13, %__tmp18
   br i1 %__tmp19, label %bb6, label %bb7
 bb6:
-  %temp = alloca i32, align 4
   %__tmp20 = load i32*, i32** %arr_arg, align 4
   %__tmp21 = load i32, i32* %i, align 4
   %__tmp22 = sext i32 %__tmp21 to i64

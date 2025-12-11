@@ -326,6 +326,13 @@ evalEntry:
   store [256 x i32] zeroinitializer, [256 x i32]* %ops, align 4
   %__tmp0 = load i32, i32* @cur_token, align 4
   %__tmp1 = icmp ne i32 %__tmp0, 0
+  %op = alloca i32, align 4
+  %cur_op = alloca i32, align 4
+  %rhs = alloca i32, align 4
+  %lhs = alloca i32, align 4
+  %cur_op.1 = alloca i32, align 4
+  %rhs.1 = alloca i32, align 4
+  %lhs.1 = alloca i32, align 4
   br i1 %__tmp1, label %bb0, label %bb1
 bb0:
   %__tmp2 = call i32 @panic()
@@ -343,7 +350,6 @@ bb3:
   %__tmp7 = icmp eq i32 %__tmp6, 1
   br i1 %__tmp7, label %bb4, label %bb5
 bb4:
-  %op = alloca i32, align 4
   %__tmp8 = load i32, i32* @other, align 4
   store i32 %__tmp8, i32* %op, align 4
   %__tmp9 = load i32, i32* %op, align 4
@@ -378,15 +384,12 @@ bb13:
   %__tmp24 = phi i1 [ 0, %bb14 ], [ %__tmp23, %bb12 ]
   br i1 %__tmp24, label %bb10, label %bb11
 bb10:
-  %cur_op = alloca i32, align 4
   %__tmp25 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
   %__tmp26 = call i32 @stack_pop(i32* %__tmp25)
   store i32 %__tmp26, i32* %cur_op, align 4
-  %rhs = alloca i32, align 4
   %__tmp27 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
   %__tmp28 = call i32 @stack_pop(i32* %__tmp27)
   store i32 %__tmp28, i32* %rhs, align 4
-  %lhs = alloca i32, align 4
   %__tmp29 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
   %__tmp30 = call i32 @stack_pop(i32* %__tmp29)
   store i32 %__tmp30, i32* %lhs, align 4
@@ -424,15 +427,12 @@ bb18:
   %__tmp47 = icmp ne i32 %__tmp46, 0
   br i1 %__tmp47, label %bb19, label %bb20
 bb19:
-  %cur_op.1 = alloca i32, align 4
   %__tmp48 = getelementptr inbounds [256 x i32], [256 x i32]* %ops, i64 0, i64 0
   %__tmp49 = call i32 @stack_pop(i32* %__tmp48)
   store i32 %__tmp49, i32* %cur_op.1, align 4
-  %rhs.1 = alloca i32, align 4
   %__tmp50 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
   %__tmp51 = call i32 @stack_pop(i32* %__tmp50)
   store i32 %__tmp51, i32* %rhs.1, align 4
-  %lhs.1 = alloca i32, align 4
   %__tmp52 = getelementptr inbounds [256 x i32], [256 x i32]* %oprs, i64 0, i64 0
   %__tmp53 = call i32 @stack_pop(i32* %__tmp52)
   store i32 %__tmp53, i32* %lhs.1, align 4

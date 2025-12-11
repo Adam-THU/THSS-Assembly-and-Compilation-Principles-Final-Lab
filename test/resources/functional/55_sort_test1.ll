@@ -16,6 +16,7 @@ bubblesortEntry:
   %i = alloca i32, align 4
   %j = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -49,7 +50,6 @@ bb4:
   %__tmp21 = icmp sgt i32 %__tmp14, %__tmp20
   br i1 %__tmp21, label %bb6, label %bb7
 bb6:
-  %tmp = alloca i32, align 4
   %__tmp22 = load i32*, i32** %arr_arg, align 4
   %__tmp23 = load i32, i32* %j, align 4
   %__tmp24 = add i32 %__tmp23, 1
@@ -120,6 +120,7 @@ mainEntry:
   %__tmp10 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 0
   %__tmp11 = call i32 @bubblesort(i32* %__tmp10)
   store i32 %__tmp11, i32* %i, align 4
+  %tmp = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp12 = load i32, i32* %i, align 4
@@ -127,7 +128,6 @@ bb0:
   %__tmp14 = icmp slt i32 %__tmp12, %__tmp13
   br i1 %__tmp14, label %bb1, label %bb2
 bb1:
-  %tmp = alloca i32, align 4
   %__tmp15 = load i32, i32* %i, align 4
   %__tmp16 = sext i32 %__tmp15 to i64
   %__tmp17 = getelementptr inbounds [10 x i32], [10 x i32]* %a, i64 0, i64 %__tmp16

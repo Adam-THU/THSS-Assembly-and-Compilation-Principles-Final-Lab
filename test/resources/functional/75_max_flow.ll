@@ -156,6 +156,9 @@ dfsEntry:
   %__tmp0 = load i32, i32* %s_arg, align 4
   %__tmp1 = load i32, i32* %t_arg, align 4
   %__tmp2 = icmp eq i32 %__tmp0, %__tmp1
+  %i = alloca i32, align 4
+  %min_f = alloca i32, align 4
+  %d = alloca i32, align 4
   br i1 %__tmp2, label %bb0, label %bb1
 bb0:
   %__tmp3 = load i32, i32* %f_arg, align 4
@@ -167,7 +170,6 @@ bb2:
   %__tmp5 = sext i32 %__tmp4 to i64
   %__tmp6 = getelementptr inbounds [10 x i32], [10 x i32]* @used, i64 0, i64 %__tmp5
   store i32 1, i32* %__tmp6, align 4
-  %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
   br label %bb3
 bb3:
@@ -216,7 +218,6 @@ bb9:
 bb10:
   br label %bb11
 bb11:
-  %min_f = alloca i32, align 4
   %__tmp36 = load i32, i32* %f_arg, align 4
   %__tmp37 = load i32, i32* %s_arg, align 4
   %__tmp38 = sext i32 %__tmp37 to i64
@@ -242,7 +243,6 @@ bb13:
   store i32 %__tmp52, i32* %min_f, align 4
   br label %bb14
 bb14:
-  %d = alloca i32, align 4
   %__tmp53 = load i32, i32* %s_arg, align 4
   %__tmp54 = sext i32 %__tmp53 to i64
   %__tmp55 = getelementptr inbounds [10 x [10 x i32]], [10 x [10 x i32]]* @to, i64 0, i64 %__tmp54
@@ -335,13 +335,13 @@ max_flowEntry:
   store i32 %t, i32* %t_arg, align 4
   %flow = alloca i32, align 4
   store i32 0, i32* %flow, align 4
+  %f = alloca i32, align 4
   br label %bb0
 bb0:
   br label %bb1
 bb1:
   %__tmp0 = getelementptr inbounds [10 x i32], [10 x i32]* @used, i64 0, i64 0
   call void @my_memset(i32* %__tmp0, i32 0, i32 10)
-  %f = alloca i32, align 4
   %__tmp1 = load i32, i32* %s_arg, align 4
   %__tmp2 = load i32, i32* %t_arg, align 4
   %__tmp3 = call i32 @dfs(i32 %__tmp1, i32 %__tmp2, i32 1879048192)
@@ -374,19 +374,19 @@ mainEntry:
   store i32 %__tmp1, i32* %E, align 4
   %__tmp2 = getelementptr inbounds [10 x i32], [10 x i32]* @size, i64 0, i64 0
   call void @my_memset(i32* %__tmp2, i32 0, i32 10)
+  %u = alloca i32, align 4
+  %v = alloca i32, align 4
+  %c = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp3 = load i32, i32* %E, align 4
   %__tmp4 = icmp sgt i32 %__tmp3, 0
   br i1 %__tmp4, label %bb1, label %bb2
 bb1:
-  %u = alloca i32, align 4
-  %v = alloca i32, align 4
   %__tmp5 = call i32 @getint()
   store i32 %__tmp5, i32* %u, align 4
   %__tmp6 = call i32 @getint()
   store i32 %__tmp6, i32* %v, align 4
-  %c = alloca i32, align 4
   %__tmp7 = call i32 @getint()
   store i32 %__tmp7, i32* %c, align 4
   %__tmp8 = load i32, i32* %u, align 4

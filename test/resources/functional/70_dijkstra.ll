@@ -22,6 +22,10 @@ DijkstraEntry:
   %i = alloca i32, align 4
   %j = alloca i32, align 4
   store i32 1, i32* %i, align 4
+  %min_num = alloca i32, align 4
+  %min_index = alloca i32, align 4
+  %k = alloca i32, align 4
+  %j.1 = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp0 = load i32, i32* %i, align 4
@@ -58,11 +62,8 @@ bb3:
   %__tmp20 = icmp sle i32 %__tmp17, %__tmp19
   br i1 %__tmp20, label %bb4, label %bb5
 bb4:
-  %min_num = alloca i32, align 4
   store i32 65535, i32* %min_num, align 4
-  %min_index = alloca i32, align 4
   store i32 0, i32* %min_index, align 4
-  %k = alloca i32, align 4
   store i32 1, i32* %k, align 4
   br label %bb6
 bb6:
@@ -111,7 +112,6 @@ bb8:
   %__tmp44 = sext i32 %__tmp43 to i64
   %__tmp45 = getelementptr inbounds [16 x i32], [16 x i32]* @book, i64 0, i64 %__tmp44
   store i32 1, i32* %__tmp45, align 4
-  %j.1 = alloca i32, align 4
   store i32 1, i32* %j.1, align 4
   br label %bb15
 bb15:
@@ -194,6 +194,9 @@ mainEntry:
   %__tmp1 = call i32 @getint()
   store i32 %__tmp1, i32* @m, align 4
   store i32 1, i32* %i, align 4
+  %j = alloca i32, align 4
+  %u = alloca i32, align 4
+  %v = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp2 = load i32, i32* %i, align 4
@@ -201,7 +204,6 @@ bb0:
   %__tmp4 = icmp sle i32 %__tmp2, %__tmp3
   br i1 %__tmp4, label %bb1, label %bb2
 bb1:
-  %j = alloca i32, align 4
   store i32 1, i32* %j, align 4
   br label %bb3
 bb3:
@@ -251,10 +253,8 @@ bb9:
   %__tmp29 = icmp sle i32 %__tmp27, %__tmp28
   br i1 %__tmp29, label %bb10, label %bb11
 bb10:
-  %u = alloca i32, align 4
   %__tmp30 = call i32 @getint()
   store i32 %__tmp30, i32* %u, align 4
-  %v = alloca i32, align 4
   %__tmp31 = call i32 @getint()
   store i32 %__tmp31, i32* %v, align 4
   %__tmp32 = load i32, i32* %u, align 4

@@ -171,6 +171,7 @@ mainEntry:
   store [10 x i32] zeroinitializer, [10 x i32]* %arr, align 4
   %i = alloca i32, align 4
   store i32 0, i32* %i, align 4
+  %a = alloca i32, align 4
   br label %bb0
 bb0:
   %__tmp4 = load i32, i32* %i, align 4
@@ -187,7 +188,6 @@ bb1:
   store i32 %__tmp11, i32* %i, align 4
   br label %bb0
 bb2:
-  %a = alloca i32, align 4
   %__tmp12 = load i32, i32* %i1, align 4
   %__tmp13 = call i32 @func7(i32 %__tmp12)
   %__tmp14 = load i32, i32* %i2, align 4

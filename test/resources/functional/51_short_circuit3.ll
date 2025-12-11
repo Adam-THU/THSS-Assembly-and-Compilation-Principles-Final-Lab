@@ -48,6 +48,11 @@ mainEntry:
   %__tmp0 = call i32 @set_a(i32 0)
   %__tmp1 = icmp ne i32 %__tmp0, 0
   br i1 %__tmp1, label %bb3, label %bb5
+  %i0 = alloca i32, align 4
+  %i1 = alloca i32, align 4
+  %i2 = alloca i32, align 4
+  %i3 = alloca i32, align 4
+  %i4 = alloca i32, align 4
 bb5:
   br label %bb4
 bb3:
@@ -126,15 +131,10 @@ bb35:
   br label %bb38
 bb38:
   call void @putch(i32 10)
-  %i0 = alloca i32, align 4
   store i32 0, i32* %i0, align 4
-  %i1 = alloca i32, align 4
   store i32 1, i32* %i1, align 4
-  %i2 = alloca i32, align 4
   store i32 2, i32* %i2, align 4
-  %i3 = alloca i32, align 4
   store i32 3, i32* %i3, align 4
-  %i4 = alloca i32, align 4
   store i32 4, i32* %i4, align 4
   br label %bb39
 bb39:
