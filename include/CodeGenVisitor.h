@@ -1250,26 +1250,34 @@ public:
                 IRValue arg = args[i];
                 
                 // 如果参数是指向数组的指针，需要转换为指向元素的指针
-                // [N x T]* → T*
+                // 但只有当元素类型不是数组时才需要转换
+                // [N x T]* → T* (only if T is not array)
+                // 对于多维数组如 [N x [M x T]]*，不应该进行转换
                 if (auto ptrType = std::dynamic_pointer_cast<PointerType>(arg.type)) {
                     if (auto arrType = std::dynamic_pointer_cast<ArrayType>(ptrType->pointee)) {
-                        // 生成 getelementptr 或 bitcast
-                        std::string tmp = genTmpVar();
-                        std::string arrTypeStr = getTypeLLVMString(arrType);
-                        std::string elemTypeStr = getTypeLLVMString(arrType->elementType);
+                        // 检查元素类型是否为数组
+                        bool elementIsArray = std::dynamic_pointer_cast<ArrayType>(arrType->elementType) != nullptr;
                         
-                        std::string operand = arg.name;
-                        if (!(operand.size() && (operand[0] == '%' || operand[0] == '@'))) {
-                            operand = "%" + operand;
+                        if (!elementIsArray) {
+                            // 只有当元素不是数组时，才进行 decay 转换
+                            // 生成 getelementptr 或 bitcast
+                            std::string tmp = genTmpVar();
+                            std::string arrTypeStr = getTypeLLVMString(arrType);
+                            std::string elemTypeStr = getTypeLLVMString(arrType->elementType);
+                            
+                            std::string operand = arg.name;
+                            if (!(operand.size() && (operand[0] == '%' || operand[0] == '@'))) {
+                                operand = "%" + operand;
+                            }
+                            
+                            // 使用 getelementptr 转换: [N x T]* → T*
+                            currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + 
+                                                    arrTypeStr + ", " + arrTypeStr + "* " + operand + ", i64 0, i64 0");
+                            
+                            // 更新参数为转换后的类型和名称
+                            arg.name = tmp;
+                            arg.type = std::make_shared<PointerType>(arrType->elementType);
                         }
-                        
-                        // 使用 getelementptr 转换: [N x T]* → T*
-                        currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + 
-                                                arrTypeStr + ", " + arrTypeStr + "* " + operand + ", i64 0, i64 0");
-                        
-                        // 更新参数为转换后的类型和名称
-                        arg.name = tmp;
-                        arg.type = std::make_shared<PointerType>(arrType->elementType);
                     }
                 }
                 
