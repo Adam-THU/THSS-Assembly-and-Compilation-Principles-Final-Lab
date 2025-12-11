@@ -1555,10 +1555,12 @@ public:
                 } else {
                     // 左操作数是变量，需要条件分支
                     currentBB->addInstruction("br i1 %"+lhs.name+", label %"+rhsLabel+", label %"+zeroLabel);
+                    currentBB->setTerminator();
                     
                     // zero 块：直接返回 0
                     auto zeroBB = currentFunc->createBlock(zeroLabel);
                     zeroBB->addInstruction("br label %"+mergeLabel);
+                    zeroBB->setTerminator();
                     
                     // rhs 块：计算右操作数
                     currentBB = currentFunc->createBlock(rhsLabel);
@@ -1581,6 +1583,7 @@ public:
                     
                     std::string actualRhsBlock = currentBB->name;
                     currentBB->addInstruction("br label %"+mergeLabel);
+                    currentBB->setTerminator();
                     
                     // merge 块：phi 节点
                     currentBB = currentFunc->createBlock(mergeLabel);
@@ -1663,10 +1666,12 @@ public:
                 } else {
                     // 左操作数是变量，需要条件分支
                     currentBB->addInstruction("br i1 %"+lhs.name+", label %"+oneLabel+", label %"+rhsLabel);
+                    currentBB->setTerminator();
                     
                     // one 块：直接返回 1
                     auto oneBB = currentFunc->createBlock(oneLabel);
                     oneBB->addInstruction("br label %"+mergeLabel);
+                    oneBB->setTerminator();
                     
                     // rhs 块：计算右操作数
                     currentBB = currentFunc->createBlock(rhsLabel);
@@ -1689,6 +1694,7 @@ public:
                     
                     std::string actualRhsBlock = currentBB->name;
                     currentBB->addInstruction("br label %"+mergeLabel);
+                    currentBB->setTerminator();
                     
                     // merge 块：phi 节点
                     currentBB = currentFunc->createBlock(mergeLabel);
