@@ -1249,37 +1249,8 @@ public:
                 
                 IRValue arg = args[i];
                 
-                // 如果参数是指向数组的指针，需要转换为指向元素的指针
-                // 但只有当元素类型不是数组时才需要转换
-                // [N x T]* → T* (only if T is not array)
-                // 对于多维数组如 [N x [M x T]]*，不应该进行转换
-                if (auto ptrType = std::dynamic_pointer_cast<PointerType>(arg.type)) {
-                    if (auto arrType = std::dynamic_pointer_cast<ArrayType>(ptrType->pointee)) {
-                        // 检查元素类型是否为数组
-                        bool elementIsArray = std::dynamic_pointer_cast<ArrayType>(arrType->elementType) != nullptr;
-                        
-                        if (!elementIsArray) {
-                            // 只有当元素不是数组时，才进行 decay 转换
-                            // 生成 getelementptr 或 bitcast
-                            std::string tmp = genTmpVar();
-                            std::string arrTypeStr = getTypeLLVMString(arrType);
-                            std::string elemTypeStr = getTypeLLVMString(arrType->elementType);
-                            
-                            std::string operand = arg.name;
-                            if (!(operand.size() && (operand[0] == '%' || operand[0] == '@'))) {
-                                operand = "%" + operand;
-                            }
-                            
-                            // 使用 getelementptr 转换: [N x T]* → T*
-                            currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + 
-                                                    arrTypeStr + ", " + arrTypeStr + "* " + operand + ", i64 0, i64 0");
-                            
-                            // 更新参数为转换后的类型和名称
-                            arg.name = tmp;
-                            arg.type = std::make_shared<PointerType>(arrType->elementType);
-                        }
-                    }
-                }
+                // visitPrimaryExp 已经做过正确的 array decay，这里直接使用参数类型
+                // 不需要额外的类型转换，避免与函数定义的参数类型不匹配
                 
                 std::string argTypeStr = getTypeLLVMString(arg.type);
                 if (arg.isConst) {
@@ -1374,11 +1345,19 @@ public:
                 }
             }
             
-            // 检查返回的类型：如果是指向数组或指针的指针，也应该返回地址不load
-            // 例如 a[17] 返回 [67 x i32]* 类型，应该传递地址而不是load
+            // 检查返回的类型：如果是指向数组的指针，需要进一步 decay
+            // 例如 a[17] 返回 [67 x i32]* 类型（a 是 int[61][67]）
             if (auto ptrType = std::dynamic_pointer_cast<PointerType>(addr.type)) {
-                if (ptrType->pointee->isArray() || ptrType->pointee->isPointer()) {
-                    // 指向数组或指针的指针，返回地址
+                if (auto arrType = std::dynamic_pointer_cast<ArrayType>(ptrType->pointee)) {
+                    // 指向数组的指针，需要 decay 成指向首元素的指针
+                    // [N x T]* → T*（通过 getelementptr）
+                    std::string tmp = genTmpVar();
+                    std::string arrTypeStr = getTypeLLVMString(arrType);
+                    currentBB->addInstruction("%" + tmp + " = getelementptr inbounds " + arrTypeStr + 
+                                            ", " + arrTypeStr + "* " + addr.name + ", i64 0, i64 0");
+                    return IRValue(tmp, std::make_shared<PointerType>(arrType->elementType));
+                } else if (ptrType->pointee->isPointer()) {
+                    // 指向指针的指针，返回地址（指针参数）
                     return addr;
                 }
             }
